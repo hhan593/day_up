@@ -1,0 +1,122 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<body>
+<!--<input type="text" id="send_input">-->
+<textarea name="" id="send_input" cols="30" rows="10"></textarea>
+<a href="javascript:;" id="send_message">发送</a>
+</div>
+<script>
+
+    //消息变量
+    var data = {};
+
+    var wsServer = "";//http通信地址
+    // var wsServer = "";//https通信地址
+    var webSocket = new WebSocket(wsServer);
+    var changlian = '';//长联定时器
+    var chonglian = '';//重连定时器
+
+    //发送消息方法
+    $('#send_message').click(function(){
+        //readyState 0尚未建立连接 1连接已经建立 2连接正在关闭 3连接已经关闭或不可用
+        if(webSocket.readyState!=1){
+            alert('网络异常，请稍后再试');//给用户提示
+            return;
+        }
+
+        data.message = $('#send_input').val();
+        data.user_id = 1;  // 用户变量
+        data.to_user_id = 2;  // 聊天对象用户变量
+        webSocket.send(JSON.stringify(data));
+    })
+
+    //新打开触发的方法
+    webSocket.onopen = function(evt){
+    }
+
+    //socket通信触发方法
+    webSocket.onmessage = function(evt){
+        message_action(evt)
+    };
+
+    //socket报错触发 
+    webSocket.onerror = function(evt,e){
+    	console.log('连接关闭');
+        error_action(evt,e)
+    };
+
+    //关闭当前页面触发的方法
+    webSocket.onclose = function(evt,e){
+        console.log('连接关闭');
+        error_action(evt,e)
+    };
+
+    //添加定时器保证长联，服务器端一般会对一定时长内没有通信的socket进行切断
+    changlian = setInterval(function(){
+        webSocket.send('');
+    }, 50000);
+
+	//获取到消息之后进行页面渲染，此处属于内部逻辑
+    function message_action(evt){
+        var evt = evt.data!='' ? eval('('+evt.data+')') : {};
+        console.log(evt);
+    }
+
+    //异常处理方法，清空长联定时器，执行重连方法
+    function error_action(evt,e){
+        clearInterval(changlian);
+        chonglian_action();
+    }
+    
+    //重连方法
+    function chonglian_action() {
+    	//每隔一秒进行一次重连操作
+        chonglian = setInterval(function(){
+        	//判断有没有网 此处代码后加的，为了优化没网实例化socket时候的报错问题
+        	if(!navigator.onLine){
+        		return ;  // 没网就中断
+			}
+            // readyState 0尚未建立连接 1连接已经建立 2连接正在关闭 3连接已经关闭或不可用
+            if(webSocket.readyState==3) {
+                console.log('网络异常');
+                webSocket = new WebSocket(wsServer);
+                console.log(webSocket.readyState);
+            }
+            //如果连上了清空重连定时器 并且 要开启长联定时器 并且将各个事件重新注册
+            if(webSocket.readyState==1){
+                changlian = setInterval(function(){
+                    webSocket.send('');
+                }, 50000);
+                //新打开触发的方法
+                webSocket.onopen = function(evt){
+                }
+                //socket通信触发方法
+                webSocket.onmessage = function(evt){
+                    message_action(evt)
+                };
+                //socket报错触发
+                webSocket.onerror = function(evt,e){
+                    console.log('连接错误');
+                    error_action(evt,e)
+                };
+                //关闭当前页面触发的方法
+                webSocket.onclose = function(evt,e){
+                    console.log('连接关闭');
+                    error_action(evt,e)
+                };
+
+                clearInterval(chonglian);
+            }
+        }, 1000);
+    }
+
+</script>
+</body>
+</html>

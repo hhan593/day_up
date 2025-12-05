@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+          padding: 0;
+          margin: 0;
+        }
+    
+        .father {
+          display: flex;
+          background-color: blue;
+        }
+    
+        .left {
+          width: 300px;
+          background-color: red;
+        }
+    
+        .right {
+          width: 300px;
+          background-color: pink;
+        }
+    
+        .center {
+          flex: 1;/* flex: 1; 宽度为父级元素的剩余宽度*/
+        }
+      </style>
+  </head>
+  <body>
+    <!-- <div class="single-line-text" style="width: 200px">
+      这是一段很长的单行文本，当超出容器宽度时会显示省略号。
+    </div>
+
+    <br />
+
+    <div class="multi-line-text" style="width: 200px">
+      这是一段很长的多行文本，当超出容器高度时会显示省略号。这是一段很长的多行文本，当超出容器高度时会显示省略号。这是一段很长的多行文本，当超出容器高度时会显示省略号。
+    </div> -->
+    <!-- <div class="box">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div> -->
+    <body>
+        <div class="father">
+          <div class="left">left</div>
+          <div class="center">center</div>
+          <div class="right">right</div>
+        </div>
+        <script src="./test.js"></script>
+      </body
+  </body>
+</html>

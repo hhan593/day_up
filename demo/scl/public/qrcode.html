@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img id="qrcode" src="" alt="" />
+    <div id="status-div"></div>
+    <script>
+      const status = {
+        0: "未开始",
+        1: "已开始",
+        2: "已结束",
+      };
+      const qrcode = document.getElementById("qrcode");
+      const statusDiv = document.getElementById("status-div");
+      let userId = null;
+      statusDiv.innerHTML = status[0];
+      fetch("/qrcode")
+        .then((res) => res.json())
+        .then((data) => {
+          qrcode.src = data.code;
+          userId = data.userId;
+          let timer = setInterval(() => {
+            fetch(`/check/${userId}`)
+              .then((res) => res.json())
+              .then((res) => {
+                statusDiv.innerHTML = status[res.status];
+                if (res.status != 0) {
+                  clearInterval(timer);
+                }
+              });
+          }, 1000);
+        });
+    </script>
+  </body>
+</html>

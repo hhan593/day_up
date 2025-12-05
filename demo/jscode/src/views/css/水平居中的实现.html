@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .father {
+        width: 500px;
+        height: 500px;
+        background-color: red;
+        position: relative;
+      }
+      .child {
+        width: 150px;
+        height: 150px;
+        background-color: blue;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /*这段HTML代码定义了一个CSS类 .child，用于设置一个100x100像素的蓝色方块，并将其居中显示在父元素中。具体功能如下：
+尺寸和背景色：设置宽度和高度为100px，背景色为蓝色。
+绝对定位：使用 position: absolute 将元素相对于其最近的非 static 定位的祖先元素进行定位。
+居中对齐：通过 top: 50% 和 left: 50% 将元素的左上角移动到父元素的中心，再使用 transform: translate(-50%, -50%) 将元素自身向左和向上移动自身宽度和高度的一半，实现居中效果。*/
+      }
+    </style>
+  </head>
+  <body>
+    <div class="father">
+      <div class="child">孩子</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function jsonp(url, params, callback) {
+            let funcName = 'jsonp_' + Date.now() + Math.random().toString().substr(2, 5)
+            
+            url = url + '?';
+            for(let k in params){
+                url = url + k + '=' + params[k] + '&'
+            }
+
+            var script = document.createElement('script')
+            script.src = url + 'callback=' + funcName
+            document.body.appendChild(script)
+            window[funcName] = function(params) {
+                callback(params)
+                //清除全局函数和script标签
+                delete window[funcName]
+                document.body.removeChild(script)
+            }
+        }
+
+        jsonp('http://127.0.0.1:3000/api', {name: 'hhh', age: 11}, function(res) {
+                console.log(res)
+        })
+    </script>
+</body>
+</html>

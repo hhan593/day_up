@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center; /* 水平居中 */
+        align-items: center; /* 垂直居中 */
+        text-align: justify;
+        width: 100%; /* 容器宽度 */
+        height: 300px; /* 根据需要调整 */
+      }
+
+      .img-wrap {
+        float: left; /* 或者 right，根据需要调整 */
+        shape-outside: circle(50%); /* 创建圆形环绕效果 */
+        margin-right: 20px; /* 文字与图片的间距 */
+        width: 150px; /* 图片宽度 */
+        height: 150px; /* 图片高度 */
+      }
+
+      .img-wrap img {
+        width: 50%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="line-height: 1.5">
+      This is some text <span>and a span element</span> inside a div.
+    </div>
+  </body>
+</html>

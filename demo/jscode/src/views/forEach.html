@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let unms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      unms.forEach((item, index) => {
+        if (index === 3) {
+          return;
+        }
+        console.log(item);
+      });
+      const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const arr1 = arr.every((item) => {
+        item > 5; //检查数组中所有的元素是否都大于5，实则返回true，否则返回false
+      });
+      console.log(arr1); // false
+      const arr2 = arr.some((item) => {
+        item > 5; //检查数组中是否有一个元素大于5，实则返回true，否则返回false
+      });
+      console.log(arr2); // true
+      //  every和some方法区别在于，every方法返回的是一个布尔值， some方法返回的是一个布尔值，
+      //  但是every方法会遍历整个数组，some方法只要有一个元素满足条件，就返回true，而every方法只要有一个元素不满足条件，就返回false。
+      //  every在碰到return false的时候，中止循环。some在碰到return true的时候，中止循环
+
+      console.log(arr.includes(2, 2)); //默认后面参数从0开始，表示为开始搜索的索引 ，  -
+      // 负索引从数组末尾开始计数——如果 fromIndex < 0，那么实际使用的是 fromIndex + array.length。然而在这种情况下，数组仍然从前往后进行搜索。
+      //  - 如果 fromIndex >= array.length，则不会搜索数组并返回 false。
+      arr.copyWithin(1, 3);
+      console.log(arr.copyWithin(1, 3));
+      const arr3 = arr.filter((item) => {
+        return item > 3;
+      });
+      console.log(arr3);
+      console.log(location.herf);
+      console.log(document.referrer);
+      const str = "1,2,3,4,5";
+      str.split();
+      console.log(str.split()); //接受两个参数 第一个参数是分隔符，第二个参数是分隔符出现的次数，默认为全部
+      console.log(str.split(",", 2));
+      //判断一个字符串上是否有某个属性
+      Reflect.has({ x: 0 }, "x"); // true
+      Reflect.has({ x: 0 }, "y"); // false
+      console.log(Reflect.has({ x: 0 }, "toString"));
+      const obj = {
+        x: 1,
+        y: 2,
+        z: 3,
+      };
+    </script>
+  </body>
+</html>

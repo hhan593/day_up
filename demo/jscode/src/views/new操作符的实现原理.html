@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   function newOperation(fn, ...args) {
+      //     if (typeof fn !== "function") {
+      //       throw "newOperation参数必须为函数";
+      //     }
+      //     let obj = Object.create(fn.prototype); // 创建一个对象，对象.__proto__指向构造函数的prototype
+      //     let result = fn.apply(obj, args); // 执行函数，并将函数的返回值赋值给result
+      //     return result instanceof Object ? result : obj; // 判断函数的返回值是否为对象，如果是，则返回，否则返回obj
+      //   }
+      //   const obj1 = {
+      //     sex: "男",
+      //   };
+      //   const obj = {
+      //     name: "张三",
+      //     age: 20,
+      //     fn() {
+      //       console.log("我是一个函数");
+      //     },
+      //   };
+      //   Object.setPrototypeOf(obj1, obj);
+      //   //遍历对象
+      //   // for in 遍历对象
+      //   function forEach(obj, callback) {
+      //     for (let key in obj) {
+      //       callback(obj[key], key); //key为属性名，obj[key]为属性值
+      //       console.log(key, obj[key]);
+      //     }
+      //   }
+      //   forEach(obj, (value, key) => {});
+      //   forEach(obj1, (value, key) => {});
+
+      //   // Object.keys() 遍历对象  返回的是key键名
+      //   console.log(Object.keys(obj));
+      //   console.log(Object.keys(obj1));
+      //   // Object.getOwnPropertyNames() 遍历对象  返回的是key键名
+      //   console.log(Object.getOwnPropertyNames(obj));
+
+      //   // Object.values() 遍历对象  返回的是value键值
+      //   console.log(Object.values(obj));
+
+      //   // Object.entries() 遍历对象  返回的是key键名和value键值
+      //   console.log(" Object.entries() 遍历对象", Object.entries(obj));
+      //   console.log(
+      //     " Object.getOwnPropertyNames() 遍历对象",
+      //     Object.getOwnPropertyNames(obj)
+      //   );
+
+      //   /*匿名函数写法*/
+      //   (function () {
+      //     console.log("123");
+      //   })();
+      //   ~(function () {
+      //     console.log("456");
+      //   })();
+      //   !(function (w) {
+      //     alert(w.location.href + "," + 11);
+      //   })(window);
+      const arr = [];
+      function fn() {
+        for (let i = 0; i < arguments.length; i++) {
+          arr.push(arguments[i]);
+        }
+        console.log(arguments); // 类数组
+        console.log(Array.isArray(Array.from(arguments)));
+        console.log(testArray([...arguments]));
+      }
+      function testArray(obj) {
+        return Array.isArray(obj);
+      }
+      fn(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+      console.log(arr);
+      function sum(a, b) {
+        let args = Array.prototype.concat.apply([], arguments); //apply方法会把第二个参数展开
+        console.log(args.reduce((sum, cur) => sum + cur)); //args可以调用数组原生的方法啦
+      }
+      sum(1, 2); //3
+      //   变量提升导致的问题;
+      // 意外的 undefined：如果在声明变量之前使用变量，会导致变量的值为 undefined，这可能会引发意外的错误。
+
+      console.log(x); // undefined
+      var x = 10;
+      //   难以调试：变量提升可能导致代码的执行顺序与预期不符，增加了调试的难度。
+
+      function example() {
+        console.log(x); // undefined
+        var x = 10;
+      }
+
+      example();
+      //   函数表达式的问题：函数表达式的赋值不会被提升，这可能导致在声明之前调用函数时出现错误。
+
+      //console.log(add(2, 3)); // TypeError: add is not a function
+
+      var add = function (a, b) {
+        return a + b;
+      };
+      //   块级作用域的误解：let 和 const 引入了块级作用域，但它们也有变量提升的行为，只是在声明之前使用会抛出 ReferenceError（也称为暂时性死区，TDZ）。
+
+      // console.log(x); // ReferenceError: x is not defined
+      // let x = 10;
+
+      function plus(a, b) {
+        let args = Array.prototype.slice.call(arguments);
+        console.log(args);
+        console.log(
+          "add函数的结果",
+          args.reduce((plus, cur) => plus + cur)
+        );
+      }
+      plus(13, 1);
+      function sum(a, b) {
+        let args = Array.prototype.slice.call(arguments);
+        console.log(args.reduce((sum, cur) => sum + cur)); //args可以调用数组原生的方法啦
+      }
+      sum(1, 2); //3
+
+      //字符串分割为数组
+      const str = "1,2,3";
+      console.log(str.split(","));
+    </script>
+  </body>
+</html>

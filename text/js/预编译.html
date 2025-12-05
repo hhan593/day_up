@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function test() {
+        console.log(b);
+        if (a) {
+          var b = 100;
+        }
+        console.log(b);
+        c = 234;
+        console.log(c);
+      }
+      var a;
+      test();
+      a = 10;
+      console.log(c);
+
+      /*  {
+    //     foo：undefined;
+    //     bar:function(){}
+    
+    foo:undefined;
+
+   }  */
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <h1>SDL</h1>
+
+    <script src="./md5.js"></script>
+    <script>
+      const createBrowserFingerprint = () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.fillRect(0, 0, 100, 100);
+        return canvas.toDataURL();
+      };
+      const ws = new WebSocket("ws://localhost:3000");
+      ws.addEventListener("open", () => {
+        ws.send(
+          JSON.stringify({
+            id: 1,
+            fingerprint: "1234567890",
+            action: "login",
+          })
+        );
+      });
+      //监听挤下线的操作
+      ws.addEventListener("message", (event) => {
+        const data = JSON.parse(event.data);
+        if (data.action === "logout") {
+          alert("您已在其他地方登录");
+          //   window.location.href = "/";
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(172, 178, 184);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script>
+      let count = 0;
+      const box = document.getElementById("box");
+      let text = `文本的数字是${count}`;
+      function userAction() {
+        count++;
+        text = `文本的数字是${count}`;
+        box.innerHTML = text;
+      }
+      //防抖
+      box.onclick = debounce(userAction, 1000);
+      function debounce(fn, duration) {
+        let timer = null;
+        return function (...args) {
+          const context = this; // 保存当前上下文
+          var arg = arguments; // 保存当前传入的参数
+
+          if (timer) clearTimeout(timer); // 清除上一次的定时器
+          timer = setTimeout(() => {
+            fn.apply(context, arg); // 使用当前上下文和参数调用原函数
+          }, duration); // 设置新的定时器
+        };
+      }
+    </script>
+  </body>
+</html>

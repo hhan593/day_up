@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        /*flex-flow: row nowrap; /* 表示横向排列以及不换行*/
+        justify-content: start; /*定义了项目在主轴上的对齐方式。*/
+        align-items: stretch; /*定义了项目在交叉轴上的对齐方式。*/
+        /*align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+              - flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
+              - flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+              - flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。
+              - flex属性是flex-grow，flex-shrink和flex-basis的简写 ，默认值为0 1 auto*/
+        /*- align-self属性允许单个项目有与其他项目不一样的对齐方式
+              可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性,如果没有父元素，则等同于stretch。*/
+      }
+      .box1,
+      .box2,
+      .box1 {
+        height: 100px;
+        width: 100px;
+        background-color: red;
+      }
+
+      .box2 {
+        /* width: 100px; */
+        flex: 1;
+        height: 100px;
+        background-color: blue;
+      }
+      .box3 {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="box1">1</div>
+      <div class="box2">2</div>
+      <div class="box3">2</div>
+    </div>
+  </body>
+</html>
