@@ -23,3 +23,6 @@ uploads
 *.njsproj
 *.sln
 *.sw?
+#Obsidian 
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
