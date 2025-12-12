@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #draggable {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+        text-align: center;
+        line-height: 100px;
+      }
+      #droptarget {
+        width: 200px;
+        height: 200px;
+        background-color: lightgray;
+        margin-top: 20px;
+        text-align: center;
+        line-height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="draggable" draggable="true">Drag me!</div>
+    <div id="droptarget">Drop here</div>
+    <script>
+      /*
+        dragstart: 拖动开始时触发。
+        drag: 拖动过程中持续触发。
+        dragend: 拖动结束时触发（无论是否成功放置）。
+        dragenter: 拖动进入目标区域时触发。
+        dragover: 拖动在目标区域上方时持续触发。
+        dragleave: 拖动离开目标区域时触发。
+        drop: 放置元素时触发。
+
+        */
+      const draggable = document.querySelector("#draggable");
+      const droptarget = document.querySelector("#droptarget");
+      // 拖动开始时
+      draggable.addEventListener("dragstart", (event) => {
+        event.dataTransfer.setData("text/plain", event.target.id);
+        console.log("dragstart", event);
+        event.currentTarget.style.opacity = "0.5"; // 可选：改变透明度
+      });
+
+      // 拖动结束时
+      draggable.addEventListener("dragend", (event) => {
+        event.currentTarget.style.opacity = "1"; // 恢复透明度
+        console.log("dragend", event);
+      });
+
+      // 阻止默认行为，允许放置
+      droptarget.addEventListener("dragover", (event) => {
+        event.preventDefault();
+      });
+
+      // 拖动进入目标区域时
+      droptarget.addEventListener("dragenter", (event) => {
+        event.preventDefault();
+        droptarget.style.backgroundColor = "lightgreen"; // 可选：改变背景色
+      });
+
+      // 拖动离开目标区域时
+      droptarget.addEventListener("dragleave", (event) => {
+        droptarget.style.backgroundColor = "lightgray"; // 恢复背景色
+      });
+
+      // 放置元素时
+      droptarget.addEventListener("drop", (event) => {
+        event.preventDefault();
+        const data = event.dataTransfer.getData("text/plain");
+        const draggableElement = document.getElementById(data);
+        droptarget.appendChild(draggableElement);
+        droptarget.style.backgroundColor = "lightgray"; // 恢复背景色
+      });
+    </script>
+    <!-- <script>
+      const obj = [];
+
+      console.log(Object.prototype.toString.call(obj).slice(8, -1) === "Array");
+
+      console.log(obj.__proto__ === Array.prototype);
+
+      console.log(Array.isArray(obj));
+
+      console.log(obj instanceof Array);
+
+      console.log(Array.prototype.isPrototypeOf(obj));
+    </script> -->
+  </body>
+</html>

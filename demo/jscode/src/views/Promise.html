@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const fetchData = () => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const success = true;
+                if (success) {
+                    resolve("Data fetched successfully!");
+                } else {
+                    reject(new Error("Failed to fetch data"));
+                }
+            }, 2000);
+        });
+    };
+
+    const processData = data => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const processedData = data + " (processed)";
+                resolve(processedData);
+            }, 1000);
+        });
+    };
+
+    fetchData()
+        .then(data => {
+            console.log("Fetched data:", data);
+            return processData(data);
+        })
+        .then(processedData => {
+            console.log("Processed data:", processedData);
+        })
+        .catch(error => {
+            console.error(error.message);
+        });
+
+    // 字符串转换
+    console.log("转换为数字",parseInt('12.3b？'))
+// 不可包含非法字符串才可以转换
+    console.log("转换为数字",Number('12.3b？'))
+
+    //怎么清空一个数组
+    const arr = [1,2,3,4,5,6,7,8,9,10];
+    // arr.splice(0, arr.length);
+    arr.pop() //删除最后一个元素
+    arr.shift() // 删除第一个元素
+    // 1.arr.length = 0
+    //2. splice(0, a.length)
+    console.log(arr)
+let str = "@你好你跟地方放假了呢@打客服你开房@发动机斯蒂芬妮"
+    str.replace("@",'')
+    console.log(str)
+</script>
+</body>
+</html>

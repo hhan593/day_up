@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log(["0x1", "0x2", "0x3"].map(parseInt));
+      console.log(["0x1", "0x2", "0x3"].map(Number));
+      console.log(location.href); //当前页面的url
+      console.log(document.referrer); //上一个页面的url
+
+      const target = {
+        message: "hello",
+      };
+      const handler = {
+        get(target, propKey, receiver) {
+          console.log(
+            `Getting ${propKey} from ${receiver === proxy ? "proxy" : "target"}` //propkey为message ,receiver为proxy
+          );
+
+          return Reflect.get(target, propKey, receiver);
+        },
+        set(target, propKey, value, receiver) {
+          console.log(
+            `Setting ${propKey} to ${value} on ${
+              receiver === proxy ? "proxy" : "target"
+            }`
+          );
+          return Reflect.set(target, propKey, value, receiver);
+        },
+      };
+      const proxy = new Proxy(target, handler);
+      console.log(proxy.message); // hello world
+      proxy.message = "hi";
+      console.log(proxy.message);
+
+      /* -------------------------- 31. 说说你对Object.seal和Object.freeze的区别？ */
+      const obj = {
+        name: "John",
+        age: 24,
+      };
+      const obj1 = {
+        name: "Jane",
+        age: 22,
+      };
+      console.log(Object.getOwnPropertyDescriptor(obj, "name"));
+      Object.freeze(obj); //
+      obj.name = "Jim"; //更改无效
+      console.log(Object.getOwnPropertyDescriptor(obj, "name"));
+      Object.seal(obj1);
+      obj1.name = "Jim"; //更改有效
+      console.log(Object.getOwnPropertyDescriptor(obj1, "name"));
+    </script>
+  </body>
+</html>

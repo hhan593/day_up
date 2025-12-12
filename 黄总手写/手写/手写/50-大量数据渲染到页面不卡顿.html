@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <ul></ul>
+        <script>
+            const total = 1000;
+            const once = 20;
+            // 插入的次数
+            const loopCount = Math.ceil(total / once);
+            // 渲染的次数
+            let countRender = 0;
+            // 获取插入的父节点
+            const ul = document.querySelector('ul');
+            // 添加数据的方法1 此方法更优
+            function add() {
+                // 创建虚拟节点
+                const fragment = document.createDocumentFragment();
+                for (let i = 0; i < once; i++) {
+                    const li = document.createElement('li');
+                    li.innerHTML = Math.floor(Math.random() * 100000)
+                    fragment.appendChild(li)
+                }
+                ul.appendChild(fragment);
+                countRender++;
+                loop();
+            }
+            function loop() {
+                if (countRender < loopCount) {
+                    // 未超过渲染次数    
+                    window.requestAnimationFrame(add);
+                }
+            }
+            loop()
+        </script>
+    </body>
+</html>
+
+
+<!-- 2. 虚拟列表 -->
+
+
+

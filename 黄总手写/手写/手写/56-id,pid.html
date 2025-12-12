@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let data = [
+            {id: 1, organizationId: 1, name: "有限公司", pid: 0},
+            {id: 2, organizationId: 1, name: "键管部",  pid: 1},
+            {id: 3, organizationId: 1, name: "技术部", pid: 1,},
+            {id: 15, organizationId: 1, name: "技术一部", pid: 3},
+            {id: 16, organizationId: 1, name: "技术一部一组", pid: 15}
+        ]
+        
+        // 扁平变树
+        function filterPidTree(arrList, pid) {
+            const toTree=(id)=> {
+                let childList = []
+                let marchArr = arrList.filter(item=> {
+                    return item.pid === id;
+                })
+                marchArr.forEach(item=> {
+                    item.children = toTree(item.id);
+                    childList.push(item);
+                })
+                return childList;
+            }
+            return toTree(pid);
+        }
+
+        console.log(filterPidTree(data, 1))
+
+        // 树变扁平
+        // function filterList(list) {
+        //     const res = [];
+        //     const dfs=(data, pid)=> {
+        //         data.forEach(item=> {
+        //             const result = {
+        //                 id: item.id,
+        //                 pid,
+        //                 value: item.value,
+        //             }
+        //             res.push(result)
+        //             if (item.children.length > 0) {
+        //                 dfs(item.children, item.id);
+        //             }
+        //         })
+        //     }
+        //     dfs(list, 0)
+        //     return res;
+        // }
+    </script>
+</body>
+</html>

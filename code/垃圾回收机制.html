@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <script>
+      // obj是一个强引用，对象存于内存，可用
+      let obj1 = { id: 1 };
+
+      // 重写obj1引用
+      obj1 = null;
+      console.log(obj1); //// 对象从内存移除，回收 {id: 1} 对象引用被移除
+
+      //set map
+      //   let obj = { id: 1 };
+      //   let user = { info: obj };
+      //   let set = new Set([obj]);
+      //   let map = new Map([[obj, "hahaha"]]);
+      let obj = { id: 1 };
+      let weakSet = new WeakSet([obj]);
+      let weakMap = new WeakMap([[obj, "hahaha"]]);
+
+      // 重写obj
+      obj = null;
+
+      //   console.log(user.info); // {id: 1}
+      console.log(weakSet);
+      console.log(weakMap);
+    </script>
+  </body>
+</html>

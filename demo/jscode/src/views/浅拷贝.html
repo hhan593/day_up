@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+// Object.assign
+//Object.assign(target, ...sources) 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它会返回目标对象。
+const source = {a:1,b:2}
+const target = {c:1,b:2}
+Object.assign(target,source)
+console.log(Object.assign(target,source)) // {c: 1, b: 2, a: 1}
+
+//扩展运算符
+//扩展运算符（...）可以在函数调用/参数列表中使用，在数组字面量/对象字面量中使用，或者在解构赋值表达式中使用。
+// 当在对象字面量中使用时，它的行为类似于 Object.assign，可以用来合并对象或复制对象。
+ const obj = {e:9,...source}
+console.log(obj)
+
+// 处理undefined和null：Object.assign 可以接受 null 或 undefined 作为源对象，但会跳过它们而不抛出错误。
+// 然而，如果在扩展运算符中使用 null 或 undefined，则会导致语法错误。
+const obj1 = { a: 1 };
+Object.assign(obj, null, undefined); // 不会报错，结果是 { a: 1 }
+// const newObj = { ...obj1,null }; // 会报错
+console.log(Reflect.ownKeys(Object.assign(target,source)))
+// console.log(newObj)
+</script>
+</body>
+</html>

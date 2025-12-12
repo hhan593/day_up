@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #layout {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="layout"></div>
+    <script>
+      //节流原理：指频繁触发事件时，事件，按照一段时间的间隔来进行触发。
+      let count = 0; // 初始化计数器
+      var node = document.getElementById("layout"); // 获取HTML中id为'layout'的节点
+
+      /**
+       * 用户点击事件处理函数
+       * @param {MouseEvent} e - 触发的鼠标事件对象
+       */
+      function getUserAction(e) {
+        console.log(this, e); // 分别打印：node 这个节点 和 MouseEvent
+        node.innerHTML = count++; // 更新页面显示的计数
+      }
+
+      // 为node节点的onclick事件绑定一个防抖函数
+      node.onclick = debounce(getUserAction, 1000);
+
+      /**
+       * 函数防抖
+       * @param {Function} fn - 需要进行防抖处理的函数
+       * @param {number} duration - 防抖时间间隔，单位为毫秒
+       * @returns {Function} - 返回一个防抖处理后的函数
+       */
+      function debounce(fn, duration) {
+        let timer = null; // 初始化定时器
+        return function (...args) {
+          const context = this; // 保存当前上下文
+          var arg = arguments; // 保存当前传入的参数
+
+          if (timer) clearTimeout(timer); // 清除上一次的定时器
+          timer = setTimeout(() => {
+            fn.apply(context, arg); // 使用当前上下文和参数调用原函数
+          }, duration); // 设置新的定时器
+        };
+      }
+    </script>
+  </body>
+</html>

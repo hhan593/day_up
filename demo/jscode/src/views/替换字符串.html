@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replace Example</title>
+</head>
+<body>
+<script>
+    let str = "@收到了@卡时间段@四大发明";
+
+    let s = "@收到了@卡时间段@四大发明";
+    console.log("原始字符串:", s);
+    let matches = str.match(/@(\S+)/g);
+    // 替换所有 @ 字符
+    s = s.replace(/@/g, '');
+    let result = matches ? matches.map(match => match.slice(1)).join(' ') : '';
+
+    console.log(result);  // 输出: "王五 孙七"
+    console.log("替换后的字符串:", s);  // 应该输出: "收到了卡时间段"
+</script>
+</body>
+</html>

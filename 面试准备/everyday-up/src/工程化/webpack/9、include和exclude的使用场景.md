@@ -1,0 +1,2 @@
+- 对node-modules 忽略打包
+- src目录进行打包

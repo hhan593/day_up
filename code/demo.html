@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="cotainer" class="container">
+      <span id="span" class="span">123</span>
+    </div>
+    <script>
+      function fn() {}
+      console.log(fn.prototype.__proto__ === Object.prototype);
+      console.log(fn.__proto__ === Function.prototype); //函数不仅有__proto属性，还有prototype属性
+      //我们知道并不是所有的prototype都是对象类型，比如Function.prototype。
+      //并不是所有的函数都有prototype属性，比如Function.prototype这个函数就没有。
+      console.log(fn.prototype.__proto__ === Object.prototype);
+      console.log(typeof fn.prototype.__proto__);
+    </script>
+    <!-- <script>
+      //   console.log(123);
+      //   const span = document.getElementById("span");
+      //   const container = document.getElementById("cotainer");
+      //   function handleClick() {
+      //     console.log("click");
+      //   }
+      //   container.addEventListener(
+      //     "click",
+      //     handleClick,
+      //     false //在捕获阶段触发
+      //   );
+
+      //   // 为container 添加一个子元素
+      //   const div = document.createElement("div");
+      //   div.innerText = "我是div";
+      //   container.appendChild(div);
+      //此时父元素存在点击事件，当点击div时，会冒泡到父元素，父组件会触发点击事件，此时span元素也会触发点击事件，但是此时span元素已经不存在了，所以此时span元素不会触发点击事件
+      // 此时span元素已经不存在了，但是span元素还是存在，但是此时span元素已经不存在了，所以此时span元素不会触发点击事件
+    </script>
+    <script>
+      //   function Foo(properties, elements) {
+      //     //添加可索引属性
+      //     for (let i = 0; i < elements; i++) {
+      //       this[i] = `element${i}`;
+      //     }
+
+      //     //添加常规属性
+      //     for (let i = 0; i < properties; i++) {
+      //       const prop = `property${i}`;
+      //       this[prop] = prop;
+      //     }
+      //   }
+      //   const foo = new Foo(12, 12);
+    </script>
+    <script>
+      requestAnimationFrame(() => {
+        console.log(111);
+        setTimeout(() => {
+          console.log(222);
+        });
+        Promise.resolve().then(() => {
+          console.log(333);
+        });
+      });
+
+      requestAnimationFrame(() => {
+        console.log(444);
+        Promise.resolve().then(() => {
+          console.log(555);
+        });
+      });
+    </script> -->
+  </body>
+</html>

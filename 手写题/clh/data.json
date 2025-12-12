@@ -1,0 +1,11 @@
+{
+  "name": "Skyblock",
+  "description": "Skyblock is a Minecraft modpack that adds a new dimension to Minecraft called Skyblock. Skyblock is a new world where players can build and explore without worrying about the consequences. Players can build their own homes, craft their own tools, and even create their own shops. Skyblock is a great way to explore the world of Minecraft without worrying about the consequences.",
+  "version": "1.0.0",
+  "children": {
+    "name": "Skyblock",
+    "description": "Skyblock is a Minecraft modpack that adds a new dimension to Minecraft called Skyblock. Skyblock is a new world where players can build and explore without worrying about the consequences. Players can build their own homes, craft their own tools, and even create their own shops. Skyblock is a great way to explore the world of Minecraft without worrying about the consequences.",
+    "version": "1.0.0",
+    "author": "Skyblock Modpack"
+  }
+}

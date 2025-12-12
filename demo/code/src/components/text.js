@@ -1,0 +1,18 @@
+
+const readline2  ="a"
+const readline1 = "asdssSSFDFNssal12345 fjdo "
+
+const str = readline1.toLowerCase();
+const key = readline2.toLowerCase();
+function findKeyCount(str, key) {
+    let num = 0;
+    let i = 0;
+    let arr = str.split("");
+    for (i; i < arr.length; i++) {
+        if (arr[i] == key) {
+            num++;
+        }
+    }
+    return num;
+}
+findKeyCount(str, key);

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // map会返回一个新的数组，不会改变原来的数组，forEach不会返回新数组，允许对原数组进行修改。
+        // 都有参数，item, index arr 。
+        // 内部匿名函数的this指向都是window。
+
+        // let ls = [1, 2, 3]
+        // let str = ls.forEach((item, index, arr) => {
+        //     console.log(this)
+        //     console.log(arr)
+        //     return item / 2
+        // })
+        // console.log(ls)
+        // console.log(str)
+
+
+        let ls = [1, 2, 3]
+        let str = ls.map((item, index, arr) => {
+            console.log(this)
+            console.log(arr)
+            return item / 2
+        })
+        console.log(ls)
+        console.log(str)
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        height: 0;
+        width: 100px;
+        border-bottom: 100px solid red;
+        border-right: 40px solid transparent;
+      }
+      .box2 {
+        margin-top: 50px;
+        height: 0;
+        width: 100px;
+        border-bottom: 100px solid blue;
+        border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+      }
+      .box3 {
+        margin-top: 50px;
+        height: 0;
+        width: 100px;
+        border-bottom: 100px solid green;
+        border-left: 10px solid transparent;
+        border-right: 60px solid transparent;
+      }
+      .box4 {
+        margin-left: 100px;
+        width: 100px;
+        height: 100px;
+        transform: skew(20deg);
+        /*skew(20deg) 指的是将元素沿着X轴倾斜20度。
+        如果需要同时在X轴和Y轴上倾斜，可以使用 skew(Xdeg, Ydeg) 形式指定两个角度值。
+        在这个例子中，元素将向右倾斜20度*/
+        background-color: red;
+      }
+      .box5 {
+        box-shadow: 0 0.5px 0 #dc0a0a; /* 黑色线条 */
+        width: 100%; /* 线条的长度 */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="box">直角梯形</div>
+    <div class="box2">等腰梯形</div>
+    <div class="box3">梯形</div>
+    <div class="box4">平行四边形</div> -->
+    <div class="box5"></div>
+  </body>
+</html>

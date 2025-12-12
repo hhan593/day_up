@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * ajax
+       * 创建AJAX请求的步骤：
+        - 创建一个XMLHttpRequest对象。
+        - 在这个对象上使用open方法创建一个HTTP请求，open方法所需要的参数是请求的方法、请求的地址、是否异步和用户的认证信息。
+        - 在发起请求前，可以为这个对象添加一些信息和监听函数。比如说可以通过setRequestHeader方法来为请求添加头信息。还可以为这个对象添加一个状态监听函数。
+        一个XMLHttpRequest对象一共有5个状态，当它的状态变化时会触发onreadystatechange事件，可以通过设置监听函数，来处理请求成功后的结果。
+        当对象的readyState变为4的时候，代表服务器返回的数据接收完成，这个时候可以通过判断请求的状态，如果状态是2xx或者304的话则代表返回正常。
+        这个时候就可以通过response中的数据来对页面进行更新了。
+        - 当对象的属性和监听函数设置完成后，最后调用sent方法来向服务器发起请求，可以传入参数作为发送的数据体。
+       */
+      function ajax() {
+        let xhr = new XMLHttpRequest(); // 创建对象
+        xhr.open("get", "https://www.baidu.com"); // 参数1：请求方式，参数2：请求地址，参数三：是否异步
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState === 4) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              let string = request.responseText;
+              let object = JSON.parse(string);
+            } // 状态码
+          }
+        };
+        request.send();
+      }
+
+      // Promise 改写
+      function ajax() {
+        return new Promise((resolve, reject) => {
+          let xhr = new XMLHttpRequest(); // 创建对象
+          xhr.open("get", url); // 参数1：请求方式，参数2：请求地址，参数三：是否异步
+          xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                resolve(JSON.parse(xhr.responseText));
+              } else {
+                reject(new Error("请求失败, 失败的状态码为" + xhr.status));
+              }
+            }
+          };
+          xhr.send();
+        });
+      }
+      let url = "./data.json";
+      ajax(url)
+        .then((res) => console.log(res))
+        .catch((reason) => console.log(reason));
+    </script>
+  </body>
+</html>

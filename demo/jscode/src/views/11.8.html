@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container"><h1 id="title">我是原来的</h1></div>
+    <script>
+             const container =    document.getElementById('container') // 获取元素 id 为 container 的元素
+             const title = document.getElementById('title') // 获取元素 id 为 title 的元素
+             title.innerHTML = '我是改变的' // 修改元素 title 的文本内容
+             const span = document.createElement('span') // 创建一个 span 元素
+             const div = document.createElement('div')
+             div.style.width = '100px'
+             div.style.height = '100px'
+      div.innerHTML = '我是新创建的div'
+             div.style.color = 'red'
+             span.innerHTML = '我是新创建的和' // 设置 span 元素的文本内容
+             container.appendChild(span) // 将 span 元素添加到 container 元素中
+             container.appendChild(div)
+             container.removeChild(span) // 删除目标元素
+            </script
+    </script>
+  </body>
+</html>

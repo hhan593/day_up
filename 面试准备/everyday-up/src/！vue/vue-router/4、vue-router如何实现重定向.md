@@ -1,0 +1,2 @@
+### 4、vue-router 如何实现重定向：
+一般都是通过在routes选项中设置redirect属性定义重定向目标，可以根据路径、路径名、参数进行路由重定向。具体实现我认为就是当对目标路由进行跳转时如果存在redirect会重新执行pushWithRedirect函数进行跳转到重定向目标进行navigate,finializeNavigate完成导航守卫和组件渲染。

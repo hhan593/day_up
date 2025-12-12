@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      .box {
+        width: 0;
+        height: 0;
+        border: 100px solid;
+        border-color: blue red yellow green;
+      }
+      .demo {
+        width: 0;
+        height: 0;
+        border: 100px solid;
+        border-color: transparent transparent red transparent;
+      }
+      .test {
+        width: 0;
+        height: 0;
+        border: 100px solid;
+        border-color: transparent red transparent red;
+      }
+      .test1 {
+        width: 0;
+        height: 0;
+        border: 100px solid transparent;
+        border-radius: 100px;
+        border-top-color: red;
+      }
+      .test2 {
+        background-color: red;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+      }
+      .test3 {
+        background-color: red;
+        height: 50px;
+        width: 50px;
+        border-radius: 0 0 0 100px;
+      }
+      .test4 {
+        width: 20%;
+        height: 20vw; /* 20vw 是根据屏幕宽度来计算的，所以高度也是20vw */
+        background-color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box"></div>
+      <div class="demo"></div>
+      <div class="test"></div>
+      <div class="test1"></div>
+      <div class="test2"></div>
+      <div class="test3"></div>
+      <div class="test4">根据视图窗口来计算的高度</div>
+    </div>
+  </body>
+</html>

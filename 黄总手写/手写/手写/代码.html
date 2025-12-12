@@ -1,0 +1,1382 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .father{
+            position: relative;
+            min-height: 500px;
+            background: pink;
+        }
+        .son {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            background: red;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son">子元素的内容</div>
+    </div>
+    <script></script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .father{
+            display: flex;
+            min-height: 100vh;
+            background: pink;
+        }
+        .son {
+            margin: auto;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son">子元素的内容，想水平垂直居中</div>
+        <div class="son2">这个元素不想水平垂直居中</div>
+    </div>
+    <script></script>
+</body>
+</html> -->
+
+
+
+
+<!-- 红包居中代码 -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* 整个弹窗组件 */
+            .component_popup {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+            }
+
+            /* 遮罩背景 */
+            .popup_mask {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.7);
+            }
+
+            /* 弹窗区域（内容 + close）：严格居中 */
+            .popup_content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            /* 弹窗的内容部分 */
+            .content_box {
+                width: 15.45rem;
+                height: 19.32rem;
+                background: url(http://img.smyhvae.com/20191010_1500_red-packet.png) no-repeat;
+                background-size: 15.45rem 19.32rem;
+            }
+
+            /* 弹窗的close图标 */
+            .content_close {
+                width: 1.25em;
+                height: 1.25em;
+                background: url(http://img.smyhvae.com/20191010_1500_close.png) no-repeat;
+                background-size: 1.25rem 1.25rem;
+                margin: 0 auto;
+                margin-top: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="content">默认文档流中的页面主体</div>
+
+        <div class="component_popup">
+            <div class="popup_mask"></div>
+            <div class="popup_content">
+                <div class="content_box"></div>
+                <div class="content_close"></div>
+            </div>
+        </div>
+    </body>
+</html> -->
+
+
+
+
+<!-- 圣杯布局 -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* body {
+        min-width: 600px;
+    }
+    .container {
+        padding-left: 210px;
+        padding-right: 190px;
+    }
+    .main {
+        float: left;
+        width: 100%;
+        height: 300px;
+        background-color: rgb(255, 0, 0);
+    }
+    .sub {
+        position: relative;
+        left: -210px;
+        float: left;
+        width: 200px;
+        height: 300px;
+        margin-left: -100%;
+        background-color: rgb(0, 255, 0);
+    }
+    .extra {
+        position: relative;
+        right: -190px;
+        float: left;
+        width: 180px;
+        height: 300px;
+        margin-left: -180px;
+        background-color: rgb(0, 0, 255);
+    } */
+
+    .container {
+        position: relative;
+        background-color: aqua;
+        height: 600px;
+    }
+    .main {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100px;
+        height: 600px;
+        background-color: rgb(255, 0, 0);
+    }
+    .sub {
+        background-color: rgb(0, 255, 0);
+    }
+    .extra {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        width: 100px;
+        height: 600px;
+        background-color: rgb(0, 0, 255);
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="main"></div>
+        <div class="sub"></div>
+        <div class="extra"></div>
+    </div>
+</body>
+</html> -->
+
+
+
+
+
+<!-- 双飞翼布局 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .main-wrapper {
+        float: left;
+        width: 100%;
+    }
+    .main {
+        height: 300px;
+        margin-left: 210px;
+        margin-right: 190px;
+        background-color: rgba(255, 0, 0, .5);
+    }
+    .sub {
+        float: left;
+        width: 200px;
+        height: 300px;
+        margin-left: -100%;
+        background-color: rgba(0, 255, 0, .5);
+    }
+    .extra {
+        float: left;
+        width: 180px;
+        height: 300px;
+        margin-left: -180px;
+        background-color: rgba(0, 0, 255, .5);
+    }
+</style>
+<body>
+    <div class="main-wrapper">
+        <div class="main"></div>
+    </div>
+    <div class="sub"></div>
+    <div class="extra"></div>
+</body>
+</html> -->
+
+
+
+
+
+<!-- 圣杯布局 -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            position: relative;
+        }
+
+        .center {
+            height: 300px;
+            padding: 0 200px;
+            background-color: #0a0;
+        }
+
+        .left,
+        .right {
+            position: absolute;
+            top: 0;
+            width: 200px;
+            height: 300px;
+            background-color: #6cf;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+  
+    <div class="box">
+        <div class="left"></div>
+        <div class="center">
+        内容部分
+        </div>
+    
+        <div class="right"></div>
+    </div>
+</body>
+
+</html> -->
+
+
+
+<!-- 左边定宽，右边自适应的布局 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .con{
+        display: flex;
+    }
+    .left{
+        width: 200px;
+        height: 200px;
+        background-color: aquamarine;
+    }
+    .right{
+        flex: 1 1 auto;
+        height: 200px;
+        background-color: brown;
+    }
+</style>
+<body>
+    <div class="con">
+        <div class="left">zuo</div>
+        <div class="right">右</div>
+    </div>
+    
+</body>
+</html> -->
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a =[1,2,3,4,5,2,3,4,6,7,8]
+        Array.prototype.distinct = function(){
+            for(let i = 0;i < this.length; i++){
+                let n = this[i];
+                this.splice(i,1,null);
+                if(this.indexOf(n) < 0){
+                    this.splice(i,1,n);
+                }else{
+                    this.splice(i,1);
+                }
+            }
+            return this;
+        };
+        console.log(a.distinct())
+    </script>
+</body>
+</html> -->
+
+
+
+<!-- 双栏布局 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .con{
+        display: flex;
+        background-color: aquamarine;
+    }
+    .ya{
+        width: 200px;
+        background-color: antiquewhite;
+    }
+    .a{
+        /* flex: 1; */
+        background-color: blue;
+    }
+</style>
+<body>
+    <div class="con">
+        <div class="ya">呀呀呀</div>
+        <div class="a">啊啊啊</div>
+    </div>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+<!-- 九宫格 -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .father{
+        width: 800px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .father div{
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        line-height: 200px;
+        background-color: aqua;
+        margin-left: 20px;
+    }
+</style>
+<body>
+    <div class="father">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </div>
+</body>
+</html> -->
+
+
+
+<!-- keyframe实现盒子从左到右 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 200px;
+        height: 200px;
+        animation-name: left_right;
+        animation-duration: 2s;
+        position: absolute;
+        background-color: aqua;
+    }
+    @keyframes left_right{
+        0%{
+            left: 0px;
+        }
+        100%{
+            left: 500px;
+        }
+    }
+</style>
+<body>
+    <div></div>
+</body>
+</html> -->
+
+
+
+
+
+<!-- 图片随着鼠标不停地旋转 -->
+<!-- 1. -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    img{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        animation-name: ro;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        left: 100px;
+    }
+    @keyframes ro{
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+</style>
+<body>
+    <img src="./01.png" alt="">
+    <script>
+    let img = document.getElementsByTagName('img')[0]
+    console.log(img)
+    document.addEventListener('mousemove',function (e) {
+        //mousemove 只要鼠标一移动，就会触发事件
+        //获取鼠标最新的坐标
+        // console.log(e.pageY, e.pageX)
+        // console.log(e)
+        img.style.left = e.pageX - 50 + 'px'
+        img.style.top = e.pageY- 50 + "px"
+    })
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+<!-- 清除浮动 -->
+<!-- 我们前面说过，浮动本质是用来做一些文字混排效果的，但是被我们拿来做布局用，则会有很多的问题出现。 -->
+ 
+<!-- 　　由于浮动元素不再占用原文档流的位置，所以它会对后面的元素排版产生影响，为了解决这些问题，
+此时就需要在该元素中清除浮动。 -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .divcss5{ 
+        width:600px; 
+        border:1px solid #F00; 
+        background:#FF0;
+        /* overflow: hidden; */
+    }
+    /* .divcss5::after{
+        content: '';
+        clear: both;
+        display: block;
+    } */
+    .divcss5-left,.divcss5-right{ 
+        width:200px; 
+        height:100px; 
+        border:1px solid #00F; 
+        background:rgb(243, 198, 198);
+    } 
+    .divcss5-left{ 
+        float:left;
+    } 
+    .divcss5-right{ 
+        float:left;
+    }
+
+
+</style>
+<body>
+    <div class="divcss5"> 
+        <div class="divcss5-left">left浮动</div> 
+        <div class="divcss5-right">right浮动</div>  -->
+        <!-- <div style="clear: both;"></div> -->
+        
+    <!-- </div> 
+</body>
+</html> -->
+
+
+
+
+
+
+<!-- 事件冒泡与事件捕获 -->
+<!-- <style> 
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #box1 {
+    height: 150px;
+    background-color: red;
+   
+  }
+  #box2 {
+    width: 80%;
+    height: 100px;
+    background-color: yellow;
+  }
+  #box3 {
+    width: 80%;
+    height: 50px;
+    background-color: green;
+  }
+</style>
+<body>
+  <div id="box1">
+    <div id="box2">
+      <div id="box3"></div>
+    </div>
+  </div>
+</body>
+</html>
+<script  type="text/javascript">
+  var box1 = document.getElementById("box1");
+  var box2 = document.getElementById("box2");
+  var box3 = document.getElementById("box3");
+  // addEventListener 事件默认为false，也就是我们所说的事件冒泡过程
+//   box1.addEventListener('click', function(){
+//     alert("box1 被触发了");
+//   })
+
+//   box2.addEventListener('click', function(){
+//     alert("box2 被触发了");
+//   })
+
+//   box3.addEventListener('click', function(){
+//     alert("box3 被触发了");
+//   })
+
+  // 点击box3打印结果
+  // box3 
+  // box2
+  // box1
+  
+  // 当我们将 addEventListener 设置为true时，此时就成了事件捕获的过程
+//   box1.addEventListener('click', function(){
+//     alert("box1 被触发了");
+//   }, true)
+
+//   box2.addEventListener('click', function(){
+//     alert("box2 被触发了");
+//   }, true)
+
+//   box3.addEventListener('click', function(){
+//     alert("box3 被触发了");
+//   })
+
+  // 点击box3打印结果
+  // box1 
+  // box2
+  // box3
+
+
+  // 阻止事件冒泡
+//   box1.addEventListener('click', function(){
+//     alert("box1 被触发了");
+//     event.stopPropagation();
+//   })
+
+//   box2.addEventListener('click', function(event){
+//     alert("box2 被触发了");
+//     event.stopPropagation();
+//   })
+
+//   box3.addEventListener('click', function(){
+//     alert("box3 被触发了");
+//     // event.stopPropagation();
+//   })
+
+  // 点击box3打印结果
+  // box3
+  // box2
+  
+  // 阻止事件捕获
+//   box1.addEventListener('click', function(){
+//     alert("box1 被触发了");
+//   }, true)
+
+//   box2.addEventListener('click', function(event){
+//     alert("box2 被触发了");
+//     event.stopPropagation();
+//   }, true)
+
+//   box3.addEventListener('click', function(){
+//     alert("box3 被触发了");
+//   })
+
+  // 点击box3打印结果
+  // box1
+  // box2
+
+</script> -->
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var url = "http://www.baidu.com?user=HHH&password=PPP"
+        let host = url.split('?')[0]
+        url = url.split('?')[1]
+        var searchParams = new URLSearchParams(url);
+
+        for (let [i, v] of searchParams) {
+            console.log(i);
+            console.log(v);
+        }
+
+        // const params = Object.fromEntries(searchParams.entries())
+        // console.log(params)
+
+        searchParams.has("topic") === true; // true
+        searchParams.get("topic") === "api"; // true
+        searchParams.getAll("topic"); // ["api"]
+        searchParams.get("foo") === null; // true
+        searchParams.append("topic", "webdev");
+        searchParams.toString(); // "q=URLUtils.searchParams&topic=api&topic=webdev"
+        searchParams.set("topic", "More webdev");
+        searchParams.toString(); // "q=URLUtils.searchParams&topic=More+webdev"
+        searchParams.delete("topic");
+        searchParams.toString(); // "q=URLUtils.searchParams"
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+<!-- vue3双向数据绑定 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="input">
+        <span id="text"></span>
+    </div>
+</body>
+</html>
+<script>
+    var obj = {};
+    var obj1 = new Proxy(obj, {
+        // target就是第一个参数obj, receive就是返回的obj(返回的proxy对象)
+        get: function (target, key, receive) {
+            // 返回该属性值
+            return target[key];
+        },
+        set: function (target, key, newVal, receive) {
+            // 执行赋值操作
+            target[key] = newVal;
+            document.getElementById('text').innerHTML = target[key];
+        }
+    })
+    document.addEventListener('keyup', function (e) {
+        obj1[0] = e.target.value;
+    });
+
+    // let res = document.getElementsByTagName("*")
+    // console.log(res)
+</script> -->
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tran{
+            width:100px;
+            height:100px;
+            background: red;
+            transition: all 2s ease-out;
+        }
+        .tran:hover{
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="tran"></div> 
+
+
+</body>
+</html> -->
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    dl {
+        margin: 0;
+        padding: 24px 0 0 0;
+    }
+
+    dt {
+        background: #B8C1C8;
+        border-bottom: 1px solid #989EA4;
+        border-top: 1px solid #717D85;
+        color: #FFF;
+        font: bold 18px/21px Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 2px 0 0 12px;
+        position: -webkit-sticky;
+        position: sticky;
+        top: -1px;
+    }
+
+    dd {
+        font: bold 20px/45px Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 0 0 0 12px;
+        white-space: nowrap;
+    }
+
+    dd + dd {
+        border-top: 1px solid #CCC
+    }
+</style>
+<body>
+    <div>
+        <dl>
+            <dt>A</dt>
+            <dd>Andrew W.K.</dd>
+            <dd>Apparat</dd>
+            <dd>Arcade Fire</dd>
+            <dd>At The Drive-In</dd>
+            <dd>Aziz Ansari</dd>
+        </dl>
+        <dl>
+            <dt>C</dt>
+            <dd>Chromeo</dd>
+            <dd>Common</dd>
+            <dd>Converge</dd>
+            <dd>Crystal Castles</dd>
+            <dd>Cursive</dd>
+        </dl>
+        <dl>
+            <dt>E</dt>
+            <dd>Explosions In The Sky</dd>
+        </dl>
+        <dl>
+            <dt>T</dt>
+            <dd>Ted Leo & The Pharmacists</dd>
+            <dd>T-Pain</dd>
+            <dd>Thrice</dd>
+            <dd>TV On The Radio</dd>
+            <dd>Two Gallants</dd>
+        </dl>
+    </div>
+</body>
+</html> -->
+
+
+
+<!-- ？？？？？？ -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+    var a = 1;
+
+    (function a(){
+        a = 2;
+        console.log(a)
+    })();
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+<!-- 三角形绘制 -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .triangle{
+		margin: 100px;
+		width: 160px;
+  	    height: 200px;
+  	    background-color: skyblue;
+		clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    }
+</style>
+<body>
+    <div class="triangle"></div>
+</body>
+</html> -->
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Number.prototype.add = function (val) {
+            console.log(this.valueOf())
+            return this.valueOf() + val
+        }
+
+        Number.prototype.minus = function(val){
+            return this.valueOf() - val
+        }
+
+        console.log((5).add(3).minus(2))
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+<!-- // 看不懂 -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Foo() {
+            getName = function () { console.log(1); };
+            return this;
+        }
+        Foo.getName = function () { console.log (2);};
+        Foo.prototype.getName = function () { console.log (3);};
+        var getName = function () { console.log (4);};
+        function getName() { console.log (5);}
+
+        //请写出以下输出结果：
+        Foo.getName();  // 2
+        getName();  // 4
+        Foo().getName();  // 1
+        getName();  // 1
+        new Foo.getName();  // 2
+        new Foo().getName();  // 3
+        new new Foo().getName();  // 3
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>1</h3>
+    <script>
+    setTimeout(function() {
+        console.log(2)
+    }, 0);
+    const intervalId = setInterval(function() {
+        console.log(3)
+    }, 0)
+    setTimeout(function() {
+        console.log(10)
+        new Promise(function(resolve) {
+            console.log(11)
+            resolve()
+        })
+        .then(function() {
+            console.log(12)
+        })
+        .then(function() {
+            console.log(13)
+            clearInterval(intervalId)
+        })
+    }, 0);
+
+    //promise2
+    Promise.resolve('aaa')
+    .then(function(res) {
+        console.log(res)
+        console.log(7)
+    })
+    .then(function() {
+        console.log(8)
+    })
+    console.log(9)
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body, html{
+            height: 100%;
+            background-color: aqua;
+        }
+        /* .father{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } */
+
+        /* .father{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: rotate(-50%, -50%);
+        } */
+
+        .father{
+            text-align: center;
+            line-height: 100vh;
+        }
+    </style>
+<body>
+    <div class="father">
+        <span class="son">居中</span>
+    </div>
+</body>
+</html> -->
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Function.prototype.call2 = function(obj){
+            var obj = obj || window;
+
+            var args = [];
+            for(var i=1; i<arguments.length; i++){
+                args.push('arguments[' + i + ']');
+            }
+
+            obj.fn = this;
+            var result = eval('obj.fn('+args+')'); // eval方法拼成一个函数
+            delete obj.fn;
+            return result;
+        }
+
+        var foo = {
+            value: 1
+        };
+
+        function bar(name,age) {
+            console.log(name,age);
+            return {
+                name: name
+            }
+        }
+        console.log(bar.call2(null, "Ailse","18"));
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Function.prototype.call = function(obj, ...args){
+            var obj = obj || globalThis;
+            // console.log(this)
+
+            obj.fn = this;
+            let res  = obj.fn(...args)
+            delete obj.fn;
+            return res;
+        }
+
+        var foo = {
+            value: 1
+        };
+
+        function bar(name,age) {
+            // console.log(name,age);
+            // console.log(this)
+            return {
+                name: name
+            }
+        }
+        console.log(bar.call(foo, "Ailse","18"));
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>document</title> 
+<style> 
+div{
+    width:100px;
+    height:100px;
+    background:red;
+    position:relative;
+    animation:mymove 5s;
+    /* animation-play-state:paused; */
+    /* Safari and Chrome */
+    -webkit-animation:mymove 5s;
+    /* -webkit-animation-play-state:paused; */
+}
+
+@keyframes mymove
+{
+    from {
+        left:0px;
+    }
+    to {
+        left:200px;
+    }
+}
+@-webkit-keyframes mymove /* Safari and Chrome */
+{
+    from {
+        left:0px;
+    }
+    to {
+        left:200px;
+    }
+}
+</style>
+</head>
+<body>
+<p><strong>注意:</strong> animation-play-state属性不兼容 Internet Explorer 9以及更早版本的浏览器.</p>
+<div></div>
+</body>
+
+</html> -->
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Foo(car){
+            this.bar = function(){
+                this.bar = () => {
+                    console.log(this.car);
+                }
+                Foo.bar = () => {
+                    console.log(this.car)
+                }
+            }
+            this.car = car
+        }
+        const m = new Foo(3);
+        m.bar();
+        m.bar();
+        Foo(45);
+        Foo.bar();
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Dog(name) {
+            this.name = name
+            this.say = function () {
+                console.log('name = ' + this.name)
+            }
+        }
+        function Cat(name) {
+            this.name = name
+            this.say = function () {
+                console.log('name = ' + this.name)
+            }
+        }
+        function _new(fn, ...arg) {
+            const obj = {};  //  创建一个新的对象
+            obj.__proto__ = fn.prototype;  //  把obj的__proto__指向fn的prototype,实现继承
+            fn.apply(obj, arg)  //  改变this的指向
+            return Object.prototype.toString.call(obj) == '[object Object]'? obj : {} //返回新的对象obj
+        }
+    
+        //测试1
+        var dog = _new(Dog,'aaa')
+        dog.say() //'name = aaa'
+        console.log(dog instanceof Dog) //true
+        console.log(dog instanceof Cat) //true
+        //测试2
+        var cat = _new(Cat, 'bbb'); 
+        cat.say() //'name = bbb'
+        console.log(cat instanceof Cat) //true
+    </script>
+</body>
+</html>

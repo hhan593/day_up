@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    typeof 可以快速区分基本数据类型，但是对于对象，数组 以及null都返回object,
+//  能正确区分数据类型吗?    不能。对于原始类型，除 null 都可以正确判断；对于引用类型，除 function 外，都会返回 "object"
+    console.log( typeof null)
+    console.log(typeof (typeof []))
+    console.log(typeof function (){}) //函数返回function
+
+// 使用Object.prototype.toString.call()来检查数据类型
+function getType(obj) {
+    return Object.prototype.toString.call(obj);
+    // return obj.toString()
+}
+
+// 测试代码
+console.log(getType(123));          // 输出: "[object Number]"
+console.log(getType('123'));        // 输出: "[object String]"
+console.log(getType(true));         // 输出: "[object Boolean]"
+console.log(getType([1, 2, 3]));   // 输出: "[object Array]"
+console.log(getType({a: 1}));       // 输出: "[object Object]"
+console.log(getType(null));         // 输出: "[object Null]"
+console.log(getType(undefined));    // 输出: "[object Undefined]"
+console.log(getType(function(){})); // 输出: "[object Function]"
+
+// console.log(undefined === null)
+// undefined是声明了但是未初始化
+
+//toString函数
+// toString() 函数的作用是把一个逻辑值转换为字符串，并返回结果。
+console.log((10).toString(3))//1010
+console.log((new Date()).toString()) //返回当前的中国标准时间
+
+
+
+
+// DEMO:
+let obj = {
+    toString() {
+        console.log("走 toString 逻辑");
+        return "111";
+    },
+    valueOf() {
+        console.log("走 valueOf 逻辑");
+        return [];
+    },
+};
+
+console.log(Number(obj)); // 先调用 valueOf 函数，但是返回值不符合要求，再调用 toString 函数
+
+console.log(String(obj)); // 先调用 toString 函数，返回值符合要求，执行结束
+
+// valueOf() 函数的作用是返回最适合引用类型的原始值，如果没有原始值，则会返回引用类型自身。
+let n1 = 0.1
+let n2 = 0.2
+console.log((n1 + n2).toFixed(2)) //toFixed四舍五入返回的是一个字符串
+console.log((n1 + n2).toFixed(2)==0.3)  //true
+console.log((n1 + n2).toFixed(2)===0.3) //false
+console.log(Number.EPSILON)//当两个数字之差小于这个数时，就代表这两个数相等
+
+
+console.log('typeof NaN',typeof (NaN))//特殊值，他和自身不相等，唯一一个非自反（x===x)不成立的，NaN ！== NaN
+
+
+
+function  isNaN(num){
+    if(typeof (num)=='number'){
+        if(num !== num){
+            console.log("这个输入的值为NaN")
+            return num
+        }
+        else {
+            console.log("这个输入的值不是NaN")
+        }
+    }
+}
+
+console.log(isNaN(2))
+console.log(isNaN(NaN))
+
+
+
+</script>
+</body>
+</html>

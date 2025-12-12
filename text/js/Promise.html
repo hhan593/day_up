@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //自定义实现Promise all
+
+      const all = (Promises) => {
+        return new Promise((resolve, reject) => {
+          if (!Array.isArray(Promises)) {
+            return reject(new TypeError("Promises must be an array"));
+          }
+
+          const results = [];
+          let completed = 0;
+
+          Promises.forEach((promise, index) => {
+            Promise.resolve(promise)
+              .then((value) => {
+                results[index] = value;
+                completed += 1;
+
+                if (completed === Promises.length) {
+                  resolve(results);
+                }
+              })
+              .catch((error) => {
+                reject(new TypeError("Promises 没有完全成功: " + error));
+              });
+          });
+
+          if (Promises.length === 0) {
+            resolve(results);
+          } else {
+            reject(new TypeError("Promises 没有完全成功:"));
+          }
+        });
+      };
+
+      const promise1 = new Promise((resolve) => {
+        setTimeout(() => resolve("Promise 1 resolved"), 1000);
+      });
+      const promise2 = new Promise((resolve) => {
+        setTimeout(() => resolve("Promise 2 resolved"), 2000);
+      });
+      const promise3 = new Promise((resolve) => {
+        setTimeout(() => reject("Promise 3 resolved"), 3000);
+      });
+
+      const allPromises = all([promise1, promise2, promise3]);
+      allPromises
+        .then((values) => {
+          console.log(values);
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+
+      function any(promises) {
+        return new Promise((resolve, reject) => {
+          let remaining = promises.length;
+          const errors = [];
+
+          promises.forEach((promise) => {
+            promise.then(resolve).catch((error) => {
+              errors.push(error);
+              remaining--;
+              if (remaining === 0) {
+                reject(
+                  new AggregateError(errors, "All promises were rejected")
+                );
+              }
+            });
+          });
+        });
+      }
+
+      // 使用自定义的 any 函数
+      const promise4 = new Promise((resolve, reject) => {
+        setTimeout(() => resolve("成功1"), 1000);
+      });
+
+      const promise5 = new Promise((resolve, reject) => {
+        setTimeout(() => reject("失败2"), 500);
+      });
+
+      const promise6 = new Promise((resolve, reject) => {
+        setTimeout(() => resolve("成功3"), 1500);
+      });
+
+      any([promise4, promise5, promise6])
+        .then((result) => {
+          console.log(result); // 输出: 成功1
+        })
+        .catch((errors) => {
+          console.error(errors); // 如果所有都失败，会输出一个 AggregateError
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .parent {
+      width: 500px;
+      height: 300px;
+      background-color: pink;
+    }
+
+    .child {
+      width: 200px;
+      height: 100px;
+      /* 50px 25px 100px 150px*/
+      margin: 10% 5% 20% 30%;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+
+  <script>
+    function Foo() {
+      this[100] = 'test-100'
+      this[1] = 'test-1'
+      this["B"] = 'foo-B'
+      this[50] = 'test-50'
+      this[9] = 'test-9'
+      this[8] = 'test-8'
+      this[3] = 'test-3'
+      this[5] = 'test-5'
+      this["A"] = 'foo-A'
+      this["C"] = 'foo-C'
+    }
+
+    const foo = new Foo()
+
+    for (const key in foo) {
+      console.log(`key:${key}, value:${foo[key]}`)
+    }
+// key:1, value:test-1
+// key:3, value:test-3
+// key:5, value:test-5
+// key:8, value:test-8
+// key:9, value:test-9
+// key:50, value:test-50
+// key:100, value:test-100
+// key:B, value:foo-B
+// key:A, value:foo-A
+// key:C, value:foo-C
+  </script>
+</body>
+
+</html>
