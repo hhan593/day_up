@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "掘金小册/人人都能看懂的 ChatGPT 原理课/1. 概览：ChatGPT 与自然语言处理.md",
+                "file": "掘金小册/Nest 通关秘籍/6. 5 种 HTTP 数据传输方式.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. 概览：ChatGPT 与自然语言处理"
+              "title": "6. 5 种 HTTP 数据传输方式"
             }
           }
         ]
@@ -194,13 +194,32 @@
   },
   "active": "c06785d2e3e40ac7",
   "lastOpenFiles": [
-    "掘金小册/如何写出高质量的前端代码/1. 开篇：为什么要写这本小册.md",
-    "掘金小册/如何写出高质量的前端代码/3. 【最佳实践】网络请求要封装到什么程度？.md",
-    "掘金小册/如何写出高质量的前端代码/2. 【最佳实践】如何组织一个清晰的项目结构.md",
-    "掘金小册/CSS 实战技巧/2. CSS 图形：绘制三角形.md",
-    "掘金小册/现代 CSS/2. CSS 选择器 ：has() 能解决什么问题？.md",
-    "字节校招.md",
-    "test笔记.md",
-    "提示.md"
+    "掘金小册/Nest 通关秘籍/8. 如何调试 Nest 项目.md",
+    "掘金小册/Nest 通关秘籍/9. 使用多种 Provider，灵活注入对象.md",
+    "掘金小册/React 通关秘籍/61. React Playground 项目实战：错误显示、主题切换.md",
+    "掘金小册/React 通关秘籍/3. 一网打尽组件常用 Hook.md",
+    "掘金小册/JavaScript 函数式编程实践指南/1. 函数式编程导读：升维的＂编程套路＂.md",
+    "掘金小册/TypeScript 入门教程/9. 类型声明：让 JS 和 TS 融合得再紧密一些.md",
+    "掘金小册/TypeScript 入门教程/8. 泛型：类型世界的参数.md",
+    "掘金小册/TypeScript 入门教程/7. 类型别名、联合类型与交叉类型：类型世界中的逻辑或和逻辑与.md",
+    "掘金小册/TypeScript 入门教程/6. any、unknown类型与类型断言：让你的类型更听话一些.md",
+    "掘金小册/TypeScript 入门教程/5. TypeScript 中的 Class：重新认识面向对象编程.md",
+    "掘金小册/TypeScript 入门教程/4. 函数类型与重载：为你的函数调用保驾护航.md",
+    "掘金小册/TypeScript 入门教程/3. 原始类型与对象类型：还是熟悉的配方.md",
+    "掘金小册/TypeScript 入门教程/2. 又一次 Hello World：TypeScript 开发环境搭建.md",
+    "掘金小册/TypeScript 入门教程/17. 总结与展望.md",
+    "掘金小册/TypeScript 入门教程/16. 从 JavaScript 迁移到 TypeScript：让你的项目改头换面.md",
+    "掘金小册/TypeScript 入门教程/15. 实战环节：npm 包发布.md",
+    "掘金小册/TypeScript 入门教程/14. 实战环节：TypeScript + React.md",
+    "掘金小册/TypeScript 入门教程/13. 类型学习告一段落：配置你的 TypeScript.md",
+    "掘金小册/TypeScript 入门教程/12. 模板字符串类型：最熟悉的陌生人.md",
+    "掘金小册/TypeScript 入门教程/11. 内置工具类型（下）：类型世界的内置方法.md",
+    "掘金小册/TypeScript 入门教程/10. 内置工具类型（上）：类型世界的内置方法.md",
+    "掘金小册/TypeScript 入门教程/1. 为什么你需要 TypeScript：类型之于 JavaScript.md",
+    "掘金小册/TypeScript 入门教程",
+    "掘金小册/Next.js 开发指南/1. 答疑篇 ｜ 学习路线与答疑.md",
+    "掘金小册/Web 动画之旅/9. 使用 cubic-bezier() 函数创建高级动画 .md",
+    "掘金小册/Web 动画之旅/15. 如何使用 animation-direction 更好的控制动画方向.md",
+    "掘金小册/Web 动画之旅/1. Web 动画基础：从发展史中了解 Web 动画及动画的作用.md"
   ]
 }
