@@ -150,16 +150,27 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "字节校招.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "字节校招 的大纲"
+            }
+          },
+          {
+            "id": "d9a0b6a02b967894",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -173,9 +184,45 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "bases:创建新数据库": false
+      "bases:创建新数据库": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ff784fe12ddafbea",
-  "lastOpenFiles": []
+  "active": "c06785d2e3e40ac7",
+  "lastOpenFiles": [
+    "2025年度总结/2025年年度总结版本(5).md",
+    "2025年度总结/2025年年度总结版本(4)Gemini.md",
+    "2025年度总结/2025年年度总结版本(1).md",
+    "2025年度总结/2025年年度总结(2).md",
+    "2025年度总结/2025年度工作总结报告（3）.md",
+    "2025年度总结/git_log_2025_web.txt",
+    "2025年度总结/git_log_2025pc.txt",
+    "2025年度总结/git_log_2025_business.txt",
+    "2025年度总结/未确认 122901.crdownload",
+    "2025年度总结/git_log_app_2025.txt",
+    "2025年度总结/git_log_2025_pc.txt",
+    "2025年度总结",
+    "掘金小册/Nest 通关秘籍/9. 使用多种 Provider，灵活注入对象.md",
+    "掘金小册/Nest 通关秘籍/8. 如何调试 Nest 项目.md",
+    "掘金小册/Nest 通关秘籍/7. IoC 解决了什么痛点问题？.md",
+    "掘金小册/Nest 通关秘籍/6. 5 种 HTTP 数据传输方式.md",
+    "掘金小册/React 通关秘籍/61. React Playground 项目实战：错误显示、主题切换.md",
+    "掘金小册/React 通关秘籍/3. 一网打尽组件常用 Hook.md",
+    "掘金小册/JavaScript 函数式编程实践指南/1. 函数式编程导读：升维的＂编程套路＂.md",
+    "掘金小册/TypeScript 入门教程/9. 类型声明：让 JS 和 TS 融合得再紧密一些.md",
+    "掘金小册/TypeScript 入门教程/8. 泛型：类型世界的参数.md",
+    "掘金小册/TypeScript 入门教程/7. 类型别名、联合类型与交叉类型：类型世界中的逻辑或和逻辑与.md",
+    "掘金小册/TypeScript 入门教程/6. any、unknown类型与类型断言：让你的类型更听话一些.md",
+    "掘金小册/TypeScript 入门教程/5. TypeScript 中的 Class：重新认识面向对象编程.md",
+    "掘金小册/TypeScript 入门教程/4. 函数类型与重载：为你的函数调用保驾护航.md",
+    "掘金小册/TypeScript 入门教程/3. 原始类型与对象类型：还是熟悉的配方.md",
+    "掘金小册/TypeScript 入门教程/2. 又一次 Hello World：TypeScript 开发环境搭建.md",
+    "掘金小册/TypeScript 入门教程/17. 总结与展望.md",
+    "掘金小册/TypeScript 入门教程/16. 从 JavaScript 迁移到 TypeScript：让你的项目改头换面.md",
+    "掘金小册/TypeScript 入门教程/15. 实战环节：npm 包发布.md",
+    "掘金小册/TypeScript 入门教程/14. 实战环节：TypeScript + React.md",
+    "掘金小册/TypeScript 入门教程/13. 类型学习告一段落：配置你的 TypeScript.md",
+    "掘金小册/TypeScript 入门教程/12. 模板字符串类型：最熟悉的陌生人.md",
+    "掘金小册/TypeScript 入门教程"
+  ]
 }
