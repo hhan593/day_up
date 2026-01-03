@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2025年度总结/2025年年度总结版本(1).md",
+                "file": "2025年度总结/2025年年度总结版本(5).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025年年度总结版本(1)"
+              "title": "2025年年度总结版本(5)"
             }
           }
         ]
@@ -194,13 +194,15 @@
   },
   "active": "c06785d2e3e40ac7",
   "lastOpenFiles": [
+    "2025年度总结/2025年年度总结版本(4)Gemini.md",
+    "2025年度总结/2025年年度总结版本(5).md",
+    "2025年度总结/2025年年度总结版本(1).md",
     "2025年度总结/2025年年度总结(2).md",
     "2025年度总结/2025年度工作总结报告（3）.md",
     "2025年度总结/git_log_2025_web.txt",
     "2025年度总结/git_log_2025pc.txt",
     "2025年度总结/git_log_2025_business.txt",
     "2025年度总结/未确认 122901.crdownload",
-    "2025年度总结/2025年年度总结版本(1).md",
     "2025年度总结/git_log_app_2025.txt",
     "2025年度总结/git_log_2025_pc.txt",
     "2025年度总结",
@@ -225,7 +227,6 @@
     "掘金小册/TypeScript 入门教程/14. 实战环节：TypeScript + React.md",
     "掘金小册/TypeScript 入门教程/13. 类型学习告一段落：配置你的 TypeScript.md",
     "掘金小册/TypeScript 入门教程/12. 模板字符串类型：最熟悉的陌生人.md",
-    "掘金小册/TypeScript 入门教程/11. 内置工具类型（下）：类型世界的内置方法.md",
     "掘金小册/TypeScript 入门教程"
   ]
 }
