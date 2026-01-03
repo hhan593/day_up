@@ -1,0 +1,921 @@
+a9cc326 | 2025-12-31 17:07:22 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+4dfdea1 | 2025-12-31 17:07:11 +0800 | penglibo | feat(finance):付款详情待请款金额
+ad73cfc | 2025-12-31 09:45:20 +0800 | yuanyu | 采购管理表金额字段增加弹窗显示明细（优化）1
+ae34150 | 2025-12-31 09:24:16 +0800 | yuanyu | 采购管理表金额字段增加弹窗显示明细（优化）
+d9a21d6 | 2025-12-30 16:00:13 +0800 | penglibo | feat(finance):付款详情待请款金额
+3e689ac | 2025-12-30 15:42:54 +0800 | penglibo | feat(finance):切换审核组件
+e56ab20 | 2025-12-30 15:23:32 +0800 | penglibo | feat(finance):付款申请重新提交审核
+d5b2ada | 2025-12-30 11:12:48 +0800 | dengyu | feat(datan):1
+782638d | 2025-12-30 10:57:13 +0800 | penglibo | feat(finance):采购后付发票明细添加本付款申请单分配的开票金额（含税）（元）
+75ba3f4 | 2025-12-30 10:39:11 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+fc8e952 | 2025-12-30 10:38:58 +0800 | penglibo | feat(finance):采购后付发票明细添加本付款申请单分配的开票金额（含税）（元）
+baa60e5 | 2025-12-30 10:04:20 +0800 | dengyu | fix(datan):搜索和导出
+8ea5cd1 | 2025-12-29 17:42:15 +0800 | dengyu | 1
+cf1e464 | 2025-12-29 17:39:56 +0800 | dengyu | 1
+28d80f5 | 2025-12-29 14:41:14 +0800 | zhaogang | feat:合同收付款账期优化
+7125cfa | 2025-12-29 11:23:29 +0800 | penglibo | Merge branch 'dev_submit_audit' into dev
+48f243d | 2025-12-29 11:23:10 +0800 | penglibo | feat(finance):付款申请应付账单提交审核
+890a594 | 2025-12-25 22:49:52 +0800 | penglibo | feat(finance):付款申请应付账单提交审核
+7db8cd0 | 2025-12-25 22:47:29 +0800 | penglibo | feat(finance):付款申请应付账单提交审核
+ee0d4c8 | 2025-12-25 17:25:04 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+ed976ad | 2025-12-25 17:24:53 +0800 | penglibo | feat(finance):产品分类三级支持搜索
+b389ef0 | 2025-12-25 17:20:11 +0800 | zhaogang | feat：小兔数据金额添加单位
+84d78f0 | 2025-12-25 16:41:42 +0800 | penglibo | feat(finance):审核中核销金额合计
+ea1fedd | 2025-12-25 16:34:02 +0800 | penglibo | feat(finance):付款申请提交审核
+0a9a904 | 2025-12-25 16:02:30 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+44da83e | 2025-12-25 16:02:19 +0800 | penglibo | feat(finance):付款申请提交审核
+5b0a73e | 2025-12-25 15:55:12 +0800 | dengyu | feat(datan):集采收入和流水返佣收入
+abd2676 | 2025-12-25 11:02:53 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+d0bd5d7 | 2025-12-25 11:02:41 +0800 | penglibo | feat(finance):付款申请详情回显三级分类
+d82465b | 2025-12-25 10:56:37 +0800 | zhaogang | fix:1
+79bf255 | 2025-12-24 19:09:09 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+67da079 | 2025-12-24 19:08:48 +0800 | penglibo | feat(finance):应付提交付款申请添加金额校验
+586d927 | 2025-12-24 19:02:17 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+d156896 | 2025-12-24 19:02:05 +0800 | zhaogang | fix:1
+d8f6cf9 | 2025-12-24 18:38:12 +0800 | penglibo | feat(audit):开票应收审核详情查看
+377b67e | 2025-12-24 18:30:53 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+4fc4290 | 2025-12-24 18:30:39 +0800 | penglibo | feat(finance):付款申请提交三级分类
+16d0345 | 2025-12-24 18:28:36 +0800 | zhaogang | feat:门店应付账单接口拆分
+afe5203 | 2025-12-24 13:43:28 +0800 | zhaogang | fix:银行收款二级tab调整
+0b6ec84 | 2025-12-23 14:47:37 +0800 | penglibo | feat(audit):调整审核开票组件
+680dad9 | 2025-12-23 14:09:19 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+79974fc | 2025-12-23 14:09:06 +0800 | penglibo | feat(audit):调整审核开票组件
+733bc12 | 2025-12-22 16:29:55 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+71b6189 | 2025-12-22 16:29:19 +0800 | zhaogang | fix:小兔数据报表列表调整
+bdcadea | 2025-12-22 16:16:05 +0800 | penglibo | feat(finance):门店应付账单
+db6b866 | 2025-12-22 15:44:15 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+f62848f | 2025-12-22 15:43:59 +0800 | penglibo | feat(finance):门店应付账单
+616fbbe | 2025-12-22 15:15:29 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+282fa77 | 2025-12-22 15:15:27 +0800 | dengyu | fix(datan):去掉增删改
+f2ecb74 | 2025-12-22 14:49:49 +0800 | zhaogang | fix:
+454eea7 | 2025-12-22 10:17:14 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+f15dab5 | 2025-12-22 10:17:02 +0800 | zhaogang | fix:1
+3c26721 | 2025-12-22 09:56:04 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+2d99828 | 2025-12-22 09:55:53 +0800 | penglibo | feat(finance):添加成本客户相关字段
+1f3b3b2 | 2025-12-19 17:54:13 +0800 | zhaogang | fix；1
+e506067 | 2025-12-19 17:47:34 +0800 | zhaogang | fix:1
+f308836 | 2025-12-19 17:37:07 +0800 | zhaogang | feat:更改应收账单银行收款组件js路径
+d70dd6d | 2025-12-19 17:24:11 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+3a5fb86 | 2025-12-19 17:20:50 +0800 | zhaogang | feat:银行收款调整： 划分多级tab
+aad7604 | 2025-12-19 17:12:23 +0800 | yuanyu | 1
+0b03d5a | 2025-12-19 15:39:43 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+9806c8b | 2025-12-19 15:39:14 +0800 | penglibo | feat(order/open):付款申请账单详情优化
+4db2c47 | 2025-12-19 15:01:26 +0800 | dengyu | feat(datan):小兔数据-ETC客车重构v2
+b3392dd | 2025-12-19 11:04:58 +0800 | penglibo | feat(order/open):订单明细表增加字段：是否代收代付（优化）
+b35a89a | 2025-12-18 23:43:35 +0800 | penglibo | feat(finance):采购提交付款申请
+14ffe21 | 2025-12-18 21:51:54 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+6696064 | 2025-12-18 21:51:41 +0800 | penglibo | feat(finance):采购提交付款申请
+19bc8d9 | 2025-12-18 21:39:01 +0800 | yuanyu | 1
+3cf7ff6 | 2025-12-18 17:20:45 +0800 | penglibo | feat(finance):移除剩余未付款金额校验
+b9396c8 | 2025-12-18 16:33:11 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+bed774f | 2025-12-18 16:33:01 +0800 | penglibo | feat(finance):采购付款申请预付核销
+0842f23 | 2025-12-18 15:56:00 +0800 | zhaogang | fix；1
+ab97de2 | 2025-12-18 15:27:47 +0800 | yuanyu | 添加同步用友入库记录按钮
+865b28d | 2025-12-18 09:54:26 +0800 | penglibo | feat(finance):认领发票更新应收账单单号
+4b96d5a | 2025-12-17 18:56:15 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+1a85be6 | 2025-12-17 18:56:05 +0800 | penglibo | feat(finance):开票申请提交审核
+b893d9e | 2025-12-17 16:50:15 +0800 | yuanyu | 1
+9de0652 | 2025-12-17 16:09:44 +0800 | zhaogang | fix；1
+099a937 | 2025-12-17 15:47:49 +0800 | dengyu | fix(datan):1
+7050c1d | 2025-12-17 15:46:59 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+0a118cc | 2025-12-17 15:45:42 +0800 | zhaogang | feat:订单明细相关接口拆分四个 导出后重置ids条件
+07e4165 | 2025-12-17 15:10:00 +0800 | yuanyu | 1
+06279f3 | 2025-12-17 14:27:25 +0800 | yuanyu | 1
+be7be33 | 2025-12-17 11:41:24 +0800 | penglibo | feat(purchase):采购管理发票明细
+ffd40f4 | 2025-12-17 11:27:31 +0800 | penglibo | feat(finance):门店应付账单
+20cf073 | 2025-12-17 09:40:56 +0800 | yuanyu | 1
+b106584 | 2025-12-17 09:31:52 +0800 | yuanyu | 1
+fd6da2e | 2025-12-16 19:03:34 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+34dffab | 2025-12-16 19:03:13 +0800 | penglibo | feat(finance):付款申请
+a54e05b | 2025-12-16 18:45:45 +0800 | yuanyu | 1
+3f73161 | 2025-12-16 17:20:47 +0800 | zhaogang | feat:导出勾选
+271bdba | 2025-12-15 17:37:44 +0800 | penglibo | feat(finance):采购申请添加预付核销
+410bae4 | 2025-12-15 15:17:15 +0800 | hh | refactor(purchase): 移除冗余的客户选项加载逻辑
+b3e4401 | 2025-12-15 15:09:10 +0800 | yuanyu | 修改采购，合同流程管理为填写合同编号
+a26ac53 | 2025-12-12 17:03:17 +0800 | penglibo | feat(basic):产品分类管理查询条件一二三级改成下拉选项
+5978413 | 2025-12-12 16:12:35 +0800 | penglibo | feat(order):订单操作记录
+91642ac | 2025-12-12 16:04:11 +0800 | penglibo | feat(finance):开票认领
+0f46a8a | 2025-12-12 15:34:11 +0800 | penglibo | feat(finance):应收账单选择客商
+b3affe7 | 2025-12-12 15:13:13 +0800 | penglibo | feat(finance):应收账单选择客商
+907deb3 | 2025-12-11 20:19:55 +0800 | penglibo | feat(finance):刷新认领记录
+a118465 | 2025-12-11 19:29:49 +0800 | penglibo | feat(finance):开票申请
+12a18b9 | 2025-12-11 17:58:31 +0800 | penglibo | feat(finance):付款申请应付账单表格
+6d0fbbb | 2025-12-11 17:47:45 +0800 | penglibo | feat(finance):发票认领更新应收账单
+16d1294 | 2025-12-11 17:19:01 +0800 | yuanyu | 1
+dff15ff | 2025-12-11 16:27:02 +0800 | hh | feat(purchase): 优化采购申请流程并修复相关bug
+d0ceaac | 2025-12-11 15:57:51 +0800 | yuanyu | 1
+5f16236 | 2025-12-11 15:29:15 +0800 | yuanyu | 1
+e287c93 | 2025-12-11 14:39:02 +0800 | penglibo | feat(finance):银行收款认领记录字典回显
+2890632 | 2025-12-11 13:55:56 +0800 | penglibo | feat(permission):企业微信扫码登录消息
+e7d8027 | 2025-12-11 11:23:51 +0800 | penglibo | feat(finance):预估收入汇总表格
+0553cd2 | 2025-12-11 11:08:51 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+dfa4560 | 2025-12-11 11:08:39 +0800 | penglibo | feat(finance):财务表格宽度
+236332a | 2025-12-11 10:09:58 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+c2484bf | 2025-12-11 10:09:44 +0800 | zhaogang | fix:1
+542678c | 2025-12-11 09:52:56 +0800 | penglibo | feat(finance):开票状态转换
+0be06f0 | 2025-12-11 08:56:26 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+933de23 | 2025-12-11 08:56:14 +0800 | penglibo | feat(finance):银行收款认领流水
+a63776b | 2025-12-10 19:27:47 +0800 | zhaogang | fix:1
+e0ba051 | 2025-12-10 17:40:08 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+cfcb944 | 2025-12-10 17:39:54 +0800 | zhaogang | fix；1
+f324efd | 2025-12-10 17:34:59 +0800 | penglibo | feat(finance):银行收款认领流水
+da2b7c0 | 2025-12-10 14:36:34 +0800 | penglibo | feat(finance):银行收款应收账单过滤
+41906b2 | 2025-12-10 11:37:18 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+a7477cb | 2025-12-10 11:36:53 +0800 | zhaogang | feat:添加微信小程序用户管理界面
+d1402f4 | 2025-12-10 11:17:06 +0800 | yuanyu | 【采购管理】收退货新增入库单号
+d5b91ad | 2025-12-10 11:09:21 +0800 | yuanyu | 【采购管理】添加采购需求单选择
+6547a5d | 2025-12-10 10:22:24 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+8c2bcb7 | 2025-12-10 10:22:10 +0800 | penglibo | feat(basic):产品分类操作日志调整
+4db3efa | 2025-12-10 10:18:16 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+27bada3 | 2025-12-10 10:18:14 +0800 | dengyu | feat(datan):线下订单复核统计
+918547c | 2025-12-10 10:17:10 +0800 | penglibo | feat(basic):产品分类操作日志调整
+910586c | 2025-12-10 09:51:37 +0800 | penglibo | feat(basic):产品分类操作日志调整
+8fee010 | 2025-12-10 09:45:05 +0800 | penglibo | feat(basic):产品分类操作日志调整
+0daa27d | 2025-12-09 17:38:54 +0800 | penglibo | feat(finance):开票申请调整
+76db907 | 2025-12-09 17:05:58 +0800 | penglibo | feat(finance):开票申请调整
+1704e4a | 2025-12-09 14:58:05 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+5391143 | 2025-12-09 14:57:58 +0800 | penglibo | feat(basic):产品分类调整
+c16afc7 | 2025-12-09 13:27:13 +0800 | zhaogang | fix:1
+81f03d0 | 2025-12-09 11:33:27 +0800 | penglibo | feat(finance):开票申请不含税和税额
+7544302 | 2025-12-09 09:45:10 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+64e8014 | 2025-12-09 09:44:58 +0800 | penglibo | feat(finance):开票申请不含税和税额增加默认值
+eaa461d | 2025-12-09 09:41:10 +0800 | hh | feat(user): 更新密码重置页面样式和验证规则
+0a2b91c | 2025-12-09 09:27:32 +0800 | hh | style(system): 优化用户管理页面代码格式与结构
+9adddec | 2025-12-08 18:42:27 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+fb5bfc0 | 2025-12-08 18:42:14 +0800 | zhaogang | fix；1
+77bb28b | 2025-12-08 17:18:45 +0800 | penglibo | feat(basic):门店增加收款字段
+1890e7a | 2025-12-08 16:41:33 +0800 | penglibo | feat(glob):导入导出
+11fb0c3 | 2025-12-08 16:32:04 +0800 | penglibo | feat(order):订单明细增加同控客户名称（最上级）
+e66d2b5 | 2025-12-08 16:00:17 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+e183560 | 2025-12-08 16:00:07 +0800 | penglibo | feat(order):订单明细增加筛选字段
+dec7359 | 2025-12-08 15:49:52 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+25ad94b | 2025-12-08 15:49:36 +0800 | zhaogang | feat： 银行收款认领记录增加字段：产品分类三级 、财务-业务名称、财务-产品辅助名称， 开票申请页面添加开票金额(不含税)、税额字段
+a9f6193 | 2025-12-08 15:20:09 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+478c756 | 2025-12-08 15:20:07 +0800 | dengyu | feat(datan):生成合同审批表，车后服务卡卷，高速通行流水，线下订单复核，ETC结算审核，客服赔付申请，客户服务费用报销后台管理代码
+21fe1f2 | 2025-12-08 13:42:59 +0800 | penglibo | feat(order):产品分类筛选订单
+e7af5f2 | 2025-12-08 11:16:31 +0800 | yuanyu | 【合同安全管控】
+1b911b7 | 2025-12-08 10:11:35 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+be31b2f | 2025-12-08 10:10:57 +0800 | penglibo | feat(basic):添加基础产品分类
+89bd479 | 2025-12-07 11:23:23 +0800 | zhaogang | feat:开发服务添加OA同步配置(账号相关)
+c4eb1e7 | 2025-12-05 17:38:48 +0800 | penglibo | feat(basic):联调产品分类接口
+a6f63f2 | 2025-12-05 09:16:42 +0800 | dengyu | fix(company):添加分类名称输入限制
+cf20982 | 2025-12-04 20:45:26 +0800 | dengyu | 1
+3e30a26 | 2025-12-04 19:22:02 +0800 | hh | feat(finance): 新增应付账款付款申请功能
+50c45d8 | 2025-12-04 18:19:11 +0800 | hh | feat(finance): 更新付款申请接口地址并调整调用方法
+ae3a488 | 2025-12-04 17:35:29 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+b911385 | 2025-12-04 17:35:27 +0800 | dengyu | 1
+c42638e | 2025-12-04 17:32:40 +0800 | hh | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+acfdb0c | 2025-12-04 17:32:38 +0800 | hh | feat(finance): 更新应付账单相关接口地址
+a1ceb6f | 2025-12-04 17:28:58 +0800 | dengyu | 1
+99c1e3d | 2025-12-04 17:27:35 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+688505c | 2025-12-04 17:26:32 +0800 | dengyu | feat(company):新增产品分类管理-产品分类
+0f50100 | 2025-12-04 17:26:26 +0800 | yuanyu | 1
+3e18934 | 2025-12-04 16:43:16 +0800 | hh | feat(bizCategory): 完善基础分类与操作日志功能
+b74c814 | 2025-12-04 15:26:23 +0800 | hh | feat(company): 完善基础分类编辑功能
+0ade723 | 2025-12-04 14:59:03 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+b018c06 | 2025-12-04 14:55:15 +0800 | penglibo | feat(contract):禁用合同编号
+8b3c055 | 2025-12-04 14:18:43 +0800 | hh | feat(company): 新增业务分类管理功能
+ac7359a | 2025-12-04 14:03:42 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+509f247 | 2025-12-04 14:03:40 +0800 | dengyu | 1
+bb98bcf | 2025-12-04 13:45:41 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+3d401e5 | 2025-12-04 13:45:29 +0800 | zhaogang | FIX:1
+d04a6d0 | 2025-12-04 13:41:45 +0800 | dengyu | 1
+5fa88d3 | 2025-12-04 13:34:30 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+2feb861 | 2025-12-04 13:34:29 +0800 | dengyu | fix(paymentApply):解决请款类别取值异常
+7a00bd0 | 2025-12-04 11:51:02 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+bb382e7 | 2025-12-04 11:50:22 +0800 | zhaogang | feat:商户合同下载调整，跟进记录相关接口拆分
+0cc19bd | 2025-12-04 10:52:37 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+c6b597d | 2025-12-04 10:52:08 +0800 | zhaogang | feat:安全中心映射配置页面
+5c1a239 | 2025-12-04 10:50:29 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+dfce173 | 2025-12-04 10:50:27 +0800 | dengyu | fix(paymentApply):解决付款申请详情页发票能编辑的问题
+0922d2b | 2025-12-04 09:56:07 +0800 | dengyu | fix(paymentApply):解决发票显示错误
+66c4aaf | 2025-12-03 17:42:57 +0800 | penglibo | feat(contract):修改上传附件提示
+7692179 | 2025-12-03 17:37:47 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+728ebee | 2025-12-03 17:37:36 +0800 | penglibo | feat(contract):修改合同附件上传地址
+f38ee2d | 2025-12-03 17:26:27 +0800 | hh | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+46a7c28 | 2025-12-03 17:26:24 +0800 | hh | fix(purchase): 更新采购需求单号字段属性
+d8318ce | 2025-12-03 17:20:04 +0800 | penglibo | feat(order):修改用户添加表单宽度
+6c2303c | 2025-12-03 16:55:56 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+0579044 | 2025-12-03 16:55:46 +0800 | penglibo | feat(order):订单批量恢复结算
+56c294c | 2025-12-03 16:52:10 +0800 | hh | feat(finance): 优化付款申请流程并增强数据校验
+0816b53 | 2025-12-03 15:12:24 +0800 | dengyu | fix(purchase):列表不显示备注，搜索栏申请日期去掉时间部分
+2b8b419 | 2025-12-03 14:37:40 +0800 | zhaogang | fix:1
+5f05f00 | 2025-12-03 14:32:00 +0800 | zhaogang | fix:1
+1ed7247 | 2025-12-03 14:25:05 +0800 | zhaogang | fix:1
+caae4ad | 2025-12-03 13:37:37 +0800 | hh | feat(finance): 更新发票申请中的客商名称字段及逻辑
+57caf90 | 2025-12-03 11:15:45 +0800 | hh | feat(detailbill): 优化应收账单审核功能及调整金额输入限制
+d25b976 | 2025-12-03 10:09:06 +0800 | yuanyu | 【采购需求管理】1
+577cfb1 | 2025-12-03 10:04:12 +0800 | penglibo | feat(finance):合同筛选
+558794f | 2025-12-03 09:21:58 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+7a68be4 | 2025-12-03 09:21:47 +0800 | penglibo | feat(finance):重置实时收款条件
+c0db51b | 2025-12-03 09:19:10 +0800 | dengyu | feat(paymentApply):付款申请单详情添加字段‘付款申请单号’
+35d790f | 2025-12-02 17:14:49 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+efaa0e5 | 2025-12-02 17:14:41 +0800 | penglibo | feat(finance):合同筛选主体
+4c3cacd | 2025-12-02 15:08:16 +0800 | hh | fix(applyPurchase): 移除不必要的验证，优化提交逻辑
+e46a4f3 | 2025-12-02 14:08:14 +0800 | hh | chore(purchase): 注释掉需求列表操作按钮
+9f31f35 | 2025-12-02 11:35:28 +0800 | hh | fix(payApply): 优化弹窗打开流程及详情数据缓存
+e117a6e | 2025-12-02 11:17:21 +0800 | hh | fix(paymentApply): 调整付款申请表为只读模式
+ff5bbf9 | 2025-12-02 10:23:46 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+74180ce | 2025-12-02 10:23:34 +0800 | penglibo | feat(login):登录和订单推送参数日志主题色
+d555594 | 2025-12-02 09:56:21 +0800 | zhaogang | fix:1
+1ff646b | 2025-12-01 17:32:11 +0800 | hh | feat(finance): 优化付款申请表格数据初始化与附件处理逻辑
+0ac1d47 | 2025-12-01 17:30:32 +0800 | hh | feat(finance): 更新付款申请查看组件路径
+de308ca | 2025-12-01 17:28:34 +0800 | penglibo | feat(log):操作日志详情
+9e955ea | 2025-12-01 14:18:45 +0800 | penglibo | feat(contract):保密合同补充协议
+d7c6f35 | 2025-12-01 13:55:53 +0800 | hh | feat(purchase): 添加采购申请导出权限控制
+408ed54 | 2025-12-01 13:54:34 +0800 | hh | feat(purchase): 添加采购申请功能并优化
+e531e5e | 2025-11-28 16:36:32 +0800 | penglibo | fix(finance):审核不通过必填原因，应收账单详情回显
+0f29b26 | 2025-11-28 13:57:46 +0800 | hh | feat(audit): 优化付款申请与采购发票审核组件
+640c57c | 2025-11-28 13:53:16 +0800 | yuanyu | 【采购需求管理】init
+f9b2a22 | 2025-11-27 23:03:34 +0800 | hh | refactor(finance): 优化采购与应收组件代码结构
+ecd36a6 | 2025-11-27 22:47:08 +0800 | penglibo | fix(finance):关闭预付核销弹窗
+f40afc0 | 2025-11-27 22:45:06 +0800 | penglibo | fix(finance):关闭预付核销弹窗
+6f408dd | 2025-11-27 22:39:00 +0800 | hh | fix(finance): 修复付款申请成功后弹窗未关闭问题
+b212dcb | 2025-11-27 22:33:09 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+30735df | 2025-11-27 22:33:14 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+30683bb | 2025-11-27 22:33:00 +0800 | penglibo | fix(finance):查询付款申请
+59079a0 | 2025-11-27 22:26:24 +0800 | hh | fix(payment): 修复采购付款申请成功后弹窗未关闭问题
+e7f824d | 2025-11-27 22:05:16 +0800 | hh | feat(finance): 添加预付已核销金额字段
+6e56a64 | 2025-11-27 21:33:36 +0800 | hh | fix(finance): 修复付款申请关联账单状态判断逻辑
+843de93 | 2025-11-27 20:47:04 +0800 | penglibo | fix(contract):补充协议查询
+dfe13de | 2025-11-27 20:46:22 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+a3ad6df | 2025-11-27 20:46:16 +0800 | penglibo | fix(contract):补充协议查询
+a4c07fc | 2025-11-27 20:35:20 +0800 | hh | fix(finance): 修正预付款验证撤销接口路径
+d3dc94a | 2025-11-27 20:34:36 +0800 | hh | feat(finance): 新增本次核销金额字段并调整预览弹窗位置
+c0fa140 | 2025-11-27 20:13:59 +0800 | hh | feat(purchase): 更新采购管理模块的供应商选择逻辑
+4d2eb88 | 2025-11-27 20:09:45 +0800 | hh | fix(purchase): 修复供应商选择及表单校验逻辑
+2526a2c | 2025-11-27 20:02:46 +0800 | hh | fix(purchase): 修复商户ID赋值错误
+6716e51 | 2025-11-27 20:00:31 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+4f7dcf0 | 2025-11-27 19:59:48 +0800 | hh | feat(purchase): 增加采购申请提交超时时间并优化表单校验逻辑
+8146e2b | 2025-11-27 18:01:22 +0800 | hh | fix(finance): 修复预付核销相关功能
+535fee7 | 2025-11-27 17:25:43 +0800 | hh | feat(finance): 更新应付账款及采购付款功能
+bc06f5a | 2025-11-27 16:32:44 +0800 | hh | feat(finance): 统一设置金融模块输入框精度为2位小数
+42babde | 2025-11-27 15:17:50 +0800 | hh | feat(purchase): 新增采购记录列表功能
+bc963b6 | 2025-11-27 15:14:59 +0800 | zhaogang | feat:合同列表/保密合同详情移除附件查看，上传附件调整
+35adda3 | 2025-11-27 14:00:10 +0800 | hh | fix(finance): 优化应付账单发票校验逻辑
+dfc9661 | 2025-11-27 11:33:22 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+3a910ec | 2025-11-27 11:33:07 +0800 | zhaogang | feat:重要操作日志页面
+d642d8b | 2025-11-27 11:27:51 +0800 | hh | refactor(purchase): 优化收退货记录页面代码结构与日期处理
+92c0ebc | 2025-11-27 10:55:11 +0800 | hh | fix(finance): 更新发票字段名称并调整相关逻辑
+4a52bc8 | 2025-11-27 10:48:17 +0800 | hh | fix(finance): 修复应付账单表单重置逻辑
+d3e2855 | 2025-11-27 09:56:50 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+e8399e7 | 2025-11-27 09:56:47 +0800 | dengyu | fix(purchase):采购管理-申请付款添加必填校验
+c45468f | 2025-11-27 09:43:31 +0800 | hh | feat(finance): 优化应付账单申请付款逻辑
+a4efdac | 2025-11-27 09:39:45 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+65c74b3 | 2025-11-27 09:38:42 +0800 | dengyu | fix(purchase):解决采购申请库存量不能为0的问题
+3115115 | 2025-11-26 18:33:30 +0800 | hh | fix: 修改合同到期日字段为续约结束日期，并更新相关逻辑
+79dae50 | 2025-11-26 17:51:11 +0800 | hh | fix(payableBill): 修正状态判断的比较运算符
+70674ed | 2025-11-26 17:41:36 +0800 | hh | fix(purchase): 修复付款申请表和审批按钮显示逻辑
+1d35b8e | 2025-11-26 17:37:44 +0800 | dengyu | fix(purchase):解决付款方式未必填校验导致提交oa校验不通过
+481aba0 | 2025-11-26 16:58:20 +0800 | hh | fix(purchase): 优化申请提交表单的加载状态及数据处理逻辑
+f9e12f0 | 2025-11-26 15:39:42 +0800 | dengyu | 1
+8e44210 | 2025-11-26 15:39:37 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+358696e | 2025-11-26 15:39:22 +0800 | hh | feat(purchase): 新增提交审核功能组件并集成
+8af3464 | 2025-11-26 15:38:31 +0800 | dengyu | fix(purchase):采购管理-申请付款的合同部分，添加请款金额范围限制
+7f05019 | 2025-11-26 15:34:39 +0800 | penglibo | fix(contract):合同查询条件
+a137c6e | 2025-11-26 15:27:49 +0800 | hh | fix(payableBill): 优化支付申请相关逻辑和数据处理
+7819074 | 2025-11-26 15:20:46 +0800 | dengyu | fix(purchase):解决付款申请中合同相关字段在合同列表中有该字段内容，但显示异常
+556b5a6 | 2025-11-26 15:14:59 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+6bc8773 | 2025-11-26 15:12:38 +0800 | dengyu | fix(purchase):解决付款申请页面合同上未显示剩余未付款金额；收退货列表未展示数量字段
+25cd019 | 2025-11-26 14:49:39 +0800 | hh | refactor(payableBill): 优化选择账单组件数据加载逻辑
+f95d165 | 2025-11-26 14:24:53 +0800 | hh | feat(paymentApply): 优化付款申请列表及合同信息处理
+8ceb186 | 2025-11-26 11:05:01 +0800 | penglibo | fix(audit):审核不通过必填
+90139b3 | 2025-11-26 10:44:13 +0800 | penglibo | fix(contract):添加创建补充协议合同
+a1fda27 | 2025-11-26 10:12:10 +0800 | dengyu | fix(purchase):采购申请中物品规则禁用不生效解决
+c360384 | 2025-11-26 09:47:41 +0800 | dengyu | fix(purchase):采购申请添加必填字段校验
+bbab9a6 | 2025-11-25 17:35:17 +0800 | hh | feat(payApply): 增加第三方商户信息字段
+8c5badc | 2025-11-25 17:25:43 +0800 | hh | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+5409df6 | 2025-11-25 17:25:40 +0800 | hh | fix(payApply): 优化选择账户组件未处理无id情况
+1c4aaa4 | 2025-11-25 17:00:55 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+4532135 | 2025-11-25 16:59:33 +0800 | hh | fix(purchase): 修正税率映射和金额字段的计算与配置
+5c7213f | 2025-11-25 16:59:00 +0800 | dengyu | fix(purchase):采购申请添加必填字段校验；必填校验提示调整为中文内容
+28a6c88 | 2025-11-25 16:53:42 +0800 | hh | refactor(payableBill): 清理多余日志及优化代码格式
+bb5b7ff | 2025-11-25 16:47:50 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+5d290ee | 2025-11-25 16:46:56 +0800 | zhaogang | feat:下载附件弹窗选择下载(合同列表/保密合同)
+b41f9a5 | 2025-11-25 16:45:12 +0800 | penglibo | fix(finance):更新合同编号
+701c1c1 | 2025-11-25 16:36:37 +0800 | hh | fix(ocrInvoice): 修复文件名解析时忽略查询参数问题
+af78ccb | 2025-11-25 16:26:03 +0800 | hh | refactor(ocrInvoice): 优化发票录入表单交互及合计计算逻辑
+da2b80a | 2025-11-25 15:26:23 +0800 | hh | feat(purchase): 完善采购申请表单校验及数据提交逻辑
+ce7a0c0 | 2025-11-25 15:13:39 +0800 | hh | fix(purchase): 优化申请提交函数并完善错误处理
+ebbf6b2 | 2025-11-25 14:59:47 +0800 | hh | fix(payApply): 优化付款申请相关组件的代码细节
+13872ab | 2025-11-25 14:34:29 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+89133c4 | 2025-11-25 14:34:25 +0800 | dengyu | fix:采购申请加必填校验
+f818fb9 | 2025-11-25 14:14:09 +0800 | penglibo | fix(finance):订单添加推送查看
+7a90731 | 2025-11-25 13:31:02 +0800 | dengyu | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+fc46818 | 2025-11-25 13:30:58 +0800 | dengyu | 1
+2a71acc | 2025-11-25 11:42:38 +0800 | hh | refactor(purchase): 优化采购申请模块代码结构与功能逻辑
+ae93d68 | 2025-11-25 09:44:35 +0800 | hh | style(login): 优化登录页面样式和代码格式
+d5443fd | 2025-11-25 09:32:42 +0800 | zhaogang | feat：增加修改查询详情接口(合同列表/保密合同)
+9bd7b2a | 2025-11-24 18:42:13 +0800 | hh | refactor(components): 重构部门和用户级联选择器组件
+5ea5a0a | 2025-11-24 18:41:20 +0800 | hh | feat(components): 重构部门和用户级联选择器组件
+66f7115 | 2025-11-24 16:39:53 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+81a9f7c | 2025-11-24 16:39:42 +0800 | penglibo | fix(finance):预付核销审核查看
+1adad0d | 2025-11-24 16:32:02 +0800 | hh | feat(finance): 优化付款申请流程及表单校验
+bf2d4a7 | 2025-11-24 16:21:58 +0800 | penglibo | fix(finance):预付核销审核查看
+7311c55 | 2025-11-24 15:26:39 +0800 | penglibo | fix(finance):移除报错内容type
+ed239a1 | 2025-11-21 16:00:36 +0800 | zhaogang | fix；1
+dcda98b | 2025-11-21 15:48:08 +0800 | zhaogang | feat:手动重发
+2e3c059 | 2025-11-21 11:07:08 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+4d9b018 | 2025-11-21 11:06:40 +0800 | zhaogang | feat:子字典增删改功能
+33c0598 | 2025-11-21 10:31:09 +0800 | hh | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+497e890 | 2025-11-21 10:31:05 +0800 | hh | feat(purchase): 添加采购实体字段支持
+65d57fd | 2025-11-21 10:19:34 +0800 | dengyu | 解决冲突
+32330cf | 2025-11-21 10:14:50 +0800 | dengyu | fix(finance):修正付款申请页面无法选择客商收款账号
+29bfa0d | 2025-11-21 10:04:10 +0800 | hh | style(payableBill): 移除多处调试用console.log日志
+ef8c92f | 2025-11-21 09:57:20 +0800 | hh | fix(payableBill): 修正账户选择数据赋值和新增字段兼容性
+c10a409 | 2025-11-20 22:13:34 +0800 | hh | feat(finance): 优化付款申请功能并修复相关逻辑
+9d0af18 | 2025-11-20 21:16:04 +0800 | hh | fix(payableBill): 修正待请款金额映射及表单字段赋值
+4f99e3a | 2025-11-20 21:11:42 +0800 | hh | refactor(payableBill): 移除智能金额分配功能及相关代码
+dd1af57 | 2025-11-20 20:33:29 +0800 | penglibo | fix(finance):付款申请采购发票上传人
+691693e | 2025-11-20 19:39:55 +0800 | penglibo | fix(finance):付款申请审核明细字段
+9bd4762 | 2025-11-20 18:02:14 +0800 | hh | feat(finance): 新增获取收款账号接口及前端集成
+b69b57d | 2025-11-20 17:21:03 +0800 | hh | refactor(finance): 移除冗余的响应式变量
+1fcea50 | 2025-11-20 17:17:34 +0800 | hh | feat(finance): 更新付款申请组件导出变量名并新增账户选择功能
+604a899 | 2025-11-20 17:11:20 +0800 | hh | feat(finance): 新增收款账户选择功能
+2b3690b | 2025-11-20 16:53:43 +0800 | hh | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+55b6ef0 | 2025-11-20 16:53:41 +0800 | hh | feat(finance): 添加已上传发票列表展示功能
+a20b060 | 2025-11-20 16:49:35 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+1431d24 | 2025-11-20 16:49:10 +0800 | zhaogang | fix:采购发票上传人上传时间调整
+255c547 | 2025-11-20 16:39:13 +0800 | penglibo | fix(finance):待请款金额
+fe2ee7d | 2025-11-20 15:46:49 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+d897584 | 2025-11-20 15:46:35 +0800 | zhaogang | feat:微信用户展示页面
+ea58ec2 | 2025-11-20 15:44:44 +0800 | hh | fix(finance): 更新支付金额字段显示
+0585604 | 2025-11-20 15:29:39 +0800 | hh | fix(finance): 修复预付核销功能中的逻辑判断和界面显示问题
+4f73b6d | 2025-11-20 15:16:41 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+ff5103a | 2025-11-20 15:16:17 +0800 | zhaogang | feat:企微扫码登录实现
+5aa3151 | 2025-11-20 15:04:26 +0800 | hh | fix: 修复多个组件中el-radio的label属性为value属性
+4b05a9c | 2025-11-20 14:11:18 +0800 | penglibo | fix(audit):审核结果校验
+5f1dcdb | 2025-11-20 13:50:41 +0800 | hh | refactor(payApply): 优化付款申请相关组件的代码结构
+370f1c7 | 2025-11-20 13:38:20 +0800 | penglibo | fix(finance):应付账单审核详情回显
+8ca2e57 | 2025-11-20 10:46:09 +0800 | penglibo | fix(finance):应付账单相关金额弹窗
+da73ffb | 2025-11-19 18:53:16 +0800 | zhaogang | fix:合同下载参数调整
+6ad8d76 | 2025-11-19 18:38:25 +0800 | hh | feat(paymentApply): 更新付款申请单详情获取功能，优化数据处理逻辑
+07b61f4 | 2025-11-19 17:45:17 +0800 | hh | feat(paymentApply): 新增付款申请单详情获取功能
+c0d9383 | 2025-11-19 17:40:33 +0800 | penglibo | fix(finance):submitData.paySource = 2;
+ea1be1c | 2025-11-19 17:17:14 +0800 | hh | fix(payableBill): 优化请款金额分配和数据处理逻辑
+57d34a1 | 2025-11-19 16:42:35 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+6d0bbb5 | 2025-11-19 16:41:47 +0800 | zhaogang | fix:付款申请列表请款人展示
+b53c380 | 2025-11-19 16:37:42 +0800 | hh | feat: 添加第三方结算选项并优化相关逻辑
+f6973f6 | 2025-11-19 15:43:25 +0800 | penglibo | fix(basic):合同字段校验
+89d68a6 | 2025-11-19 15:40:14 +0800 | penglibo | fix(basic):合同字段校验
+dd7f921 | 2025-11-19 14:48:30 +0800 | hh | refactor(purchase): 优化采购模块数据结构与视图
+676f7d6 | 2025-11-19 11:33:58 +0800 | hh | feat(audit): 支持difference组件根据类型动态修改列标题
+5952163 | 2025-11-19 10:34:10 +0800 | zhaogang | feat:合同列表必填校验
+b7a4f06 | 2025-11-19 09:28:18 +0800 | penglibo | Merge remote-tracking branch 'origin/dev' into dev
+68fa491 | 2025-11-18 18:19:37 +0800 | hh | fix(detailbill): 修正批量导入不结算类型判断逻辑
+f4adc73 | 2025-11-18 17:40:00 +0800 | hh | refactor(payableBill/payApply): 优化请款弹窗数据处理逻辑
+032da72 | 2025-11-18 16:00:18 +0800 | penglibo | fix(basic):修改客商类型校验
+e8ce9ac | 2025-11-18 15:38:10 +0800 | hh | refactor(purchase): 优化采购模块功能与界面细节
+7f08314 | 2025-11-18 15:28:22 +0800 | zhaogang | fix:1
+b249eb5 | 2025-11-18 15:11:58 +0800 | zhaogang | 1
+e69a8b2 | 2025-11-18 14:05:58 +0800 | zhaogang | feat；客户管理非必填校验调整
+8e0df8d | 2025-11-18 11:08:40 +0800 | zhaogang | feat:合同产品类型级联
+2aa64b0 | 2025-11-17 18:51:35 +0800 | zhaogang | Merge branch 'dev' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc into dev
+6bfb1e4 | 2025-11-17 18:50:35 +0800 | zhaogang | feat:合同字段调整、新增
+c58aa8e | 2025-11-17 18:31:39 +0800 | hh | refactor(purchase): 优化采购模块代码结构与字典转换逻辑
+129dfb3 | 2025-11-17 18:26:52 +0800 | hh | feat(purchase): 新增采购相关字段及页面显示优化
+3aae46d | 2025-11-17 17:52:44 +0800 | hh | feat(paymentApply): 支持录入发票与预付核销功能切换
+7f9534e | 2025-11-17 15:36:47 +0800 | hh | refactor(finance): 优化付款申请及请款金额分配逻辑
+f150105 | 2025-11-17 14:30:56 +0800 | hh | fix(purchase): 修正收货单位字段属性名
+88403d0 | 2025-11-17 14:18:48 +0800 | hh | feat(finance): 实现应付账单智能金额分配功能
+8b3aa6f | 2025-11-17 14:04:58 +0800 | hh | fix(finance): 修正请款金额字段类型为数字
+4d58482 | 2025-11-17 13:36:58 +0800 | hh | feat(paymentApply): 统一并新增success事件支持
+5d99ed3 | 2025-11-17 11:11:48 +0800 | hh | refactor(finrefactorance(fin): 优ance):化 优表格化多处列表操作操作按钮按钮样样式式和和表格布局
+f04a6d1 | 2025-11-14 18:24:19 +0800 | hh | fix(purchase): 修复采购申请表格字段映射错误
+c2531a4 | 2025-11-14 18:03:51 +0800 | hh | fix(purchase): 修正采购申请表格数据处理逻辑
+066e820 | 2025-11-14 17:39:30 +0800 | hh | feat(purchase): 优化采购申请功能并修复数据校验问题
+0e363d2 | 2025-11-14 15:47:33 +0800 | hh | feat(purchase): 实现请款申请功能并优化采购表单
+6fe2043 | 2025-11-14 15:06:22 +0800 | penglibo | feat(finance):付款申请采购发票列表
+d136c07 | 2025-11-14 14:00:51 +0800 | hh | feat(purchase): 重构付款申请模块并优化税率字段命名
+4819327 | 2025-11-13 19:19:36 +0800 | hh | feat(purchase): 优化采购申请功能并完善表单交互
+c3ce300 | 2025-11-13 14:38:33 +0800 | hh | feat(finance): 优化请款金额相关字段及待请款金额总计功能
+81ea11c | 2025-11-13 14:34:35 +0800 | penglibo | Merge branch 'master' into dev
+d1b455d | 2025-11-13 14:31:00 +0800 | penglibo | feat(finance):添加实际支付金额（元）、预付已核销金额（元）弹窗
+9e763be | 2025-11-13 14:00:56 +0800 | hh | refactor(finance): 优化预估成本与收入提交及请款金额显示
+b53d5f2 | 2025-11-13 11:19:06 +0800 | hh | feat(purchase): 动态采购表格功能优化与数据联动
+f840f23 | 2025-11-13 11:13:23 +0800 | penglibo | feat(finance):预估成本组织类型
+21a6b0a | 2025-11-13 10:05:35 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+b8c0a7b | 2025-11-13 10:05:27 +0800 | penglibo | feat(finance):预付核销
+bc296e2 | 2025-11-13 09:56:40 +0800 | yuanyu | 【采购管理】采购申请详情
+89f2e4a | 2025-11-13 09:11:21 +0800 | penglibo | feat(finance):调整订单添加最新单号判断
+402146e | 2025-11-12 17:41:41 +0800 | hh | style(finance): 格式化付款申请表格组件代码
+b46caaa | 2025-11-12 16:44:44 +0800 | hh | style(finance): 格式化付款申请表格组件代码
+96d876d | 2025-11-12 16:42:53 +0800 | hh | refactor(paymentApply): 优化请款模块发票处理与金额联动功能
+c496af1 | 2025-11-12 14:17:44 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+1338789 | 2025-11-12 14:17:41 +0800 | hh | feat(finance): 优化付款申请及相关组件功能与界面
+758d921 | 2025-11-12 14:15:18 +0800 | yuanyu | 【采购管理】采购申请详情
+43312de | 2025-11-12 10:50:45 +0800 | hh | refactor(finance): 重构预估成本与收入模块接口调用
+4c3b1e6 | 2025-11-12 09:23:12 +0800 | hh | feat(finance): 优化请款单据处理逻辑与合同附件管理
+601985f | 2025-11-12 08:47:50 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+febff69 | 2025-11-11 20:19:04 +0800 | yuanyu | 【采购管理】采购申请详情
+8a05ebb | 2025-11-11 20:14:29 +0800 | zhaogang | fix：1
+85823df | 2025-11-11 19:57:20 +0800 | hh | feat(finance): 新增合同列表查询功能并优化请款表单
+f4c5bc2 | 2025-11-11 17:23:05 +0800 | penglibo | feat(finance):修改合同下载附件地址
+11cb300 | 2025-11-11 17:14:46 +0800 | yuanyu | 【采购管理】收退货详情
+d438222 | 2025-11-11 15:42:39 +0800 | hh | fix(finance): 调整付款申请及应付账单相关逻辑
+99c776f | 2025-11-11 14:58:55 +0800 | hh | feat(finance): 添加撤销预付核销功能
+0e31438 | 2025-11-11 13:33:34 +0800 | hh | feat(finance): 新增成本文件URL批量获取接口并优化付款申请流程
+95ca6ca | 2025-11-11 11:22:14 +0800 | penglibo | feat(finance):订单明细添加审核不通过按钮操作校验
+34cfbff | 2025-11-10 17:57:22 +0800 | hh | feat(finance): 更新财务模块接口和表格配置
+7becaf0 | 2025-11-10 16:01:50 +0800 | hh | feat(finance): 重构付款申请表单及字段调整
+770a4d0 | 2025-11-07 17:36:48 +0800 | hh | feat(finance): 更新付款申请相关接口及字段映射
+759608c | 2025-11-07 10:31:13 +0800 | hh | feat(finance): 优化预估成本与收入模块功能
+8be27b3 | 2025-11-06 15:59:59 +0800 | penglibo | feat(finance):开票申请认领
+f072292 | 2025-11-06 15:59:30 +0800 | penglibo | feat(finance):开票申请认领
+a211919 | 2025-11-06 15:49:20 +0800 | penglibo | feat(finance):开票申请认领
+05ce74a | 2025-11-05 18:05:07 +0800 | hh | feat(purchase): 新增合同列表和用友数据接口及表格筛选功能
+a5d59e9 | 2025-11-05 15:19:51 +0800 | hh | feat(purchase): 添加收/退货记录组件并调整付款申请记录组件
+cdef733 | 2025-11-05 14:52:53 +0800 | hh | refactor(purchase): 重构采购管理模块
+5e19935 | 2025-11-05 11:05:22 +0800 | penglibo | feat(finance):账单生成提示
+a79511d | 2025-11-05 10:47:31 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+a713a19 | 2025-11-05 10:47:19 +0800 | penglibo | feat(finance):应付账单增加付款申请记录
+ba8e33a | 2025-11-05 09:22:39 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+d889bb3 | 2025-11-05 09:22:38 +0800 | hh | feat(purchase): 重构采购管理模块并优化相关组件
+5127a39 | 2025-11-05 09:16:33 +0800 | penglibo | feat(audit):采购发票审核查看
+105f225 | 2025-11-04 17:47:37 +0800 | penglibo | feat(finance):上传采购发票页面增加简单统计
+facc166 | 2025-11-04 15:39:56 +0800 | penglibo | feat(finance):申请开票页面增加字段：已开票金额、未开票金额
+b3fdf72 | 2025-11-04 15:39:16 +0800 | penglibo | feat(finance):申请开票页面增加字段：已开票金额、未开票金额
+34422e1 | 2025-11-04 09:48:52 +0800 | yuanyu | 【采购管理】1
+9af619c | 2025-11-04 09:47:52 +0800 | hh | refactor(purchase): 重构采购管理页面路径
+499564e | 2025-11-03 17:42:56 +0800 | hh | 初始化采购中心
+e8865ae | 2025-11-03 17:40:21 +0800 | hh | feat(finance): 新增收票申请与预估收入功能优化
+17d36cf | 2025-10-31 17:41:37 +0800 | hh | feat(finance): 更新付款申请与应收票据功能
+d4a3981 | 2025-10-30 21:30:28 +0800 | hh | feat(finance): 调整账单收入支出类型处理逻辑
+917ccc8 | 2025-10-30 20:11:26 +0800 | hh | fix(detailbill): 修改调整金额字段类型并添加数值范围限制
+0f4eb5e | 2025-10-30 19:54:35 +0800 | hh | feat(finance): 优化应收账单认领功能及相关组件
+57b7c63 | 2025-10-30 15:23:48 +0800 | hh | fix(detailbill): 调整批量调整表单的最小值限制
+4cb32f8 | 2025-10-30 14:46:24 +0800 | hh | feat(finance): 新增付款申请功能
+6569d6f | 2025-10-30 11:21:06 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+a9c438f | 2025-10-30 11:20:46 +0800 | penglibo | feat(order):导出银行收款流水
+03eb241 | 2025-10-30 10:50:09 +0800 | hh | fix(finance): 调整应付票据申请逻辑及界面显示问题
+4b0fda5 | 2025-10-30 09:36:27 +0800 | yuanyu | 【腾讯电子签】1
+99965f1 | 2025-10-29 21:08:53 +0800 | hh | feat(detailbill): 根据状态控制操作按钮显示
+73dc91d | 2025-10-29 18:03:35 +0800 | hh | feat(detailbill): 调整账单详情页面字段搜索与显示配置
+28b370a | 2025-10-29 17:33:47 +0800 | hh | feat(detailbill): 调整账单详情页面字段搜索与显示配置
+4aa6efe | 2025-10-29 17:10:56 +0800 | yuanyu | 【腾讯电子签】1
+bff225f | 2025-10-29 15:29:02 +0800 | hh | feat(detailbill): 新增不预估原因及文件相关功能
+2af3f56 | 2025-10-29 09:48:13 +0800 | yuanyu | 【腾讯电子签】1
+432d7cd | 2025-10-28 20:49:34 +0800 | penglibo | feat(order):删除关联预付单按钮
+94230d1 | 2025-10-28 19:31:13 +0800 | hh | 提交代码
+e31191d | 2025-10-27 15:34:12 +0800 | hh | feat(order): 添加刷新事件以同步子组件数据
+98bd3f2 | 2025-10-27 15:28:27 +0800 | hh | feat(detailbill): 移除虚拟订单录入功能并优化调整金额逻辑
+909d0cd | 2025-10-27 15:09:54 +0800 | hh | feat(finance): 调整账单相关功能及字段优化
+fead2c4 | 2025-10-24 12:23:03 +0800 | hh | feat(finance): 优化发票申请与付款申请功能
+c31ff1e | 2025-10-24 10:01:25 +0800 | hh | feat(finance): 新增删除应付账单功能
+eca0ed0 | 2025-10-24 09:28:31 +0800 | hh | 优化
+1b22a69 | 2025-10-23 18:08:04 +0800 | penglibo | feat(order):调整订单标记结算
+a1c54a5 | 2025-10-23 15:29:13 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+3ede0f9 | 2025-10-23 15:27:15 +0800 | penglibo | feat(order,contract):调整订单标记结算、合同查询响应字段
+b15b1af | 2025-10-23 11:15:12 +0800 | hh | feat(order): 添加批量恢复结算和预估功能
+02366ca | 2025-10-23 10:57:59 +0800 | hh | refactor(finance): 优化付款申请审核逻辑与UI交互
+3e2bb42 | 2025-10-22 18:45:05 +0800 | hh | 提交代码
+1bacc5f | 2025-10-22 15:16:26 +0800 | hh | fix(ocr): 修复发票类型选择器值类型问题
+657085d | 2025-10-22 15:03:09 +0800 | hh | fix(finance): 调整日期选择器类型并修复表单验证逻辑
+71c2061 | 2025-10-22 14:23:49 +0800 | hh | feat(detailbill): 优化账单导出与数据查询逻辑
+7e0028a | 2025-10-22 11:21:22 +0800 | hh | feat(finance): 更新银行收款信息页面字段及逻辑优化
+5e4b990 | 2025-10-22 10:38:57 +0800 | hh | feat(finance): 优化发票申请功能并调整账单标记逻辑
+686a068 | 2025-10-21 17:45:53 +0800 | hh | feat(finance): 新增收款账户选择功能
+cf98bc9 | 2025-10-21 16:40:41 +0800 | hh | feat(detailbill): 更新账单调整功能及相关组件
+ebc4428 | 2025-10-21 09:24:52 +0800 | hh | chore: 清理调试日志并优化组件逻辑
+202b5aa | 2025-10-20 16:26:37 +0800 | penglibo | feat:更新实时收款账单开票状态
+6c4bf99 | 2025-10-20 15:58:42 +0800 | hh | feat(payment): 优化请款单据处理逻辑
+58db381 | 2025-10-20 15:43:00 +0800 | penglibo | feat:调整金额传递单号和类型
+96a7777 | 2025-10-20 15:39:35 +0800 | penglibo | feat:调整金额传递单号和类型
+1846e19 | 2025-10-20 13:47:34 +0800 | hh | feat(finance): 更新付款申请发票状态字段并添加导出功能
+50991fd | 2025-10-17 17:49:24 +0800 | hh | 🐛 fix(detailbill): 关闭弹窗逻辑优化
+a6da0ae | 2025-10-17 17:24:27 +0800 | hh | 🐛 fix: 优化发票类型数据引用方式
+431f576 | 2025-10-17 17:16:45 +0800 | hh | 🐛 feat(order): 批量调整金额及不结算订单功能优化
+26f6e37 | 2025-10-17 16:50:23 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+37f84f0 | 2025-10-17 16:50:03 +0800 | penglibo | feat:开票申请发票列表筛选添加审核状态未通过的数据
+e8f6cd7 | 2025-10-17 15:47:45 +0800 | hh | 🐛 fix(components): 修复合同选择组件字段错误
+fb1dc73 | 2025-10-17 14:20:01 +0800 | hh | 🐛 fix(order-detail): 优化订单详情页面数据刷新逻辑
+6d08135 | 2025-10-17 13:33:35 +0800 | hh | 🐛 fix(detailbill): 修复表单校验错误提示逻辑并优化ID传参
+696b3b6 | 2025-10-17 09:39:25 +0800 | zhaogang | fix:修复【后台-实时收款账单】列表显示部分字段有误
+a25659d | 2025-10-17 09:23:54 +0800 | penglibo | feat:调整金额
+87da471 | 2025-10-16 18:13:53 +0800 | hh | ✨ feat(order): 优化调整金额功能并支持文件上传
+b114fea | 2025-10-16 18:12:44 +0800 | hh | 🐛 fix(finance): 修正预估成本更新接口路径及表单校验逻辑
+1781d03 | 2025-10-16 17:38:50 +0800 | zhaogang | feat:通知邮箱配置，邮件发送日志
+7610432 | 2025-10-16 15:28:45 +0800 | penglibo | feat:账单操作日志
+3d1d827 | 2025-10-16 14:23:56 +0800 | zhaogang | refactor:调整日志管理模块路径，权限标识
+0d5a133 | 2025-10-16 10:52:15 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+ce5d363 | 2025-10-16 10:50:06 +0800 | hh | 修复
+9c7b3b5 | 2025-10-16 10:31:14 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+1d20213 | 2025-10-16 10:31:00 +0800 | penglibo | feat:订单调整金额
+74d09d5 | 2025-10-16 09:14:41 +0800 | hh | 🐛 fix(finance): 修复银行到账认领功能中的多个问题
+3c2c2e9 | 2025-10-15 14:04:36 +0800 | penglibo | feat:标记不结算订单
+6a985a4 | 2025-10-15 11:39:56 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+0486ade | 2025-10-15 11:25:50 +0800 | hh | 修复bug
+77316ba | 2025-10-15 11:11:32 +0800 | penglibo | feat:实时收款订单调整
+0b65def | 2025-10-15 10:41:43 +0800 | zhaogang | feat:登录去除空格等
+78317de | 2025-10-14 16:45:28 +0800 | penglibo | feat:添加应收账单金额相关弹窗
+b8044d4 | 2025-10-14 16:07:26 +0800 | hh | ✨ refactor(finance): 重构银行收款信息模块组件结构
+1706850 | 2025-10-14 11:10:11 +0800 | penglibo | feat:添加应收账单关联银行收款流水
+43d849d | 2025-10-13 19:33:48 +0800 | hh | ✨ feat(audit): 优化采购发票审核功能
+027521c | 2025-10-13 17:21:43 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+2ee5cdb | 2025-10-13 17:09:36 +0800 | hh | ✨ feat(audit): 添加采购发票审核功能并优化组件导入方式
+a458120 | 2025-10-13 16:24:48 +0800 | penglibo | feat:活动客商名称修改
+2a9c58f | 2025-10-13 15:32:20 +0800 | hh | 1
+f29a4ce | 2025-10-13 14:10:28 +0800 | penglibo | fix:订单单号筛选
+0114357 | 2025-10-13 11:37:07 +0800 | penglibo | fix:批量标记订单不结算
+9cd6c7d | 2025-10-11 17:05:44 +0800 | hh | ✨ feat(finance): 新增付款申请关联账单功能
+17c4366 | 2025-10-11 16:47:56 +0800 | penglibo | fix:调整预览组件
+a75a04a | 2025-10-11 11:24:58 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+19fb401 | 2025-10-11 11:24:46 +0800 | penglibo | fix:发票列表
+9c1d931 | 2025-10-11 09:55:34 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+7644d70 | 2025-10-11 09:55:32 +0800 | hh | ✨ feat(finance): 新增发票识别功能
+4a4cf81 | 2025-10-11 09:23:24 +0800 | zhaogang | fix:商户合同、保密合同点击搜索展示，默认不查询
+34d09b5 | 2025-10-10 17:41:34 +0800 | hh | 🐛 fix(finance): 修复应收应付组件选择事件名称
+9a99f99 | 2025-10-10 16:48:16 +0800 | hh | ✨ feat(payment): 优化付款申请相关功能
+f009d63 | 2025-10-10 16:39:03 +0800 | penglibo | fix:撤销审核状态判断
+2a82243 | 2025-10-10 15:32:42 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+48954e7 | 2025-10-10 15:32:30 +0800 | penglibo | fix:标记结算订单
+8e6449d | 2025-10-10 13:47:45 +0800 | hh | ✨ feat(finance): 优化付款申请流程及权限控制
+f3c7070 | 2025-10-09 17:46:59 +0800 | hh | 修改密码规则
+f311aee | 2025-10-09 17:46:06 +0800 | hh | fix(merchant): 修复商户管理页面按钮加载状态和代码格式问题
+f65382a | 2025-10-09 16:18:14 +0800 | hh | feat(finance): 暂时禁用供应商账单导出功能
+3e3cb61 | 2025-10-09 15:47:30 +0800 | hh | refactor(finance): 优化应收应付账单相关组件代码结构
+eb8a3f7 | 2025-09-30 17:11:27 +0800 | penglibo | fix:调整应收账单
+c6d673e | 2025-09-29 16:58:46 +0800 | zhaogang | fix:订单明细导出加前缀
+e5aca3f | 2025-09-29 16:18:08 +0800 | zhaogang | fix:导出按钮异步调整
+2ad9ae7 | 2025-09-29 14:25:52 +0800 | zhaogang | fix:1
+dfd4ce7 | 2025-09-29 14:07:02 +0800 | zhaogang | fix:1
+caa6768 | 2025-09-29 11:32:00 +0800 | hh | 解决业务开展省份问题
+1c0d3d9 | 2025-09-29 10:35:24 +0800 | hh | 11
+227ccea | 2025-09-29 10:32:23 +0800 | penglibo | feat:删除客户供应商代码
+9c5d8bd | 2025-09-28 17:48:02 +0800 | hh | 1
+8530dfc | 2025-09-28 17:23:42 +0800 | hh | 11
+8d83f7b | 2025-09-28 17:20:59 +0800 | hh | 优化导出
+1b9ca39 | 2025-09-28 17:05:02 +0800 | hh | 优化导出
+126c769 | 2025-09-28 16:25:12 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+08a8474 | 2025-09-28 16:25:01 +0800 | hh | 优化导出
+9a14de2 | 2025-09-28 16:16:42 +0800 | penglibo | feat:刷新用户数据权限缓存
+8697027 | 2025-09-28 16:11:34 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+c42bf05 | 2025-09-28 16:11:25 +0800 | penglibo | feat:刷新用户数据权限缓存
+b7c2894 | 2025-09-28 15:26:34 +0800 | hh | 导出优化
+c1e4cf3 | 2025-09-28 14:26:17 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+886734a | 2025-09-28 14:26:09 +0800 | penglibo | feat:客商收款账号
+bddbad1 | 2025-09-28 13:51:06 +0800 | zhaogang | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+ddeb0cf | 2025-09-28 13:50:33 +0800 | zhaogang | fix:1
+6e9331a | 2025-09-28 13:48:34 +0800 | penglibo | feat:OA审核状态
+14bbf52 | 2025-09-28 13:46:54 +0800 | zhaogang | fix:1
+c963228 | 2025-09-28 13:04:58 +0800 | zhaogang | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+a23f808 | 2025-09-28 13:04:43 +0800 | zhaogang | fix:1
+01f599a | 2025-09-28 11:23:49 +0800 | hh | 修复bug
+c0766c6 | 2025-09-28 11:11:49 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+b687f65 | 2025-09-28 11:11:14 +0800 | penglibo | feat:添加客商管理
+e6828b0 | 2025-09-26 17:38:21 +0800 | zhaogang | feat:合同管理模块导出调整
+2b9d18d | 2025-09-26 14:32:39 +0800 | hh | 修复bug
+2a0c154 | 2025-09-26 14:11:18 +0800 | zhaogang | 1
+ff11312 | 2025-09-25 15:36:47 +0800 | penglibo | feat:申请开票、订单明细数据来源回显
+d0722d4 | 2025-09-25 14:41:25 +0800 | penglibo | feat:调整修改用户权限
+4219338 | 2025-09-25 14:13:34 +0800 | zhaogang | feat：1
+9be91bf | 2025-09-25 13:56:19 +0800 | zhaogang | feat:修改密码弹窗
+b9add12 | 2025-09-24 20:51:23 +0800 | zhaogang | 1
+9faed4d | 2025-09-24 20:00:39 +0800 | zhaogang | feat:导入导入页面，银行流水导入
+26c36ff | 2025-09-24 17:03:07 +0800 | hh | 修复bug
+ac5e091 | 2025-09-24 16:49:01 +0800 | hh | 修复bug
+2a21bda | 2025-09-24 15:34:05 +0800 | penglibo | feat:银行收款
+55c1a5a | 2025-09-24 14:50:41 +0800 | penglibo | feat:银行收款
+aa768ee | 2025-09-24 14:49:58 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+ad3bbb8 | 2025-09-24 14:49:48 +0800 | penglibo | feat:银行收款
+14701ea | 2025-09-24 11:09:23 +0800 | yuanyu | 【腾讯电子签】智能提取
+e8bb980 | 2025-09-24 09:29:41 +0800 | penglibo | feat:预估收入导出
+f212129 | 2025-09-23 18:00:50 +0800 | hh | 修复订单明细的问题
+e6a7d83 | 2025-09-23 16:02:43 +0800 | hh | ✨ feat: 实现付款申请与发票提交组件 新增付款申请弹窗，支持详情查看及文件预览功能。 创建发票申请组件，包含动态表单项及校验规则。 新增发票申请表单的 Schema 定义。 开发“录入应收账单”组件，支持表单处理与数据获取。 实现操作日志组件，用于追踪变更记录与用户操作。 新增金额调整提交组件，根据用户输入实现条件渲染。
+167ee92 | 2025-09-23 11:32:06 +0800 | yuanyu | 【腾讯电子签】智能提取
+bda8864 | 2025-09-22 17:42:22 +0800 | hh | 修复bug
+ffd0ff5 | 2025-09-22 16:51:36 +0800 | penglibo | feat:付款申请上传发票文件
+8882068 | 2025-09-22 11:06:38 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+260c882 | 2025-09-22 11:06:01 +0800 | penglibo | feat:订单添加附件字段
+906bbd9 | 2025-09-22 10:03:37 +0800 | zhaogang | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+767d142 | 2025-09-22 10:03:10 +0800 | zhaogang | 1
+1c068cc | 2025-09-19 18:26:09 +0800 | hh | 提交代码
+3712a47 | 2025-09-19 15:55:38 +0800 | hh | 提交代码
+678dcd8 | 2025-09-19 15:45:13 +0800 | yuanyu | 到期提醒记录
+0afcddf | 2025-09-19 14:31:53 +0800 | penglibo | feat:数据权限隔离
+6355e78 | 2025-09-19 10:28:44 +0800 | penglibo | fix:修复账单相关问题
+0f9fa2f | 2025-09-18 17:50:09 +0800 | penglibo | fix:修复账单相关问题
+d29f08a | 2025-09-18 17:40:24 +0800 | zhaogang | feat:导入导出
+b1f63e6 | 2025-09-18 10:47:01 +0800 | zhaogang | fix:1
+1310133 | 2025-09-17 15:57:30 +0800 | penglibo | fix:修复活动数据来源
+a05f2e8 | 2025-09-17 14:40:28 +0800 | penglibo | fix:修复开票问题
+2b2778f | 2025-09-17 11:25:54 +0800 | penglibo | feat:调整审批流程
+1f50859 | 2025-09-17 10:17:17 +0800 | hh | refactor(basic): 优化业务系统配置组件代码
+fa0eea8 | 2025-09-17 10:03:27 +0800 | hh | 修复bug
+4608eaf | 2025-09-16 18:43:32 +0800 | hh | fix:修复开票页面缓存数据
+a09818e | 2025-09-16 18:03:13 +0800 | hh | 提交代码
+84ae8b9 | 2025-09-16 16:45:30 +0800 | penglibo | feat:部门负责人改为下拉
+32939bf | 2025-09-16 16:43:27 +0800 | hh | 添加筛选条件
+e0aab06 | 2025-09-16 16:35:48 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+71c004b | 2025-09-16 16:35:25 +0800 | hh | feat:优化财务分管人和会计表单
+a847f07 | 2025-09-16 16:14:07 +0800 | penglibo | feat:审核添加部门负责人
+2925b97 | 2025-09-16 16:07:47 +0800 | hh | fix:修复搜索按钮权限问题
+24b8fdf | 2025-09-16 16:02:19 +0800 | hh | feat:添加数据来源字段
+cda9d64 | 2025-09-16 15:57:46 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+90aaa16 | 2025-09-16 15:57:38 +0800 | penglibo | feat:门店税率添加 %
+51aa891 | 2025-09-16 15:51:26 +0800 | hh | feat:添加考核划分以及事业部归属字段
+e17baeb | 2025-09-16 15:02:22 +0800 | zhaogang | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+107f654 | 2025-09-16 15:01:41 +0800 | zhaogang | feat:负责人
+8f6d5af | 2025-09-16 14:27:13 +0800 | penglibo | feat:活动添加考核划分
+4e915e8 | 2025-09-16 09:36:52 +0800 | hh | 清除不必要的打印信息
+445d685 | 2025-09-16 09:24:06 +0800 | hh | 添加采购发票权限
+d169302 | 2025-09-15 17:26:19 +0800 | hh | feat: 优化付款信息导入功能
+6031cf5 | 2025-09-15 14:46:51 +0800 | hh | feat: 添加开户银行字段并更新权限控制
+f4c5ac5 | 2025-09-15 14:14:24 +0800 | hh | fix(paymentApply): 修复付款申请单保存时申请类别为空的问题
+cea0a75 | 2025-09-15 09:22:48 +0800 | hh | 🔨 refactor: 优化财务模块权限控制和流程逻辑
+8030ef2 | 2025-09-15 09:06:04 +0800 | zhaogang | fix:流程状态+回调内容
+009df77 | 2025-09-12 16:30:38 +0800 | zhaogang | feat:添加登录编号
+19b89d2 | 2025-09-12 14:10:40 +0800 | hh | 🔨 refactor(finance): 调整发票详情导出表格展示逻辑
+0748656 | 2025-09-12 14:03:05 +0800 | hh | 🏗️ refactor: 重构付款申请详情页面
+787334e | 2025-09-12 09:46:09 +0800 | yuanyu | 到期提醒记录
+9ed25ac | 2025-09-12 09:02:03 +0800 | penglibo | feat:订单 c 端开票成功查询列表
+0bc58d2 | 2025-09-11 17:50:48 +0800 | hh | 🏗️ refactor: 调整应付账单和应收账款单据的字段显示逻辑
+87c1f23 | 2025-09-11 17:35:42 +0800 | hh | 🐛 fix(finance): 修正API路径和字典引用错误
+555832b | 2025-09-11 17:20:53 +0800 | yuanyu | 到期提醒记录
+664e07a | 2025-09-11 16:37:37 +0800 | hh | ✨ feat(finance): 添加预估成本和收入相关API及组件调整
+477de10 | 2025-09-11 14:15:18 +0800 | penglibo | feat:订单查询发票明细
+66cbc99 | 2025-09-10 17:21:00 +0800 | hh | 🐛 fix: 优化代码格式和修复小错误
+0b92552 | 2025-09-10 16:27:15 +0800 | penglibo | feat:修复审核任务详情
+0b63c71 | 2025-09-10 16:23:27 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+a79c1f8 | 2025-09-10 16:23:08 +0800 | penglibo | feat:修复审核任务详情
+6e91174 | 2025-09-10 16:03:53 +0800 | hh | ✨ feat: 优化财务模块相关页面
+bb607a4 | 2025-09-10 15:25:03 +0800 | zhaogang | fix:1
+90ad665 | 2025-09-10 15:21:49 +0800 | zhaogang | feat:回调记录
+f792f16 | 2025-09-10 14:08:34 +0800 | penglibo | feat:审核结果字典
+accbea8 | 2025-09-10 14:02:00 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+7b92d8e | 2025-09-10 14:01:52 +0800 | penglibo | feat:新增修改供应商收款账号、客户发票
+73eedbc | 2025-09-10 11:07:38 +0800 | hh | 🎨 feat:调整订单明细
+aaf35ee | 2025-09-10 10:21:46 +0800 | penglibo | feat:调整审核
+40716c1 | 2025-09-09 20:26:38 +0800 | zhaogang | feat:1
+9aeea52 | 2025-09-09 19:14:03 +0800 | hh | ✨ feat(finance): 新增应付账单提交审核功能
+2e3006b | 2025-09-09 16:57:12 +0800 | penglibo | feat:调整审核
+144b9f6 | 2025-09-09 14:43:04 +0800 | penglibo | feat:调整审核背景色
+b40b839 | 2025-09-09 11:23:07 +0800 | penglibo | feat:调整审核
+b879d15 | 2025-09-08 17:22:50 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+a96c2b7 | 2025-09-08 17:22:42 +0800 | penglibo | feat:客户发票审核
+305d674 | 2025-09-08 16:06:02 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+84a1aaf | 2025-09-08 16:05:53 +0800 | hh | 🔧 refactor(request): 移除请求拦截器中的重复提交逻辑 🔧 fix(invoice): 修正确认函数中的 receivableBillId 赋值 🔧 chore(record): 移除 handleEdit 函数中的调试日志
+0ca407a | 2025-09-08 10:30:43 +0800 | dengyu | 认领金额显示
+ac68f76 | 2025-09-05 17:49:29 +0800 | hh | 🔀 feat(realTimeReceiptBill): 优化实时收款单详情页面
+84a24e2 | 2025-09-05 17:31:33 +0800 | hh | Merge branches 'master' and 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+8c188e1 | 2025-09-05 17:20:13 +0800 | dengyu | 1
+a53ad60 | 2025-09-05 17:17:57 +0800 | dengyu | 调整字段名称
+442661f | 2025-09-05 16:09:46 +0800 | hh | ⚡️ refactor(finance): 重构应收账单相关组件
+6740711 | 2025-09-05 15:52:43 +0800 | dengyu | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+125cae2 | 2025-09-05 15:52:40 +0800 | dengyu | 更新请求地址前缀
+9e5b33c | 2025-09-05 14:57:36 +0800 | hh | 🐛 refactor(finance): 优化发票认领弹窗的 ID 获取逻辑
+e2601d6 | 2025-09-05 10:05:58 +0800 | hh | 🎨 refactor: 重构发票相关组件和页面
+fa1d2f3 | 2025-09-04 18:00:51 +0800 | dengyu | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+5f7f611 | 2025-09-04 18:00:48 +0800 | dengyu | 1
+717feb0 | 2025-09-04 16:39:12 +0800 | hh | ✨ refactor(finance): 移除应收账款单页面的无用代码
+a22b8f6 | 2025-09-04 16:03:49 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+bb83788 | 2025-09-04 16:03:42 +0800 | hh | ✨ refactor: 重构应收款相关功能
+51921bc | 2025-09-04 14:33:01 +0800 | yuanyu | 【用户头像】修改为cos
+28b93aa | 2025-09-04 14:11:21 +0800 | penglibo | feat:添加产品分类和收支类型筛选
+ee82ac6 | 2025-09-04 14:10:10 +0800 | penglibo | feat:添加产品分类和收支类型筛选
+3a251d9 | 2025-09-03 17:02:50 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+dd86fa0 | 2025-09-03 17:02:41 +0800 | penglibo | feat:订单明细时间筛选添加默认结束时间
+10e8e4a | 2025-09-03 16:01:11 +0800 | hh | ✨ feat(invoice): 优化发票申请和认领功能
+3c7e4d8 | 2025-09-03 15:45:09 +0800 | penglibo | feat:调整订单明细字段
+2acb0a5 | 2025-09-03 10:22:57 +0800 | penglibo | feat:调整订单明细字段
+419c72a | 2025-09-03 10:14:04 +0800 | penglibo | feat:订单明细字段
+4bd23cd | 2025-09-02 15:04:15 +0800 | hh | ✨ feat: 优化付款申请功能
+d43d8c2 | 2025-09-01 16:19:24 +0800 | penglibo | feat:财务-业务名称
+934fc77 | 2025-09-01 14:57:10 +0800 | yuanyu | 【资金账号管理】api参数
+1484da3 | 2025-09-01 10:50:30 +0800 | yuanyu | 1
+f0491d2 | 2025-09-01 10:17:47 +0800 | hh | ✨ feat: 添加采购发票对话框组件
+4a7e9bb | 2025-09-01 10:17:02 +0800 | hh | ✨ feat: 优化付款申请功能
+4dfd64e | 2025-09-01 10:09:34 +0800 | penglibo | feat:订单明细表调整字段
+37374f7 | 2025-08-29 17:36:11 +0800 | zhaogang | fix:1
+259253d | 2025-08-29 17:10:33 +0800 | zhaogang | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+24e8bcd | 2025-08-29 17:09:24 +0800 | zhaogang | feat:缓存监控
+55163fc | 2025-08-29 16:53:22 +0800 | penglibo | feat:订单明细表调整字段
+117336c | 2025-08-29 16:52:33 +0800 | penglibo | feat:接口白名单配置
+10b5cdc | 2025-08-29 16:01:50 +0800 | hh | refactor(datan): 删除 etcBusReport 组件中的导入功能
+b241c3e | 2025-08-29 15:50:23 +0800 | hh | ✨ feat(finance): 优化付款申请功能
+3feba49 | 2025-08-29 15:41:29 +0800 | yuanyu | 1
+4792aaf | 2025-08-28 18:09:24 +0800 | dengyu | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+6e0c4c8 | 2025-08-28 18:09:20 +0800 | dengyu | 添加子字典管理
+dea48c7 | 2025-08-28 15:43:20 +0800 | zhaogang | fix:小兔数据界面修改
+82e4866 | 2025-08-28 14:01:43 +0800 | zhaogang | feat:小兔数据etc客车，货车，微信代金券、小兔驾考、惠生活界面
+cf50dbe | 2025-08-27 11:12:57 +0800 | hh | ✨ refactor: 重构支付申请组件
+13190b9 | 2025-08-26 17:28:45 +0800 | yuanyu | 1
+479201a | 2025-08-26 14:10:03 +0800 | penglibo | fix:修复下载批量修改客户模板
+2d8b98c | 2025-08-26 10:21:30 +0800 | yuanyu | 1
+9c0b3f0 | 2025-08-25 13:54:12 +0800 | yuanyu | 删除基础数据-项目管理列表备注说明列
+2b80b36 | 2025-08-21 17:16:43 +0800 | hh | refactor(components): 优化多个组件的代码结构和功能
+049413d | 2025-08-21 17:08:55 +0800 | penglibo | feat:移除 admin 路径
+e13aff9 | 2025-08-21 16:30:02 +0800 | penglibo | feat:用户搜索添加姓名
+83e9f77 | 2025-08-21 10:23:06 +0800 | penglibo | feat:折叠展示 logo
+08d7331 | 2025-08-21 09:52:33 +0800 | penglibo | feat:用户考核划分事业部归属提示
+28287b7 | 2025-08-21 09:20:31 +0800 | hh | branding(login): 更新登录页面标题
+9f690b5 | 2025-08-20 17:48:16 +0800 | penglibo | feat:客商门店导出合同
+d433345 | 2025-08-20 16:13:44 +0800 | penglibo | feat:供应商列表查询筛选
+9fec261 | 2025-08-20 14:40:10 +0800 | penglibo | feat:修改用户绑定 oa 账号
+69b3b85 | 2025-08-20 10:32:57 +0800 | dengyu | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+18865f0 | 2025-08-20 10:32:51 +0800 | dengyu | 活动信息添加字段
+dad30bf | 2025-08-19 17:32:37 +0800 | penglibo | feat:更新门店数据来源
+d222366 | 2025-08-19 16:40:11 +0800 | penglibo | feat:调整日志字段
+90591fe | 2025-08-19 14:28:31 +0800 | penglibo | feat:业务系统字段长度限制
+2d0237f | 2025-08-19 14:16:39 +0800 | penglibo | feat:供应商税务评级
+f5a40e8 | 2025-08-19 10:04:25 +0800 | penglibo | feat:业务系统更换字段名
+7afb3fb | 2025-08-18 17:47:12 +0800 | penglibo | feat:限制客商资质文件上传数量
+67a44e3 | 2025-08-18 13:46:20 +0800 | penglibo | feat:调整供应商信息
+f75714c | 2025-08-18 10:01:56 +0800 | yuanyu | 归属地
+bd903fa | 2025-08-15 16:26:12 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+7bc84c4 | 2025-08-15 16:26:04 +0800 | hh | feat(payableBill): 增加关联预付单功能并调整列表宽度
+dc6ca92 | 2025-08-15 15:52:27 +0800 | yuanyu | 1
+fd7e38e | 2025-08-15 15:48:49 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+2523a18 | 2025-08-15 15:48:39 +0800 | penglibo | feat:调整业务系统字段，删除/admin 前缀路由
+f1ab2fe | 2025-08-15 15:32:08 +0800 | hh | refactor(finance): 重构应付账单模块
+a9675e3 | 2025-08-15 09:15:37 +0800 | hh | feat(finance): 优化付款申请单创建页面
+03f4061 | 2025-08-14 10:35:34 +0800 | dengyu | 活动管理隐藏掉导出按钮
+476da98 | 2025-08-13 17:34:00 +0800 | hh | feat(finance): 优化付款申请功能
+8d8ff3c | 2025-08-13 14:26:44 +0800 | dengyu | 修改活动信息的权限字符
+00050ea | 2025-08-13 14:03:20 +0800 | hh | 🎨 refactor(basic): 更新活动信息页面权限控制
+523f4a0 | 2025-08-13 09:14:22 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+68af914 | 2025-08-13 09:14:17 +0800 | fengyunchangxuan | bug修改
+75ebf1f | 2025-08-12 17:28:58 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+f249eab | 2025-08-12 17:28:51 +0800 | hh | ✨ feat(finance): 优化付款申请功能
+7c98c65 | 2025-08-12 15:15:07 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+0f6222e | 2025-08-12 15:13:57 +0800 | penglibo | feat:添加车服门店合同查询
+3ce4aa9 | 2025-08-12 14:17:52 +0800 | hh | ⚡️ feat(finance): 重构发票 OCR 功能
+5db2a1d | 2025-08-11 16:42:07 +0800 | hh | ✨feat：详情组件完成
+a05b5ad | 2025-08-11 15:11:10 +0800 | penglibo | fix:客户、供应商信息添加字段
+03f7d08 | 2025-08-11 14:23:30 +0800 | penglibo | fix:客户、供应商信息添加字段
+de06495 | 2025-08-11 14:02:02 +0800 | fengyunchangxuan | bug修改
+c462a2f | 2025-08-11 13:54:01 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+52fc346 | 2025-08-11 13:53:50 +0800 | fengyunchangxuan | bug修改
+caf0607 | 2025-08-08 17:25:52 +0800 | hh | ✨feat: 付款申请详情
+a98f4f5 | 2025-08-08 16:54:16 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+f780efe | 2025-08-08 16:54:08 +0800 | hh | ✨feat:付款申请
+a2ca276 | 2025-08-08 14:32:59 +0800 | fengyunchangxuan | bug修改
+c614146 | 2025-08-08 10:14:16 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+bc9bdf2 | 2025-08-08 10:14:07 +0800 | fengyunchangxuan | 1
+8fc4469 | 2025-08-07 17:31:54 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+c5a8387 | 2025-08-07 17:31:36 +0800 | hh | ✨ feat:开票申请完成，付款申请基模版完成
+5f9532e | 2025-08-07 17:29:46 +0800 | fengyunchangxuan | 1
+35ba866 | 2025-08-07 15:01:08 +0800 | fengyunchangxuan | bug修改
+241a97b | 2025-08-07 09:31:48 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+469963a | 2025-08-07 09:31:40 +0800 | fengyunchangxuan | 1
+01330c4 | 2025-08-06 17:31:49 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+3f33784 | 2025-08-06 17:31:21 +0800 | hh | 1
+20a53a6 | 2025-08-06 17:31:00 +0800 | fengyunchangxuan | 1
+24b0b99 | 2025-08-06 16:26:36 +0800 | fengyunchangxuan | bug修改
+c748971 | 2025-08-06 15:40:37 +0800 | fengyunchangxuan | bug修改
+02d48e5 | 2025-08-06 14:13:33 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+e041af6 | 2025-08-06 14:13:08 +0800 | fengyunchangxuan | bug修改
+2d4ad42 | 2025-08-06 11:33:47 +0800 | penglibo | fix:公司信息添加修改状态
+f83095a | 2025-08-06 11:08:50 +0800 | penglibo | fix:更换审核流程和订单请求路径
+29ce99d | 2025-08-05 17:29:00 +0800 | hh | ✨feat: 申请开票模块
+bcd83bf | 2025-08-04 17:27:30 +0800 | hh | ✨ feat:开票申请模块
+46d886e | 2025-08-04 16:47:24 +0800 | penglibo | fix:到期合同下载按钮权限编码调整
+5eca1f0 | 2025-08-04 10:30:18 +0800 | penglibo | feat:审核流程按钮权限编码修改
+f4d2e04 | 2025-08-04 09:54:26 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+7be2777 | 2025-08-04 09:54:17 +0800 | hh | ✨ 添加实时收款账单
+8528607 | 2025-08-01 10:54:47 +0800 | fengyunchangxuan | 解决代码审查的问题
+f308a52 | 2025-08-01 10:05:12 +0800 | fengyunchangxuan | 1
+ea2ea50 | 2025-08-01 09:17:27 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+dd627c8 | 2025-08-01 09:17:19 +0800 | fengyunchangxuan | 优化
+b24c59b | 2025-07-31 17:51:57 +0800 | penglibo | feat:审核任务 id 字段
+013f0cb | 2025-07-31 17:49:49 +0800 | penglibo | feat:当前审批角色字段字典配置
+3624b81 | 2025-07-31 17:45:37 +0800 | penglibo | feat:审核任务字段调整
+09d863e | 2025-07-31 17:35:45 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+744a0ad | 2025-07-31 17:35:36 +0800 | penglibo | feat:审核任务字段调整
+49caf4d | 2025-07-31 17:16:06 +0800 | fengyunchangxuan | 1
+97aa003 | 2025-07-31 17:04:08 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+7d8c3fc | 2025-07-31 17:04:00 +0800 | fengyunchangxuan | 整体完成
+9e7ddb5 | 2025-07-31 16:58:22 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+64322ff | 2025-07-31 16:58:14 +0800 | penglibo | feat:审核任务状态
+06cdd67 | 2025-07-31 16:48:40 +0800 | hh | 删除无用注释
+6337e13 | 2025-07-31 16:18:39 +0800 | hh | 修复漏洞
+cf9c622 | 2025-07-31 16:06:33 +0800 | penglibo | feat:发票审核状态
+09ac9b1 | 2025-07-31 15:52:27 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+a8f84ed | 2025-07-31 15:52:19 +0800 | penglibo | feat:配置客户、供应商详情权限
+2bfa747 | 2025-07-31 15:08:27 +0800 | fengyunchangxuan | 删除一些代码审查通不过的组件
+cc4f2bb | 2025-07-31 14:24:15 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+6e6762e | 2025-07-31 14:24:05 +0800 | fengyunchangxuan | 优化
+c4b74d6 | 2025-07-31 11:26:47 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+35162e7 | 2025-07-31 11:26:38 +0800 | penglibo | feat:客户、供应商添加合同查询页面
+3e23c62 | 2025-07-31 10:38:14 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+4b4be9e | 2025-07-31 10:38:02 +0800 | fengyunchangxuan | 优化
+76bb865 | 2025-07-30 16:47:24 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+933c08c | 2025-07-30 16:47:23 +0800 | hh | ✨ feat:优化不结算内容
+3d7cd95 | 2025-07-30 11:30:09 +0800 | fengyunchangxuan | 用户添加oa单位
+12e5052 | 2025-07-30 11:06:46 +0800 | fengyunchangxuan | 修改代码审查的问题
+9a75f69 | 2025-07-29 16:52:04 +0800 | fengyunchangxuan | 1
+c923716 | 2025-07-29 15:34:52 +0800 | fengyunchangxuan | 1
+9057c6d | 2025-07-29 15:34:17 +0800 | fengyunchangxuan | 商户合同、保密合同完成
+de2764b | 2025-07-29 10:39:03 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+7d8ef49 | 2025-07-29 10:38:29 +0800 | penglibo | feat:客户、供应商资质文件、发票查询
+fec4a7f | 2025-07-29 10:21:16 +0800 | hh | ✨feat: 优化搜索组件和表格布局，增强用户体验
+c4c5410 | 2025-07-29 10:10:17 +0800 | penglibo | feat:业务分类会计列表回显
+1df310b | 2025-07-29 09:59:47 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+8541118 | 2025-07-29 09:59:36 +0800 | penglibo | feat:供应商、业务分类调整
+d4e4319 | 2025-07-28 17:33:00 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+74bf37b | 2025-07-28 17:32:52 +0800 | fengyunchangxuan | 1
+da623b3 | 2025-07-28 16:47:38 +0800 | hh | ✨ feat(audit): 增强任务管理并新增发票与账单模块
+35266b9 | 2025-07-28 15:36:37 +0800 | fengyunchangxuan | 1
+60620ef | 2025-07-28 15:36:00 +0800 | fengyunchangxuan | 合同跟进完成
+5dddf94 | 2025-07-28 15:12:28 +0800 | dengyu | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+9eba251 | 2025-07-28 15:07:59 +0800 | dengyu | 审核任务-应收和应付审核
+0d3328c | 2025-07-28 14:58:14 +0800 | hh | ✨ feat: 完善差异组件
+36b7638 | 2025-07-28 13:51:16 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+907296e | 2025-07-28 13:51:00 +0800 | hh | ✨ feat: 更新代理配置，注释掉测试API目标并设置新的目标地址
+9ed4867 | 2025-07-28 13:46:04 +0800 | hh | ✨ feat: 更新差异组件，动态生成可见列并过滤有数据的行；调整发票和供应商信息组件，优化数据处理逻辑
+becd882 | 2025-07-28 09:36:35 +0800 | dengyu | 活动管理
+d8c78c8 | 2025-07-25 17:38:59 +0800 | dengyu | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+46aebcb | 2025-07-25 17:38:03 +0800 | dengyu | 1
+4348493 | 2025-07-25 17:35:07 +0800 | hh | ✨ feat: 更新差异组件，支持动态显示修改后字段；调整发票申请页面，增加发票信息表格
+0af0436 | 2025-07-25 17:21:15 +0800 | fengyunchangxuan | 1
+19819c6 | 2025-07-25 16:14:20 +0800 | fengyunchangxuan | 1
+8ca351d | 2025-07-25 16:13:45 +0800 | fengyunchangxuan | 合同列表字段核对完成
+4610ae7 | 2025-07-25 15:40:23 +0800 | hh | 🐛 fix:解决冲突
+d12b278 | 2025-07-25 15:39:33 +0800 | hh | ✨ feat: 更新代理目标地址，调整为新的测试环境URL
+5a91adf | 2025-07-25 15:31:02 +0800 | hh | ✨ feat: 优化审核流程组件，增加默认值处理和表单结构调整
+edbfce4 | 2025-07-25 15:00:27 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+363442c | 2025-07-25 15:00:20 +0800 | penglibo | feat:供应商信息调整
+b9b4ad6 | 2025-07-25 14:12:13 +0800 | dengyu | 活动管理
+866a405 | 2025-07-25 14:10:33 +0800 | dengyu | 活动管理
+9b851b1 | 2025-07-25 11:23:36 +0800 | zhaogang | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+c55d913 | 2025-07-25 11:22:49 +0800 | zhaogang | feat:OA部门列表
+c387bea | 2025-07-25 11:20:49 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+73d4d7e | 2025-07-25 11:20:42 +0800 | fengyunchangxuan | 1
+d92742c | 2025-07-25 11:13:19 +0800 | hh | ✨ feat: 添加审核流程和差异对比组件，优化详情对话框
+258ed61 | 2025-07-25 10:29:58 +0800 | fengyunchangxuan | 1
+91a6da1 | 2025-07-25 10:21:18 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+7025dd2 | 2025-07-25 10:21:11 +0800 | fengyunchangxuan | 系统通知完成
+fd6b235 | 2025-07-25 09:38:38 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+b71458a | 2025-07-25 09:38:28 +0800 | penglibo | feat:供应商信息调整
+e836b9b | 2025-07-24 17:34:57 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+19a7caa | 2025-07-24 17:34:22 +0800 | hh | ✨ feat: 完善审核模块，添加多个组件以支持不同业务类型的处理
+f898dd8 | 2025-07-24 17:29:04 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+9f8c15a | 2025-07-24 17:28:53 +0800 | fengyunchangxuan | 到期合同列表完成
+b68e1f3 | 2025-07-24 15:28:36 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+598965e | 2025-07-24 15:28:31 +0800 | hh | ✨ feat: 更新审核流程编辑和查看功能，添加版本和更新时间字段
+2d6f97a | 2025-07-24 09:51:09 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+26424f5 | 2025-07-24 09:50:59 +0800 | fengyunchangxuan | 合同产品类别完成
+771bfbb | 2025-07-23 17:33:15 +0800 | hh | ✨ feat:添加审核中心模块
+5ab598a | 2025-07-23 17:10:20 +0800 | fengyunchangxuan | 1
+bcb4016 | 2025-07-23 16:20:23 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+ee84aa2 | 2025-07-23 16:20:15 +0800 | fengyunchangxuan | 筛选组件添加全部选项
+7a92738 | 2025-07-22 17:49:02 +0800 | hh | ✨ feat: 更新收入和应收账单相关API路径，调整表单字段类型和搜索功能
+ce943c1 | 2025-07-22 17:28:43 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+63846bc | 2025-07-22 17:28:32 +0800 | fengyunchangxuan | 1
+700d4ef | 2025-07-22 17:17:25 +0800 | penglibo | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+08733ac | 2025-07-22 17:13:42 +0800 | penglibo | fix:更新订单明细列表字段
+b0337a1 | 2025-07-22 15:19:34 +0800 | fengyunchangxuan | 1
+ee73844 | 2025-07-22 14:54:13 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+21bb13b | 2025-07-22 14:54:07 +0800 | fengyunchangxuan | 1
+cfb1f1d | 2025-07-22 14:52:27 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+5f03f28 | 2025-07-22 14:49:55 +0800 | hh | 1
+608d5ff | 2025-07-22 13:44:50 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+ebba42d | 2025-07-22 13:44:42 +0800 | fengyunchangxuan | 添加代码审查的插件和配置
+5fd9197 | 2025-07-22 11:14:14 +0800 | hh | 🚑fix： 解决冲突
+8abc515 | 2025-07-22 11:12:02 +0800 | hh | ✨ feat: 更新申请开票表单，新增发票明细功能及相关字段
+99c9e61 | 2025-07-22 11:09:45 +0800 | fengyunchangxuan | 1
+7601139 | 2025-07-22 10:45:33 +0800 | fengyunchangxuan | 1
+a8d3428 | 2025-07-22 10:45:17 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+fbc6978 | 2025-07-22 10:45:08 +0800 | fengyunchangxuan | 分组筛选框完成
+f01784b | 2025-07-22 09:17:35 +0800 | hh | 🔀 fix: 解决冲突
+da63224 | 2025-07-22 09:14:42 +0800 | hh | ✨ feat：新增应收账单操作日志与发票申请功能
+6cc0de9 | 2025-07-21 17:11:32 +0800 | fengyunchangxuan | 1
+519eb18 | 2025-07-21 16:39:07 +0800 | fengyunchangxuan | 合同授权记录完成
+4a72a85 | 2025-07-21 14:34:21 +0800 | fengyunchangxuan | 1
+bd74307 | 2025-07-21 11:20:55 +0800 | fengyunchangxuan | 1
+5f16fcd | 2025-07-21 11:18:33 +0800 | fengyunchangxuan | 1
+c3dda11 | 2025-07-21 11:15:59 +0800 | fengyunchangxuan | 1
+6488c75 | 2025-07-21 11:15:28 +0800 | fengyunchangxuan | 1
+7583d83 | 2025-07-18 17:29:14 +0800 | hh | ✨ feat: 添加调整金额和标记为不结算的功能，优化相关组件和数据处理逻辑
+60cd17c | 2025-07-18 16:50:39 +0800 | hh | ✨ feat:需结算未调整过金额的订单
+bfad3c8 | 2025-07-17 17:22:31 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+89b67f5 | 2025-07-17 17:22:24 +0800 | fengyunchangxuan | 1
+5bef6cf | 2025-07-17 17:06:01 +0800 | hh | ✨ feat: 添加应收账单录入功能，优化相关组件和数据处理逻辑
+7e924f7 | 2025-07-17 14:12:31 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+f250437 | 2025-07-17 14:12:20 +0800 | fengyunchangxuan | 合同借阅功能完成
+0466d32 | 2025-07-17 13:52:29 +0800 | hh | ✨ feat: 添加第三方订单导入记录功能，优化文件上传和数据处理逻辑
+abc23c6 | 2025-07-16 17:35:19 +0800 | hh | ✨ feat:第三方订单
+eb66a17 | 2025-07-16 17:05:31 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+fcf89e6 | 2025-07-16 17:04:34 +0800 | penglibo | fix:文件上传路径
+acddbc2 | 2025-07-16 15:23:00 +0800 | fengyunchangxuan | 修改合同页面
+d4e270b | 2025-07-15 16:00:57 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+cfbfae5 | 2025-07-15 16:00:48 +0800 | fengyunchangxuan | 1
+e908c7b | 2025-07-15 09:17:51 +0800 | hh | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+d1abf28 | 2025-07-15 09:17:05 +0800 | hh | ✨ feat：订单管理
+8fb7878 | 2025-07-14 17:57:26 +0800 | penglibo | fix:项目必填参数
+1c59548 | 2025-07-14 17:34:45 +0800 | penglibo | fix:项目必填参数
+8588e7c | 2025-07-14 17:01:28 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+516068c | 2025-07-14 17:01:18 +0800 | penglibo | feat:项目管理权限标识
+4d70271 | 2025-07-14 16:56:59 +0800 | fengyunchangxuan | Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/sjht-bi/sjht-bi-ui/sjht-bi-pc
+8b52298 | 2025-07-14 16:54:29 +0800 | fengyunchangxuan | form组件添加提示
+da58bdb | 2025-07-14 14:43:20 +0800 | penglibo | Merge remote-tracking branch 'origin/master'
+146ee1f | 2025-07-14 14:43:03 +0800 | penglibo | feat:去掉三方结算操作
+cd6b819 | 2025-07-14 09:36:59 +0800 | fengyunchangxuan | 解决冲突
+b8bc287 | 2025-07-14 09:36:24 +0800 | fengyunchangxuan | 啥也没改
+3b96df1 | 2025-07-14 09:13:04 +0800 | yuanyu | 合同到期提醒设置
+81f3c9f | 2025-07-11 17:05:07 +0800 | zhaogang | feat:oa数据同步记录管理，映射配置
+1707076 | 2025-07-11 10:43:41 +0800 | yuanyu | 合同列表
+a0e6f1c | 2025-07-09 17:10:49 +0800 | hh | ✨ feat: 更新API请求路径和格式，优化代码风格
+2325dac | 2025-07-09 14:41:08 +0800 | penglibo | feat:订单明细添加调整金额字段
+1bd1965 | 2025-07-09 13:43:06 +0800 | penglibo | feat:联调订单汇总业务分类筛选
+32b24c3 | 2025-07-08 10:13:53 +0800 | zhaogang | init

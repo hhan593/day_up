@@ -11,10 +11,14 @@
             "id": "c06785d2e3e40ac7",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "conflict-files-obsidian-git.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "conflict-files-obsidian-git"
             }
           }
         ]
@@ -190,18 +194,20 @@
   },
   "active": "c06785d2e3e40ac7",
   "lastOpenFiles": [
+    "conflict-files-obsidian-git.md",
+    "test笔记.md",
+    "2025年度总结/git_log_app_2025.txt",
+    "2025年度总结/git_log_2025_web.txt",
+    "2025年度总结/2025年度工作总结报告（3）.md",
     "2025年度总结/2025年年度总结版本(5).md",
+    "2025年度总结/git_log_2025_business.txt",
+    "2025年度总结/git_log_2025pc.txt",
     "2025年度总结/2025年年度总结版本(4)Gemini.md",
     "2025年度总结/2025年年度总结版本(1).md",
     "2025年度总结/2025年年度总结(2).md",
-    "2025年度总结/2025年度工作总结报告（3）.md",
-    "2025年度总结/git_log_2025_web.txt",
-    "2025年度总结/git_log_2025pc.txt",
-    "2025年度总结/git_log_2025_business.txt",
-    "2025年度总结/未确认 122901.crdownload",
-    "2025年度总结/git_log_app_2025.txt",
-    "2025年度总结/git_log_2025_pc.txt",
     "2025年度总结",
+    "2025年度总结/未确认 122901.crdownload",
+    "2025年度总结/git_log_2025_pc.txt",
     "掘金小册/Nest 通关秘籍/9. 使用多种 Provider，灵活注入对象.md",
     "掘金小册/Nest 通关秘籍/8. 如何调试 Nest 项目.md",
     "掘金小册/Nest 通关秘籍/7. IoC 解决了什么痛点问题？.md",
@@ -221,8 +227,6 @@
     "掘金小册/TypeScript 入门教程/16. 从 JavaScript 迁移到 TypeScript：让你的项目改头换面.md",
     "掘金小册/TypeScript 入门教程/15. 实战环节：npm 包发布.md",
     "掘金小册/TypeScript 入门教程/14. 实战环节：TypeScript + React.md",
-    "掘金小册/TypeScript 入门教程/13. 类型学习告一段落：配置你的 TypeScript.md",
-    "掘金小册/TypeScript 入门教程/12. 模板字符串类型：最熟悉的陌生人.md",
     "掘金小册/TypeScript 入门教程"
   ]
 }
