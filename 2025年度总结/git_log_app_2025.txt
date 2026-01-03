@@ -1,0 +1,1463 @@
+commit 884482e31477f856bf0d35de26ac808ac528d093
+Author: hh <1994824227@qq.com>
+Date:   Wed Dec 31 21:29:23 2025 +0800
+
+    ✨ perf 重构ETC客车数据处理逻辑并优化UI组件
+    
+    更新API调用，使用新的 BusDataQuery 类型获取客车流量与销售数据。
+    增强 DualStatCard 组件，支持根据条件渲染比率信息。
+    优化 mixBar 组件，加强数据校验并改进图表初始化逻辑。
+    重构 etc-bus-fwf 和 etc-bus-xsfxl 页面，采用新的图表组件。
+    新增ETC客车收入及渠道办理量相关页面。
+    在 pages.json 中更新路由配置，注册新增组件。
+    优化多个组件中的数据获取逻辑。
+
+commit 1bf867aa65cf8aaa61e14e0b28fb35a3be52061f
+Author: hh <1994824227@qq.com>
+Date:   Wed Dec 31 16:44:08 2025 +0800
+
+    ✨ feat: 添加ETC客车相关页面和组件，优化数据展示
+
+commit a604f96a9170b1c1a05af9de8977de1d7fdd4d4a
+Author: hh <1994824227@qq.com>
+Date:   Wed Dec 31 11:22:01 2025 +0800
+
+    ✨ feat:etcBus模块，收入情况静态完成
+
+commit 2f0661e26f5704ceab70c3419a0a45db1e27f85b
+Author: hh <1994824227@qq.com>
+Date:   Wed Dec 31 10:22:16 2025 +0800
+
+    ⚡️ perf：优化图表配置和数据处理逻辑
+
+commit ae0fcd154105bde8d71861b150869649ffcc90b1
+Author: hh <1994824227@qq.com>
+Date:   Wed Dec 31 09:32:49 2025 +0800
+
+    ✨ feat：客服服务部模块初步功能实现
+
+commit 2155360755f37310d7b0bae9d9d5aa2d18c52f40
+Author: hh <1994824227@qq.com>
+Date:   Wed Dec 31 09:24:26 2025 +0800
+
+    ✨ feat：增加类型与枚举
+
+commit 7dfe3b541fb583e24d00f7cb079b323a7365472a
+Author: hh <1994824227@qq.com>
+Date:   Wed Dec 31 09:23:31 2025 +0800
+
+    ⚡️ perf：优化调整通用组件
+
+commit e333c72e28067149b837938ddcdf5da1c4a23fe1
+Author: hh <1994824227@qq.com>
+Date:   Wed Dec 31 09:21:59 2025 +0800
+
+    ⚡️ perf：调整配置文件
+
+commit ba6a760aae79c9604d75903630c021c871d235ac
+Author: hh <1994824227@qq.com>
+Date:   Wed Dec 31 09:19:51 2025 +0800
+
+    ⚡️ perf：优化request请求处理
+
+commit 2a5ce1c1eaae1308da5be833fd2b7246b37bc30e
+Author: hh <1994824227@qq.com>
+Date:   Mon Dec 29 10:21:15 2025 +0800
+
+    优化 tab 切换逻辑，使用 activeTabKey 替代 activeTab，简化组件状态管理
+
+commit b19aebe42f296550c8d3899e7345d3e3ab81574b
+Author: hh <1994824227@qq.com>
+Date:   Mon Dec 29 09:41:28 2025 +0800
+
+    优化 setModule13Data 函数，简化商店计数逻辑
+
+commit e641eea2dd67b635ff6e777d4933057ec4c25594
+Author: dengyu <1198603941@qq.com>
+Date:   Thu Dec 25 22:23:06 2025 +0800
+
+    1
+
+commit 9128e7a46357cdd026f6772ef0623e03912f87de
+Author: hh <1994824227@qq.com>
+Date:   Thu Dec 25 17:07:02 2025 +0800
+
+    优化缺陷
+
+commit b831627cfd1b3da09ca34707571bacfbd230caa7
+Author: hhan <1994824227@qq.com>
+Date:   Thu Dec 25 16:28:18 2025 +0800
+
+    优化
+
+commit 963142b98c286552ce0056af827a0f50bb16bbcc
+Author: hhan <1994824227@qq.com>
+Date:   Thu Dec 25 16:23:24 2025 +0800
+
+    优化
+
+commit 8c49e0605b49e268951fd5d7e3d2427eb7a7da19
+Author: hhan <1994824227@qq.com>
+Date:   Thu Dec 25 16:09:59 2025 +0800
+
+    优化
+
+commit 8f34041ad1b459cb5c8ccf4c061fe803b0c30c19
+Author: dengyu <1198603941@qq.com>
+Date:   Wed Dec 24 15:39:56 2025 +0800
+
+    fix:惠生活套餐显示异常
+
+commit 236c578756b767128dee8b70f64fdf0b5e8a92b3
+Author: hh <1994824227@qq.com>
+Date:   Tue Dec 16 19:19:13 2025 +0800
+
+    refactor(summary-table): 优化汇总表格组件结构与样式
+    
+    - 移除冗余的注释标签
+    - 简化滚动视图容器类名
+    - 统一使用 px 和 py 类替代 rpx 单位
+    - 将文本样式从 class 转为内联 style 处理
+    - 优化条件渲染逻辑提升可读性
+    - 删除重复的颜色和字体权重定义
+
+commit 5f8c836952d4438e39cbe811dcee75748e034c33
+Author: hh <1994824227@qq.com>
+Date:   Tue Dec 16 19:05:41 2025 +0800
+
+    feat(customerService): 启用合同审批表功能并注释无效导入
+    
+    - 启用合同审批表组件(contractOrderReview)的渲染逻辑
+    - 注释掉三个已不再使用的组件导入语句
+    - 清理无效的组件引用以优化代码结构
+
+commit f2f2cdbde6f7528c576fa20fb31e541d470e4f4e
+Author: hh <1994824227@qq.com>
+Date:   Tue Dec 16 17:42:03 2025 +0800
+
+    feat(customer-service): 更新客户服务平台数据展示与接口整合
+    
+    - 删除多个独立的客户服务业接口文件，统一引入方式
+    - 修改 DataOverviewCard 组件字段映射及显示逻辑
+    - 调整 SummaryTable 组件样式高度自适应
+    - 在 ETC 高速通行组件中增加渠道对账明细表格
+    - 报销页面增加实际数据获取并调整金额单位为元
+    - 修复 etcRow 和 reimbursement 页面条件渲染逻辑
+    - 新增客户服务费用报销命名空间类型定义
+
+commit a6dea9992f8a7a03402c58589be10aa061169e3f
+Author: hh <1994824227@qq.com>
+Date:   Tue Dec 16 15:31:25 2025 +0800
+
+    feat(utils): 添加时间格式化工具函数并优化查询逻辑
+    
+    - 引入 dayjs 库用于日期处理
+    - 新增 formatQueryTime 函数，用于处理查询时间逻辑
+    - 在多个组件中替换原有的日期处理方式
+    - 统一日期参数传递格式，提升代码一致性
+    - 移除部分冗余的注释，提高代码可读性
+    - 优化时间范围判断逻辑，避免重复请求_today数据
+
+commit 68faddb727a180fdb1b07fbf635ee8c245824f1a
+Author: hh <1994824227@qq.com>
+Date:   Mon Dec 15 17:19:51 2025 +0800
+
+    feat(customer-service): 实现客户赔付与车后服务卡券数据动态展示
+    
+    - 移除 GenericTable 组件中的固定宽高样式
+    - 更新客户赔付申请组件数据源，使用真实接口并调整字段映射
+    - 重构车后服务卡券页面，接入后台数据并优化表格和图表展示逻辑
+    - 暴露相关 API 类型定义，支持时间范围查询及导出类型参数
+    - 启用客户赔付与车后服务卡券页面在主菜单中的显示逻辑
+
+commit cc7f7a4c43efe37d110d146758fdf86c3cbb2092
+Author: hh <1994824227@qq.com>
+Date:   Mon Dec 15 13:48:53 2025 +0800
+
+    feat(customer-service): 实现客服部门多个数据展示组件
+    
+    - 开发客户赔付申请页面，包含总览卡片、业务赔付占比柱状图和明细表格
+    - 实现车后服务卡券申请页面，展示卡券金额数量、分类占比和明细数据
+    - 完成合同审批 review 页面，集成合同数据接口并展示多维度分析图表
+    - 构建 ETC 推广线下办理稽核页面，优化数据展示结构和样式布局
+    - 新增 ETC 渠道结算审核页面，支持结算数据分析和异常检测展示
+    - 统一更新 API 类型引用，规范命名空间使用方式
+    - 重构登录接口请求方法，统一使用 request 封装调用
+    - 移除无用类型导入和冗余代码注释
+
+commit 849e7420db9ffcdbdecc856a47fb70b0fb119b0a
+Author: hh <1994824227@qq.com>
+Date:   Thu Dec 11 14:44:14 2025 +0800
+
+    refactor(components): 统一导入类型定义并优化组件结构
+    
+    - 移除重复的本地接口定义，统一从 "@/types/component" 导入
+    - 删除无用注释和冗余代码
+    - 调整部分组件样式与布局逻辑
+    - 优化 GenericTable 和 SummaryTable 的高度自适应表现
+    - 更新 ringChart 组件支持更多自定义属性
+    - 清理模板中的无意义包装标签
+    - 规范 datePickerTime 组件类型引用
+    - 提取公共类型至共享目录，提升可维护性
+    - 精简部分页面组件模板内容
+    - 增强多个组件对 dateFilter 属性的支持与响应式处理
+
+commit 077f8fb32d4ef6134f4f574c02086fc603b965c1
+Author: dengyu <1198603941@qq.com>
+Date:   Wed Dec 10 13:50:05 2025 +0800
+
+    1
+
+commit 90ac773e221d452d68e02a8bf409c432dbadec4f
+Merge: 5f2f528 438f687
+Author: dengyu <1198603941@qq.com>
+Date:   Wed Dec 10 13:49:27 2025 +0800
+
+    Merge branch 'master' into develop
+
+commit 438f6874573def768730b9270f4b4d3fa1201b48
+Author: dengyu <1198603941@qq.com>
+Date:   Wed Dec 10 10:12:31 2025 +0800
+
+    1
+
+commit 5f2f528822b512006fe9ff6416a3f69fa9d70afb
+Author: hh <1994824227@qq.com>
+Date:   Mon Dec 8 10:47:51 2025 +0800
+
+    refactor(customer-service): 移除未使用的组件引用并优化标签配置
+    
+    - 删除 etcSettlement 组件中的无用代码和样式
+    - 将多个 tab 内容替换为占位视图
+    - 移除未使用的组件导入语句
+    - 更新标签列表配置，修正标签名称
+    - 替换原有组件展示逻辑为文本提示
+    - 调整 ETC 相关标签的显示顺序和命名
+
+commit 497c94374491f860260dae651f8f2589d6c86adf
+Author: hh <1994824227@qq.com>
+Date:   Fri Dec 5 17:52:40 2025 +0800
+
+    feat(rabbitDrive): 优化小兔驾考页面数据处理与展示逻辑
+    
+    - 重构数据获取逻辑，支持数组或对象格式响应数据的统一处理
+    - 新增柱状图数据生成函数，支持单柱和双柱图表配置
+    - 优化表格列配置生成逻辑，简化字段映射和格式化处理
+    - 调整弹窗表格数据显示逻辑，确保排序和排名正确展示
+    - 移除冗余的类型定义和无用代码注释
+    - 更新响应数据类型定义，增强类型安全性
+    - 修复业务类型映射函数参数传递问题
+    - 统一导入语句格式，移除不必要的 Vue 宏导入
+    - 优化日期筛选监听器，确保初始化时正确加载数据
+    - 调整组件样式和布局，提升视觉效果和用户体验
+
+commit ea2bac83f60608ee98153e828a8299ccc73cbf27
+Author: hh <1994824227@qq.com>
+Date:   Mon Nov 3 17:04:20 2025 +0800
+
+    优化图表数据展示顺序
+
+commit 560859308633e94629f102b8abf2ec0572cb79ca
+Author: hh <1994824227@qq.com>
+Date:   Fri Oct 24 17:37:28 2025 +0800
+
+    feat(wxCoupon): 优化券数据展示及工具函数
+    
+    - 在 all.vue、bank.vue 和 noBank.vue 组件中优化发券数量和核销数量的显示逻辑
+    - 添加对大数值的判断处理，使用 isLargeNumber 工具函数进行格式化展示
+    - 增加趋势图标方向和颜色的动态控制
+    - 引入 isLargeNumber 工具函数以支持数字格式化显示
+    - 修复 bank.vue 中 success 类型拼写错误（successs -> success）
+    - 调整组件结构与样式细节，提升视觉效果和可维护性
+    - 移除冗余代码并优化导出相关配置逻辑
+    - 更新样式文件以适配新布局结构
+    - 修正部分标签闭合问题和缩进格式错误
+    - 完善工具函数 isLargeNumber 的边界条件处理
+
+commit 56fc8c0307018498688f163f29fa759ef7b83d6c
+Author: hh <1994824227@qq.com>
+Date:   Fri Oct 24 16:50:41 2025 +0800
+
+    feat(datePickerTime): 优化日期选择器组件功能与样式
+    
+    - 调整 tabs 组件的自定义样式和宽度配置
+    - 更新 uv-line 组件宽度以适配新设计
+    - 新增 isWxCoupon 属性控制 tab 禁用状态
+    - 根据 isWxCoupon 属性调整周模式日期计算逻辑
+    - 移除冗余的 console 日志输出
+    - 优化 picker 更新时机，确保视图同步
+    - 重构初始化逻辑，提高代码可读性
+
+commit ed443f0518cbafdcfe9699a7bb71dfff03e0283c
+Author: hh <1994824227@qq.com>
+Date:   Thu Sep 18 17:13:02 2025 +0800
+
+    审核完成
+
+commit 158a116352c7691f1525b02a3b3406e581337788
+Author: hh <1994824227@qq.com>
+Date:   Thu Sep 18 14:52:39 2025 +0800
+
+    初步更改
+
+commit 42f5073ff747df2195de86251d68af5bb2f94392
+Author: hh <1994824227@qq.com>
+Date:   Thu Sep 18 10:26:20 2025 +0800
+
+    优化代码
+
+commit ec4ce4eff60d7fd8788cb7987937ded91154b864
+Author: hh <1994824227@qq.com>
+Date:   Wed Sep 17 10:36:06 2025 +0800
+
+    优化初始时间展示
+
+commit 2e50eeced30fded8d9bbc9ad01f3398546c5483b
+Author: hh <1994824227@qq.com>
+Date:   Mon Sep 15 16:30:19 2025 +0800
+
+    🎨 chore: 优化日期选择器，使用dayjs代替日器对象
+
+commit 48826890cdf8e6128806bd0c8b2a0536f3a7858c
+Author: hh <1994824227@qq.com>
+Date:   Mon Sep 15 16:15:28 2025 +0800
+
+    ⚡️feat: 重构时间选择器,支持自定义模式展示
+
+commit bcbd01510ff7b992e2418f632c6c918b2f4bf689
+Author: hh <1994824227@qq.com>
+Date:   Mon Sep 15 16:14:44 2025 +0800
+
+    ✨ feat:优化图表数据展示
+
+commit 213a6e357052dd02e21a6c030b504887a48af546
+Author: hh <1994824227@qq.com>
+Date:   Tue Aug 26 20:16:45 2025 +0800
+
+    ✨ refactor(components): 移除未使用的 flow 组件
+    
+    - 删除了 src/package-main/etcBus/components/flow.vue 文件
+    - 移除了 topBar 组件中未使用的导入和注释
+    - 优化了 topBar 组件的代码结构
+
+commit 344f11df4d8bd387c99598e1ae322d5ab70fcba4
+Author: hh <1994824227@qq.com>
+Date:   Tue Aug 26 18:29:39 2025 +0800
+
+    🔨 feat: 重构页面结构并添加新功能
+    
+    - 重新组织页面结构，分为多个子包
+    - 添加首页、数据总览、ETC客车等新页面
+    - 实现了新的数据展示和统计功能
+    - 优化了用户界面和交互设计
+
+commit 612feceb4b3cdddf6b22eba158da3fb2714b675e
+Author: hh <1994824227@qq.com>
+Date:   Tue Aug 26 17:31:59 2025 +0800
+
+    🎨 feat: 优化项目代码
+    - 更新 HTML 文档语言属性
+    - 调整 ECharts 图表组件样式
+    - 优化 Grid 组件样式
+
+commit 9bd82a219b7439ba4b3e23dc77ceaa8f7d67b5bf
+Author: hh <1994824227@qq.com>
+Date:   Thu Jul 31 15:13:52 2025 +0800
+
+    🔨 删除无用文件
+
+commit ef3d2b5aafe5a20bb75593076aebaf511993610b
+Author: hh <1994824227@qq.com>
+Date:   Thu Jul 24 14:53:23 2025 +0800
+
+    🐛fix: 调整图表布局和样式；优化数据获取逻辑，添加周范围计算功能
+
+commit bbb1f3cce5aa374fa752442d16f1a9311e454e7f
+Author: hh <1994824227@qq.com>
+Date:   Wed Jul 16 17:55:29 2025 +0800
+
+    🐛fix: 在获取数据失败时添加错误提示；合并类型导入以简化代码
+
+commit 57bbe4d269e4d58535dfcc20c52ca23dbbce7e37
+Author: hh <1994824227@qq.com>
+Date:   Wed Jul 9 09:14:17 2025 +0800
+
+    🐛fix: 移除多余的注释和调试代码，优化数据获取逻辑；调整字段格式化方式以提升代码可读性
+
+commit ec3df8db83bb18cf7707d6fe4e263c111c3a1e7d
+Author: hh <1994824227@qq.com>
+Date:   Tue Jul 8 14:33:28 2025 +0800
+
+    🐛fix: 更新导出功能，支持多种导出类型；优化数据下载逻辑，添加二进制文件下载支持
+
+commit 96b6cf065400df370c9d60b335c247ce4e5ced75
+Author: hh <1994824227@qq.com>
+Date:   Mon Jul 7 13:56:55 2025 +0800
+
+    🐛fix: 优化日期处理逻辑，根据选择的模式动态计算开始和结束日期
+
+commit 988564e0c6bad79d603ab377e85a8563d43cd4f1
+Author: hh <1994824227@qq.com>
+Date:   Mon Jul 7 11:19:25 2025 +0800
+
+    🐛fix: 移除多余的条件渲染，优化VIP获客组件的显示逻辑；调整Y轴最小值为0以改善图表展示
+
+commit 57e134e21d493c75b8a33d7f4e79a7975f901782
+Author: hh <1994824227@qq.com>
+Date:   Mon Jul 7 10:32:48 2025 +0800
+
+    🐛fix: 移除多个组件中的调试代码，优化数据格式化逻辑；添加新的格式化函数以支持金额显示为万元
+
+commit dd4181e10bac416111d7904198f17c01358a9951
+Author: hh <1994824227@qq.com>
+Date:   Wed Jul 2 15:47:16 2025 +0800
+
+    🐛fix: 移除多个组件中的注释代码，优化数据获取逻辑；调整日期处理方式以支持周报和月报查询
+
+commit 954c94f4b4badd4f12e1f67347296300a85fc09e
+Author: hh <1994824227@qq.com>
+Date:   Tue Jul 1 11:40:04 2025 +0800
+
+    🐛fix: 移除Footer组件，添加Content组件以显示平台使用说明；调整核销数量标签文本；更新图表颜色配置
+
+commit 15b5f2246f85bf5bba98140d128ee9b688f65fba
+Author: hh <1994824227@qq.com>
+Date:   Mon Jun 30 16:44:27 2025 +0800
+
+    🐛fix: 移除未使用的日期处理函数，优化工具函数；调整柱状图宽度以改善视觉效果
+
+commit 97bf4c1653de14e50402c0e3be8839834ad509a2
+Author: hh <1994824227@qq.com>
+Date:   Mon Jun 30 13:52:10 2025 +0800
+
+    🐛fix: 优化日期选择器逻辑，调整图表初始缩放比例；更新数据处理逻辑，修复数据字段名称
+
+commit 244a7f74d80738eb4795b6462808d2c00c0ca4f8
+Author: hh <1994824227@qq.com>
+Date:   Fri Jun 27 17:33:31 2025 +0800
+
+    🐛fix: 优化图表标签显示逻辑，确保每行最多显示8个字符并强制显示三行；调整柱状图间距和宽度
+
+commit 78ad256bce960a9879726d61e5a0e2abefa406a0
+Author: hh <1994824227@qq.com>
+Date:   Fri Jun 27 16:38:35 2025 +0800
+
+    🐛fix: 调整图表宽度和高度，优化数据展示；更新数据处理逻辑，移除冗余注释
+
+commit 7d4efe2d4b9b791f0bde2d488ee8fe6a00551028
+Author: hh <1994824227@qq.com>
+Date:   Fri Jun 20 09:48:01 2025 +0800
+
+    🐛fix: 修复请求成功时的日志输出，优化错误提示信息的字段名
+
+commit 49fd1b8065c9035f9beef3f7d15305224f104929
+Author: hh <1994824227@qq.com>
+Date:   Thu Jun 19 18:19:56 2025 +0800
+
+    🐛fix: 修复请求头处理逻辑，确保 token 正确添加到请求头中
+
+commit c5fdd7205dae3f33ac07969d4cd0e8e6873b5fba
+Author: hh <1994824227@qq.com>
+Date:   Thu Jun 19 18:07:12 2025 +0800
+
+    🐛fix: 修复请求地址注释，确保正确的 BASE_URL 配置
+
+commit eecd655e71c759f5ce39f70b8ae0c1086b6c0829
+Author: hh <1994824227@qq.com>
+Date:   Thu Jun 19 17:39:12 2025 +0800
+
+    🐛fix: 更新用户存储逻辑，使用 Pinia 管理 token，优化请求头处理
+
+commit 59bbce18534b5f278bb489dbe7bcfaa7caf59ca0
+Author: hh <1994824227@qq.com>
+Date:   Thu Jun 19 17:18:30 2025 +0800
+
+    🐛fix: 修复用户存储逻辑，添加 token 管理功能
+
+commit d9e8a56b18510fbdf4ea2fab540525d2f27da579
+Author: hh <1994824227@qq.com>
+Date:   Thu Jun 19 13:50:05 2025 +0800
+
+    🐛fix: 修复数据展示格式，优化请求地址注释
+
+commit fc52735043d1a835e64ee6482caf11789ad08420
+Author: hh <1994824227@qq.com>
+Date:   Tue Jun 17 10:13:06 2025 +0800
+
+    ⚡️ perf:优化图表展示
+
+commit eb39f45fe404547841f2aa4b6369a1fab1ac971a
+Author: hh <1994824227@qq.com>
+Date:   Thu Jun 12 10:08:54 2025 +0800
+
+    🐛fix: 优化打包错误
+
+commit fab0afc9a3c8da475b719eb30de80a1cc1611672
+Author: hh <1994824227@qq.com>
+Date:   Thu Jun 12 09:57:27 2025 +0800
+
+    💄 调整表格样式
+
+commit 0b19a74e268055f772298d11b57a68fc41210bd7
+Author: hh <1994824227@qq.com>
+Date:   Wed Jun 11 09:39:35 2025 +0800
+
+    🚩feat：优化表格样式
+
+commit be18334182233bde6732e7d75f507fefe0d564dd
+Author: hh <1994824227@qq.com>
+Date:   Wed Jun 11 09:37:12 2025 +0800
+
+    ✈️feat：放开截屏功能
+
+commit 5cfb2d69a10c9788889e7c733f2d14bdb62dd4f6
+Author: hh <1994824227@qq.com>
+Date:   Wed Jun 11 09:35:45 2025 +0800
+
+    ⚡️feat：优化柱状图宽度以及调整横坐标角度
+
+commit 60a5e08839014a4db00d653359ac341252dae3ac
+Author: hh <1994824227@qq.com>
+Date:   Mon Jun 9 15:44:05 2025 +0800
+
+    🔨feat：优化上线发布
+
+commit b94655402751568c03d2d4ef3e509ae14fe3b2ae
+Author: hh <1994824227@qq.com>
+Date:   Mon Jun 9 15:43:23 2025 +0800
+
+    ⚡️feat：优化修改
+
+commit 06cf20ca74550c8a406ced3bd1cb5d273a676e0e
+Author: hh <1994824227@qq.com>
+Date:   Wed Jun 4 17:34:48 2025 +0800
+
+    ✨feat： 时间选择器修改支持过滤选项
+
+commit 3e6b3ae71006e35ddb30c9fcc498930936f70f9e
+Author: hh <1994824227@qq.com>
+Date:   Tue Jun 3 21:08:02 2025 +0800
+
+    ⚡️feat：小兔数据完成
+
+commit 8344c745971f5750e5a545f7f3ad28eb3e984eea
+Author: hh <1994824227@qq.com>
+Date:   Tue Jun 3 21:05:58 2025 +0800
+
+    ⚡️feat：修改按钮位置
+
+commit 1839d15a2fa361421d1a3ab725956967931b9b93
+Author: hh <1994824227@qq.com>
+Date:   Tue Jun 3 16:46:59 2025 +0800
+
+    ⚡️feat： 优化代码
+
+commit a84296ce62edc150527a825797cf67f45f0b7e75
+Author: hh <1994824227@qq.com>
+Date:   Fri May 30 09:45:27 2025 +0800
+
+    🎨feat： 优化etc货车搜索逻辑
+
+commit 3aff3b1b5576201c41f124bba778bac89775ca52
+Author: hh <1994824227@qq.com>
+Date:   Wed May 28 09:28:40 2025 +0800
+
+    ✨ feat：优化打印逻辑
+
+commit b11c1f794a962bb926a161df65963e5966275051
+Author: hh <1994824227@qq.com>
+Date:   Fri May 23 15:50:44 2025 +0800
+
+    ✨feat： ETC模块和运营商完成
+
+commit 48a4deeef1f5c6c859a90cefbdee4c33b952c788
+Author: hh <1994824227@qq.com>
+Date:   Wed Apr 30 19:09:09 2025 +0800
+
+    ✨feat： 微信代金券全量数据模块
+
+commit 13384f08fb0f6dfae2a0593ad3b031a0b4ebeca6
+Author: hh <1994824227@qq.com>
+Date:   Mon Apr 28 17:44:43 2025 +0800
+
+    ✨ feat：修复问题
+
+commit 50d85164a0166bfff6a999fc5e86ee3ca79ead3f
+Author: hh <1994824227@qq.com>
+Date:   Sun Apr 27 18:05:00 2025 +0800
+
+    🐛 fix：修复问题
+
+commit 9756c9b6f97ff74490bc0cc6f5bd4931fde03517
+Merge: 14a84a2 18dae82
+Author: hh <1994824227@qq.com>
+Date:   Fri Apr 25 16:12:20 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 14a84a25462bffd84c625f0467098c4965fa875e
+Author: hh <1994824227@qq.com>
+Date:   Fri Apr 25 16:12:18 2025 +0800
+
+    ✨ feat：初始化微信代金券
+
+commit 18dae827d2a01e98e0e9c17fb81db71b361099ef
+Author: web_lin <1109502057@qq.com>
+Date:   Fri Apr 25 15:14:34 2025 +0800
+
+    🎈 perf: 样式优化调整
+
+commit 91a2ef152bf7aeaa69fa4c6b1d97d76d9add4bcb
+Merge: 2d76abb f0040b3
+Author: web_lin <1109502057@qq.com>
+Date:   Fri Apr 25 14:09:28 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit f0040b3f129dcf12a32c0576bc6bbd9d7dba2100
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Fri Apr 25 09:51:09 2025 +0800
+
+    修改
+
+commit 2d76abb3160e7f1b73ffdd63c4502fb5b2b827a8
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Apr 24 17:01:04 2025 +0800
+
+    🎈 perf: 图表样式优化
+
+commit b10b273e78cfa4702ca55facc4602ebc79f68b07
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 24 16:51:05 2025 +0800
+
+    修改
+
+commit 1c4a2b20c8f4efa46604c9acafb689f94891409f
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 24 16:41:50 2025 +0800
+
+    修改
+
+commit a096c0ccac3e817c8e6fdce6539a127ed5bbfab5
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 24 16:38:18 2025 +0800
+
+    修改
+
+commit e9b8c354d1e0ac8cd7c734dcd1a199523fc8921d
+Merge: ba9e3f6 25caa23
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 24 16:08:38 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit ba9e3f69e50ce027236a5815b6e45d06eaa398e3
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 24 16:08:31 2025 +0800
+
+    修改优化
+
+commit 25caa23b853815eed0aad499e5d5fe142ef08faa
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Apr 24 14:34:33 2025 +0800
+
+    🎈 perf: 样式优化
+
+commit 047233cf770a7e077ce76f947cdc974aac240e99
+Merge: 8ab1a06 4dada5d
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 24 10:56:04 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 8ab1a0662ecfd8e26c82e2f477ed0b005b61d4f8
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 24 10:55:56 2025 +0800
+
+    优化
+
+commit 4dada5dd25f8a7170fabbc1272f382fe672eeed1
+Merge: 0cfa3df b7b6efc
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Apr 24 10:44:08 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 0cfa3df85dadf71f03a8e4e58a36afb6f80b9828
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Apr 24 10:42:44 2025 +0800
+
+    🎈 perf: 日期控件优化
+
+commit b7b6efcf39f58bd7a606bf457c42b1b7c0b5ca1d
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 24 09:48:45 2025 +0800
+
+    修改分公司
+
+commit 7a150d30c29b5d984565b39df0c38faae34907fd
+Merge: 4fb65c7 4deb482
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Wed Apr 23 17:30:56 2025 +0800
+
+    优化
+
+commit 4fb65c79b725f3eac5c2430e545cd33b232bffae
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Wed Apr 23 17:28:56 2025 +0800
+
+    优化
+
+commit 4deb482c6765a4154f95fce6ca1d76224cd88606
+Author: web_lin <1109502057@qq.com>
+Date:   Wed Apr 23 17:28:42 2025 +0800
+
+    🐞 fix: 图表bug修复
+
+commit 821a751828f74d39e43dbca258fe0fda1c970396
+Author: web_lin <1109502057@qq.com>
+Date:   Wed Apr 23 17:20:30 2025 +0800
+
+    🎈 perf: 图表优化
+
+commit c3943e6ebf2563f8b126a46041742268494ddcd5
+Author: web_lin <1109502057@qq.com>
+Date:   Wed Apr 23 16:01:43 2025 +0800
+
+    🎈 perf: 代码优化
+
+commit ba688935ce119d07ef096f7a6b29c7940d9b5505
+Merge: ce82ff2 747f78e
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Wed Apr 23 14:12:00 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit ce82ff23bcbf913e084685cc47da19a9a6dd6b1d
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Wed Apr 23 14:11:56 2025 +0800
+
+    尝试分包
+
+commit 747f78e4a24f0b555f65712e9d21a8ba44492900
+Author: web_lin <1109502057@qq.com>
+Date:   Wed Apr 23 14:08:28 2025 +0800
+
+    ✨ feat: 图表替换
+
+commit 449ff96a7c4fae00e791e75c7b0b2470c62e9647
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 22 16:58:58 2025 +0800
+
+    优化完成
+
+commit f0ff6a63bc5ee3e9fdf2e55adc7131db3bd74f52
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 22 16:33:27 2025 +0800
+
+    优化完成
+
+commit 305cef2f9738440d4c61f222aa2e514d72941181
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 22 16:31:52 2025 +0800
+
+    优化完成
+
+commit 1be3ea0a8356f8318d4a28b134ec2bf0bcec6a39
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 22 16:31:28 2025 +0800
+
+    优化完成
+
+commit aae8bcce04bb30e99d9ff2c9a55017d3383d0b66
+Merge: 4657459 f0ff8b5
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 22 15:32:44 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 465745992f31b8f61697693e5d26df8907765ba5
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 22 15:32:35 2025 +0800
+
+    图表调整完成
+
+commit f0ff8b59fbf0abe54408c0a2475f0af7315c13ca
+Author: hh <1994824227@qq.com>
+Date:   Tue Apr 22 11:29:42 2025 +0800
+
+    1
+
+commit 55eb8b8a7ad25b37e4e015f998b056d57295844a
+Merge: a204d81 b415976
+Author: web_lin <1109502057@qq.com>
+Date:   Tue Apr 22 09:50:29 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit a204d814fb3438459c92bfa344ff90f25276bf6b
+Author: web_lin <1109502057@qq.com>
+Date:   Tue Apr 22 09:50:18 2025 +0800
+
+    🐞 fix: 修复小程序require路径报错问题
+
+commit b4159765c6d1abaebb86a1b4ab9a1870189777c2
+Merge: 5163e0d 6d50b3b
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Mon Apr 21 17:16:57 2025 +0800
+
+    优化
+
+commit 5163e0d27bdc205bb1b0ef56fba9e3094bd4de97
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Mon Apr 21 17:15:15 2025 +0800
+
+    优化
+
+commit 6d50b3baa5296942865869c4abe14ae8baf4a86e
+Merge: 1f9fd99 53e3ea4
+Author: web_lin <1109502057@qq.com>
+Date:   Mon Apr 21 17:12:12 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 1f9fd99825b1bf9f521b04606f6490de38871577
+Author: web_lin <1109502057@qq.com>
+Date:   Mon Apr 21 17:08:41 2025 +0800
+
+    ✨ feat: echart图表库引入
+
+commit 53e3ea4fbcdd56835014dfc49e43536da47207ea
+Author: hh <1994824227@qq.com>
+Date:   Mon Apr 21 15:42:13 2025 +0800
+
+    ⚡️ feat：修改提示持续时间
+
+commit f7ed8bae30312da51738053619f016ac3f3b3086
+Author: hh <1994824227@qq.com>
+Date:   Mon Apr 21 14:52:03 2025 +0800
+
+    ✨ feat：时间跨度过长时增加提示消息
+
+commit 5afd1c51824cbcf2b2a65e7b665e45df539b04e1
+Author: hh <1994824227@qq.com>
+Date:   Fri Apr 18 18:12:31 2025 +0800
+
+    🐛 fix：修复时间跨度过长的问题
+
+commit 3d370aea3c92829c2d06093e63a6d3d2fcbb3e46
+Merge: 76004d2 bbb23e9
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Fri Apr 18 17:05:49 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 76004d22a9ffd744e5b18292f5fd2424825b8496
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Fri Apr 18 17:05:40 2025 +0800
+
+    bug修改
+
+commit bbb23e96e9e3e6dfa59ef891c953e01cdd29bd43
+Author: hh <1994824227@qq.com>
+Date:   Fri Apr 18 16:38:50 2025 +0800
+
+    优化时间
+
+commit 680f4c18e836f05f92dbcc0c143de5f2a7e042ee
+Merge: d95e987 3a82d87
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Fri Apr 18 16:36:41 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit d95e98724aee0a5adeef35f03ceddcec297f0564
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Fri Apr 18 16:36:34 2025 +0800
+
+    修改bug
+
+commit 55195017dc45da0ded3d2fd7b2a5c0726e9603cc
+Merge: 885820b 3a82d87
+Author: web_lin <1109502057@qq.com>
+Date:   Fri Apr 18 10:43:23 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 885820b1f2fade9b93eb8226c8e8e5bc0e8cd790
+Author: web_lin <1109502057@qq.com>
+Date:   Fri Apr 18 10:43:12 2025 +0800
+
+    🐞 fix: 修复日期控件tab切换时日期显示问题
+
+commit 3a82d87c86412e9392e709d8a9426d2fb8490902
+Author: hh <1994824227@qq.com>
+Date:   Fri Apr 18 10:08:36 2025 +0800
+
+    🐛 fix：优化时间搜索展示标题问题
+
+commit cfe4ce85492903e053da613eea4a89d0071eb027
+Author: hh <1994824227@qq.com>
+Date:   Thu Apr 17 18:46:28 2025 +0800
+
+    修改卡片顺序
+
+commit abfbf8b2aaca86e439ea1854a76f47f2cec45ebe
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 17:38:19 2025 +0800
+
+    修改
+
+commit 5a323fe298d0ec1329d19d8aa24d3b43da8b34e1
+Merge: 0efbcac 1b69c26
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 17:35:46 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 0efbcacae1f1ec9661972d13726f5e2cf6d9920d
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 17:35:34 2025 +0800
+
+    修改
+
+commit 1b69c268988ee8bebc9ceb7d46508a4ac1293e93
+Merge: f18428e 9f66952
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Apr 17 17:34:07 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit f18428edaca2048286192a2d28565abca6cd0dbf
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Apr 17 17:08:48 2025 +0800
+
+    🐞 fix: 组件报错修复
+
+commit 9f66952e822de2b4f71a018b4d3761fa24dbb781
+Merge: 91bb429 5d7ce79
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 16:44:18 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 91bb4295208574bf38d7d8ab5539cc02dec21c6f
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 16:44:11 2025 +0800
+
+    登录页面修改完成
+
+commit 5d7ce793debf59c335047e93472546a2681ec7e4
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Apr 17 15:55:54 2025 +0800
+
+    🐞 fix: 接口参数修改
+
+commit d725bd31995e8bba265453ed717cf848ea10e7d7
+Merge: 2fadecf 0f2d943
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 15:45:30 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 0f2d943d808778acd5abb867fdf7387a01a142a2
+Merge: 84a4d3e e5d54fb
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Apr 17 15:42:45 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 2fadecf79878ce1c6356d968850a206a18d100c1
+Merge: cdcc9da e5d54fb
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 15:42:41 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit cdcc9da11185e4ae4187a4201cdf220f6ebf5916
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 15:42:23 2025 +0800
+
+    优化
+
+commit 84a4d3efac6624436d41061fdce0a8f8b3d78b6b
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Apr 17 15:41:55 2025 +0800
+
+    🐞 fix: 预览页图表显示错误修复
+
+commit e5d54fb34da3e64c17a86ca7032e7e4f620c1f69
+Author: hh <1994824227@qq.com>
+Date:   Thu Apr 17 15:37:48 2025 +0800
+
+    优化
+
+commit 8fb2e7064ff6f4cb2ec26302f81802f42db10394
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Apr 17 15:34:13 2025 +0800
+
+    ✨ feat: 运营商模块接口联调
+
+commit 46c83382595544aae4cd709360ba146010752ba3
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 15:32:42 2025 +0800
+
+    优化
+
+commit e39985deae59b2971782c79491c50338fd4e8059
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 15:32:14 2025 +0800
+
+    分公司选择完成
+
+commit 6bcce01f9bc96a80170636be441151b34184a0c2
+Merge: 32af077 aae6749
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 15:04:50 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 32af077dfee680fd40bf98a5babf9622940e49c9
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 15:04:43 2025 +0800
+
+    优化表格折叠功能
+
+commit aae6749ab6a42db6adf3536024378eca73363192
+Author: hh <1994824227@qq.com>
+Date:   Thu Apr 17 13:52:03 2025 +0800
+
+    优化字体大小
+
+commit 496c4a097a86ee9cdf61876ff80674a9eb4068b0
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 13:45:08 2025 +0800
+
+    优化登录
+
+commit 9c45f9aa9470dca3c2e1b4e1690b482ffc3d8404
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 10:13:54 2025 +0800
+
+    修改表格
+
+commit d17208daf3176a4b230b7b98f8141c02ac160d88
+Merge: 8dd3f9a 942e2e3
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 10:07:08 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 8dd3f9ac3f72f9ec0fa096ad886a12b5e7c8c139
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 10:07:01 2025 +0800
+
+    组件优化
+
+commit 942e2e31b2f3392ca6777f507945e9d244810f0c
+Author: hh <1994824227@qq.com>
+Date:   Thu Apr 17 09:50:03 2025 +0800
+
+    修改下拉框
+
+commit 356b1a25d412afd4521ae5193ae1779f59d3b168
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 09:41:40 2025 +0800
+
+    优化
+
+commit 12b78dd35759c5ca1e370e29fcf081be6d437eee
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 09:41:31 2025 +0800
+
+    优化
+
+commit e9f97fb18568ef767570ac6212011f3ca73cd0b1
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 17 09:36:56 2025 +0800
+
+    tabs修改完成
+
+commit 5ef62f551be089f895634a93e05a2cd55fd8d3db
+Merge: 5c14e88 fb6c24b
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Wed Apr 16 16:00:08 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 5c14e88dc89cb278f3bb39a9b4b2232e16a68ad3
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Wed Apr 16 16:00:01 2025 +0800
+
+    登录完成
+
+commit fb6c24bc3029d332ac9c5533c8824875352c30cf
+Author: hh <1994824227@qq.com>
+Date:   Wed Apr 16 15:01:15 2025 +0800
+
+    调整下拉框宽度
+
+commit 0ee23d3cf49839b6ed237f3071e2b12c1d2ab508
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Wed Apr 16 11:32:47 2025 +0800
+
+    修改登录
+
+commit 43cf516d9782126a5ef6fd653012c81c67d20344
+Merge: 0a4674e 466743d
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Wed Apr 16 11:31:59 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 0a4674e7403f43ecd06883dce716b05870874a3d
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Wed Apr 16 11:31:51 2025 +0800
+
+    修改框架
+
+commit 466743d9cb0f2eb9cf4ac38620cda8f8b09db734
+Author: hh <1994824227@qq.com>
+Date:   Tue Apr 15 16:33:30 2025 +0800
+
+    调整日期
+
+commit d22e67680d338b5250c4f450d2a0eca8bf1c33e7
+Author: hh <1994824227@qq.com>
+Date:   Tue Apr 15 15:57:09 2025 +0800
+
+    调整下拉框
+
+commit be70c48a4799fe88c7e0dbc6c43ce8d8a038041f
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 15 15:53:06 2025 +0800
+
+    优化
+
+commit 88fdd6c2e53b63647703f0742a7079ca16f4f6a7
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 15 15:50:56 2025 +0800
+
+    修改
+
+commit 9bb25f6f59eb6f4c04e40fc4e6e460ca14ec5227
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 15 15:31:42 2025 +0800
+
+    优化
+
+commit fb424cb58b2931d52e32b81d3c2003d28ab78919
+Merge: a2bb398 40034a9
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 15 15:15:29 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 40034a9e2d4db6f9582a4d06aab56494080a5a41
+Author: hh <1994824227@qq.com>
+Date:   Tue Apr 15 15:15:24 2025 +0800
+
+    优化卡片
+
+commit a2bb3986d169dd6fd03e32d55ab6d31369e1c339
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 15 15:15:14 2025 +0800
+
+    优化
+
+commit ec78d9d3dc1f8be5ce5b9eea7c02932805c3d07a
+Merge: 0678daa c75ed12
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 15 15:14:44 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit 0678daa5a4d023d6dd22bc54e3db35b1fb55cc94
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 15 15:14:41 2025 +0800
+
+    优化
+
+commit c75ed12b602440b1334df985033f9dfca6dba7f9
+Author: hh <1994824227@qq.com>
+Date:   Tue Apr 15 14:28:39 2025 +0800
+
+    ✨ 货车数据接口调整
+
+commit e5ff731dd701a2971eb17e97cb688153d181a7a2
+Merge: fbf6e54 c7195fc
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 15 13:53:19 2025 +0800
+
+    Merge branch 'master' of https://git.code.tencent.com/sjht-jsyf/rabbtit-dashboard/rabbit-app
+
+commit fbf6e548701d7f604fc291982b1ab6e881f3eed8
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 15 13:53:10 2025 +0800
+
+    优化
+
+commit c7195fcf278aa417f8eef88bb7bf97ddfcbcc9b3
+Author: hh <1994824227@qq.com>
+Date:   Mon Apr 14 16:59:16 2025 +0800
+
+    ✨feat：货车部分数据调整
+
+commit dcc725dfab7d4418e330ede1c2bcccd77faeb315
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Mon Apr 14 16:31:37 2025 +0800
+
+    修改table组件实现折叠功能
+
+commit 02491a85a5733ede5898751eb183cfaa6db6634f
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Mon Apr 14 16:30:22 2025 +0800
+
+    修改table组件实现折叠功能
+
+commit 5b760111b0315548beeebd35e212d01e530b3d43
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Mon Apr 14 10:35:58 2025 +0800
+
+    电销模块基本完成
+
+commit 3f3c986e593a3dfe89048725e8917f9f5575d1c7
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Fri Apr 11 17:22:12 2025 +0800
+
+    优化
+
+commit fa9ce7d2a8258953657ea03026db839465d5e793
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Fri Apr 11 15:47:24 2025 +0800
+
+    优化
+
+commit a30ad39815b880f156193cfd03c16ea4d05c5988
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Fri Apr 11 15:31:57 2025 +0800
+
+    etc客车流水模块完成
+
+commit 178223534c3e08af0d0a17d0d905a73c589f808a
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 10 11:26:50 2025 +0800
+
+    优化
+
+commit fb6057dbe346b535add5653f8a501bbc029aa37d
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 10 10:42:19 2025 +0800
+
+    优化
+
+commit c4db3e47da04aa57af63f47dcbfbfd29e6ca595a
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Thu Apr 10 10:42:02 2025 +0800
+
+    优化
+
+commit 0107279a0aa246c925e7011657c8d27536e2e3a5
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Wed Apr 9 17:35:01 2025 +0800
+
+    etc流水完成
+
+commit e53d68b1961eb899734e1fa4a1d87a5f73eb8fdf
+Author: web_lin <1109502057@qq.com>
+Date:   Wed Apr 9 14:01:13 2025 +0800
+
+    ✨ feat: 总览页接口查询查询参数调整
+
+commit 06586d47a057936347ee8161c583f9a54fade958
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Wed Apr 9 13:39:07 2025 +0800
+
+    优化
+
+commit 5737d3b44d64ad915eeff8eaa4c401a2f11e7fe6
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 8 17:31:44 2025 +0800
+
+    优化
+
+commit 1dc0703b8993873711f6cc89c49206113b8bbf4a
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 8 17:31:33 2025 +0800
+
+    优化
+
+commit 87d859af4a7d26d5176c295fa801f5b12973a23c
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 8 16:22:42 2025 +0800
+
+    优化
+
+commit 0722dcd5eae7af890d676f85578386912deba99d
+Author: fengyunchangxuan <wangxy0436@foxmail.com>
+Date:   Tue Apr 1 16:01:23 2025 +0800
+
+    添加appid
+
+commit 3f76f5dd77e98bdc46013f231a1ddef8c6ec3358
+Author: web_lin <1109502057@qq.com>
+Date:   Mon Mar 31 16:01:21 2025 +0800
+
+    📃 docs: 删除无用文件
+
+commit 43611b41fd76b1b747a245dae73f5e9dc33f622c
+Author: web_lin <1109502057@qq.com>
+Date:   Mon Mar 31 15:54:19 2025 +0800
+
+    ✨ feat: 新增预览页日期控件联动查询功能
+
+commit a8ed781889cebbc2b041d9520cf31ff7e2c9bfa5
+Author: hh <1994824227@qq.com>
+Date:   Mon Mar 31 11:19:14 2025 +0800
+
+    🚚  解决冲突
+
+commit 9acfb2c8fc221e9c730507b6047d712d5cac8751
+Merge: 5612bb8 ec376ba
+Author: hh <1994824227@qq.com>
+Date:   Fri Mar 28 18:02:46 2025 +0800
+
+    合并代码
+
+commit 5612bb838ee17e37f9e2a30a73592fc0bf67458c
+Author: hh <1994824227@qq.com>
+Date:   Fri Mar 28 17:50:05 2025 +0800
+
+    ✨ feat：货车下拉选择
+
+commit ec376bac707ca670f025a78c312d2dfd7f5fa691
+Author: web_lin <1109502057@qq.com>
+Date:   Fri Mar 28 17:13:19 2025 +0800
+
+    ✨ feat: 总览页接口联调
+
+commit 4e6076ace18709f42b150fd937ec8e78fd11ebc4
+Author: web_lin <1109502057@qq.com>
+Date:   Fri Mar 28 11:16:07 2025 +0800
+
+    ✨ feat: 自定义全局组件注册到根应用上，业务模块组件里可直接使用无需引入
+
+commit 726972cfb122c7242d029b25cde2d53aef6c0fa9
+Author: web_lin <1109502057@qq.com>
+Date:   Fri Mar 28 10:16:15 2025 +0800
+
+    ✨ feat: 封装表格组件
+
+commit 43b8555dd83956fe1ca78819a3acea00b44cb1c7
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Mar 27 15:05:31 2025 +0800
+
+    ✨ feat: 1、自定义section全局组件。2、部分模块样式调整
+
+commit 16e144972c35e169c8b8c9f9025ec33b9da4f38d
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Mar 27 10:54:13 2025 +0800
+
+    🌈 style: 预览页样式调整
+
+commit f2fdf3249ade3772a89f07cadf6739e28be6d085
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Mar 27 10:52:56 2025 +0800
+
+    🐞 fix: 修复tab切换后图表不显示bug
+
+commit 2bc1826e0a502c8e8775e027548808b8cb7c5e6b
+Author: web_lin <1109502057@qq.com>
+Date:   Wed Mar 26 15:41:53 2025 +0800
+
+    🌈 style: 预览页样式优化
+
+commit 860197625e029d6be6d5a394364fad15152ae05f
+Author: hh <1994824227@qq.com>
+Date:   Wed Mar 26 15:31:27 2025 +0800
+
+    🐛 v-if替换动态组件
+
+commit 27307b5030432dcbebb2fba1c2506bfc4f970204
+Author: web_lin <1109502057@qq.com>
+Date:   Wed Mar 26 10:46:11 2025 +0800
+
+    🌈 style: 总览页样式调整
+
+commit 65377b0e135f4d4fc5f3683a6bb513ca2393e418
+Author: web_lin <1109502057@qq.com>
+Date:   Wed Mar 26 10:45:38 2025 +0800
+
+    ✨ feat: 日期控件优化
+
+commit def12d8030408742c5027abc7a25fa03b0939389
+Author: web_lin <1109502057@qq.com>
+Date:   Wed Mar 26 10:32:00 2025 +0800
+
+    ✨ feat: 通用样式和工具类提取
+
+commit edb2a0d6019ac0e092e86b6df5f5d0e514278c96
+Author: hh <1994824227@qq.com>
+Date:   Tue Mar 25 18:36:43 2025 +0800
+
+    ⚡️feat： etc货车页面组件模块化
+
+commit 2f147462a745c33dc3db8150ccc9ba0be4515693
+Author: web_lin <1109502057@qq.com>
+Date:   Tue Mar 25 14:53:34 2025 +0800
+
+    🌈 style: 样式优化
+
+commit 5f49dd2478847cc42cfe467e1c4b30f9de553b79
+Author: web_lin <1109502057@qq.com>
+Date:   Tue Mar 25 14:52:58 2025 +0800
+
+    ✨ feat: 封装自定义日期组件
+
+commit 2378ae266b4261f1e310547bf707f8e328658ae3
+Author: hh <1994824227@qq.com>
+Date:   Mon Mar 24 10:36:15 2025 +0800
+
+    💄style：调整卡片格式
+
+commit 548835d5a5638f711b76e760cce7c6c8da1e9223
+Author: hh <1994824227@qq.com>
+Date:   Fri Mar 21 19:45:32 2025 +0800
+
+    ✨ feat：货车基础页面
+
+commit 25582ee4e6d35609f7fb5de0967dfc8d91ac59b2
+Author: web_lin <1109502057@qq.com>
+Date:   Fri Mar 21 10:31:32 2025 +0800
+
+    ✨ feat: 新增模块组件与接口请求代理
+
+commit b11db63af8b9fa978d8492fdb31d1b68b318e7ba
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Mar 20 17:35:29 2025 +0800
+
+    ✨ feat: 请求封装处理
+
+commit f581687642b242eb19d7c389fc424def721c390e
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Mar 20 15:03:37 2025 +0800
+
+    🐞 fix: 图表纵坐标轴显示bug修复
+
+commit afc4a9e03e047d8826e73c78fabd9bd1ad7ce9b0
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Mar 20 15:00:21 2025 +0800
+
+    🌈 style: 式优化
+
+commit f0bb52cc639914ed1abf38a2216725342ab2dcb6
+Author: web_lin <1109502057@qq.com>
+Date:   Thu Mar 20 10:18:00 2025 +0800
+
+    ✨ feat: 1、组件名称修改；2、自定义tabs支持水平滚动及bug修复
+
+commit 4f8a825f8d7dc4cd9572824c5b45a5cc9111d417
+Author: web_lin <1109502057@qq.com>
+Date:   Tue Mar 18 17:22:01 2025 +0800
+
+    🎉 init: 初始化项目
