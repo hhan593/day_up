@@ -1,20 +1,24 @@
 {
   "main": {
-    "id": "30be7572890781d1",
+    "id": "a0338c2453a4ff24",
     "type": "split",
     "children": [
       {
-        "id": "115c14afc9b8fb9f",
+        "id": "6e3631f73dfa1799",
         "type": "tabs",
         "children": [
           {
-            "id": "ec2ce87287e37cbe",
+            "id": "b2286f94ac15a5f5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "错误总结/小程序.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "小程序"
             }
           }
         ]
@@ -23,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "f1d993817e456c46",
+    "id": "f3ba534f4dd78bf4",
     "type": "split",
     "children": [
       {
-        "id": "cf1f9b98b2822f3a",
+        "id": "5a0274af4b75f607",
         "type": "tabs",
         "children": [
           {
-            "id": "16e78270b8a53230",
+            "id": "dd812f3372d742f9",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -44,7 +48,7 @@
             }
           },
           {
-            "id": "8f1276c5f08f69c6",
+            "id": "72c574c10ec99b2f",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -61,7 +65,7 @@
             }
           },
           {
-            "id": "0f0ab60e863b10c4",
+            "id": "c91dbbf462070e17",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -77,20 +81,21 @@
     "width": 300
   },
   "right": {
-    "id": "8ee87efe9e6889b4",
+    "id": "3bd0fb1b110dccd6",
     "type": "split",
     "children": [
       {
-        "id": "109a2073ebc18139",
+        "id": "243d9fadd2c277aa",
         "type": "tabs",
         "children": [
           {
-            "id": "eacaaf5fe9f711fc",
+            "id": "32e84021a300ad27",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "collapseAll": true,
+                "file": "提示.md",
+                "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
@@ -99,24 +104,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "提示 的反向链接列表"
             }
           },
           {
-            "id": "4d960f8c840fdb47",
+            "id": "f68502381e9badd7",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "提示.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "出链"
+              "title": "提示 的出链列表"
             }
           },
           {
-            "id": "ff784fe12ddafbea",
+            "id": "5ccdd0984ebf63f3",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -131,7 +137,7 @@
             }
           },
           {
-            "id": "1580ecc32a0e96e3",
+            "id": "4493cfd91dbf8806",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -145,22 +151,22 @@
             }
           },
           {
-            "id": "d3c956224afd7aec",
+            "id": "7f824f4f7ef20a38",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "字节校招.md",
+                "file": "提示.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "字节校招 的大纲"
+              "title": "提示 的大纲"
             }
           },
           {
-            "id": "d9a0b6a02b967894",
+            "id": "a23aa1c6a370bb77",
             "type": "leaf",
             "state": {
               "type": "git-view",
@@ -188,41 +194,24 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ec2ce87287e37cbe",
+  "active": "b2286f94ac15a5f5",
   "lastOpenFiles": [
-    "conflict-files-obsidian-git.md",
     "test笔记.md",
     "2025年度总结/git_log_app_2025.txt",
+    "2025年度总结/git_log_2025pc.txt",
     "2025年度总结/git_log_2025_web.txt",
+    "2025年度总结/git_log_2025_business.txt",
     "2025年度总结/2025年度工作总结报告（3）.md",
     "2025年度总结/2025年年度总结版本(5).md",
-    "2025年度总结/git_log_2025_business.txt",
-    "2025年度总结/git_log_2025pc.txt",
     "2025年度总结/2025年年度总结版本(4)Gemini.md",
     "2025年度总结/2025年年度总结版本(1).md",
     "2025年度总结/2025年年度总结(2).md",
     "2025年度总结",
-    "2025年度总结/未确认 122901.crdownload",
-    "2025年度总结/git_log_2025_pc.txt",
-    "掘金小册/Nest 通关秘籍/9. 使用多种 Provider，灵活注入对象.md",
-    "掘金小册/Nest 通关秘籍/8. 如何调试 Nest 项目.md",
-    "掘金小册/Nest 通关秘籍/7. IoC 解决了什么痛点问题？.md",
-    "掘金小册/Nest 通关秘籍/6. 5 种 HTTP 数据传输方式.md",
-    "掘金小册/React 通关秘籍/61. React Playground 项目实战：错误显示、主题切换.md",
-    "掘金小册/React 通关秘籍/3. 一网打尽组件常用 Hook.md",
-    "掘金小册/JavaScript 函数式编程实践指南/1. 函数式编程导读：升维的＂编程套路＂.md",
-    "掘金小册/TypeScript 入门教程/9. 类型声明：让 JS 和 TS 融合得再紧密一些.md",
-    "掘金小册/TypeScript 入门教程/8. 泛型：类型世界的参数.md",
-    "掘金小册/TypeScript 入门教程/7. 类型别名、联合类型与交叉类型：类型世界中的逻辑或和逻辑与.md",
-    "掘金小册/TypeScript 入门教程/6. any、unknown类型与类型断言：让你的类型更听话一些.md",
-    "掘金小册/TypeScript 入门教程/5. TypeScript 中的 Class：重新认识面向对象编程.md",
-    "掘金小册/TypeScript 入门教程/4. 函数类型与重载：为你的函数调用保驾护航.md",
-    "掘金小册/TypeScript 入门教程/3. 原始类型与对象类型：还是熟悉的配方.md",
-    "掘金小册/TypeScript 入门教程/2. 又一次 Hello World：TypeScript 开发环境搭建.md",
-    "掘金小册/TypeScript 入门教程/17. 总结与展望.md",
-    "掘金小册/TypeScript 入门教程/16. 从 JavaScript 迁移到 TypeScript：让你的项目改头换面.md",
-    "掘金小册/TypeScript 入门教程/15. 实战环节：npm 包发布.md",
-    "掘金小册/TypeScript 入门教程/14. 实战环节：TypeScript + React.md",
-    "掘金小册/TypeScript 入门教程"
+    "提示.md",
+    "错误总结/小程序.md",
+    "错误总结",
+    "未命名.canvas",
+    "掘金小册/React 通关秘籍/1. 关于本小册.md",
+    "测试笔记.md"
   ]
 }
