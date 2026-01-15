@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "掘金小册/React 通关秘籍/15. 组件实战：Space 间距组件.md",
+                "file": "掘金小册/React 通关秘籍/25. react-spring 结合 use-gesture 手势库实现交互动画.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "15. 组件实战：Space 间距组件"
+              "title": "25. react-spring 结合 use-gesture 手势库实现交互动画"
             }
           }
         ]
@@ -196,10 +196,17 @@
   },
   "active": "b2286f94ac15a5f5",
   "lastOpenFiles": [
-    "掘金小册/React 通关秘籍/16. React.Children 和它的两种替代方案.md",
-    "掘金小册/React 通关秘籍/15. 组件实战：Space 间距组件.md",
-    "掘金小册/React 通关秘籍/14. 组件实战：Icon 图标组件.md",
+    "掘金小册/React 通关秘籍/26. 用 react-transition-group 和 react-spring 做过渡动画.md",
     "掘金小册/React 通关秘籍/24. 用 react-spring 做弹簧动画.md",
+    "掘金小册/React 通关秘籍/25. react-spring 结合 use-gesture 手势库实现交互动画.md",
+    "掘金小册/React 通关秘籍/27. 快速掌握 Tailwind：最流行的原子化 CSS 框架.md",
+    "掘金小册/React 通关秘籍/28. 用 CSS Modules 避免样式冲突.md",
+    "掘金小册/React 通关秘籍/29. CSS In JS：快速掌握 styled-components.md",
+    "掘金小册/React 通关秘籍/30. react-spring 实现滑入滑出的转场动画.md",
+    "掘金小册/React 通关秘籍/97. 小册总结.md",
+    "掘金小册/React 通关秘籍/15. 组件实战：Space 间距组件.md",
+    "掘金小册/React 通关秘籍/16. React.Children 和它的两种替代方案.md",
+    "掘金小册/React 通关秘籍/14. 组件实战：Icon 图标组件.md",
     "掘金小册/React 通关秘籍/23. 自定义 hook 练习（二）.md",
     "掘金小册/React 通关秘籍/22. 自定义 hook 练习.md",
     "掘金小册/React 通关秘籍/21. 图解网页的各种距离.md",
@@ -215,11 +222,6 @@
     "2025年度总结/2025年年度总结版本(4)Gemini.md",
     "2025年度总结/业财一体化平台项目总结版本二.md",
     "2025年度总结/业财一体化平台项目总结版本一.md",
-    "2025年度总结/2025年度工作总结报告（3）.md",
-    "2025年度总结/业财一体化平台项目总结版本三.md",
-    "2025年度总结/2025年年度总结版本(5).md",
-    "错误总结/小程序.md",
-    "test笔记.md",
     "demo/any-reader",
     "2025年度总结/git_log_app_2025.txt",
     "2025年度总结/git_log_2025_web.txt",
@@ -230,8 +232,6 @@
     "面试题资料包/777  PDF文档资料/阿里面试技术岗测试开发.docx",
     "面试题资料包/777  PDF文档资料/金融行业软件测试面试题.doc",
     "面试题资料包/777  PDF文档资料/金融行业软件测试面试题..doc",
-    "提示.md",
-    "未命名.canvas",
-    "掘金小册/React 通关秘籍/1. 关于本小册.md"
+    "未命名.canvas"
   ]
 }
