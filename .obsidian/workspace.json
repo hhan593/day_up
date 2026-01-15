@@ -13,30 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "加班/2026-01-15.md",
+                "file": "加班/加班日记.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-01-15"
-            }
-          },
-          {
-            "id": "0facbb1f36f7dbc0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "conflict-files-obsidian-git.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "conflict-files-obsidian-git"
+              "title": "加班日记"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -209,10 +194,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0facbb1f36f7dbc0",
+  "active": "b2286f94ac15a5f5",
   "lastOpenFiles": [
-    "加班/2026-01-15.md",
     "conflict-files-obsidian-git.md",
+    "加班/加班日记.md",
     "掘金小册/React 通关秘籍/25. react-spring 结合 use-gesture 手势库实现交互动画.md",
     "加班",
     "掘金小册/React 通关秘籍/26. 用 react-transition-group 和 react-spring 做过渡动画.md",
