@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "加班日记"
             }
+          },
+          {
+            "id": "e50fb0c6fbdd9875",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.11.4"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -184,17 +197,17 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:新建数据库": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "bases:创建新数据库": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b2286f94ac15a5f5",
+  "active": "e50fb0c6fbdd9875",
   "lastOpenFiles": [
     "conflict-files-obsidian-git.md",
     "加班/加班日记.md",
