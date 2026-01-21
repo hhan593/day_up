@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "掘金小册/React 通关秘籍/27. 快速掌握 Tailwind：最流行的原子化 CSS 框架.md",
+                "file": "OmniAI 助手/chatGPT版本.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "27. 快速掌握 Tailwind：最流行的原子化 CSS 框架"
+              "title": "chatGPT版本"
             }
           }
         ]
@@ -196,6 +196,10 @@
   },
   "active": "b2286f94ac15a5f5",
   "lastOpenFiles": [
+    "OmniAI 助手/Gemini版本.md",
+    "OmniAI 助手/chatGPT版本.md",
+    "掘金小册/React 通关秘籍/27. 快速掌握 Tailwind：最流行的原子化 CSS 框架.md",
+    "OmniAI 助手",
     "掘金小册/React 通关秘籍/22. 自定义 hook 练习.md",
     "掘金小册/趣学 Node.js/1. 开篇：Node.js 是个啥？.md",
     "加班/加班日记（已提）.md",
@@ -204,7 +208,6 @@
     "加班",
     "掘金小册/React 通关秘籍/26. 用 react-transition-group 和 react-spring 做过渡动画.md",
     "掘金小册/React 通关秘籍/24. 用 react-spring 做弹簧动画.md",
-    "掘金小册/React 通关秘籍/27. 快速掌握 Tailwind：最流行的原子化 CSS 框架.md",
     "掘金小册/React 通关秘籍/28. 用 CSS Modules 避免样式冲突.md",
     "掘金小册/React 通关秘籍/29. CSS In JS：快速掌握 styled-components.md",
     "掘金小册/React 通关秘籍/30. react-spring 实现滑入滑出的转场动画.md",
@@ -221,8 +224,6 @@
     "2025年度总结/2025年业财一体化系统（含小兔数据小程序）工作总结.md",
     "2025年度总结/2025年年度总结.md",
     "2025年度总结/2025年度业财一体化系统（含小兔数据小程序）工作总结.md",
-    "2025年度总结/2025年年度总结(2).md",
-    "2025年度总结/2025年年度总结版本(1).md",
     "demo/any-reader",
     "2025年度总结/git_log_app_2025.txt",
     "2025年度总结/git_log_2025_web.txt",
@@ -231,7 +232,6 @@
     "2025年度总结",
     "面试题资料包/777  PDF文档资料/面试技巧.docx",
     "面试题资料包/777  PDF文档资料/阿里面试技术岗测试开发.docx",
-    "面试题资料包/777  PDF文档资料/金融行业软件测试面试题.doc",
     "未命名.canvas"
   ]
 }
