@@ -1,209 +1,226 @@
-这是一个非常明智的调整。**React + `assistant-ui` + Vercel AI SDK** 是目前构建 AI Chat 应用的**“黄金标准”**组合。
+这是基于我们所有讨论的**最终完整版 OmniAI 全栈设计方案**。
 
-`assistant-ui` 是一个专门为 React 设计的 AI 聊天组件库，它不仅提供了精美的默认 UI（类似 ChatGPT/Claude），还内置了处理流式传输、Markdown 渲染、即时编辑、重新生成等复杂的交互逻辑，能将前端开发效率提升 200%。
-
-以下是基于 **React + assistant-ui + NestJS** 的全栈项目设计方案。
+本方案集成了 **React + assistant-ui** (前端极致体验)、**NestJS + Vercel AI SDK** (后端流式标准)、**pnpm** (Monorepo 管理) 以及 **TypeORM + PostgreSQL** (企业级数据存储)。
 
 ---
 
-# 🚀 OmniAI 助手 (React 版) - 全栈项目设计方案
+# 🚀 OmniAI 全栈架构方案 v3.0 (最终版)
 
-## 1. 核心架构概述 (Architecture Overview)
+## 1. 架构总览 (Architecture)
 
-我们将打造一个**“瘦客户端，胖服务端”**的架构。
-
-- **前端**：使用 `assistant-ui` 快速构建界面，专注于用户体验和跨端适配。
-    
-- **后端**：NestJS 作为统一网关（Gateway），屏蔽底层模型差异（Ollama vs External API），统一输出标准流格式。
-    
-- **三端策略**：Web 为主，使用 **Capacitor** 将 React Web 应用包装为 Android/iOS 原生 App。
-    
-
----
-
-## 2. 技术选型 (Tech Stack)
-
-### A. 前端 (Client Side)
-
-- **核心框架**: `React 18/19` + `TypeScript` + `Vite`。
-    
-- **AI UI 框架**: **`assistant-ui`** (核心组件库)。
-    
-    - 配合 **`@ai-sdk/react`** (Vercel AI SDK 的 React 钩子，用于状态管理)。
-        
-- **样式方案**: `Tailwind CSS` + `shadcn/ui` (assistant-ui 基于此构建，风格统一)。
-    
-- **Markdown 渲染**: `assistant-ui` 内置支持，底层通常依赖 `react-markdown` 和 `remark-gfm`。
-    
-- **移动端容器**: `Capacitor` (将 Web 页面打包成 App，调用原生能力如震动、状态栏)。
-    
-
-### B. 后端 (Server Side)
-
-- **框架**: `NestJS`。
-    
-- **AI 运行时**: **`ai` (Vercel AI SDK Core)**。
-    
-    - _注意_：虽然是 Node.js 后端，引入 `ai` 包可以极大地简化流式响应（Streaming）的编写。
-        
-- **模型连接**:
-    
-    - **本地**: Qwen2.5 (通过 Ollama)。
-        
-    - **云端**: OpenAI / DeepSeek / Claude (通过 API Key)。
-        
-- **数据库**: `PostgreSQL` + `Prisma` (存储聊天记录 `Thread` 和消息 `Message`)。
-    
-
----
-
-## 3. 详细架构设计 (Detailed Architecture)
-
-### 3.1 交互流程图
-
-前端 `assistant-ui` 并不直接连接 LLM，而是连接你的 NestJS API。
+### 系统交互图
 
 Code snippet
 
 ```
-sequenceDiagram
-    participant User
-    participant ReactApp as React (assistant-ui)
-    participant Nest as NestJS (API Gateway)
-    participant DB as Postgres
-    participant LLM as Ollama/OpenAI
+graph TD
+    subgraph Client [前端 (React + Capacitor)]
+        UI[assistant-ui Thread]
+        Hook[useChat Hook]
+        User[用户]
+    end
 
-    User->>ReactApp: 输入 "你好，Qwen"
-    ReactApp->>Nest: POST /api/chat (Message History)
-    Nest->>Nest: 鉴权 & 提取配置
-    Nest->>LLM: 发送 Prompt (stream: true)
-    LLM-->>Nest: 返回 Stream Chunk
-    Nest-->>ReactApp: 转发 Stream (TextPart / ToolCall)
-    ReactApp-->>User: 逐字显示 (打字机效果)
-    Nest->>DB: 异步保存完整对话记录
-```
+    subgraph Server [后端 (NestJS API)]
+        Gateway[Chat Controller]
+        Logic[Chat Service]
+        SDK[Vercel AI SDK Core]
+        ORM[TypeORM Repository]
+    end
 
-### 3.2 目录结构规划 (Monorepo 思想)
+    subgraph Infrastructure [基础设施]
+        DB[(PostgreSQL)]
+        LLM[Ollama / OpenAI / DeepSeek]
+    end
 
-Plaintext
-
-```
-OmniAI-Project/
-├── backend/ (NestJS)
-│   ├── src/
-│   │   ├── ai/          # AI 核心模块
-│   │   │   ├── ai.controller.ts  # 处理 /api/chat 请求
-│   │   │   ├── ai.service.ts     # 调用 Ollama 或 云端 API
-│   │   │   └── model-manager.ts  # 模型切换逻辑
-│   │   ├── chat/        # 历史记录 CRUD
-│   │   └── app.module.ts
-├── frontend/ (React + Vite)
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── ui/      # shadcn 组件
-│   │   │   └── chat/    # assistant-ui 定制组件
-│   │   ├── lib/
-│   │   │   └── runtime.ts # 定义 EdgeRuntime 或 自定义 Runtime
-│   │   └── App.tsx
-├── mobile/ (Capacitor)
-│   ├── android/
-│   └── ios/
+    User --> UI
+    UI --> Hook
+    Hook -- "POST /api/chat (Stream)" --> Gateway
+    Gateway --> Logic
+    Logic -- "1. Save User Msg" --> ORM
+    Logic -- "2. streamText()" --> SDK
+    SDK <--> LLM
+    SDK -- "Stream Chunks" --> Gateway
+    Gateway -- "SSE Stream" --> UI
+    SDK -- "3. onFinish: Save AI Msg" --> ORM
+    ORM --> DB
 ```
 
 ---
 
-## 4. 核心功能实现 (Key Implementation)
+## 2. 技术栈详细清单 (Tech Stack)
 
-### 4.1 前端：集成 assistant-ui
+|**领域**|**技术选型**|**理由**|
+|---|---|---|
+|**包管理器**|**pnpm**|高效的磁盘空间利用，原生支持 Monorepo (Workspace)。|
+|**前端框架**|**React 19** + Vite|目前生态最丰富、性能最好的组合。|
+|**UI 组件**|**assistant-ui**|专为 AI Chat 设计，内置打字机、Markdown、工具调用 UI。|
+|**样式库**|Tailwind CSS + shadcn/ui|现代、灵活，与 assistant-ui 风格统一。|
+|**移动端**|Capacitor|将 React Web 应用无缝打包为 Android/iOS 原生 App。|
+|**后端框架**|**NestJS**|模块化、依赖注入，适合构建可维护的大型后端。|
+|**AI 运行时**|**ai** (Vercel AI SDK)|统一了各大模型厂商的 API，极大地简化了流式开发。|
+|**ORM**|**TypeORM**|使用装饰器定义实体，与 NestJS 风格完美契合 (替代 Prisma)。|
+|**数据库**|**PostgreSQL**|强大的关系型数据库，支持 JSONB 和向量扩展 (pgvector)。|
 
-`assistant-ui` 的核心在于 `Thread` 组件。我们需要构建一个 `Runtime` 来告诉它去哪里获取数据。
+---
 
-**安装依赖：**
+## 3. 项目目录结构 (Monorepo)
 
-Bash
+Plaintext
 
 ```
-npm install @assistant-ui/react @assistant-ui/react-markdown @ai-sdk/react ai
+OmniAI/
+├── pnpm-workspace.yaml   # 定义 workspace (frontend, backend)
+├── package.json          # 根配置，包含 concurrently 启动脚本
+├── docker-compose.yml    # 数据库编排
+├── backend/              # NestJS 应用
+│   ├── src/
+│   │   ├── entities/     # TypeORM 实体 (ChatSession, ChatMessage)
+│   │   ├── chat/         # 聊天模块 (Controller, Service)
+│   │   └── app.module.ts
+│   └── package.json
+└── frontend/             # React 应用
+    ├── src/
+    │   ├── lib/          # 运行时配置
+    │   └── App.tsx       # assistant-ui 入口
+    └── package.json
 ```
 
-**代码实现 (`frontend/src/App.tsx`)：**
+---
+
+## 4. 后端核心实现 (NestJS + TypeORM)
+
+### 4.1 实体定义 (Entities)
+
+定义**会话 (Session)** 和 **消息 (Message)** 的表结构。
+
+**`backend/src/entities/chat-session.entity.ts`**
 
 TypeScript
 
 ```
-import { Thread } from "@assistant-ui/react";
-import { useChat } from "@ai-sdk/react"; // Vercel AI SDK hook
-import { makeMarkdownText } from "@assistant-ui/react-markdown";
+import { Entity, PrimaryGeneratedColumn, CreateDateColumn, OneToMany, Column } from 'typeorm';
+import { ChatMessage } from './chat-message.entity';
 
-const MarkdownText = makeMarkdownText();
+@Entity()
+export class ChatSession {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-export default function App() {
-  // 1. 使用 useChat 连接 NestJS 后端
-  const { messages, input, handleInputChange, handleSubmit, append } = useChat({
-    api: 'http://localhost:3000/api/ai/chat', // 指向你的 NestJS 接口
-    body: {
-      model: 'qwen2.5:3b', // 动态传参
-    },
-  });
+  @Column({ default: 'New Chat' })
+  title: string;
 
-  return (
-    <div className="h-screen w-full flex flex-col bg-background">
-      {/* 2. assistant-ui 负责所有 UI 渲染 */}
-      <Thread 
-        messages={messages}
-        input={input}
-        onInputChange={handleInputChange}
-        onSubmit={handleSubmit}
-        assistantMessage={{ components: { Text: MarkdownText } }} // 启用 Markdown
-      />
-    </div>
-  );
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @OneToMany(() => ChatMessage, (message) => message.session)
+  messages: ChatMessage[];
 }
 ```
 
-### 4.2 后端：NestJS 对接 Ollama 并流式返回
+**`backend/src/entities/chat-message.entity.ts`**
 
-这是整个系统的“心脏”。我们将使用 Vercel AI SDK 的 `streamText` 方法，它能自动处理不同厂商的 API 差异，并生成前端能看懂的 Stream 数据。
-
-**安装依赖：**
-
-Bash
+TypeScript
 
 ```
-npm install ai @ai-sdk/openai @ai-sdk/ollama
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from 'typeorm';
+import { ChatSession } from './chat-session.entity';
+
+@Entity()
+export class ChatMessage {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @Column('text')
+  content: string;
+
+  @Column()
+  role: 'user' | 'assistant' | 'system';
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @ManyToOne(() => ChatSession, (session) => session.messages)
+  session: ChatSession;
+}
 ```
 
-**代码实现 (`backend/src/ai/ai.controller.ts`)：**
+### 4.2 聊天服务 (Service) - 核心流逻辑
+
+这里展示如何**一边流式输出，一边异步保存数据**。
+
+**`backend/src/chat/chat.service.ts`**
+
+TypeScript
+
+```
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { ChatMessage } from '../entities/chat-message.entity';
+import { streamText, convertToCoreMessages } from 'ai';
+import { createOllama } from 'ollama-ai-provider';
+
+@Injectable()
+export class ChatService {
+  constructor(
+    @InjectRepository(ChatMessage)
+    private msgRepo: Repository<ChatMessage>,
+  ) {}
+
+  async streamResponse(messages: any[], sessionId: string) {
+    // 1. 配置模型 (Ollama 或 OpenAI)
+    const ollama = createOllama({ baseURL: 'http://localhost:11434/api' });
+    
+    // 2. 异步保存用户发送的最新一条消息
+    const lastUserMsg = messages[messages.length - 1];
+    await this.msgRepo.save({
+      role: 'user',
+      content: lastUserMsg.content,
+      session: { id: sessionId }
+    });
+
+    // 3. 调用 AI SDK 生成流
+    const result = await streamText({
+      model: ollama('qwen2.5:7b'),
+      messages: convertToCoreMessages(messages),
+      // 4. [关键] 生命周期钩子：当流结束时，保存 AI 完整回复
+      onFinish: async ({ text }) => {
+        await this.msgRepo.save({
+          role: 'assistant',
+          content: text,
+          session: { id: sessionId }
+        });
+      },
+    });
+
+    // 5. 返回流对象
+    return result;
+  }
+}
+```
+
+### 4.3 控制器 (Controller)
+
+**`backend/src/chat/chat.controller.ts`**
 
 TypeScript
 
 ```
 import { Controller, Post, Body, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { createOllama } from 'ollama-ai-provider'; // 或 @ai-sdk/ollama
-import { streamText, convertToCoreMessages } from 'ai';
+import { ChatService } from './chat.service';
 
-@Controller('api/ai')
-export class AiController {
-  
-  @Post('chat')
-  async chat(@Body() body: { messages: any[]; model: string }, @Res() res: Response) {
-    const { messages, model } = body;
+@Controller('api/chat')
+export class ChatController {
+  constructor(private readonly chatService: ChatService) {}
 
-    // 1. 初始化模型 (这里演示 Ollama，也可以根据参数切换 OpenAI)
-    const ollama = createOllama({
-      baseURL: 'http://localhost:11434/api', // 本地 Ollama 地址
-    });
-
-    // 2. 调用模型并开启流
-    const result = await streamText({
-      model: ollama(model || 'qwen2.5:3b'), // 指定模型
-      messages: convertToCoreMessages(messages), // 转换消息格式
-    });
-
-    // 3. 将流直接 pipe 到响应中
-    // result.toDataStreamResponse() 会生成标准的 AI Stream 格式
-    // NestJS 中需要手动处理底层 response
+  @Post()
+  async handleChat(
+    @Body() body: { messages: any[]; sessionId: string }, 
+    @Res() res: Response
+  ) {
+    const result = await this.chatService.streamResponse(body.messages, body.sessionId);
+    // 将流直接 Pipe 给前端
     result.pipeDataStreamToResponse(res);
   }
 }
@@ -211,85 +228,124 @@ export class AiController {
 
 ---
 
-## 5. 三端适配方案 (Mobile & Web)
+## 5. 前端核心实现 (React + assistant-ui)
 
-`assistant-ui` 默认是响应式的，但为了达到原生 App 的体验，需要做以下优化：
+### 5.1 界面集成
 
-### 5.1 移动端布局 (Mobile Web)
+**`frontend/src/App.tsx`**
 
-- **视口设置**: 在 `index.html` 中禁止缩放。
-    
-    HTML
-    
-    ```
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    ```
-    
-- **CSS 适配**:
-    
-    - PC 端：显示侧边栏（历史记录），主聊天框居中，最大宽度 `max-w-4xl`。
-        
-    - Mobile 端：隐藏侧边栏（改为抽屉 Drawer），聊天框宽度 `100%`。
-        
+TypeScript
 
-### 5.2 打包成 App (Capacitor)
+```
+import { Thread } from "@assistant-ui/react";
+import { useChat } from "@ai-sdk/react";
+import { makeMarkdownText } from "@assistant-ui/react-markdown";
 
-1. **初始化**:
+// 引入样式
+import "@assistant-ui/react/styles/index.css";
+import "@assistant-ui/react-markdown/styles/index.css";
+
+const MarkdownText = makeMarkdownText();
+
+export default function App() {
+  // 1. 模拟一个 Session ID (实际项目应从 URL 或路由获取)
+  const sessionId = "550e8400-e29b-41d4-a716-446655440000";
+
+  // 2. 连接 NestJS 后端
+  const runtime = useChat({
+    api: "http://localhost:3000/api/chat",
+    body: { sessionId }, // 将 SessionID 传给后端用于存储
+  });
+
+  return (
+    <div className="h-screen w-full flex justify-center bg-gray-50">
+      <div className="w-full max-w-3xl h-full bg-white shadow-lg flex flex-col">
+        {/* 3. assistant-ui 核心组件 */}
+        <Thread 
+          runtime={runtime}
+          assistantMessage={{ components: { Text: MarkdownText } }}
+        />
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+## 6. 基础设施 (Docker Compose)
+
+在根目录下创建 `docker-compose.yml`，用于快速启动 PostgreSQL。
+
+YAML
+
+```
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: omniai_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+```
+
+---
+
+## 7. 快速启动流程 (Quick Start)
+
+由于使用了 pnpm monorepo，启动非常简单：
+
+1. **启动数据库**：
     
     Bash
     
     ```
-    npm install @capacitor/core @capacitor/cli @capacitor/android @capacitor/ios
-    npx cap init
+    docker-compose up -d
     ```
     
-2. **关键插件**:
+2. **安装依赖**：
     
-    - `@capacitor/keyboard`: 解决软键盘弹出时顶起输入框的问题（非常重要）。
-        
-    - `@capacitor/preferences`: 用于在本地存储 API Key 或用户偏好设置。
-        
-3. 配置 SafeArea:
+    Bash
     
-    使用 CSS 变量 env(safe-area-inset-top) 确保刘海屏手机顶部不被遮挡。
+    ```
+    pnpm install
+    ```
+    
+3. **一键启动前后端** (假设你在根目录 `package.json` 配置了 `dev` 脚本)：
+    
+    Bash
+    
+    ```
+    pnpm dev
+    ```
+    
+
+这将同时启动：
+
+- NestJS 后端 @ `http://localhost:3000`
+    
+- React 前端 @ `http://localhost:5173`
     
 
 ---
 
-## 6. 进阶功能规划
+## 8. 下一步建议 (Next Step)
 
-为了让你的助手更强大，可以利用 `assistant-ui` 的高级特性：
+现在的代码已经是一个功能完整的 MVP（最小可行性产品）。
 
-1. **工具调用 (Tool Calling)**:
+**您想先看哪一部分？**
+
+1. **数据库迁移**：如何设置 TypeORM 的 `synchronize` 或 Migrations 以便建表？
     
-    - 在 NestJS 的 `streamText` 中定义 `tools`（例如：查询天气、搜索网页）。
-        
-    - Qwen2.5 支持 Function Calling，后端执行完工具后，将结果回传给模型，模型生成最终回答。
-        
-    - `assistant-ui` 会自动显示“正在调用天气工具...”的 UI 状态。
-        
-2. **生成式 UI (Generative UI)**:
+2. **移动端打包**：如何运行 Capacitor 命令将这个 React 页面变成 Android APK？
     
-    - 如果模型返回的数据是结构化的（如 JSON），React 端可以使用 `render` 属性渲染自定义组件（例如：生成一个股票走势图组件，而不是纯文本）。
-        
-3. **语音输入**:
-    
-    - 集成 `react-speech-recognition` 或浏览器原生 API，将语音转为文字填入 `assistant-ui` 的 Input 框。
-        
-
----
-
-## 7. 总结：为什么这个方案更好？
-
-|**特性**|**纯 Vue/React 手写**|**React + assistant-ui**|
-|---|---|---|
-|**开发速度**|慢 (需手写打字机效果、滚动逻辑、Markdown样式)|**极快** (开箱即用)|
-|**代码质量**|容易出现复杂的 `useEffect` 和状态混乱|状态由 `ai-sdk` 管理，逻辑清晰|
-|**交互体验**|需自己打磨 Loading、Error、Stop 生成等细节|**商业级体验** (自带平滑动画、优雅降级)|
-|**后端对接**|需手写 SSE 解析器|标准协议，**即插即用**|
-
-这个方案能让你把精力集中在 **“如何调教 Qwen 模型”** 和 **“业务逻辑（如保存历史、鉴权）”** 上，而不是浪费在写 CSS 和处理流式字符串解析上。
-
-下一步建议：
-
-我可以为您提供 frontend 端集成 assistant-ui 的具体组件代码（包含如何自定义样式以适配移动端），或者 NestJS 后端对接 Ollama 的完整 Service 代码。您倾向于先看哪部分？
+3. **多模型切换**：如何在前端添加一个下拉菜单，让用户选择切换 Qwen 或 DeepSeek？
