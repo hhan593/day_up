@@ -49,17 +49,17 @@ graph TD
 
 ## 2. 技术栈详细清单 (Tech Stack)
 
-|**领域**|**技术选型**|**理由**|
-|---|---|---|
-|**包管理器**|**pnpm**|高效的磁盘空间利用，原生支持 Monorepo (Workspace)。|
-|**前端框架**|**React 19** + Vite|目前生态最丰富、性能最好的组合。|
-|**UI 组件**|**assistant-ui**|专为 AI Chat 设计，内置打字机、Markdown、工具调用 UI。|
-|**样式库**|Tailwind CSS + shadcn/ui|现代、灵活，与 assistant-ui 风格统一。|
-|**移动端**|Capacitor|将 React Web 应用无缝打包为 Android/iOS 原生 App。|
-|**后端框架**|**NestJS**|模块化、依赖注入，适合构建可维护的大型后端。|
-|**AI 运行时**|**ai** (Vercel AI SDK)|统一了各大模型厂商的 API，极大地简化了流式开发。|
-|**ORM**|**TypeORM**|使用装饰器定义实体，与 NestJS 风格完美契合 (替代 Prisma)。|
-|**数据库**|**PostgreSQL**|强大的关系型数据库，支持 JSONB 和向量扩展 (pgvector)。|
+| **领域**     | **技术选型**                 | **理由**                                  |
+| ---------- | ------------------------ | --------------------------------------- |
+| **包管理器**   | **pnpm**                 | 高效的磁盘空间利用，原生支持 Monorepo (Workspace)。    |
+| **前端框架**   | **React 19** + Vite      | 目前生态最丰富、性能最好的组合。                        |
+| **UI 组件**  | **assistant-ui**         | 专为 AI Chat 设计，内置打字机、Markdown、工具调用 UI。   |
+| **样式库**    | Tailwind CSS + shadcn/ui | 现代、灵活，与 assistant-ui 风格统一。              |
+| **移动端**    | Capacitor                | 将 React Web 应用无缝打包为 Android/iOS 原生 App。 |
+| **后端框架**   | **NestJS**               | 模块化、依赖注入，适合构建可维护的大型后端。                  |
+| **AI 运行时** | **ai** (Vercel AI SDK)   | 统一了各大模型厂商的 API，极大地简化了流式开发。              |
+| **ORM**    | **TypeORM**              | 使用装饰器定义实体，与 NestJS 风格完美契合 (替代 Prisma)。  |
+| **数据库**    | **PostgreSQL**           | 强大的关系型数据库，支持 JSONB 和向量扩展 (pgvector)。    |
 
 ---
 
