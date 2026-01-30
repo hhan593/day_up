@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2025年度总结/2025年年度总结.md",
+                "file": "OmniAI 助手/claude/AI助手多端项目设计方案书.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025年年度总结"
+              "title": "AI助手多端项目设计方案书"
             }
           }
         ]
@@ -196,9 +196,11 @@
   },
   "active": "b2286f94ac15a5f5",
   "lastOpenFiles": [
+    "2025年度总结/2025年年度总结.md",
+    "OmniAI 助手/claude/AI助手多端项目设计方案书.md",
+    "OmniAI 助手/claude",
     "保育工作总结.md",
     "2025年度总结/个人总结.md",
-    "2025年度总结/2025年年度总结.md",
     "2025年度总结/2025年业财一体化系统（含小兔数据小程序）工作总结.md",
     "2025年度总结/2025年度业财一体化系统（含小兔数据小程序）工作总结.md",
     "OmniAI 助手/设计文档：AI 助手三端一体化架构.md",
@@ -224,14 +226,12 @@
     "掘金小册/React 通关秘籍/16. React.Children 和它的两种替代方案.md",
     "掘金小册/React 通关秘籍/14. 组件实战：Icon 图标组件.md",
     "掘金小册/React 通关秘籍/23. 自定义 hook 练习（二）.md",
-    "掘金小册/React 通关秘籍/21. 图解网页的各种距离.md",
     "demo/any-reader",
     "2025年度总结/git_log_app_2025.txt",
     "2025年度总结/git_log_2025_web.txt",
     "2025年度总结/git_log_2025_business.txt",
     "2025年度总结/git_log_2025pc.txt",
     "2025年度总结",
-    "面试题资料包/777  PDF文档资料/面试技巧.docx",
     "未命名.canvas"
   ]
 }
