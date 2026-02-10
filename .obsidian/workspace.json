@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "6e3631f73dfa1799",
+        "id": "1b125a00d0b0eb9d",
         "type": "tabs",
         "children": [
           {
-            "id": "b2286f94ac15a5f5",
+            "id": "921b6da24f4b0343",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "work/rabbit/AI 助手语音对话功能 - 技术方案.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "AI 助手语音对话功能 - 技术方案"
+              "title": "新标签页"
             }
           }
         ]
@@ -194,10 +190,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b2286f94ac15a5f5",
+  "active": "921b6da24f4b0343",
   "lastOpenFiles": [
-    "项目/OmniAI 助手/claude/AI助手多端项目设计方案书.md",
+    "work/未命名.md",
     "work/rabbit/AI 助手语音对话功能 - 技术方案.md",
+    "项目/OmniAI 助手/claude/AI助手多端项目设计方案书.md",
     "work/rabbit",
     "work",
     "项目",
@@ -228,7 +225,6 @@
     "掘金小册/React 通关秘籍/97. 小册总结.md",
     "掘金小册/React 通关秘籍/15. 组件实战：Space 间距组件.md",
     "掘金小册/React 通关秘籍/16. React.Children 和它的两种替代方案.md",
-    "掘金小册/React 通关秘籍/14. 组件实战：Icon 图标组件.md",
     "demo/any-reader",
     "work/2025年度总结/git_log_app_2025.txt",
     "work/2025年度总结/git_log_2025_web.txt",
