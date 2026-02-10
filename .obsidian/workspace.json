@@ -11,10 +11,14 @@
             "id": "921b6da24f4b0343",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "提示.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "提示"
             }
           }
         ]
@@ -192,9 +196,9 @@
   },
   "active": "921b6da24f4b0343",
   "lastOpenFiles": [
+    "项目/OmniAI 助手/claude/AI助手多端项目设计方案书.md",
     "work/未命名.md",
     "work/rabbit/AI 助手语音对话功能 - 技术方案.md",
-    "项目/OmniAI 助手/claude/AI助手多端项目设计方案书.md",
     "work/rabbit",
     "work",
     "项目",
