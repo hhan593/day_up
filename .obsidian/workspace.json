@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "1b125a00d0b0eb9d",
+        "id": "c26980ea1aa916b8",
         "type": "tabs",
         "children": [
           {
-            "id": "921b6da24f4b0343",
+            "id": "a21d2e783a1cf423",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "未命名.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "未命名"
+              "title": "新标签页"
             }
           }
         ]
@@ -194,10 +190,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "921b6da24f4b0343",
+  "active": "a21d2e783a1cf423",
   "lastOpenFiles": [
-    "提示.md",
+    "conflict-files-obsidian-git.md",
     "未命名.md",
+    "面试准备/everyday-up/src/js/jsAPI/准确说出&#39;1,2,3,4&#39;.split()的结果是什么（包括类型和值）？.md",
+    "提示.md",
     "work/未命名.md",
     "work/rabbit/AI 助手语音对话功能 - 技术方案.md",
     "项目/OmniAI 助手/claude/AI助手多端项目设计方案书.md",
@@ -220,7 +218,6 @@
     "掘金小册/React 通关秘籍/22. 自定义 hook 练习.md",
     "掘金小册/趣学 Node.js/1. 开篇：Node.js 是个啥？.md",
     "work/加班/加班日记（已提）.md",
-    "conflict-files-obsidian-git.md",
     "掘金小册/React 通关秘籍/25. react-spring 结合 use-gesture 手势库实现交互动画.md",
     "work/加班",
     "掘金小册/React 通关秘籍/26. 用 react-transition-group 和 react-spring 做过渡动画.md",
@@ -228,7 +225,6 @@
     "掘金小册/React 通关秘籍/28. 用 CSS Modules 避免样式冲突.md",
     "掘金小册/React 通关秘籍/29. CSS In JS：快速掌握 styled-components.md",
     "掘金小册/React 通关秘籍/30. react-spring 实现滑入滑出的转场动画.md",
-    "掘金小册/React 通关秘籍/97. 小册总结.md",
     "demo/any-reader",
     "work/2025年度总结/git_log_app_2025.txt",
     "work/2025年度总结/git_log_2025_web.txt",
