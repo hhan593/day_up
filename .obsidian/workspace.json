@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "项目/SwarmDrop/SwarmDrop 项目架构全景图.md",
+                "file": "项目/SwarmDrop/冲突/初始版.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SwarmDrop 项目架构全景图"
+              "title": "初始版"
             }
           }
         ]
@@ -194,12 +194,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a21d2e783a1cf423",
+  "active": "dd812f3372d742f9",
   "lastOpenFiles": [
+    "项目/SwarmDrop/冲突/新版本.md",
+    "项目/SwarmDrop/冲突/初始版.md",
+    "项目/SwarmDrop/冲突",
+    "项目/SwarmDrop/SwarmDrop 项目架构全景图.md",
     "项目/SwarmDrop",
     "未命名 1.md",
     "conflict-files-obsidian-git.md",
-    "项目/SwarmDrop/SwarmDrop 项目架构全景图.md",
     "面试准备/everyday-up/src/js/jsAPI/准确说出&#39;1,2,3,4&#39;.split()的结果是什么（包括类型和值）？.md",
     "提示.md",
     "work/未命名.md",
@@ -228,10 +231,7 @@
     "work/加班",
     "掘金小册/React 通关秘籍/26. 用 react-transition-group 和 react-spring 做过渡动画.md",
     "掘金小册/React 通关秘籍/24. 用 react-spring 做弹簧动画.md",
-    "掘金小册/React 通关秘籍/28. 用 CSS Modules 避免样式冲突.md",
     "demo/any-reader",
-    "work/2025年度总结/git_log_app_2025.txt",
-    "work/2025年度总结/git_log_2025_web.txt",
     "未命名.canvas"
   ]
 }
