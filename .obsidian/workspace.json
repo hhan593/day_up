@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "初始版"
             }
+          },
+          {
+            "id": "b333f6aaf9bac3df",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.11.7"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -194,7 +207,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "dd812f3372d742f9",
+  "active": "b333f6aaf9bac3df",
   "lastOpenFiles": [
     "项目/SwarmDrop/冲突/新版本.md",
     "项目/SwarmDrop/冲突/初始版.md",
