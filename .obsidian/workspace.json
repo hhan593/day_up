@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "nextjs/nextjs-i18n-guide.md",
+                "file": "面试准备/blogs/browser/browser-security/001.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "nextjs-i18n-guide"
+              "title": "001"
             }
           }
         ]
@@ -196,6 +196,9 @@
   },
   "active": "921b6da24f4b0343",
   "lastOpenFiles": [
+    "nextjs/nextjs-for-react-devs.md",
+    "掘金小册/从 0 打造通用型低代码产品/1. 序章：前端的价值.md",
+    "nextjs/nextjs-i18n-guide.md",
     "提示.md",
     "项目/thesis-guide.md",
     "项目/SwarmDrop/冲突/新版本.md",
@@ -203,8 +206,6 @@
     "项目/SwarmDrop/冲突",
     "项目/SwarmDrop/SwarmDrop 项目架构全景图.md",
     "项目/SwarmDrop",
-    "nextjs/nextjs-i18n-guide.md",
-    "nextjs/nextjs-for-react-devs.md",
     "nextjs",
     "项目/OmniAI 助手/Gemini版本.md",
     "项目/OmniAI 助手/claude/AI助手多端项目设计方案书.md",
@@ -231,7 +232,6 @@
     "conflict-files-obsidian-git.md",
     "掘金小册/React 通关秘籍/25. react-spring 结合 use-gesture 手势库实现交互动画.md",
     "work/加班",
-    "掘金小册/React 通关秘籍/26. 用 react-transition-group 和 react-spring 做过渡动画.md",
     "未命名.canvas"
   ]
 }
