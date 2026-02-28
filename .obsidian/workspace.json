@@ -4,37 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "c26980ea1aa916b8",
+        "id": "1b125a00d0b0eb9d",
         "type": "tabs",
         "children": [
           {
-            "id": "a21d2e783a1cf423",
+            "id": "921b6da24f4b0343",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "项目/SwarmDrop/冲突/初始版.md",
+                "file": "提示.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "初始版"
-            }
-          },
-          {
-            "id": "b333f6aaf9bac3df",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.11.7"
-              },
-              "icon": "lucide-book-up",
-              "title": "版本说明 1.11.7"
+              "title": "提示"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -207,20 +194,22 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b333f6aaf9bac3df",
+  "active": "921b6da24f4b0343",
   "lastOpenFiles": [
+    "项目/thesis-guide.md",
     "项目/SwarmDrop/冲突/新版本.md",
     "项目/SwarmDrop/冲突/初始版.md",
     "项目/SwarmDrop/冲突",
     "项目/SwarmDrop/SwarmDrop 项目架构全景图.md",
     "项目/SwarmDrop",
-    "未命名 1.md",
-    "conflict-files-obsidian-git.md",
-    "面试准备/everyday-up/src/js/jsAPI/准确说出&#39;1,2,3,4&#39;.split()的结果是什么（包括类型和值）？.md",
+    "nextjs/nextjs-i18n-guide.md",
+    "nextjs/nextjs-for-react-devs.md",
+    "nextjs",
+    "项目/OmniAI 助手/Gemini版本.md",
     "提示.md",
+    "项目/OmniAI 助手/claude/AI助手多端项目设计方案书.md",
     "work/未命名.md",
     "work/rabbit/AI 助手语音对话功能 - 技术方案.md",
-    "项目/OmniAI 助手/claude/AI助手多端项目设计方案书.md",
     "work/rabbit",
     "work",
     "项目",
@@ -232,7 +221,6 @@
     "work/2025年度总结/2025年度业财一体化系统（含小兔数据小程序）工作总结.md",
     "项目/OmniAI 助手/设计文档：AI 助手三端一体化架构.md",
     "项目/OmniAI 助手/chatGPT/chatGPT版本.md",
-    "项目/OmniAI 助手/Gemini版本.md",
     "项目/OmniAI 助手/chatGPT/后端设计.md",
     "项目/OmniAI 助手/chatGPT",
     "掘金小册/React 通关秘籍/27. 快速掌握 Tailwind：最流行的原子化 CSS 框架.md",
@@ -240,11 +228,10 @@
     "掘金小册/React 通关秘籍/22. 自定义 hook 练习.md",
     "掘金小册/趣学 Node.js/1. 开篇：Node.js 是个啥？.md",
     "work/加班/加班日记（已提）.md",
+    "conflict-files-obsidian-git.md",
     "掘金小册/React 通关秘籍/25. react-spring 结合 use-gesture 手势库实现交互动画.md",
     "work/加班",
     "掘金小册/React 通关秘籍/26. 用 react-transition-group 和 react-spring 做过渡动画.md",
-    "掘金小册/React 通关秘籍/24. 用 react-spring 做弹簧动画.md",
-    "demo/any-reader",
     "未命名.canvas"
   ]
 }
