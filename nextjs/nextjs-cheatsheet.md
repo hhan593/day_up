@@ -1,120 +1,119 @@
-# Next.js 16 快速参考手册 (Cheatsheet)
+# Next.js 零基础快速参考
 
-> 常用代码片段和快速参考，建议收藏备用
-
-## 目录
-- [路由](#路由)
-- [页面与布局](#页面与布局)
-- [组件类型](#组件类型)
-- [数据获取](#数据获取)
-- [Server Actions](#server-actions)
-- [缓存](#缓存)
-- [导航](#导航)
-- [Metadata](#metadata)
-- [API Routes](#api-routes)
-- [中间件](#中间件)
-- [配置](#配置)
+> 常用代码片段，适合初学者查阅
+> 建议保存收藏，边学边查
 
 ---
 
-## 路由
+## 🚀 项目命令
 
-### 基础路由结构
-```
-app/
-├── page.tsx              # /
-├── about/
-│   └── page.tsx         # /about
-├── blog/
-│   ├── page.tsx         # /blog (列表)
-│   └── [slug]/
-│       └── page.tsx     # /blog/:slug (详情)
-└── [...catchAll]/
-    └── page.tsx         # /a/b/c/*
+### 创建项目
+```bash
+# 创建新项目（推荐选项）
+npx create-next-app@latest 项目名称
+
+# 创建时的推荐选择：
+# - TypeScript: 可选（新手可以先不用）
+# - ESLint: Yes
+# - Tailwind CSS: Yes
+# - src directory: No（简单点）
+# - App Router: Yes
 ```
 
-### 动态路由
+### 常用命令
+```bash
+npm run dev      # 启动开发服务器（最常用）
+npm run build    # 构建生产版本
+npm run start    # 启动生产服务器
+npm install      # 安装依赖
+```
+
+---
+
+## 📁 项目结构
+
+```
+my-app/
+├── app/                 # 页面代码放这里
+│   ├── layout.tsx      # 网站外壳（导航栏、页脚）
+│   ├── page.tsx        # 首页内容
+│   ├── globals.css     # 全局样式
+│   └── about/
+│       └── page.tsx    # /about 页面
+├── components/         # 可复用组件
+│   └── Button.tsx
+├── public/             # 静态资源（图片等）
+│   └── logo.png
+└── package.json        # 项目配置
+```
+
+---
+
+## 📄 页面基础
+
+### 最简单的页面
 ```tsx
-// app/users/[id]/page.tsx
-export default async function UserPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
-  return <div>User ID: {id}</div>;
-}
-
-// 可选捕获所有
-// app/docs/[[...slug]]/page.tsx
-// 匹配: /docs, /docs/a, /docs/a/b
-```
-
-### 路由组
-```
-app/
-├── (marketing)/          # URL 中不出现
-│   ├── layout.tsx
-│   ├── about/page.tsx   # /about
-│   └── pricing/page.tsx # /pricing
-└── (dashboard)/
-    ├── layout.tsx
-    └── overview/page.tsx # /overview
-```
-
-### 并行路由 (@folder)
-```tsx
-// app/layout.tsx
-export default function Layout({
-  children,
-  modal,  // @modal
-  sidebar, // @sidebar
-}: {
-  children: React.ReactNode;
-  modal: React.ReactNode;
-  sidebar: React.ReactNode;
-}) {
+// app/page.tsx
+export default function Home() {
   return (
-    <div>
-      {sidebar}
-      {children}
-      {modal}
-    </div>
+    <main>
+      <h1>欢迎来到我的网站</h1>
+      <p>这是我的第一个 Next.js 页面</p>
+    </main>
   );
 }
 ```
 
+### 创建新页面
+```tsx
+// app/about/page.tsx
+export default function About() {
+  return (
+    <div>
+      <h1>关于我们</h1>
+      <p>这里是关于页面</p>
+    </div>
+  );
+}
+```
+访问地址：`http://localhost:3000/about`
+
+### 动态页面（如文章详情）
+```tsx
+// app/blog/[id]/page.tsx
+export default async function BlogPost({ params }) {
+  const { id } = await params;
+
+  return (
+    <div>
+      <h1>文章 #{id}</h1>
+      <p>文章内容...</p>
+    </div>
+  );
+}
+```
+访问地址：`http://localhost:3000/blog/123`
+
 ---
 
-## 页面与布局
+## 🎨 布局 Layout
 
-### 基础页面
-```tsx
-// app/page.tsx
-export default function HomePage() {
-  return <h1>Hello Next.js</h1>;
-}
-
-// 带 metadata
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Home',
-  description: 'Welcome to my site',
-};
-```
-
-### 基础布局
+### 根布局（所有页面共享）
 ```tsx
 // app/layout.tsx
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="zh">
+      <body>
+        <nav>
+          <a href="/">首页</a>
+          <a href="/about">关于</a>
+        </nav>
+
+        {children}  {/* 页面内容会显示在这里 */}
+
+        <footer>© 2024 我的网站</footer>
+      </body>
     </html>
   );
 }
@@ -123,320 +122,36 @@ export default function RootLayout({
 ### 嵌套布局
 ```tsx
 // app/dashboard/layout.tsx
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function DashboardLayout({ children }) {
   return (
-    <div className="flex">
-      <Sidebar />
+    <div style={{ display: 'flex' }}>
+      <aside>侧边栏</aside>
       <main>{children}</main>
     </div>
   );
 }
 ```
 
-### Loading 状态
-```tsx
-// app/dashboard/loading.tsx
-export default function Loading() {
-  return <div className="animate-pulse">Loading...</div>;
-}
-```
-
-### Error 边界
-```tsx
-// app/dashboard/error.tsx
-'use client';
-
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string };
-  reset: () => void;
-}) {
-  return (
-    <div>
-      <h2>Something went wrong!</h2>
-      <button onClick={reset}>Try again</button>
-    </div>
-  );
-}
-```
-
-### 404 页面
-```tsx
-// app/not-found.tsx
-export default function NotFound() {
-  return <div>Page not found</div>;
-}
-
-// 在页面中触发
-import { notFound } from 'next/navigation';
-
-if (!data) notFound();
-```
-
 ---
 
-## 组件类型
+## 🔗 页面导航
 
-### Server Component (默认)
-```tsx
-// 直接访问数据库、文件系统等
-// 不能使用 hooks 和浏览器 API
-
-export default async function ServerComponent() {
-  const data = await fetchData(); // 服务端获取
-  return <div>{data.name}</div>;
-}
-```
-
-### Client Component
-```tsx
-'use client';
-
-import { useState } from 'react';
-
-export default function ClientComponent() {
-  const [count, setCount] = useState(0);
-  return <button onClick={() => setCount(c => c + 1)}>{count}</button>;
-}
-```
-
-### 混合模式
-```tsx
-// Server Component
-import { ClientButton } from './client-button';
-
-export default async function Page() {
-  const data = await fetchData();
-  return (
-    <div>
-      <h1>{data.title}</h1>
-      <ClientButton initialData={data} />
-    </div>
-  );
-}
-```
-
----
-
-## 数据获取
-
-### Server Component 获取
-```tsx
-export default async function Page() {
-  // 自动缓存
-  const res = await fetch('https://api.example.com/data');
-  const data = await res.json();
-
-  return <div>{data.name}</div>;
-}
-```
-
-### 缓存控制
-```tsx
-// 不缓存 (SSR)
-fetch(url, { cache: 'no-store' });
-
-// 永久缓存 (SSG)
-fetch(url, { cache: 'force-cache' });
-
-// ISR - 60秒重新验证
-fetch(url, { next: { revalidate: 60 } });
-
-// 按标签缓存
-fetch(url, { next: { tags: ['products'] } });
-```
-
-### 多个请求
-```tsx
-// 自动并行
-const [users, posts] = await Promise.all([
-  fetch('/api/users').then(r => r.json()),
-  fetch('/api/posts').then(r => r.json()),
-]);
-```
-
-### Client Component 获取
-```tsx
-'use client';
-
-import { useQuery } from '@tanstack/react-query';
-
-export function UserList() {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['users'],
-    queryFn: () => fetch('/api/users').then(r => r.json()),
-  });
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  return <ul>{data.map(u => <li key={u.id}>{u.name}</li>)}</ul>;
-}
-```
-
----
-
-## Server Actions
-
-### 基础 Action
-```tsx
-// app/actions.ts
-'use server';
-
-import { revalidatePath } from 'next/cache';
-
-export async function createUser(formData: FormData) {
-  const name = formData.get('name') as string;
-  const email = formData.get('email') as string;
-
-  await db.user.create({ data: { name, email } });
-
-  revalidatePath('/users');
-}
-
-// 页面中使用
-import { createUser } from './actions';
-
-export default function Form() {
-  return (
-    <form action={createUser}>
-      <input name="name" />
-      <input name="email" />
-      <button type="submit">Create</button>
-    </form>
-  );
-}
-```
-
-### 带验证的 Action
-```tsx
-'use server';
-
-import { z } from 'zod';
-
-const schema = z.object({
-  name: z.string().min(1),
-  email: z.string().email(),
-});
-
-export async function createUser(prevState: any, formData: FormData) {
-  const parsed = schema.safeParse({
-    name: formData.get('name'),
-    email: formData.get('email'),
-  });
-
-  if (!parsed.success) {
-    return { errors: parsed.error.flatten().fieldErrors };
-  }
-
-  // 处理数据...
-  return { success: true };
-}
-```
-
-### useActionState (React 19)
-```tsx
-'use client';
-
-import { useActionState } from 'react';
-import { createUser } from './actions';
-
-export function Form() {
-  const [state, formAction, isPending] = useActionState(createUser, null);
-
-  return (
-    <form action={formAction}>
-      <input name="name" />
-      {state?.errors?.name && <span>{state.errors.name}</span>}
-      <button type="submit" disabled={isPending}>
-        {isPending ? 'Creating...' : 'Create'}
-      </button>
-    </form>
-  );
-}
-```
-
----
-
-## 缓存
-
-### 页面级别
-```tsx
-// 强制动态渲染
-export const dynamic = 'force-dynamic';
-
-// 强制静态生成
-export const dynamic = 'force-static';
-
-// 重新验证时间 (ISR)
-export const revalidate = 60;
-```
-
-### 手动失效
-```tsx
-'use server';
-
-import { revalidatePath, revalidateTag } from 'next/cache';
-
-export async function updateData() {
-  // 更新数据库...
-
-  // 失效整个路径
-  revalidatePath('/dashboard');
-
-  // 失效带标签的请求
-  revalidateTag('products');
-}
-```
-
-### 缓存 API
-```tsx
-import { unstable_cache } from 'next/cache';
-
-const getCachedData = unstable_cache(
-  async () => {
-    return await fetchExpensiveData();
-  },
-  ['data-cache-key'],
-  { revalidate: 3600, tags: ['data'] }
-);
-```
-
----
-
-## 导航
-
-### Link 组件
+### 使用 Link 组件（推荐）
 ```tsx
 import Link from 'next/link';
 
-// 基础用法
-<Link href="/about">About</Link>
-
-// 带样式
-<Link href="/about" className="text-blue-500">
-  About
-</Link>
-
-// 替换当前历史记录
-<Link href="/about" replace>About</Link>
-
-// 预加载
-<Link href="/about" prefetch={false}>About</Link>
-
-// 滚动到锚点
-<Link href="/about#section">About</Link>
-
-// 动态路由
-<Link href={`/users/${user.id}`}>{user.name}</Link>
+export default function Nav() {
+  return (
+    <nav>
+      <Link href="/">首页</Link>
+      <Link href="/about">关于</Link>
+      <Link href="/blog">博客</Link>
+    </nav>
+  );
+}
 ```
 
-### 编程式导航
+### 编程式导航（用代码跳转）
 ```tsx
 'use client';
 
@@ -446,347 +161,425 @@ export default function Button() {
   const router = useRouter();
 
   return (
-    <button onClick={() => router.push('/dashboard')}>
-      Go to Dashboard
+    <button onClick={() => router.push('/about')}>
+      跳转到关于页
     </button>
   );
 }
 ```
 
-### 其他导航方法
-```tsx
-const router = useRouter();
+---
 
-router.push('/path');        // 导航到新页面
-router.replace('/path');     // 替换当前页面
-router.back();               // 返回
-router.forward();            // 前进
-router.refresh();            // 刷新当前页面（软刷新）
+## 🎭 两种组件
+
+### Server Component（默认）
+```tsx
+// 可以直接获取数据
+// 代码在服务器运行
+
+export default async function Page() {
+  const data = await fetch('https://api.example.com/data');
+  const json = await data.json();
+
+  return <div>{json.title}</div>;
+}
 ```
+**什么时候用？** 只需要显示数据，不需要交互
+
+### Client Component
+```tsx
+'use client';  // 必须加在第一行
+
+import { useState } from 'react';
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      点击了 {count} 次
+    </button>
+  );
+}
+```
+**什么时候用？** 需要点击、输入等交互功能
 
 ---
 
-## Metadata
+## 📊 数据获取
 
-### 静态 Metadata
+### 在页面中获取数据
 ```tsx
-import { Metadata } from 'next';
+// app/users/page.tsx
+export default async function UsersPage() {
+  // 获取数据
+  const response = await fetch('https://api.example.com/users');
+  const users = await response.json();
 
-export const metadata: Metadata = {
-  title: 'My Site',
-  description: 'Welcome to my site',
-  keywords: ['nextjs', 'react'],
-  authors: [{ name: 'John' }],
-
-  openGraph: {
-    title: 'My Site',
-    description: 'Welcome',
-    url: 'https://example.com',
-    siteName: 'My Site',
-    images: ['/og.png'],
-  },
-
-  twitter: {
-    card: 'summary_large_image',
-    title: 'My Site',
-    images: ['/twitter.png'],
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
-```
-
-### 动态 Metadata
-```tsx
-import { Metadata } from 'next';
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}): Promise<Metadata> {
-  const { id } = await params;
-  const product = await fetchProduct(id);
-
-  return {
-    title: product.name,
-    description: product.description,
-    openGraph: {
-      images: [product.image],
-    },
-  };
+  return (
+    <div>
+      <h1>用户列表</h1>
+      {users.map(user => (
+        <p key={user.id}>{user.name}</p>
+      ))}
+    </div>
+  );
 }
 ```
 
-### 模板和默认
+### 添加加载状态
 ```tsx
-// app/layout.tsx
-export const metadata: Metadata = {
-  title: {
-    template: '%s | My Site',  // 子页面: "About | My Site"
-    default: 'My Site',        // 默认标题
-  },
-};
+// app/users/loading.tsx
+export default function Loading() {
+  return <p>加载中...</p>;
+}
+```
+
+### 添加错误处理
+```tsx
+// app/users/error.tsx
+'use client';
+
+export default function Error({ error, reset }) {
+  return (
+    <div>
+      <p>出错了: {error.message}</p>
+      <button onClick={reset}>重试</button>
+    </div>
+  );
+}
 ```
 
 ---
 
-## API Routes
+## 📝 表单提交（Server Actions）
 
-### 基础 CRUD
+### 1. 创建 Action
+```tsx
+// app/actions.ts
+'use server';
+
+export async function submitForm(formData: FormData) {
+  const name = formData.get('name');
+  const email = formData.get('email');
+
+  // 这里可以操作数据库
+  console.log(name, email);
+
+  // 保存到数据库...
+}
+```
+
+### 2. 使用 Action
+```tsx
+import { submitForm } from './actions';
+
+export default function ContactForm() {
+  return (
+    <form action={submitForm}>
+      <input name="name" placeholder="姓名" required />
+      <input name="email" type="email" placeholder="邮箱" required />
+      <button type="submit">提交</button>
+    </form>
+  );
+}
+```
+
+---
+
+## 💅 样式
+
+### Tailwind CSS（推荐）
+```tsx
+export default function Card() {
+  return (
+    <div className="p-4 bg-white rounded-lg shadow-md">
+      <h2 className="text-xl font-bold text-blue-600">标题</h2>
+      <p className="text-gray-600 mt-2">内容</p>
+      <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+        按钮
+      </button>
+    </div>
+  );
+}
+```
+
+常用 Tailwind 类：
+| 类名 | 作用 |
+|-----|------|
+| `p-4` | padding: 1rem |
+| `m-4` | margin: 1rem |
+| `text-xl` | 文字大 |
+| `font-bold` | 粗体 |
+| `bg-blue-500` | 蓝色背景 |
+| `text-white` | 白色文字 |
+| `rounded` | 圆角 |
+| `flex` | 弹性布局 |
+| `grid` | 网格布局 |
+
+### CSS 文件
+```css
+/* app/globals.css */
+body {
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+.my-button {
+  padding: 10px 20px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+```
+
+---
+
+## 🖼️ 图片使用
+
+### 使用 next/image（自动优化）
+```tsx
+import Image from 'next/image';
+
+export default function Photo() {
+  return (
+    <Image
+      src="/photo.jpg"      // public 目录下的图片
+      alt="描述文字"
+      width={500}
+      height={300}
+    />
+  );
+}
+```
+
+### 外部图片
+```tsx
+import Image from 'next/image';
+
+export default function Photo() {
+  return (
+    <Image
+      src="https://example.com/photo.jpg"
+      alt="描述"
+      width={500}
+      height={300}
+    />
+  );
+}
+```
+需要在 `next.config.js` 中配置域名。
+
+---
+
+## ⚛️ React 基础（Client Component 中用）
+
+### useState（状态）
+```tsx
+'use client';
+
+import { useState } from 'react';
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>当前数值: {count}</p>
+      <button onClick={() => setCount(count + 1)}>+1</button>
+      <button onClick={() => setCount(count - 1)}>-1</button>
+    </div>
+  );
+}
+```
+
+### useEffect（副作用）
+```tsx
+'use client';
+
+import { useState, useEffect } from 'react';
+
+export default function Clock() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    // 每秒更新时间
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    // 清理函数
+    return () => clearInterval(timer);
+  }, []);
+
+  return <p>现在时间: {time.toLocaleTimeString()}</p>;
+}
+```
+
+### 表单处理
+```tsx
+'use client';
+
+import { useState } from 'react';
+
+export default function Form() {
+  const [name, setName] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();  // 阻止页面刷新
+    console.log('提交的名字:', name);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="输入名字"
+      />
+      <button type="submit">提交</button>
+    </form>
+  );
+}
+```
+
+### 列表渲染
+```tsx
+export default function List() {
+  const items = [
+    { id: 1, name: '苹果' },
+    { id: 2, name: '香蕉' },
+    { id: 3, name: '橙子' },
+  ];
+
+  return (
+    <ul>
+      {items.map(item => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+---
+
+## 🔌 API 路由
+
+### 创建 API
+```tsx
+// app/api/hello/route.ts
+import { NextResponse } from 'next/server';
+
+export async function GET() {
+  return NextResponse.json({ message: 'Hello World' });
+}
+```
+访问地址：`http://localhost:3000/api/hello`
+
+### 带数据库操作
 ```tsx
 // app/api/users/route.ts
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
-// GET /api/users
 export async function GET() {
   const users = await db.user.findMany();
   return NextResponse.json(users);
 }
 
-// POST /api/users
-export async function POST(request: NextRequest) {
-  const body = await request.json();
-  const user = await db.user.create({ data: body });
-  return NextResponse.json(user, { status: 201 });
+export async function POST(request: Request) {
+  const data = await request.json();
+  const newUser = await db.user.create({ data });
+  return NextResponse.json(newUser, { status: 201 });
 }
 ```
 
-### 动态路由
-```tsx
-// app/api/users/[id]/route.ts
-import { NextRequest, NextResponse } from 'next/server';
+---
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
-  const { id } = await params;
-  const user = await db.user.findUnique({ where: { id } });
+## 🎯 常用技巧
+
+### 获取 URL 参数
+```tsx
+// 访问 /search?q=关键词
+export default function Search({ searchParams }) {
+  const query = searchParams.q;
+
+  return <p>搜索: {query}</p>;
+}
+```
+
+### 设置页面标题
+```tsx
+export const metadata = {
+  title: '我的页面标题',
+  description: '页面描述',
+};
+
+export default function Page() {
+  return <div>内容</div>;
+}
+```
+
+### 重定向
+```tsx
+import { redirect } from 'next/navigation';
+
+export default async function Page() {
+  const user = await getUser();
 
   if (!user) {
-    return NextResponse.json({ error: 'Not found' }, { status: 404 });
+    redirect('/login');
   }
 
-  return NextResponse.json(user);
-}
-
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
-  const { id } = await params;
-  const body = await request.json();
-  const user = await db.user.update({
-    where: { id },
-    data: body,
-  });
-  return NextResponse.json(user);
-}
-
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
-  const { id } = await params;
-  await db.user.delete({ where: { id } });
-  return NextResponse.json(null, { status: 204 });
-}
-```
-
-### 处理 FormData
-```tsx
-export async function POST(request: NextRequest) {
-  const formData = await request.formData();
-  const file = formData.get('file') as File;
-
-  // 处理文件上传...
-
-  return NextResponse.json({ success: true });
+  return <div>欢迎, {user.name}</div>;
 }
 ```
 
 ---
 
-## 中间件
+## 🛠️ 常见问题
 
-### 基础中间件
+### 1. "window is not defined" 错误
+**原因**：Server Component 中没有 window
+**解决**：
 ```tsx
-// middleware.ts (项目根目录或 src/)
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+'use client';  // 加这一行
 
-export function middleware(request: NextRequest) {
-  // 检查认证
-  const token = request.cookies.get('token')?.value;
-
-  if (!token && request.nextUrl.pathname.startsWith('/dashboard')) {
-    return NextResponse.redirect(new URL('/login', request.url));
-  }
-
-  return NextResponse.next();
-}
-
-export const config = {
-  matcher: ['/dashboard/:path*', '/api/protected/:path*'],
-};
-```
-
-### 重写和重定向
-```tsx
-export function middleware(request: NextRequest) {
-  // 重定向
-  if (request.nextUrl.pathname === '/old') {
-    return NextResponse.redirect(new URL('/new', request.url));
-  }
-
-  // 重写 (URL 不变)
-  if (request.nextUrl.pathname.startsWith('/blog')) {
-    const newUrl = new URL(request.url);
-    newUrl.pathname = '/api/blog' + request.nextUrl.pathname;
-    return NextResponse.rewrite(newUrl);
-  }
-
-  return NextResponse.next();
+export default function Component() {
+  // 现在可以使用 window
+  console.log(window.location.href);
+  return <div>...</div>;
 }
 ```
 
-### i18n 中间件
-```tsx
-import { NextResponse } from 'next/server';
+### 2. 图片不显示
+**检查**：
+1. 图片放在 `public` 目录下
+2. 路径以 `/` 开头
+3. 如果使用外部图片，配置了域名
 
-const locales = ['en', 'zh', 'ja'];
-const defaultLocale = 'en';
+### 3. 样式不生效
+**检查**：
+1. Tailwind 类名拼写正确
+2. CSS 文件正确导入
+3. 清除浏览器缓存
 
-export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
-
-  // 检查是否已有语言前缀
-  const pathnameHasLocale = locales.some(
-    locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  );
-
-  if (pathnameHasLocale) return NextResponse.next();
-
-  // 检测用户语言
-  const locale = request.headers.get('accept-language')?.split(',')[0].split('-')[0]
-    || defaultLocale;
-
-  // 重定向到带语言前缀的 URL
-  request.nextUrl.pathname = `/${locale}${pathname}`;
-  return NextResponse.redirect(request.nextUrl);
-}
-```
+### 4. 数据获取失败
+**检查**：
+1. API 地址正确
+2. 网络连接正常
+3. 查看控制台错误信息
 
 ---
 
-## 配置
+## 📚 学习资源
 
-### next.config.js
-```js
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // 图片域名配置
-  images: {
-    domains: ['example.com', 'cdn.example.com'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**.example.com',
-      },
-    ],
-  },
-
-  // 重定向
-  async redirects() {
-    return [
-      {
-        source: '/old',
-        destination: '/new',
-        permanent: true,
-      },
-    ];
-  },
-
-  // 重写
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'https://external-api.com/:path*',
-      },
-    ];
-  },
-
-  // 头信息
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-        ],
-      },
-    ];
-  },
-
-  // 实验性功能
-  experimental: {
-    typedRoutes: true,
-  },
-};
-
-module.exports = nextConfig;
-```
+- [Next.js 官方文档](https://nextjs.org/docs)
+- [React 官方文档](https://react.dev)
+- [Tailwind CSS 文档](https://tailwindcss.com/docs)
+- [MDN Web 文档](https://developer.mozilla.org/zh-CN/)
 
 ---
 
-## 常用工具函数
-
-### 延迟函数
-```tsx
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-```
-
-### 格式化日期
-```tsx
-import { format } from 'date-fns';
-
-format(new Date(), 'yyyy-MM-dd');
-```
-
-### 构建绝对 URL
-```tsx
-function getBaseUrl() {
-  if (typeof window !== 'undefined') return '';
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return `http://localhost:${process.env.PORT ?? 3000}`;
-}
-```
-
----
-
-## 快速命令
-
-```bash
-# 开发
-npm run dev          # 启动开发服务器
-npm run dev -- -p 4000  # 指定端口
-
-# 构建
-npm run build        # 生产构建
-npm run start        # 启动生产服务器
-
-# 检查
-npm run lint         # ESLint 检查
-npx next lint --fix  # 自动修复
-
-# 类型检查
-npx tsc --noEmit
-```
+**有问题？先查文档，再搜索，最后问人。** 这是程序员的基本技能 😊
