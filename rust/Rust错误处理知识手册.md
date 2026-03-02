@@ -510,8 +510,8 @@ some.is_some_and(|v| v > 40);      // true (Rust 1.70+)
 // 提取值
 some.unwrap();                      // 42
 some.expect("应有值");               // 42
-none.unwrap_or(0);                  // 0
-none.unwrap_or_else(|| 100);        // 100
+none.unwrap_or(0);                  // 0 设置默认值
+none.unwrap_or_else(|| 100);        // 100 惰性默认值，只有为Err或者为None时
 none.unwrap_or_default();           // 0 (i32::default())
 ```
 
