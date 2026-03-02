@@ -11,14 +11,10 @@
             "id": "2b225c4568871cdb",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "rust/Rust错误处理知识手册.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Rust错误处理知识手册"
+              "title": "新标签页"
             }
           }
         ]
@@ -211,27 +207,27 @@
     "项目/SwarmDrop",
     "项目/OmniAI 助手",
     "项目",
+    "掘金小册/Rust 入门与实践/16. 高级特性：String、str、&&#39;static str 与 FastStr.md",
     "work/加班/加班日记（已提）.md",
     "work/rabbit/AI 助手语音对话功能 - 技术方案.md",
     "work/2025年度总结/个人总结.md",
     "work/2025年度总结/业财一体化平台项目总结版本二.md",
-    "work/2025年度总结/git_log_app_2025.txt",
     "work/2025年度总结/业财一体化平台项目总结版本三.md",
     "work/2025年度总结/业财一体化平台项目总结版本一.md",
+    "work/2025年度总结/git_log_app_2025.txt",
     "work/2025年度总结/git_log_2025_web.txt",
     "work/2025年度总结/git_log_2025_business.txt",
     "work/2025年度总结/git_log_2025pc.txt",
     "work/2025年度总结/2025年度工作总结报告（3）.md",
     "work/2025年度总结/2025年度业财一体化系统（含小兔数据小程序）工作总结.md",
-    "work/2025年度总结/2025年年度总结版本(5).md",
     "work/2025年度总结/2025年年度总结版本(4)Gemini.md",
+    "work/2025年度总结/2025年年度总结版本(5).md",
     "work/2025年度总结/2025年年度总结版本(1).md",
-    "work/2025年度总结/2025年年度总结.md",
     "work/2025年度总结/2025年年度总结(2).md",
+    "work/2025年度总结/2025年年度总结.md",
     "work/2025年度总结/2025年业财一体化系统（含小兔数据小程序）工作总结.md",
     "work/未命名.md",
     "work/保育工作总结.md",
-    "vue3/vue3-tips-and-tricks.md",
     "未命名.canvas",
     "text/vue/code/vue3-project/src/assets/vue.svg",
     "text/vue/code/vue3-project/public/vite.svg"
