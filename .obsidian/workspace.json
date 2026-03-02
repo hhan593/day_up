@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "rust/Rust错误处理知识手册.md",
+                "file": "rust/Option 与 Result 深度解析.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Rust错误处理知识手册"
+              "title": "Option 与 Result 深度解析"
             }
           }
         ]
@@ -194,10 +194,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2b225c4568871cdb",
+  "active": "a23aa1c6a370bb77",
   "lastOpenFiles": [
-    "rust/Rust测试与文档手册.md",
     "rust/Rust错误处理知识手册.md",
+    "rust/Option 与 Result 深度解析.md",
+    "rust/Rust测试与文档手册.md",
     "nextjs/nextjs-for-react-devs.md",
     "rust/README.md",
     "conflict-files-obsidian-git.md",
@@ -225,7 +226,6 @@
     "react",
     "nextjs/nextjs-learning-roadmap.md",
     "nextjs/nextjs-learning-plan.md",
-    "nextjs/nextjs-cheatsheet.md",
     "项目/SwarmDrop/冲突",
     "项目/SwarmDrop",
     "work/rabbit",
