@@ -377,22 +377,47 @@ let result: Result<i32, &str> = Err("fail")
 #### 转换与嵌套处理
 
 ```rust
-// transpose: Result<Option<T>, E> ↔ Option<Result<T, E>>
+// ==========================================
+// 1. transpose: 内外类型翻转（把 Result 和 Option 的位置互换）
+// 常见场景：读取文件内容（Result），但文件可能为空（Option）
+// ==========================================
+
+// 情况 A：闯关成功 (Ok)，且拿到了一件装备 (Some)
 let x: Result<Option<i32>, &str> = Ok(Some(42));
-let y: Option<Result<i32, &str>> = x.transpose();  // Some(Ok(42))
+// 翻转后：确实有个东西 (Some)，而且它是通过闯关拿到的 (Ok)
+let y: Option<Result<i32, &str>> = x.transpose();  // 结果变成：Some(Ok(42))
 
+// 情况 B：闯关成功 (Ok)，但是宝箱是空的 (None)
 let x: Result<Option<i32>, &str> = Ok(None);
-let y: Option<Result<i32, &str>> = x.transpose();  // None
+// 翻转后：既然宝箱是空的，那整体就当做“啥也没有” (None) 
+// 💡 注意：这是 transpose 最核心的作用，直接把无用的 Ok(None) 过滤掉！
+let y: Option<Result<i32, &str>> = x.transpose();  // 结果变成：None
 
-// flatten: Result<Result<T, E>, E> → Result<T, E>
+// （补充）情况 C：闯关直接失败了 (Err)
+// let x: Result<Option<i32>, &str> = Err("error");
+// 翻转后：确实有个结果 (Some)，只不过这个结果是个报错 (Err)
+// let y: Option<Result<i32, &str>> = x.transpose();  // 结果变成：Some(Err("error"))
+
+
+// ==========================================
+// 2. flatten: 降维打击（消除多余的嵌套，剥洋葱）
+// 常见场景：你调用了一个返回 Result 的函数，这个函数内部又调了另一个返回 Result 的函数
+// ==========================================
+
+// 情况 A：外层闯关成功，内层也闯关成功，最终拿到 42
 let x: Result<Result<i32, &str>, &str> = Ok(Ok(42));
-x.flatten(); // Ok(42)
+// 拍扁：成功拿到 42
+x.flatten(); // 结果：Ok(42)
 
+// 情况 B：外层闯关成功了，但拆开一看，内层失败了
 let x: Result<Result<i32, &str>, &str> = Ok(Err("inner"));
-x.flatten(); // Err("inner")
+// 拍扁：整体算作失败，返回内层的死法
+x.flatten(); // 结果：Err("inner")
 
+// 情况 C：外层直接闯关失败，连内层长啥样都没看到
 let x: Result<Result<i32, &str>, &str> = Err("outer");
-x.flatten(); // Err("outer")
+// 拍扁：整体算作失败，返回外层的死法
+x.flatten(); // 结果：Err("outer")
 ```
 
 #### 引用操作
