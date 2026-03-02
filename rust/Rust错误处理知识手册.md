@@ -772,18 +772,52 @@ do_something(value);
 检查值是否匹配某个模式，返回 `bool`：
 
 ```rust
+// 准备一个测试用的 Result（闯关成功，拿到了数字 42）
 let result: Result<i32, &str> = Ok(42);
 
-// 等价于 match + true/false 
-//此时要满足外面的是Ok里边的也要是Ok,即Ok(42) 是正确的和 后面的判断语句 if v > 0 也是正确的
+// ==========================================
+// 1. matches! 基础用法：超级简化的 match 语句，只返回 true 或 false
+// 核心逻辑：它是一个“双重门卫”。
+// 第一关：看“外壳形状”对不对（是 Ok 还是 Err）。
+// 第二关（可选）：看后面的附加条件（if 守卫）成不成立。
+// 必须全部通关，才会返回 true！
+// ==========================================
+
+// 检查 result 是否是 Ok，并且里面的值 v 是否大于 0。
+// 因为 result 的外壳确实是 Ok（第一关过），且提取出的 42 大于 0（第二关过），所以返回 true。
 let is_positive_ok = matches!(result, Ok(v) if v > 0); // true
+
+// 检查 result 是否是具体的错误 Err("not found")。
+// 因为 result 的外壳是 Ok，连 Err 都不是，第一关直接阵亡，根本不看里面的内容，返回 false。
 let is_specific_err = matches!(result, Err("not found")); // false
 
-// 常用在 assert! 和 filter 中
+
+// ==========================================
+// 2. 测试神兵：在 assert! 断言中的应用
+// 痛点：用传统的 assert_eq! 比较时，要求 Result 两边的类型必须完全实现“可比较（PartialEq）”特征，有时非常繁琐。
+// 解决：matches! 只做“模式匹配”，不管相等性，极其灵活。
+// ==========================================
+
+// 断言 result 就是 Ok(42)。如果不是，程序运行到这里就会 panic（崩溃报错）。
+// 你甚至可以这样写范围匹配：assert!(matches!(result, Ok(1..=100))); 
 assert!(matches!(result, Ok(42)));
 
+
+// ==========================================
+// 3. 迭代器的黄金搭档：在 filter 过滤中的应用
+// 痛点：filter 方法需要传入一个必须返回 true/false 的闭包。如果用传统的 match 写，代码会极其臃肿。
+// 解决：用 matches! 一句话搞定。
+// ==========================================
+
+// 准备一个混杂了成功和失败结果的数组
 let results: Vec<Result<i32, &str>> = vec![Ok(1), Err("x"), Ok(3)];
-let ok_count = results.iter().filter(|r| matches!(r, Ok(_))).count(); // 2
+
+// 需求：统计里面到底有几个成功的元素（Ok）。
+// 解析闭包 `|r| matches!(r, Ok(_))`：
+// `r` 代表数组里的每一个元素。
+// `Ok(_)` 里的下划线 `_` 是通配符，意思是：“我根本不在乎 Ok 里面装的是 1 还是 3，只要它是个 Ok，就放行（返回 true）。”
+let ok_count = results.iter().filter(|r| matches!(r, Ok(_))).count(); 
+// 最终统计出有 2 个 Ok，ok_count 为 2
 ```
 
 ---
