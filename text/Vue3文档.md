@@ -1,13 +1,10 @@
 # 1. Vue3 简介
 
 - 2020 年 9 月 18 日，`Vue.js`发布版`3.0`版本，代号：`One Piece`（n
-
 - 经历了：[4800+次提交](https://github.com/vuejs/core/commits/main)、[40+个 RFC](https://github.com/vuejs/rfcs/tree/master/active-rfcs)、[600+次 PR](https://github.com/vuejs/vue-next/pulls?q=is%3Apr+is%3Amerged+-author%3Aapp%2Fdependabot-preview+)、[300+贡献者](https://github.com/vuejs/core/graphs/contributors)
-
 - 官方发版地址：[Release v3.0.0 One Piece · vuejs/core](https://github.com/vuejs/core/releases/tag/v3.0.0)
-
 - 截止 2023 年 10 月，最新的公开版本为：`3.3.4`
-  
+
   <img src="images/1695089947298-161c1b47-eb86-42fb-b1f8-d6a4fcab8ee2.png" alt="image.png" style="zoom:30%;" />
 
 ## 1.1. 【性能的提升】
@@ -31,33 +28,27 @@
 ## 1.4. 【新的特性】
 
 1. `Composition API`（组合`API`）：
-   
+
    - `setup`
-   
    - `ref`与`reactive`
-   
    - `computed`与`watch`
-     
+
      ......
 
 2. 新的内置组件：
-   
+
    - `Fragment`
-   
    - `Teleport`
-   
    - `Suspense`
-     
+
      ......
 
 3. 其他改变：
-   
+
    - 新的生命周期钩子
-   
    - `data` 选项应始终被声明为一个函数
-   
    - 移除`keyCode`支持作为` v-on` 的修饰符
-     
+
      ......
 
 # 2. 创建 Vue3 工程
@@ -95,13 +86,11 @@ npm run serve
 `vite` 是新一代前端构建工具，官网地址：[https://vitejs.cn](https://vitejs.cn/)，`vite`的优势如下：
 
 - 轻量快速的热重载（`HMR`），能实现极速的服务启动。
-
 - 对 `TypeScript`、`JSX`、`CSS` 等支持开箱即用。
-
 - 真正的按需编译，不再等待整个应用编译完成。
-
 - `webpack`构建 与 `vite`构建对比图如下：
   <img src="images/1683167182037-71c78210-8217-4e7d-9a83-e463035efbbe.png" alt="webpack构建" title="webpack构建" style="zoom:20%;box-shadow:0 0 10px black" /> <img src="images/1683167204081-582dc237-72bc-499e-9589-2cdfd452e62f.png" alt="vite构建" title="vite构建" style="zoom: 20%;box-shadow:0 0 10px black" />
+
 * 具体操作如下（点击查看[官方文档](https://cn.vuejs.org/guide/quick-start.html#creating-a-vue-application)）
 
 ```powershell
@@ -516,19 +505,18 @@ function test() {
 宏观角度看：
 
 > 1. `ref`用来定义：**基本类型数据**、**对象类型数据**；
-> 
+>
 > 2. `reactive`用来定义：**对象类型数据**。
 
 - 区别：
 
 > 1. `ref`创建的变量必须使用`.value`（可以使用`volar`插件自动添加`.value`）。
->    
+>
 >    <img src="images/自动补充value.png" alt="自动补充value" style="zoom:50%;border-radius:20px" />
-> 
+>
 > 2. `reactive`重新分配一个新对象，会**失去**响应式（可以使用`Object.assign`去整体替换）。
 
 - 使用原则：
-  
   > 1. 若需要一个基本类型的响应式数据，必须使用`ref`。
   > 2. 若需要一个响应式对象，层级不深，`ref`、`reactive`都可以。
   > 3. 若需要一个响应式对象，且层级较深，推荐使用`reactive`。
@@ -627,7 +615,6 @@ function changeFullName() {
 
 - 作用：监视数据的变化（和`Vue2`中的`watch`作用一致）
 - 特点：`Vue3`中的`watch`只能监视以下**四种数据**：
-  
   > 1. `ref`定义的数据。
   > 2. `reactive`定义的数据。
   > 3. 函数返回一个值（`getter`函数）。
@@ -671,9 +658,9 @@ const stopWatch = watch(sum, (newValue, oldValue) => {
 监视`ref`定义的【对象类型】数据：直接写数据名，监视的是对象的【地址值】，若想监视对象内部的数据，要手动开启深度监视。
 
 > 注意：
-> 
+>
 > - 若修改的是`ref`定义的对象中的属性，`newValue` 和 `oldValue` 都是新值，因为它们是同一个对象。
-> 
+>
 > - 若修改整个`ref`定义的对象，`newValue` 是新值， `oldValue` 是旧值，因为不是同一个对象了。
 
 ```vue
@@ -916,15 +903,15 @@ watch(
 - 官网：立即运行一个函数，同时响应式地追踪其依赖，并在依赖更改时重新执行该函数。
 
 - `watch`对比`watchEffect`
-  
+
   > 1. 都能监听响应式数据的变化，不同的是监听数据变化的方式不同
-  > 
+  >
   > 2. `watch`：要明确指出监视的数据
-  > 
+  >
   > 3. `watchEffect`：不用明确指出监视的数据（函数中用到哪些属性，那就监视哪些属性）。
 
 - 示例代码：
-  
+
   ```vue
   <template>
     <div class="person">
@@ -981,7 +968,7 @@ watch(
 作用：用于注册模板引用。
 
 > - 用在普通`DOM`标签上，获取的是`DOM`节点。
-> 
+>
 > - 用在组件标签上，获取的是组件实例对象。
 
 用在普通`DOM`标签上：
@@ -1065,23 +1052,23 @@ defineExpose({ name, age });
 >   name: string;
 >   age: number;
 > }
-> 
+>
 > // 定义一个自定义类型Persons
 > export type Persons = Array<PersonInter>;
 > ```
-> 
+>
 > `App.vue`中代码：
-> 
+>
 > ```vue
 > <template>
 >   <Person :list="persons" />
 > </template>
-> 
+>
 > <script lang="ts" setup name="App">
 > import Person from "./components/Person.vue";
 > import { reactive } from "vue";
 > import { type Persons } from "./types";
-> 
+>
 > let persons = reactive<Persons>([
 >   { id: "e98219e12", name: "张三", age: 18 },
 >   { id: "e98219e13", name: "李四", age: 19 },
@@ -1089,9 +1076,9 @@ defineExpose({ name, age });
 > ]);
 > </script>
 > ```
-> 
+>
 > `Person.vue`中代码：
-> 
+>
 > ```Vue
 > <template>
 > <div class="person">
@@ -1102,17 +1089,17 @@ defineExpose({ name, age });
 >     </ul>
 >    </div>
 >    </template>
-> 
+>
 > <script lang="ts" setup name="Person">
 > import {defineProps} from 'vue'
 > import {type PersonInter} from '@/types'
-> 
+>
 >   // 第一种写法：仅接收
 > // const props = defineProps(['list'])
-> 
+>
 >   // 第二种写法：接收+限制类型
 > // defineProps<{list:Persons}>()
-> 
+>
 >   // 第三种写法：接收+限制类型+指定默认值+限制必要性
 > let props = withDefaults(defineProps<{list?:Persons}>(),{
 >      list:()=>[{id:'asdasg01',name:'小猪佩奇',age:18}]
@@ -1126,33 +1113,33 @@ defineExpose({ name, age });
 - 概念：`Vue`组件实例在创建时要经历一系列的初始化步骤，在此过程中`Vue`会在合适的时机，调用特定的函数，从而让开发者有机会在特定阶段运行自己的代码，这些特定的函数统称为：生命周期钩子
 
 - 规律：
-  
+
   > 生命周期整体分为四个阶段，分别是：**创建、挂载、更新、销毁**，每个阶段都有两个钩子，一前一后。
 
 - `Vue2`的生命周期
-  
+
   > 创建阶段：`beforeCreate`、`created`
-  > 
+  >
   > 挂载阶段：`beforeMount`、`mounted`
-  > 
+  >
   > 更新阶段：`beforeUpdate`、`updated`
-  > 
+  >
   > 销毁阶段：`beforeDestroy`、`destroyed`
 
 - `Vue3`的生命周期
-  
+
   > 创建阶段：`setup`
-  > 
+  >
   > 挂载阶段：`onBeforeMount`、`onMounted`
-  > 
+  >
   > 更新阶段：`onBeforeUpdate`、`onUpdated`
-  > 
+  >
   > 卸载阶段：`onBeforeUnmount`、`onUnmounted`
 
 - 常用的钩子：`onMounted`(挂载完毕)、`onUpdated`(更新完毕)、`onBeforeUnmount`(卸载之前)
 
 - 示例代码：
-  
+
   ```vue
   <template>
     <div class="person">
@@ -1211,13 +1198,13 @@ defineExpose({ name, age });
 示例代码：
 
 - `useSum.ts`中内容如下：
-  
+
   ```js
   import { ref, onMounted } from "vue";
-  
+
   export default function () {
     let sum = ref(0);
-  
+
     const increment = () => {
       sum.value += 1;
     };
@@ -1227,21 +1214,21 @@ defineExpose({ name, age });
     onMounted(() => {
       increment();
     });
-  
+
     //向外部暴露数据
     return { sum, increment, decrement };
   }
   ```
 
 - `useDog.ts`中内容如下：
-  
+
   ```js
   import {reactive,onMounted} from 'vue'
   import axios,{AxiosError} from 'axios'
-  
+
   export default function(){
     let dogList = reactive<string[]>([])
-  
+
     // 方法
     async function getDog(){
       try {
@@ -1255,19 +1242,19 @@ defineExpose({ name, age });
         console.log(err.message)
       }
     }
-  
+
     // 挂载钩子
     onMounted(()=>{
       getDog()
     })
-  
+
     //向外部暴露数据
     return {dogList,getDog}
   }
   ```
 
 - 组件中具体使用：
-  
+
   ```vue
   <template>
     <h2>当前求和为：{{ sum }}</h2>
@@ -1313,7 +1300,7 @@ defineExpose({ name, age });
 - `Vue3`中要使用`vue-router`的最新版本，目前是`4`版本。
 
 - 路由配置文件代码如下：
-  
+
   ```js
   import { createRouter, createWebHistory } from "vue-router";
   import Home from "@/pages/Home.vue";
@@ -1335,16 +1322,18 @@ defineExpose({ name, age });
   });
   export default router;
   ```
+
 * `main.ts`代码如下：
-  
+
   ```js
   import router from "./router/index";
   app.use(router);
   
   app.mount("#app");
   ```
+
 - `App.vue`代码如下
-  
+
   ```vue
   <template>
     <div class="app">
@@ -1370,17 +1359,17 @@ defineExpose({ name, age });
 ## 4.3. 【两个注意点】
 
 > 1. 路由组件通常存放在`pages` 或 `views`文件夹，一般组件通常存放在`components`文件夹。
-> 
+>
 > 2. 通过点击导航，视觉效果上“消失” 了的路由组件，默认是被**卸载**掉的，需要的时候再去**挂载**。
 
 ## 4.4.【路由器工作模式】
 
 1. `history`模式
-   
+
    > 优点：`URL`更加美观，不带有`#`，更接近传统的网站`URL`。
-   > 
+   >
    > 缺点：后期项目上线，需要服务端配合处理路径问题，否则刷新会有`404`错误。
-   > 
+   >
    > ```js
    > const router = createRouter({
    >   history: createWebHistory(), //history模式
@@ -1389,11 +1378,11 @@ defineExpose({ name, age });
    > ```
 
 2. `hash`模式
-   
+
    > 优点：兼容性更好，因为不需要服务器端处理路径。
-   > 
+   >
    > 缺点：`URL`带有`#`不太美观，且在`SEO`优化方面相对较差。
-   > 
+   >
    > ```js
    > const router = createRouter({
    >   history: createWebHashHistory(), //hash模式
@@ -1452,7 +1441,7 @@ routes: [
 1. 编写`News`的子路由：`Detail.vue`
 
 2. 配置路由规则，使用`children`配置项：
-   
+
    ```ts
    const router = createRouter({
      history: createWebHistory(),
@@ -1485,7 +1474,7 @@ routes: [
    ```
 
 3. 跳转路由（记得要加完整路径）：
-   
+
    ```vue
    <router-link to="/news/detail">xxxx</router-link>
    <!-- 或 -->
@@ -1493,7 +1482,7 @@ routes: [
    ```
 
 4. 记得去`Home`组件中预留一个`<router-view>`
-   
+
    ```vue
    <template>
      <div class="news">
@@ -1517,75 +1506,75 @@ routes: [
 
 ### query 参数
 
-1. 传递参数
-   
-   ```vue
-   <!-- 跳转并携带query参数（to的字符串写法） -->
-   <router-link to="/news/detail?a=1&b=2&content=欢迎你">
-       跳转
-   </router-link>
-   
-   <!-- 跳转并携带query参数（to的对象写法） -->
-   <RouterLink
-     :to="{
-       //name:'xiang', //用name也可以跳转,不过这个name要在路由中配置
-       path: '/news/detail',
-       query: {
-         id: news.id,
-         title: news.title,
-         content: news.content,
-       },
-     }"
-   >
-     {{news.title}}
-   </RouterLink>
-   ```
+1.  传递参数
 
-2. 接收参数：
-   
-   ```js
-   import { useRoute } from "vue-router";
-   const route = useRoute();
-   // 打印query参数
-   console.log(route.query);
-   ```
+    ```vue
+    <!-- 跳转并携带query参数（to的字符串写法） -->
+    <router-link to="/news/detail?a=1&b=2&content=欢迎你">
+    	跳转
+    </router-link>
+
+    <!-- 跳转并携带query参数（to的对象写法） -->
+    <RouterLink
+      :to="{
+        //name:'xiang', //用name也可以跳转,不过这个name要在路由中配置
+        path: '/news/detail',
+        query: {
+          id: news.id,
+          title: news.title,
+          content: news.content,
+        },
+      }"
+    >
+      {{news.title}}
+    </RouterLink>
+    ```
+
+2.  接收参数：
+
+    ```js
+    import { useRoute } from "vue-router";
+    const route = useRoute();
+    // 打印query参数
+    console.log(route.query);
+    ```
 
 ### params 参数
 
-1. 传递参数
-   
-   ```vue
-   <!-- 跳转并携带params参数（to的字符串写法） -->
-   <RouterLink
-     :to="`/news/detail/001/新闻001/内容001`"
-   >{{news.title}}</RouterLink>
-   
-   <!-- 跳转并携带params参数（to的对象写法） -->
-   <RouterLink
-     :to="{
-       name: 'xiang', //用name跳转
-       params: {
-         id: news.id,
-         title: news.title,
-         content: news.title,
-       },
-     }"
-   >
-     {{news.title}}
-   </RouterLink>
-   ```
+1.  传递参数
 
-2. 接收参数：
-   
-   ```js
-   import { useRoute } from "vue-router";
-   const route = useRoute();
-   // 打印params参数
-   console.log(route.params);
-   ```
+    ```vue
+    <!-- 跳转并携带params参数（to的字符串写法） -->
+    <RouterLink
+      :to="`/news/detail/001/新闻001/内容001`"
+    >{{news.title}}</RouterLink>
+
+    <!-- 跳转并携带params参数（to的对象写法） -->
+    <RouterLink
+      :to="{
+        name: 'xiang', //用name跳转
+        params: {
+          id: news.id,
+          title: news.title,
+          content: news.title,
+        },
+      }"
+    >
+      {{news.title}}
+    </RouterLink>
+    ```
+
+2.  接收参数：
+
+    ```js
+    import { useRoute } from "vue-router";
+    const route = useRoute();
+    // 打印params参数
+    console.log(route.params);
+    ```
 
 > 备注 1：传递`params`参数时，若使用`to`的对象写法，必须使用`name`配置项，不能用`path`。
-> 
+>
 > 备注 2：传递`params`参数时，需要提前在规则中占位。
 
 ## 4.9. 【路由的 props 配置】
@@ -1594,9 +1583,9 @@ routes: [
 
 ```js
 {
-    name:'xiang',
-    path:'detail/:id/:title/:content',
-    component:Detail,
+	name:'xiang',
+	path:'detail/:id/:title/:content',
+	component:Detail,
 
   // props的对象写法，作用：把对象中的每一组key-value作为props传给Detail组件
   // props:{a:1,b:2,c:3},
@@ -1616,12 +1605,12 @@ routes: [
 1. 作用：控制路由跳转时操作浏览器历史记录的模式。
 
 2. 浏览器的历史记录有两种写入方式：分别为`push`和`replace`：
-   
+
    - `push`是追加历史记录（默认值）。
    - `replace`是替换当前记录。
 
 3. 开启`replace`模式：
-   
+
    ```vue
    <RouterLink replace .......>News</RouterLink>
    ```
@@ -1647,7 +1636,7 @@ console.log(router.replace);
 1. 作用：将特定的路径，重新定向到已有路由。
 
 2. 具体编码：
-   
+
    ```js
    {
        path:'/',
@@ -1695,11 +1684,11 @@ app.mount("#app");
 2. 它有三个概念：`state`、`getter`、`action`，相当于组件中的： `data`、 `computed` 和 `methods`。
 
 3. 具体编码：`src/store/count.ts`
-   
+
    ```ts
    // 引入defineStore用于创建store
    import { defineStore } from "pinia";
-   
+
    // 定义并暴露一个store
    export const useCountStore = defineStore("count", {
      // 动作
@@ -1716,11 +1705,11 @@ app.mount("#app");
    ```
 
 4. 具体编码：`src/store/talk.ts`
-   
+
    ```js
    // 引入defineStore用于创建store
    import { defineStore } from "pinia";
-   
+
    // 定义并暴露一个store
    export const useTalkStore = defineStore("talk", {
      // 动作
@@ -1741,7 +1730,7 @@ app.mount("#app");
    ```
 
 5. 组件中使用`state`中的数据
-   
+
    ```vue
    <template>
      <h2>当前求和为：{{ sumStore.sum }}</h2>
@@ -1755,7 +1744,7 @@ app.mount("#app");
    const sumStore = useSumStore();
    </script>
    ```
-   
+
    ```vue
    <template>
      <ul>
@@ -1776,13 +1765,13 @@ app.mount("#app");
 ## 5.4.【修改数据】(三种方式)
 
 1. 第一种修改方式，直接修改
-   
+
    ```ts
    countStore.sum = 666;
    ```
 
 2. 第二种修改方式：批量修改
-   
+
    ```ts
    countStore.$patch({
      sum: 999,
@@ -1791,10 +1780,10 @@ app.mount("#app");
    ```
 
 3. 第三种修改方式：借助`action`修改（`action`中可以编写一些业务逻辑）
-   
+
    ```js
    import { defineStore } from "pinia";
-   
+
    export const useCountStore = defineStore("count", {
      /*************/
      actions: {
@@ -1818,7 +1807,7 @@ app.mount("#app");
    ```
 
 4. 组件中调用`action`即可
-   
+
    ```js
    // 使用countStore
    const countStore = useCountStore();
@@ -1856,11 +1845,11 @@ const { sum } = storeToRefs(countStore);
 1. 概念：当`state`中的数据，需要经过处理后再使用时，可以使用`getters`配置。
 
 2. 追加`getters`配置。
-   
+
    ```js
    // 引入defineStore用于创建store
    import { defineStore } from "pinia";
-   
+
    // 定义并暴露一个store
    export const useCountStore = defineStore("count", {
      // 动作
@@ -1886,7 +1875,7 @@ const { sum } = storeToRefs(countStore);
    ```
 
 3. 组件中读取数据：
-   
+
    ```js
    const { increment, decrement } = countStore;
    let { sum, school, bigSum, upperSchool } = storeToRefs(countStore);
@@ -1937,12 +1926,10 @@ export const useTalkStore = defineStore("talk", () => {
 **`Vue3`组件通信和`Vue2`的区别：**
 
 - 移出事件总线，使用`mitt`代替。
+
 * `vuex`换成了`pinia`。
-
 * 把`.sync`优化到了`v-model`里面了。
-
 * 把`$listeners`所有的东西，合并到`$attrs`中了。
-
 * `$children`被砍掉了。
 
 **常见搭配形式：**
@@ -2004,19 +1991,17 @@ defineProps(["car", "getToy"]);
 ## 6.2. 【自定义事件】
 
 1. 概述：自定义事件常用于：**子 => 父。**
-
 2. 注意区分好：原生事件、自定义事件。
+
 - 原生事件：
-  
   - 事件名是特定的（`click`、`mosueenter`等等）
   - 事件对象`$event`: 是包含事件相关信息的对象（`pageX`、`pageY`、`target`、`keyCode`）
-
 - 自定义事件：
-  
   - 事件名是任意名称
   - <strong style="color:red">事件对象`$event`: 是调用`emit`时所提供的数据，可以是任意类型！！！</strong >
+
 3. 示例：
-   
+
    ```html
    <!--在父组件中，给子组件绑定自定义事件：-->
    <Child @send-toy="toy = $event" />
@@ -2024,7 +2009,7 @@ defineProps(["car", "getToy"]);
    <!--注意区分原生事件与自定义事件中的$event-->
    <button @click="toy = $event">测试</button>
    ```
-   
+
    ```js
    //子组件中，触发事件：
    this.$emit("send-toy", 具体数据);
@@ -2109,11 +2094,11 @@ function sendToy() {
 1. 概述：实现 **父 ↔ 子** 之间相互通信。
 
 2. 前序知识 —— `v-model`的本质
-   
+
    ```vue
    <!-- 使用v-model指令 -->
    <input type="text" v-model="userName">
-   
+
    <!-- v-model的本质是下面这行代码 -->
    <input
      type="text"
@@ -2123,20 +2108,20 @@ function sendToy() {
    ```
 
 3. 组件标签上的`v-model`的本质：`:moldeValue` ＋ `update:modelValue`事件。
-   
+
    ```vue
    <!-- 组件标签上使用v-model指令 -->
    <AtguiguInput v-model="userName" />
-   
+
    <!-- 组件标签上v-model的本质 -->
    <AtguiguInput
      :modelValue="userName"
      @update:model-value="userName = $event"
    />
    ```
-   
+
    `AtguiguInput`组件中：
-   
+
    ```vue
    <template>
      <div class="box">
@@ -2149,7 +2134,7 @@ function sendToy() {
        />
      </div>
    </template>
-   
+
    <script setup lang="ts" name="AtguiguInput">
    // 接收props
    defineProps(["modelValue"]);
@@ -2159,17 +2144,17 @@ function sendToy() {
    ```
 
 4. 也可以更换`value`，例如改成`abc`
-   
+
    ```vue
    <!-- 也可以更换value，例如改成abc-->
    <AtguiguInput v-model:abc="userName" />
-   
+
    <!-- 上面代码的本质如下 -->
    <AtguiguInput :abc="userName" @update:abc="userName = $event" />
    ```
-   
+
    `AtguiguInput`组件中：
-   
+
    ```vue
    <template>
      <div class="box">
@@ -2180,7 +2165,7 @@ function sendToy() {
        />
      </div>
    </template>
-   
+
    <script setup lang="ts" name="AtguiguInput">
    // 接收props
    defineProps(["abc"]);
@@ -2190,7 +2175,7 @@ function sendToy() {
    ```
 
 5. 如果`value`可以更换，那么就可以在组件标签上多次使用`v-model`
-   
+
    ```vue
    <AtguiguInput v-model:abc="userName" v-model:xyz="password" />
    ```
@@ -2200,7 +2185,7 @@ function sendToy() {
 1. 概述：`$attrs`用于实现**当前组件的父组件**，向**当前组件的子组件**通信（**祖 → 孙**）。
 
 2. 具体说明：`$attrs`是一个对象，包含所有父组件传入的标签属性。
-   
+
    > 注意：`$attrs`会自动排除`props`中声明的属性(可以认为声明过的 `props` 被子组件自己“消费”了)
 
 父组件：
@@ -2273,30 +2258,30 @@ defineProps(["a", "b", "c", "d", "x", "y", "updateA"]);
 ## 6.6. 【$refs、$parent】
 
 1. 概述：
-   
+
    - `$refs`用于 ：**父 → 子。**
    - `$parent`用于：**子 → 父。**
 
 2. 原理如下：
-   
-   | 属性        | 说明                                |
-   | --------- | --------------------------------- |
+
+   | 属性      | 说明                                                     |
+   | --------- | -------------------------------------------------------- |
    | `$refs`   | 值为对象，包含所有被`ref`属性标识的`DOM`元素或组件实例。 |
-   | `$parent` | 值为对象，当前组件的父组件实例对象。                |
+   | `$parent` | 值为对象，当前组件的父组件实例对象。                     |
 
 ## 6.7. 【provide、inject】
 
 1. 概述：实现**祖孙组件**直接通信
 
 2. 具体使用：
-   
+
    - 在祖先组件中通过`provide`配置向后代组件提供数据
    - 在后代组件中通过`inject`配置来声明接收数据
 
 3. 具体编码：
-   
+
    【第一步】父组件中，使用`provide`提供数据
-   
+
    ```vue
    <template>
      <div class="father">
@@ -2327,11 +2312,11 @@ defineProps(["a", "b", "c", "d", "x", "y", "updateA"]);
    provide("car", car);
    </script>
    ```
-   
+
    > 注意：子组件中不用编写任何东西，是不受到任何打扰的
-   
+
    【第二步】孙组件中使用`inject`配置项接受数据。
-   
+
    ```vue
    <template>
      <div class="grand-child">
@@ -2410,7 +2395,7 @@ defineProps(["a", "b", "c", "d", "x", "y", "updateA"]);
 1. 理解：<span style="color:red">数据在组件的自身，但根据数据生成的结构需要组件的使用者来决定。</span>（新闻数据在`News`组件中，但使用数据所遍历出来的结构由`App`组件决定）
 
 2. 具体编码：
-   
+
    ```vue
    父组件中：
    <Game v-slot="params">
@@ -2449,7 +2434,7 @@ defineProps(["a", "b", "c", "d", "x", "y", "updateA"]);
 1. 作用：创建一个响应式数据，但只对顶层属性进行响应式处理。
 
 2. 用法：
-   
+
    ```js
    let myVar = shallowRef(initialValue);
    ```
@@ -2461,7 +2446,7 @@ defineProps(["a", "b", "c", "d", "x", "y", "updateA"]);
 1. 作用：创建一个浅层响应式对象，只会使对象的最顶层属性变成响应式的，对象内部的嵌套属性则不会变成响应式的
 
 2. 用法：
-   
+
    ```js
    const myObj = shallowReactive({ ... });
    ```
@@ -2479,19 +2464,18 @@ defineProps(["a", "b", "c", "d", "x", "y", "updateA"]);
 1. 作用：用于创建一个对象的深只读副本。
 
 2. 用法：
-   
+
    ```js
    const original = reactive({ ... });
    const readOnlyCopy = readonly(original);
    ```
 
 3. 特点：
-   
+
    - 对象的所有嵌套属性都将变为只读。
    - 任何尝试修改这个对象的操作都会被阻止（在开发模式下，还会在控制台中发出警告）。
 
 4. 应用场景：
-   
    - 创建不可变的状态快照。
    - 保护全局状态或配置不被修改。
 
@@ -2500,16 +2484,16 @@ defineProps(["a", "b", "c", "d", "x", "y", "updateA"]);
 1. 作用：与 `readonly` 类似，但只作用于对象的顶层属性。
 
 2. 用法：
-   
+
    ```js
    const original = reactive({ ... });
    const shallowReadOnlyCopy = shallowReadonly(original);
    ```
 
 3. 特点：
-   
+
    - 只将对象的顶层属性设置为只读，对象内部的嵌套属性仍然是可变的。
-   
+
    - 适用于只需保护对象顶层属性的场景。
 
 ## 7.3.【toRaw 与 markRaw】
@@ -2517,13 +2501,13 @@ defineProps(["a", "b", "c", "d", "x", "y", "updateA"]);
 ### `toRaw`
 
 1. 作用：用于获取一个响应式对象的原始对象， `toRaw` 返回的对象不再是响应式的，不会触发视图更新。
-   
+
    > 官网描述：这是一个可以用于临时读取而不引起代理访问/跟踪开销，或是写入而不触发更改的特殊方法。不建议保存对原始对象的持久引用，请谨慎使用。
-   
+
    > 何时使用？ —— 在需要将响应式对象传递给非 `Vue` 的库或外部系统时，使用 `toRaw` 可以确保它们收到的是普通对象
 
 2. 具体编码：
-   
+
    ```js
    import { reactive, toRaw, markRaw, isReactive } from "vue";
    
@@ -2551,11 +2535,11 @@ defineProps(["a", "b", "c", "d", "x", "y", "updateA"]);
 ### `markRaw`
 
 1. 作用：标记一个对象，使其**永远不会**变成响应式的。
-   
+
    > 例如使用`mockjs`时，为了防止误把`mockjs`变为响应式对象，可以使用 `markRaw` 去标记`mockjs`
 
 2. 编码：
-   
+
    ```js
    /* markRaw */
    let citys = markRaw([
@@ -2668,5 +2652,5 @@ const Child = defineAsyncComponent(() => import("./Child.vue"));
 - 移除了过滤器 `filter`。
 
 - 移除了`$children` 实例 `propert`。
-  
+
   ......

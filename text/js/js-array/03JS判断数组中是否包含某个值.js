@@ -16,22 +16,24 @@
 //indexOf() 方法返回数组中某个指定的元素第一次出现的位置(下标)，如果不存在则返回 -1。
 const arr = [1, 2, 3, 4, 5];
 var index = arr.indexOf(3); // 返回值为2
-index !== -1 ? console.log("包含") : console.log("不包含"); // 包含
+index !== -1 ? console.log('包含') : console.log('不包含'); // 包含
+
 
 // includes() 方法判断数组中是否包含某个值，返回布尔值。
 console.log("includes方法实现");
-arr.includes(3) ? console.log("包含") : console.log("不包含"); // 包含
+arr.includes(3) ? console.log('包含') : console.log('不包含'); // 包含
+
 
 // find() 方法返回数组中满足提供的测试函数的第一个元素的值，否则返回 undefined。
 console.log("find方法实现");
-const found = arr.find((element) => element > 3);
+const found = arr.find(element => element > 3);
 
-found !== undefined ? console.log("包含") : console.log("不包含"); // 包含
+found !== undefined ? console.log('包含') : console.log('不包含'); // 包含
 
 // findIndex() 方法返回数组中满足提供的测试函数的第一个元素的索引，否则返回 -1。
-const foundIndex = arr.findIndex((element) => {
-  // element => element = 3
-  console.log(element);
-  return element == 3; // 返回第一个大于3的元素的索引
+const foundIndex = arr.findIndex((element)=>{
+    // element => element = 3
+    console.log(element);
+    return element == 3; // 返回第一个大于3的元素的索引
 });
 console.log(foundIndex); // 3

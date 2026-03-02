@@ -97,6 +97,7 @@ console.log(elem);
 }
 // 'a'
 // 'b'
+
 ```
 
 **entries() 是对键值对的遍历**，返回键值对
@@ -107,6 +108,7 @@ console.log(index, elem);
 }
 // 0 "a"
 // 1 "b"
+
 ```
 
 ### 1.5数组实例的 includes()
@@ -277,6 +279,8 @@ console.log(1);
     </script>
 ```
 
+
+
 ## 2.对象的扩展
 
 ### 2.1属性的简洁表示法
@@ -320,6 +324,7 @@ let obj = {
 return 'hi';
 }
 };
+
 ```
 
 ### 2.3方法的name属性
@@ -350,7 +355,7 @@ obj[key1].name // "[description]"
 obj[key2].name // ""
 ```
 
-### Object.is
+### Object.is 
 
 ```javascript
  //   1. Object.is 判断两个值是否完全相等
@@ -379,6 +384,7 @@ const config1 = {
             test2: 'test2'
         }
         console.log(Object.assign(config1, config2));
+
 ```
 
 ***Object.assign方法的*第一个参数是目标对象，后面的参数都是源对象**。如果目标对象与源对象有同名属性或者多个源对象有同名属性，则后面的属性会覆盖前面的属性。
@@ -389,6 +395,7 @@ var source1 = { b: 2, c: 2 };
 var source2 = { c: 3 };
 Object.assign(target, source1, source2);
 target // {a:1, b:2, c:3}
+
 ```
 
 如果只有一个参数， Object.assign 会直接返回该参数。如果该参数不是对象则会先转换成对象然后返回。但是由于 undefined 和 null 无法转成对象，所以如果它们作为参数，就会报错。
@@ -468,6 +475,7 @@ ES6 一共有5种方法可以遍历对象的属性。
 ```javascript
 Reflect.ownKeys({ [Symbol()]:0, b:0, 10:0, 2:0, a:0 })
 // ['2', '10', 'b', 'a', Symbol()]
+
 ```
 
 ### 对象的扩展运算符
@@ -558,6 +566,7 @@ let aWithDefaults = { x: 1, y: 2, ...a };
 let aWithDefaults = Object.assign({}, { x: 1, y: 2 }, a);
 // 等同于
 let aWithDefaults = Object.assign({ x: 1, y: 2 }, a);
+
 ```
 
 与数组的扩展运算符一样，对象的扩展运算符后面可以跟表达式D:\flont\ES6-ES11\es6Code\ArrayOf.html
@@ -570,7 +579,7 @@ let aWithDefaults = Object.assign({ x: 1, y: 2 }, a);
 let emptyObject = { ...null, ...undefined };
 ```
 
-### Null 传导运算符
+###  Null 传导运算符
 
 ```javascript
 const firstName = message?.body?.user?.firstName || 'default';
@@ -597,6 +606,7 @@ a?.b.c().d
 a?.b = 42
 // 如果 a 是 null 或 undefined，下面的语句不产生任何效果
 delete a?.b
+
 ```
 
 ## Symbol
