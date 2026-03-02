@@ -1228,22 +1228,22 @@ fn do_something() -> Result<(), Box<dyn std::error::Error>> {
 `Result` 实现了 `FromIterator`，可以将 `Iterator<Item = Result<T, E>>` 收集为 `Result<Vec<T>, E>`：
 
 ```rust
-let strings = vec!["42", "93", "18"];
+`let strings = vec!["42", "93", "18"];`
 
-// 全部成功 → Ok(Vec)
-let numbers: Result<Vec<i32>, _> = strings
-    .iter()
-    .map(|s| s.parse::<i32>())
-    .collect();
-assert_eq!(numbers, Ok(vec![42, 93, 18]));
+`// 全部成功 → Ok(Vec)`
+`let numbers: Result<Vec<i32>, _> = strings`
+    `.iter()`
+    `.map(|s| s.parse::<i32>())`
+    `.collect();`
+`assert_eq!(numbers, Ok(vec![42, 93, 18]));`
 
-// 遇到第一个错误就停止 → Err
-let strings = vec!["42", "abc", "18"];
-let numbers: Result<Vec<i32>, _> = strings
-    .iter()
-    .map(|s| s.parse::<i32>())
-    .collect();
-assert!(numbers.is_err()); // "abc" 解析失败
+`// 遇到第一个错误就停止 → Err`
+`let strings = vec!["42", "abc", "18"];`
+`let numbers: Result<Vec<i32>, _> = strings`
+    `.iter()`
+    `.map(|s| s.parse::<i32>())`
+    `.collect();`
+`assert!(numbers.is_err()); // "abc" 解析失败`
 ```
 
 ### 11.2 忽略错误，只保留成功值
