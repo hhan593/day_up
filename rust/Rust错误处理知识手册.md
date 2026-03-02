@@ -349,9 +349,7 @@ err.or(Ok(100));                  // Ok(100)，使用备选值
 err.or(Err("backup error"));     // Err("backup error")
 
 // or_else: 惰性版 or，闭包计算备选值
-err.or_else(|e| {
-    if e == "recoverable" { Ok(0) } else { Err("still broken") }
-}); // Err("still broken")
+
 ```
 
 **链式组合对照表**：
