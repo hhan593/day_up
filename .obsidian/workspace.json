@@ -11,10 +11,14 @@
             "id": "2b225c4568871cdb",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "rust/Rust错误处理知识手册.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "Rust错误处理知识手册"
             }
           }
         ]

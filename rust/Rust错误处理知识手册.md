@@ -774,7 +774,8 @@ do_something(value);
 ```rust
 let result: Result<i32, &str> = Ok(42);
 
-// 等价于 match + true/false
+// 等价于 match + true/false 
+//此时要满足外面的是Ok里边的也要是Ok,即Ok(42) 是正确的和 后面的判断语句 if v > 0 也是正确的
 let is_positive_ok = matches!(result, Ok(v) if v > 0); // true
 let is_specific_err = matches!(result, Err("not found")); // false
 
