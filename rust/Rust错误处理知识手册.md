@@ -882,18 +882,31 @@ fn first_char(text: &str) -> Option<char> {
 > ⚠️ **注意**：`?` 用于 Result 和 Option 时不能混用。在返回 `Result` 的函数中不能对 `Option` 用 `?`（反之亦然），除非进行转换。
 
 ```rust
+// 函数签名规定：成功返回 i32，失败必须返回 String 类型的错误原因
+//`?` 操作符是个“直性子”，它要求前后的错误类型必须对得上。** 函数要求报错时交出 `String`，但 `Option` 失败时只会交出 `None`（啥也没有），所以必须有个桥梁把 `None` 翻译成 `Err(String)`。
 fn mixed() -> Result<i32, String> {
     let vec = vec![1, 2, 3];
 
-    // ❌ 不能直接对 Option 用 ?（函数返回的是 Result）
+    // ❌ 为什么报错？类型冲突！
+    // vec.first() 返回的是 Option<&i32>。
+    // `?` 看到了 None，想把它作为错误抛出，但不知道该用什么文字描述这个错误（缺少 String），所以编译器会拦截。
     // let first = vec.first()?;
 
-    // ✅ 方式一：用 ok_or 将 Option 转为 Result
+    // ✅ 方式一：用 ok_or 填补缺失的错误信息（急迫求值）
+    // 逻辑：
+    // 1. 如果有值 Some(&1) -> 转换为 Ok(&1)
+    // 2. 如果是 None -> 转换为 Err("列表为空")
+    // 注意："列表为空" 这个字符串是写死的，代码执行到这里时，不管有没有触发 None，这部分参数已经被处理了。
     let first = vec.first().ok_or("列表为空")?;
 
-    // ✅ 方式二：用 ok_or_else 惰性计算错误
+    // ✅ 方式二：用 ok_or_else 延迟计算错误信息（惰性求值/按需求值）
+    // 逻辑：与 ok_or 相同，但传入的是一个闭包 `||`。
+    // 核心差异：`.to_string()` 在底层需要向系统申请内存。
+    // 使用 ok_or_else，只有当 vec.first() 真的等于 None 时，才会执行闭包去申请内存生成 String。
+    // 如果 vec 里有数据，这个闭包根本不会运行，从而完美节省了性能。
     let first = vec.first().ok_or_else(|| "列表为空".to_string())?;
 
+    // first 现在的类型是 &i32，需要加 * 解引用变成 i32，然后用 Ok 包装返回
     Ok(*first)
 }
 ```
