@@ -20,8 +20,37 @@
               "icon": "lucide-file",
               "title": "nextjs-for-react-devs"
             }
+          },
+          {
+            "id": "c1a8cb232a77d95c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "rust/README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          },
+          {
+            "id": "a010a0eaeee55b0d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "conflict-files-obsidian-git.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "conflict-files-obsidian-git"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -194,44 +223,44 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "92e4d11c53066db8",
+  "active": "a010a0eaeee55b0d",
   "lastOpenFiles": [
-    "nextjs/nextjs-i18n-guide.md",
-    "项目/SwarmDrop/冲突/初始版.md",
-    "项目/SwarmDrop/冲突/新版本.md",
-    "项目/SwarmDrop/冲突",
-    "项目/SwarmDrop/SwarmDrop 项目架构全景图.md",
-    "项目/SwarmDrop",
-    "未命名 1.md",
+    "rust/README.md",
     "conflict-files-obsidian-git.md",
-    "面试准备/everyday-up/src/js/jsAPI/准确说出&#39;1,2,3,4&#39;.split()的结果是什么（包括类型和值）？.md",
-    "提示.md",
-    "work/未命名.md",
-    "work/rabbit/AI 助手语音对话功能 - 技术方案.md",
-    "项目/OmniAI 助手/claude/AI助手多端项目设计方案书.md",
+    "rust/结构体语法.md",
+    "rust/Rust学习路线图与计划书.md",
+    "rust/Rust模块系统与包管理手册.md",
+    "rust/Rust快速参考手册.md",
+    "rust/Rust集合类型与迭代器手册.md",
+    "rust/Rust泛型Trait与生命周期知识手册.md",
+    "rust/Rust错误处理知识手册.md",
+    "rust/Rust测试与文档手册.md",
+    "rust/Rust_String知识手册.md",
+    "rust/references-and-borrowing.md",
+    "rust/枚举与模式匹配.md",
+    "rust",
+    "nextjs/nextjs-for-react-devs.md",
+    "vue3/vue3-learning-roadmap.md",
+    "vue3/vue3-common-pitfalls.md",
+    "vue3/vue3-tips-and-tricks.md",
+    "vue3",
+    "typescript/typescript-learning-roadmap.md",
+    "typescript/typescript-cheatsheet.md",
+    "typescript/typescript-best-practices.md",
+    "typescript",
+    "react/react-learning-roadmap.md",
+    "react/react-core-concepts.md",
+    "react/react-cheatsheet.md",
+    "react",
+    "nextjs/nextjs-learning-roadmap.md",
+    "nextjs/nextjs-learning-plan.md",
+    "nextjs/nextjs-cheatsheet.md",
+    "项目/SwarmDrop/冲突",
+    "项目/SwarmDrop",
     "work/rabbit",
     "work",
     "项目",
-    "work/2025年度总结/2025年年度总结.md",
     "项目/OmniAI 助手/claude",
-    "work/保育工作总结.md",
-    "work/2025年度总结/个人总结.md",
-    "work/2025年度总结/2025年业财一体化系统（含小兔数据小程序）工作总结.md",
-    "work/2025年度总结/2025年度业财一体化系统（含小兔数据小程序）工作总结.md",
-    "项目/OmniAI 助手/设计文档：AI 助手三端一体化架构.md",
-    "项目/OmniAI 助手/chatGPT/chatGPT版本.md",
-    "项目/OmniAI 助手/Gemini版本.md",
-    "项目/OmniAI 助手/chatGPT/后端设计.md",
-    "项目/OmniAI 助手/chatGPT",
-    "掘金小册/React 通关秘籍/27. 快速掌握 Tailwind：最流行的原子化 CSS 框架.md",
-    "项目/OmniAI 助手",
-    "掘金小册/React 通关秘籍/22. 自定义 hook 练习.md",
-    "掘金小册/趣学 Node.js/1. 开篇：Node.js 是个啥？.md",
-    "work/加班/加班日记（已提）.md",
-    "掘金小册/React 通关秘籍/25. react-spring 结合 use-gesture 手势库实现交互动画.md",
-    "work/加班",
-    "掘金小册/React 通关秘籍/26. 用 react-transition-group 和 react-spring 做过渡动画.md",
-    "demo/any-reader",
     "未命名.canvas"
   ]
 }
