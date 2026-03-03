@@ -219,7 +219,7 @@ impl Summary for Tweet {
 }
 ```
 
-**孤儿规则（Orphan Rule）**：只有当 trait 或类型至少有一个定义在当前 crate 中时，才能为该类型实现该 trait。不能为外部类型实现外部 trait，只能为自己的实现。
+**孤儿规则（Orphan Rule）**：只有当 trait 或类型至少有一个定义在当前 crate 中时，才能为该类型实现该 trait。不能为外部类型实现外部 trait，只能为自己的。
 
 ### 2.3 默认实现
 
