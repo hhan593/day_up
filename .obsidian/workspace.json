@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "测试笔记.md",
+                "file": "rust/Rust泛型Trait与生命周期知识手册.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "测试笔记"
+              "title": "Rust泛型Trait与生命周期知识手册"
             }
           }
         ]
@@ -196,6 +196,8 @@
   },
   "active": "2b225c4568871cdb",
   "lastOpenFiles": [
+    "rust/Rust_Trait知识手册.md",
+    "测试笔记.md",
     "面试准备/everyday-up/src/js/jsAPI/准确说出&#39;1,2,3,4&#39;.split()的结果是什么（包括类型和值）？.md",
     "typescript/typescript-learning-roadmap.md",
     "typescript/typescript-cheatsheet.md",
@@ -231,8 +233,6 @@
     "work/2025年度总结/git_log_app_2025.txt",
     "work/2025年度总结/git_log_2025_web.txt",
     "work/2025年度总结/git_log_2025_business.txt",
-    "work/2025年度总结/2025年度工作总结报告（3）.md",
-    "work/2025年度总结/2025年度业财一体化系统（含小兔数据小程序）工作总结.md",
     "text/vue/code/vue3-project/src/assets/vue.svg",
     "text/vue/code/vue3-project/public/vite.svg"
   ]
