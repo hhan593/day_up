@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "rust/Rust泛型Trait与生命周期知识手册.md",
+                "file": "rust/Rust闭包知识手册.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Rust泛型Trait与生命周期知识手册"
+              "title": "Rust闭包知识手册"
             }
           }
         ]
@@ -196,6 +196,7 @@
   },
   "active": "d3c4b4102b116c6f",
   "lastOpenFiles": [
+    "rust/Rust泛型Trait与生命周期知识手册.md",
     "项目/开源组件库/tauri-mobile-ecosystem-report.md",
     "rust/Rust_Trait知识手册.md",
     "项目/开源组件库",
@@ -204,7 +205,6 @@
     "项目/工单系统/api.md",
     "未命名 1.base",
     "未命名.base",
-    "rust/Rust泛型Trait与生命周期知识手册.md",
     "项目/工单系统/store.md",
     "项目/工单系统/README.md",
     "项目/工单系统/project-audit-report.md",
