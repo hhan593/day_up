@@ -194,8 +194,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d3c4b4102b116c6f",
+  "active": "a23aa1c6a370bb77",
   "lastOpenFiles": [
+    "未命名.canvas",
+    "未命名.base",
+    "未命名 1.base",
+    "rust/Rust闭包知识手册.md",
     "rust/Rust泛型Trait与生命周期知识手册.md",
     "项目/开源组件库/tauri-mobile-ecosystem-report.md",
     "rust/Rust_Trait知识手册.md",
@@ -203,8 +207,6 @@
     "项目/新建文件夹",
     "知识点脑图/vue面试题.webp",
     "项目/工单系统/api.md",
-    "未命名 1.base",
-    "未命名.base",
     "项目/工单系统/store.md",
     "项目/工单系统/README.md",
     "项目/工单系统/project-audit-report.md",
@@ -227,10 +229,7 @@
     "测试笔记.md",
     "面试准备/everyday-up/src/js/jsAPI/准确说出&#39;1,2,3,4&#39;.split()的结果是什么（包括类型和值）？.md",
     "typescript/typescript-learning-roadmap.md",
-    "typescript/typescript-cheatsheet.md",
-    "typescript/typescript-best-practices.md",
     "typescript",
-    "未命名.canvas",
     "项目/SwarmDrop/冲突",
     "项目/OmniAI 助手/claude",
     "项目/OmniAI 助手/chatGPT",
