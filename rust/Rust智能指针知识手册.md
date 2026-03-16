@@ -97,7 +97,7 @@ fn main() {
 ### 3.1 基本原理
 
 `Drop` trait 允许你自定义值离开作用域时执行的清理逻辑，类似 C++ 的 RAII（Resource Acquisition Is Initialization）模式。
-
+在 Rust 中，变量离开作用域时的析构顺序（Drop Order）遵循 **“后进先出” (LIFO, Last-In, First-Out)** 的原则，也就是 **“逆序销毁”**
 ```rust
 struct CustomSmartPointer {
     data: String,
@@ -110,14 +110,26 @@ impl Drop for CustomSmartPointer {
 }
 
 fn main() {
+    // 1. 压栈：c 第一个进入作用域
     let c = CustomSmartPointer {
         data: String::from("hello"),
     };
+
+    // 2. 压栈：d 第二个进入作用域
     let d = CustomSmartPointer {
         data: String::from("world"),
     };
+
     println!("CustomSmartPointers created.");
-    // 离开作用域时，d 先 drop，c 后 drop（与创建顺序相反）
+
+    // --- 作用域结束点 ---
+    // 3. 出栈（逆序）：
+    //    由于 d 是最后定义的，它首先被弹出并调用 drop()。
+    //    打印: "Dropping CustomSmartPointer with data `world`!"
+    
+    // 4. 继续出栈：
+    //    接着轮到 c 被弹出并调用 drop()。
+    //    打印: "Dropping CustomSmartPointer with data `hello`!"
 }
 ```
 
