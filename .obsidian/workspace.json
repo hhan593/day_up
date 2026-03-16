@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "82f93789c6fa6d10",
+        "id": "a6a9aecbc1b2081f",
         "type": "tabs",
         "children": [
           {
-            "id": "8052e371573598c4",
+            "id": "d3c4b4102b116c6f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "rust/Rust智能指针知识手册.md",
+                "file": "typescript/typescript-best-practices.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Rust智能指针知识手册"
+              "title": "typescript-best-practices"
             }
           }
         ]
@@ -194,43 +194,43 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8052e371573598c4",
+  "active": "d3c4b4102b116c6f",
   "lastOpenFiles": [
-    "rust/Rust学习路线图与计划书.md",
-    "rust/Rust智能指针知识手册.md",
-    "rust/Rust 智能指针知识手册.md",
     "rust/Rust闭包知识手册.md",
-    "项目/开源组件库/tauri-mobile-ecosystem-report.md",
-    "项目/工单系统/store.md",
-    "项目/工单系统/development-guide.md",
-    "项目/工单系统/components.md",
-    "项目/工单系统/api.md",
-    "项目/SwarmDrop/SwarmDrop 项目架构全景图.md",
-    "项目/thesis-guide.md",
-    "项目/SwarmDrop/冲突/初始版.md",
+    "rust/Rust智能指针知识手册.md",
     "conflict-files-obsidian-git.md",
     "知识点脑图/手写代码面试题.webp",
     "知识点脑图/计算机网络面试题.webp",
     "rust/Rust泛型Trait与生命周期知识手册.md",
     "rust/Rust迭代器知识手册.md",
+    "项目/开源组件库/tauri-mobile-ecosystem-report.md",
     "rust/Rust_Trait知识手册.md",
     "项目/开源组件库",
     "项目/新建文件夹",
     "知识点脑图/vue面试题.webp",
+    "项目/工单系统/api.md",
     "未命名 1.base",
     "未命名.base",
+    "项目/工单系统/store.md",
     "项目/工单系统/README.md",
     "项目/工单系统/project-audit-report.md",
     "项目/工单系统/plugins.md",
     "项目/工单系统/directives.md",
+    "项目/工单系统/development-guide.md",
+    "项目/工单系统/components.md",
     "项目/工单系统/architecture.md",
     "项目/工单系统/docs/store.md",
     "项目/工单系统/docs/README.md",
     "项目/工单系统/docs/project-audit-report.md",
     "项目/工单系统/docs/plugins.md",
     "项目/工单系统/docs/directives.md",
+    "项目/工单系统/docs/development-guide.md",
+    "项目/工单系统/docs/components.md",
+    "项目/工单系统/docs/architecture.md",
+    "项目/工单系统/docs/api.md",
     "项目/工单系统/docs",
     "项目/工单系统",
+    "测试笔记.md",
     "typescript",
     "未命名.canvas",
     "项目/SwarmDrop/冲突",
