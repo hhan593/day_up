@@ -897,4 +897,4 @@ NEXT_PUBLIC_API_URL=https://api.example.com
 
 ---
 
-> 更多细节请参考 [Next.js 官方文档](https://nextjs.org/docs) 和项目中的 [国际化指南](./nextjs-i18n-guide.md)。
+> 更多细节请参考 [Next.js 官方文档](https://nextjs.org/docs) 和项目中的 [国际化指南](nextjs-i18n-guide.md)。

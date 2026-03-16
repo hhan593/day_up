@@ -10,27 +10,27 @@
 
 | 文档 | 说明 | 推荐顺序 |
 |------|------|----------|
-| [Rust 学习路线图与计划书](./Rust学习路线图与计划书.md) | 完整的学习路径规划，从入门到精通 | **第 1 步** |
+| [Rust 学习路线图与计划书](Rust学习路线图与计划书.md) | 完整的学习路径规划，从入门到精通 | **第 1 步** |
 
 ### 📖 核心概念手册
 
 | 文档 | 说明 | 推荐顺序 |
 |------|------|----------|
-| [Rust 快速参考手册](./Rust快速参考手册.md) | 语法速查、常用模式、Trait 速查 | 随时查阅 |
-| [结构体语法.md](./结构体语法.md) | 结构体定义、实例化、方法 | 基础阶段 |
-| [枚举与模式匹配.md](./枚举与模式匹配.md) | 枚举、Option、Result、match | 基础阶段 |
+| [Rust 快速参考手册](Rust快速参考手册.md) | 语法速查、常用模式、Trait 速查 | 随时查阅 |
+| [结构体语法.md](结构体语法.md) | 结构体定义、实例化、方法 | 基础阶段 |
+| [枚举与模式匹配.md](枚举与模式匹配.md) | 枚举、Option、Result、match | 基础阶段 |
 | [references-and-borrowing.md](./references-and-borrowing.md) | 引用与借用基础 | 核心概念阶段 |
-| [Rust_String知识手册.md](./Rust_String知识手册.md) | String 与 &str 深入讲解 | 核心概念阶段 |
-| [Rust 泛型 Trait 与生命周期知识手册](./Rust泛型Trait与生命周期知识手册.md) | 泛型、Trait、生命周期综合 | 核心概念阶段 |
-| [Rust 错误处理知识手册](./Rust错误处理知识手册.md) | Result、Option、panic、自定义错误 | 核心概念阶段 |
+| [Rust_String知识手册.md](Rust_String知识手册.md) | String 与 &str 深入讲解 | 核心概念阶段 |
+| [Rust 泛型 Trait 与生命周期知识手册](Rust泛型Trait与生命周期知识手册.md) | 泛型、Trait、生命周期综合 | 核心概念阶段 |
+| [Rust 错误处理知识手册](Rust错误处理知识手册.md) | Result、Option、panic、自定义错误 | 核心概念阶段 |
 
 ### 🚀 进阶主题手册
 
 | 文档 | 说明 | 推荐顺序 |
 |------|------|----------|
-| [Rust 集合类型与迭代器手册](./Rust集合类型与迭代器手册.md) | Vec、HashMap、迭代器等 | 进阶阶段 |
-| [Rust 模块系统与包管理手册](./Rust模块系统与包管理手册.md) | 模块、crate、workspace、Cargo | 进阶阶段 |
-| [Rust 测试与文档手册](./Rust测试与文档手册.md) | 单元测试、集成测试、文档编写 | 进阶阶段 |
+| [Rust 集合类型与迭代器手册](Rust集合类型与迭代器手册.md) | Vec、HashMap、迭代器等 | 进阶阶段 |
+| [Rust 模块系统与包管理手册](Rust模块系统与包管理手册.md) | 模块、crate、workspace、Cargo | 进阶阶段 |
+| [Rust 测试与文档手册](Rust测试与文档手册.md) | 单元测试、集成测试、文档编写 | 进阶阶段 |
 
 ---
 
@@ -38,11 +38,11 @@
 
 ### Phase 1: 基础入门（1-2周）
 
-1. 阅读 [Rust 学习路线图与计划书](./Rust学习路线图与计划书.md) 了解整体规划
+1. 阅读 [Rust 学习路线图与计划书](Rust学习路线图与计划书.md) 了解整体规划
 2. 完成 Rustlings 前 50% 练习
 3. 学习基础文档：
-   - [结构体语法.md](./结构体语法.md)
-   - [枚举与模式匹配.md](./枚举与模式匹配.md)
+   - [结构体语法.md](结构体语法.md)
+   - [枚举与模式匹配.md](枚举与模式匹配.md)
 
 ### Phase 2: 核心概念（3-4周）
 
@@ -50,19 +50,19 @@
 
 1. **所有权系统**
    - [references-and-borrowing.md](./references-and-borrowing.md)
-   - [Rust_String知识手册.md](./Rust_String知识手册.md)（所有权实践）
+   - [Rust_String知识手册.md](Rust_String知识手册.md)（所有权实践）
 
 2. **类型系统三支柱**
-   - [Rust 泛型 Trait 与生命周期知识手册](./Rust泛型Trait与生命周期知识手册.md)
+   - [Rust 泛型 Trait 与生命周期知识手册](Rust泛型Trait与生命周期知识手册.md)
 
 3. **错误处理**
-   - [Rust 错误处理知识手册](./Rust错误处理知识手册.md)
+   - [Rust 错误处理知识手册](Rust错误处理知识手册.md)
 
 ### Phase 3: 进阶特性（2-3周）
 
-1. [Rust 集合类型与迭代器手册](./Rust集合类型与迭代器手册.md)
-2. [Rust 模块系统与包管理手册](./Rust模块系统与包管理手册.md)
-3. [Rust 测试与文档手册](./Rust测试与文档手册.md)
+1. [Rust 集合类型与迭代器手册](Rust集合类型与迭代器手册.md)
+2. [Rust 模块系统与包管理手册](Rust模块系统与包管理手册.md)
+3. [Rust 测试与文档手册](Rust测试与文档手册.md)
 
 ### Phase 4: 实战项目（持续）
 

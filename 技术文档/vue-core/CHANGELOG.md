@@ -500,20 +500,20 @@
 
 ### 3.4.x (2023-10-28 - 2024-08-15)
 
-See [3.4 changelog](./changelogs/CHANGELOG-3.4.md)
+See [3.4 changelog](CHANGELOG-3.4.md)
 
 ### 3.3.x (2023-02-05 - 2023-12-29)
 
-See [3.3 changelog](./changelogs/CHANGELOG-3.3.md)
+See [3.3 changelog](CHANGELOG-3.3.md)
 
 ### 3.2.x (2021-07-16 - 2023-02-02)
 
-See [3.2 changelog](./changelogs/CHANGELOG-3.2.md)
+See [3.2 changelog](CHANGELOG-3.2.md)
 
 ### 3.1.x (2021-05-08 - 2021-07-16)
 
-See [3.1 changelog](./changelogs/CHANGELOG-3.1.md)
+See [3.1 changelog](CHANGELOG-3.1.md)
 
 ### 3.0.x (2019-12-20 - 2021-04-01)
 
-See [3.0 changelog](./changelogs/CHANGELOG-3.0.md)
+See [3.0 changelog](CHANGELOG-3.0.md)
