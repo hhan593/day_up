@@ -387,10 +387,7 @@ fn main() {
 ### 4. 运行时的“安全卫士”
 
 `RefCell` 会在运行时维护一个计数器。如果你尝试在同一作用域内同时进行两个可变借用，程序会直接 **panic**，而不是产生数据竞争。
-
-Rust
-
-```
+```Rust
 let data = RefCell::new(5);
 
 let m1 = data.borrow_mut();
