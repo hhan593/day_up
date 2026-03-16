@@ -259,26 +259,41 @@ fn main() {
 ```rust
 use std::rc::Rc;
 
+// 定义一个递归列表（Cons List）
+// 使用 Rc<List> 而不是 Box<List>，因为我们需要多个节点指向同一个后续节点
 enum List {
-    Cons(i32, Rc<List>),
+    Cons(i32, Rc<List>), 
     Nil,
 }
 
 use List::{Cons, Nil};
 
 fn main() {
+    // 1. 创建列表 a，它是 5 -> 10 -> Nil
+    // Rc::new 会在堆上分配空间，并初始化引用计数为 1
     let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
-    println!("count after creating a = {}", Rc::strong_count(&a)); // 1
+    println!("count after creating a = {}", Rc::strong_count(&a)); // 打印：1
 
-    let b = Cons(3, Rc::clone(&a));  // 引用计数 +1
-    println!("count after creating b = {}", Rc::strong_count(&a)); // 2
+    // 2. 创建列表 b，它的第一个元素是 3，后面指向 a
+    // Rc::clone(&a) 不会深拷贝数据，它只是增加 a 的引用计数（强引用计数）
+    let b = Cons(3, Rc::clone(&a)); 
+    println!("count after creating b = {}", Rc::strong_count(&a)); // 打印：2
 
     {
-        let c = Cons(4, Rc::clone(&a));  // 引用计数 +1
-        println!("count after creating c = {}", Rc::strong_count(&a)); // 3
+        // 3. 进入内部作用域，创建列表 c，指向 a
+        // 此时 a 的引用计数再次增加
+        let c = Cons(4, Rc::clone(&a)); 
+        println!("count after creating c = {}", Rc::strong_count(&a)); // 打印：3
+        
+        // 当内部作用域结束时，c 被销毁。
+        // 因为 c 内部持有一个 Rc::clone(&a)，c 的销毁会触发对应 Rc 的 drop。
+        // 这会自动将 a 的引用计数减 1。
     }
-    // c 离开作用域，引用计数 -1
-    println!("count after c goes out of scope = {}", Rc::strong_count(&a)); // 2
+
+    // 4. 此时 c 已不在，引用计数恢复为 2（只有 a 本身和 b 在引用它）
+    println!("count after c goes out of scope = {}", Rc::strong_count(&a)); // 打印：2
+
+    // 当 main 函数结束，b 和 a 依次销毁，计数最终归零，堆内存被释放。
 }
 ```
 
