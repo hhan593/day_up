@@ -324,8 +324,91 @@ fn main() {
 
 `RefCell<T>` 将借用规则的检查从**编译期**推迟到**运行时**。即使 `RefCell` 本身是不可变的，也可以修改其内部数据——这就是**内部可变性（Interior Mutability）**模式。
 
+在 Rust 中，`RefCell<T>` 是一个非常有用的工具，它代表了 **“内部可变性”（Interior Mutability）** 模式。
+
+简单来说，它允许你在拥有不可变引用（`&T`）的情况下，依然能够修改其内部的数据。这看似违反了 Rust 的核心借用规则，但实际上它只是将检查的时机从**编译期**推迟到了**运行期**。
+
 > 违反借用规则时，程序会 panic 而非编译错误。
 
+---
+
+### 1. 核心定义与对比
+
+通常情况下，如果你有一个不可变变量，你绝对无法修改它。但 `RefCell<T>` 就像是一个“后门”。
+
+| **特性**     | **Box<T> / 普通引用** | **RefCell<T>**      |
+| ---------- | ----------------- | ------------------- |
+| **借用检查时机** | **编译期**（最安全、无开销）  | **运行期**（有微小开销，更灵活）  |
+| **报错形式**   | 编译错误（代码无法通过）      | 运行期 `panic!`（程序崩溃）  |
+| **使用场景**   | 绝大多数情况            | 模拟内部可变性、处理复杂递归或引用循环 |
+
+### 2. 基本用法示例
+
+使用 `RefCell` 时，不再使用 `&` 或 `&mut`，而是调用 `.borrow()` 和 `.borrow_mut()`。
+```rust
+use std::cell::RefCell;
+
+fn main() {
+    // 1. 虽然 data 本身是不可变的 (let 没有 mut)
+    let data = RefCell::new(5);
+
+    {
+        // 2. 获取内部数据的可变借用
+        let mut mutable_borrow = data.borrow_mut();
+        *mutable_borrow += 10; 
+    } // 可变借用在这里被 drop，计数器重置
+
+    // 3. 获取不可变借用并读取
+    println!("Value: {:?}", data.borrow()); // 输出: Value: 15
+}
+```
+### 3. 为什么需要它？（典型场景）
+
+最常用的场景是配合 `Rc<T>`。`Rc` 只允许不可变共享，如果你想**既让多个所有者共享数据，又能修改它**，你就需要嵌套使用：`Rc<RefCell<T>>`。
+```Rust
+use std::rc::Rc;
+use std::cell::RefCell;
+
+fn main() {
+    // 创建一个被 Rc 包裹的 RefCell
+    let value = Rc::new(RefCell::new(5));
+
+    let a = Rc::clone(&value);
+    let b = Rc::clone(&value);
+
+    // 通过 a 修改数据
+    *a.borrow_mut() += 10;
+
+    // b 也能看到修改后的数据
+    println!("Value via b: {}", b.borrow()); // 15
+}
+```
+### 4. 运行时的“安全卫士”
+
+`RefCell` 会在运行时维护一个计数器。如果你尝试在同一作用域内同时进行两个可变借用，程序会直接 **panic**，而不是产生数据竞争。
+
+Rust
+
+```
+let data = RefCell::new(5);
+
+let m1 = data.borrow_mut();
+let m2 = data.borrow_mut(); // ❌ 运行到这里程序会直接崩溃！
+// 报错：already borrowed: BorrowMutError
+```
+
+---
+
+### 5. 总结
+
+- **内部可变性**：在逻辑上不可变的对象内部修改数据。
+    
+- **运行时开销**：由于需要动态检查借用状态，性能略低于普通引用。
+    
+- **非线程安全**：`RefCell` 只能在单线程中使用。如果你需要多线程的内部可变性，请使用 `Mutex<T>`（互斥锁）或 `RwLock<T>`。
+    
+
+**你想看看如何通过一个具体的“模拟对象（Mock Object）”案例，来理解 `RefCell` 在实际开发中的威力吗？**
 ### 6.2 借用检查时机对比
 
 | 类型            | 借用检查时机 | 违规后果 |
