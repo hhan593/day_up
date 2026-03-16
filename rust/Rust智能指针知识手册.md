@@ -135,7 +135,7 @@ fn main() {
 
 ### 3.2 提前释放：`std::mem::drop`
 
-Rust 不允许直接调用 `drop()` 方法（会导致 double free）。如果需要提前释放，使用标准库的 `std::mem::drop`：
+
 
 ```rust
 fn main() {
