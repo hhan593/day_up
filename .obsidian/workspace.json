@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "82f93789c6fa6d10",
+        "id": "def0b3e93b2a629e",
         "type": "tabs",
         "children": [
           {
-            "id": "8052e371573598c4",
+            "id": "2e27bce78fc8842f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "rust/Rust智能指针知识手册.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Rust智能指针知识手册"
+              "title": "新标签页"
             }
           }
         ]
@@ -194,10 +190,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8052e371573598c4",
+  "active": "2e27bce78fc8842f",
   "lastOpenFiles": [
-    "rust/Rust学习路线图与计划书.md",
+    "琪琪/谷歌.md",
+    "琪琪/掌上信泰双录环节“确认投保”流程改造需求.md",
+    "work/字节校招.md",
+    "琪琪",
+    "测试笔记.md",
+    "提示.md",
+    "test笔记.md",
     "rust/Rust智能指针知识手册.md",
+    "rust/Rust学习路线图与计划书.md",
     "rust/Rust 智能指针知识手册.md",
     "rust/Rust闭包知识手册.md",
     "项目/开源组件库/tauri-mobile-ecosystem-report.md",
@@ -223,19 +226,12 @@
     "项目/工单系统/project-audit-report.md",
     "项目/工单系统/plugins.md",
     "项目/工单系统/directives.md",
-    "项目/工单系统/architecture.md",
-    "项目/工单系统/docs/store.md",
-    "项目/工单系统/docs/README.md",
-    "项目/工单系统/docs/project-audit-report.md",
-    "项目/工单系统/docs/plugins.md",
-    "项目/工单系统/docs/directives.md",
     "项目/工单系统/docs",
     "项目/工单系统",
     "typescript",
     "未命名.canvas",
     "项目/SwarmDrop/冲突",
     "项目/OmniAI 助手/claude",
-    "项目/OmniAI 助手/chatGPT",
     "text/vue/code/vue3-project/src/assets/vue.svg",
     "text/vue/code/vue3-project/public/vite.svg"
   ]
