@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "琪琪/需求分析与测试用例.md",
+                "file": "技术文档/rust/Rust智能指针知识手册.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "需求分析与测试用例"
+              "title": "Rust智能指针知识手册"
             }
           }
         ]
@@ -196,9 +196,9 @@
   },
   "active": "2e27bce78fc8842f",
   "lastOpenFiles": [
+    "琪琪/需求分析与测试用例.md",
     "琪琪/掌上信泰双录环节“确认投保”流程改造需求.md",
     "琪琪/未命名.md",
-    "琪琪/需求分析与测试用例.md",
     "需求分析与测试用例.md",
     "技术文档",
     "琪琪/谷歌.md",
