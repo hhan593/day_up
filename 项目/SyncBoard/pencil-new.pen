@@ -1,0 +1,3977 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Frame",
+      "clip": true,
+      "width": 800,
+      "height": 600,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    },
+    {
+      "type": "frame",
+      "id": "U30oY",
+      "x": 900,
+      "y": 0,
+      "name": "Button/Primary",
+      "reusable": true,
+      "fill": "$primary",
+      "cornerRadius": 8,
+      "padding": [
+        12,
+        24
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "vZAEr",
+          "name": "label",
+          "fill": "$text-white",
+          "content": "Button",
+          "fontFamily": "Inter",
+          "fontSize": 15,
+          "fontWeight": "500"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "8TDkz",
+      "x": 900,
+      "y": 60,
+      "name": "Button/Outline",
+      "reusable": true,
+      "fill": "$bg-white",
+      "cornerRadius": 8,
+      "stroke": {
+        "thickness": 1,
+        "fill": "$border"
+      },
+      "padding": [
+        12,
+        24
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "Pwh3b",
+          "name": "label",
+          "fill": "$text-primary",
+          "content": "Button",
+          "fontFamily": "Inter",
+          "fontSize": 15,
+          "fontWeight": "500"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "DSuuc",
+      "x": 900,
+      "y": 120,
+      "name": "Button/Ghost",
+      "reusable": true,
+      "cornerRadius": 8,
+      "padding": [
+        12,
+        24
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "Xehwc",
+          "name": "label",
+          "fill": "$primary",
+          "content": "Button",
+          "fontFamily": "Inter",
+          "fontSize": 15,
+          "fontWeight": "500"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "kxOek",
+      "x": 900,
+      "y": 180,
+      "name": "InputField",
+      "reusable": true,
+      "width": 320,
+      "fill": "$bg-white",
+      "cornerRadius": 8,
+      "stroke": {
+        "thickness": 1,
+        "fill": "$border"
+      },
+      "gap": 10,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "eXflf",
+          "name": "icon",
+          "width": 18,
+          "height": 18,
+          "iconFontName": "mail",
+          "iconFontFamily": "lucide",
+          "fill": "$text-muted"
+        },
+        {
+          "type": "text",
+          "id": "zosp3",
+          "name": "placeholder",
+          "fill": "$text-muted",
+          "content": "Placeholder",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Oc3Bk",
+      "x": 0,
+      "y": 700,
+      "name": "1. Login Page",
+      "width": 1440,
+      "height": 900,
+      "fill": "$surface",
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "pxUUD",
+          "name": "LoginCard",
+          "width": 400,
+          "fill": "$bg-white",
+          "cornerRadius": 16,
+          "stroke": {
+            "thickness": 1,
+            "fill": "$border"
+          },
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            40,
+            32
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "bO1wO",
+              "name": "logoWrap",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "oxf32",
+                  "name": "logoIcon",
+                  "width": 56,
+                  "height": 56,
+                  "fill": "$primary",
+                  "cornerRadius": 12,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "MUWsd",
+                      "name": "logoText",
+                      "fill": "$text-white",
+                      "content": "S",
+                      "fontFamily": "Inter",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "BmsSe",
+                  "name": "appName",
+                  "fill": "$text-primary",
+                  "content": "SyncBoard",
+                  "fontFamily": "Inter",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "bDwwk",
+                  "name": "tagline",
+                  "fill": "$text-secondary",
+                  "content": "Local-First 实时协作白板",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KHruL",
+              "name": "formWrap",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "id": "uZGbw",
+                  "type": "ref",
+                  "ref": "kxOek",
+                  "width": "fill_container",
+                  "name": "emailInput",
+                  "x": 0,
+                  "y": 0,
+                  "height": "fit_content",
+                  "descendants": {
+                    "eXflf": {
+                      "iconFontName": "mail",
+                      "x": 16,
+                      "y": 13
+                    },
+                    "zosp3": {
+                      "content": "邮箱地址",
+                      "x": 44,
+                      "y": 12
+                    }
+                  }
+                },
+                {
+                  "id": "TW1xY",
+                  "type": "ref",
+                  "ref": "kxOek",
+                  "width": "fill_container",
+                  "name": "pwInput",
+                  "x": 0,
+                  "y": 60,
+                  "height": "fit_content",
+                  "descendants": {
+                    "eXflf": {
+                      "iconFontName": "lock",
+                      "x": 16,
+                      "y": 13
+                    },
+                    "zosp3": {
+                      "content": "密码",
+                      "x": 44,
+                      "y": 12
+                    }
+                  }
+                },
+                {
+                  "id": "uO0mR",
+                  "type": "ref",
+                  "ref": "U30oY",
+                  "width": "fill_container",
+                  "name": "loginBtn",
+                  "x": 0,
+                  "y": 120,
+                  "height": "fit_content",
+                  "descendants": {
+                    "vZAEr": {
+                      "x": 147.5,
+                      "content": "登  录",
+                      "fontSize": 16,
+                      "y": 12
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "kvdnC",
+              "name": "dividerWrap",
+              "width": "fill_container",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "iqSU5",
+                  "name": "divLine1",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "$border"
+                },
+                {
+                  "type": "text",
+                  "id": "IUyPW",
+                  "name": "divText",
+                  "fill": "$text-muted",
+                  "content": "或",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "5e7Xd",
+                  "name": "divLine2",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "$border"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xuJDt",
+              "name": "oauthWrap",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "id": "xJ8Mm",
+                  "type": "ref",
+                  "ref": "8TDkz",
+                  "width": "fill_container",
+                  "name": "googleBtn",
+                  "x": 0,
+                  "y": 0,
+                  "height": "fit_content",
+                  "descendants": {
+                    "Pwh3b": {
+                      "x": 110,
+                      "content": "Google 账号登录",
+                      "y": 12
+                    }
+                  }
+                },
+                {
+                  "id": "eicOH",
+                  "type": "ref",
+                  "ref": "8TDkz",
+                  "width": "fill_container",
+                  "name": "githubBtn",
+                  "x": 0,
+                  "y": 58,
+                  "height": "fit_content",
+                  "descendants": {
+                    "Pwh3b": {
+                      "x": 111,
+                      "content": "GitHub 账号登录",
+                      "y": 12
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "3Z3yW",
+              "name": "signupLink",
+              "width": "fill_container",
+              "gap": 4,
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "3zUqQ",
+                  "name": "signupText",
+                  "fill": "$text-secondary",
+                  "content": "还没有账号？",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "8FeCS",
+                  "name": "signupAction",
+                  "fill": "$primary",
+                  "content": "立即注册",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "ox7mn",
+      "x": 1560,
+      "y": 700,
+      "name": "2. Registration Page",
+      "width": 1440,
+      "height": 900,
+      "fill": "$surface",
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "6pycf",
+          "name": "RegCard",
+          "width": 400,
+          "fill": "$bg-white",
+          "cornerRadius": 16,
+          "stroke": {
+            "thickness": 1,
+            "fill": "$border"
+          },
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            40,
+            32
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "SAZTK",
+              "name": "rLogoWrap",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "5UgGA",
+                  "name": "rLogoIcon",
+                  "width": 56,
+                  "height": 56,
+                  "fill": "$primary",
+                  "cornerRadius": 12,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "3r37b",
+                      "name": "rLogoText",
+                      "fill": "$text-white",
+                      "content": "S",
+                      "fontFamily": "Inter",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "vZyaC",
+                  "name": "rAppName",
+                  "fill": "$text-primary",
+                  "content": "SyncBoard",
+                  "fontFamily": "Inter",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "I2Ck3",
+                  "name": "rTagline",
+                  "fill": "$text-secondary",
+                  "content": "创建你的账号",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "h9b3n",
+              "name": "rForm",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "id": "jV1uU",
+                  "type": "ref",
+                  "ref": "kxOek",
+                  "width": "fill_container",
+                  "name": "usernameInput",
+                  "x": 0,
+                  "y": 0,
+                  "height": "fit_content",
+                  "descendants": {
+                    "eXflf": {
+                      "iconFontName": "user",
+                      "x": 16,
+                      "y": 13
+                    },
+                    "zosp3": {
+                      "content": "用户名",
+                      "x": 44,
+                      "y": 12
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "uOUjV",
+                  "name": "usernameHint",
+                  "fill": "$text-muted",
+                  "content": "3-20位，字母数字下划线",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "id": "63PRV",
+                  "type": "ref",
+                  "ref": "kxOek",
+                  "width": "fill_container",
+                  "name": "rEmailInput",
+                  "x": 0,
+                  "y": 85,
+                  "height": "fit_content",
+                  "descendants": {
+                    "eXflf": {
+                      "iconFontName": "mail",
+                      "x": 16,
+                      "y": 13
+                    },
+                    "zosp3": {
+                      "content": "邮箱地址",
+                      "x": 44,
+                      "y": 12
+                    }
+                  }
+                },
+                {
+                  "id": "9G3v2",
+                  "type": "ref",
+                  "ref": "kxOek",
+                  "width": "fill_container",
+                  "name": "rPwInput",
+                  "x": 0,
+                  "y": 141,
+                  "height": "fit_content",
+                  "descendants": {
+                    "eXflf": {
+                      "iconFontName": "lock",
+                      "x": 16,
+                      "y": 13
+                    },
+                    "zosp3": {
+                      "content": "密码",
+                      "x": 44,
+                      "y": 12
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "8WIjF",
+                  "name": "pwHint",
+                  "fill": "$text-muted",
+                  "content": "至少8位，含字母和数字",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "id": "8Xt3h",
+                  "type": "ref",
+                  "ref": "kxOek",
+                  "width": "fill_container",
+                  "name": "rPwConfirm",
+                  "x": 0,
+                  "y": 226,
+                  "height": "fit_content",
+                  "descendants": {
+                    "eXflf": {
+                      "iconFontName": "lock",
+                      "x": 16,
+                      "y": 13
+                    },
+                    "zosp3": {
+                      "content": "确认密码",
+                      "x": 44,
+                      "y": 12
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "hRScs",
+              "type": "ref",
+              "ref": "U30oY",
+              "width": "fill_container",
+              "name": "regBtn",
+              "x": 32,
+              "y": 479,
+              "height": "fit_content",
+              "descendants": {
+                "vZAEr": {
+                  "x": 147.5,
+                  "content": "注  册",
+                  "fontSize": 16,
+                  "y": 12
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "1qqfd",
+              "name": "loginLink",
+              "width": "fill_container",
+              "gap": 4,
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "kqp21",
+                  "name": "loginText",
+                  "fill": "$text-secondary",
+                  "content": "已有账号？",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "yi973",
+                  "name": "loginAction",
+                  "fill": "$primary",
+                  "content": "立即登录",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "uCmkn",
+      "x": 0,
+      "y": 1720,
+      "name": "3. Dashboard",
+      "width": 1440,
+      "height": 900,
+      "fill": "$bg-white",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "pT7KX",
+          "name": "TopNav",
+          "width": "fill_container",
+          "height": 56,
+          "fill": "$bg-white",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border"
+          },
+          "gap": 16,
+          "padding": [
+            0,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "rmln8",
+              "name": "menuIcon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "menu",
+              "iconFontFamily": "lucide",
+              "fill": "$text-primary"
+            },
+            {
+              "type": "text",
+              "id": "Sv1Zl",
+              "name": "navLogo",
+              "fill": "$primary",
+              "content": "SyncBoard",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "JQoLk",
+              "name": "searchWrap",
+              "width": "fill_container",
+              "height": 36,
+              "fill": "$surface",
+              "cornerRadius": 8,
+              "gap": 8,
+              "padding": [
+                0,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "7NRhY",
+                  "name": "searchIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "search",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-muted"
+                },
+                {
+                  "type": "text",
+                  "id": "AHder",
+                  "name": "searchText",
+                  "fill": "$text-muted",
+                  "content": "搜索项目...",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "id": "bjMgI",
+              "type": "ref",
+              "ref": "U30oY",
+              "name": "newBtn",
+              "x": 1281,
+              "y": 6.5,
+              "width": "fit_content",
+              "height": "fit_content",
+              "descendants": {
+                "vZAEr": {
+                  "content": "+ 新建",
+                  "fontSize": 13,
+                  "x": 24,
+                  "y": 12
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "dQ9Uh",
+              "name": "avatarCircle",
+              "width": 32,
+              "height": 32,
+              "fill": "$primary-light",
+              "cornerRadius": 16,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "V7KKc",
+                  "name": "avatarText",
+                  "fill": "$text-white",
+                  "content": "张",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Ojnrx",
+          "name": "Body",
+          "width": "fill_container",
+          "height": "fill_container",
+          "children": [
+            {
+              "type": "frame",
+              "id": "ahDUM",
+              "name": "Sidebar",
+              "width": 200,
+              "height": "fill_container",
+              "fill": "$bg-white",
+              "stroke": {
+                "thickness": {
+                  "right": 1
+                },
+                "fill": "$border"
+              },
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                16,
+                12
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "nhiHs",
+                  "name": "sItem1",
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": 6,
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "7WJAU",
+                      "name": "sIcon1",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "layout-grid",
+                      "iconFontFamily": "lucide",
+                      "fill": "$primary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "SiK86",
+                      "name": "sLabel1",
+                      "fill": "$primary",
+                      "content": "全部",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "uSxYC",
+                  "name": "sItem2",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "VPP8R",
+                      "name": "sIcon2",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "star",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "XR20s",
+                      "name": "sLabel2",
+                      "fill": "$text-secondary",
+                      "content": "收藏",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rJkMi",
+                  "name": "sItem3",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "VzAXT",
+                      "name": "sIcon3",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "clock",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "xXOI6",
+                      "name": "sLabel3",
+                      "fill": "$text-secondary",
+                      "content": "最近",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zvlCi",
+                  "name": "sItem4",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "VboC9",
+                      "name": "sIcon4",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "trash-2",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "98MNU",
+                      "name": "sLabel4",
+                      "fill": "$text-secondary",
+                      "content": "回收站",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "NXqxj",
+                  "name": "divider",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "$border"
+                },
+                {
+                  "type": "text",
+                  "id": "VMif1",
+                  "name": "teamLabel",
+                  "fill": "$text-muted",
+                  "content": "团队空间",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "Hiyaz",
+                  "name": "teamA",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "ntgmd",
+                      "name": "teamAIcon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "users",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "uigPt",
+                      "name": "teamALabel",
+                      "fill": "$text-secondary",
+                      "content": "Team A",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "0EZRv",
+                  "name": "teamB",
+                  "width": "fill_container",
+                  "cornerRadius": 6,
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "WFR79",
+                      "name": "teamBIcon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "users",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "EfYtH",
+                      "name": "teamBLabel",
+                      "fill": "$text-secondary",
+                      "content": "Team B",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "V4u5M",
+              "name": "MainContent",
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "$surface",
+              "layout": "vertical",
+              "gap": 24,
+              "padding": [
+                24,
+                32
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "G1cCG",
+                  "name": "headerRow",
+                  "width": "fill_container",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "CDuiF",
+                      "name": "headerTitle",
+                      "fill": "$text-primary",
+                      "content": "我的白板",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "T6nkH",
+                      "name": "headerSpacer",
+                      "width": "fill_container",
+                      "height": 1
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Q6h9d",
+                      "name": "viewToggle",
+                      "fill": "$bg-white",
+                      "cornerRadius": 6,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$border"
+                      },
+                      "gap": 4,
+                      "padding": 4,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "jNCgC",
+                          "name": "viewList",
+                          "width": 32,
+                          "height": 28,
+                          "cornerRadius": 4,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "RBrvC",
+                              "name": "viewListIcon",
+                              "width": 16,
+                              "height": 16,
+                              "iconFontName": "list",
+                              "iconFontFamily": "lucide",
+                              "fill": "$text-muted"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "m2oy4",
+                          "name": "viewGrid",
+                          "width": 32,
+                          "height": 28,
+                          "fill": "$primary",
+                          "cornerRadius": 4,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "Ua2NU",
+                              "name": "viewGridIcon",
+                              "width": 16,
+                              "height": 16,
+                              "iconFontName": "layout-grid",
+                              "iconFontFamily": "lucide",
+                              "fill": "$text-white"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "86jRm",
+                  "name": "CardGrid",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "bEIZx",
+                      "name": "WhiteboardCard",
+                      "clip": true,
+                      "width": "fill_container",
+                      "fill": "$bg-white",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$border"
+                      },
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "4OURI",
+                          "name": "card1Thumb",
+                          "width": "fill_container",
+                          "height": 140,
+                          "fill": "#eef2ff"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ston9",
+                          "name": "card1Info",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": [
+                            12,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "KLmPe",
+                              "name": "card1Name",
+                              "fill": "$text-primary",
+                              "content": "产品规划",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "mSerJ",
+                              "name": "card1Status",
+                              "gap": 6,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "fXdmw",
+                                  "name": "card1Dot",
+                                  "fill": "$success",
+                                  "width": 8,
+                                  "height": 8
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "f3pi5",
+                                  "name": "card1StatusText",
+                                  "fill": "$text-muted",
+                                  "content": "3人在线",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "9oPmF",
+                      "name": "WhiteboardCard2",
+                      "clip": true,
+                      "width": "fill_container",
+                      "fill": "$bg-white",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$border"
+                      },
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "T5Cv8",
+                          "name": "card2Thumb",
+                          "width": "fill_container",
+                          "height": 140,
+                          "fill": "#f0fdf4"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "VK1Du",
+                          "name": "card2Info",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": [
+                            12,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "3Roja",
+                              "name": "card2Name",
+                              "fill": "$text-primary",
+                              "content": "架构设计",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "Eq3XA",
+                              "name": "card2StatusText",
+                              "fill": "$text-muted",
+                              "content": "编辑于2小时前",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "4t1bn",
+                      "name": "WhiteboardCard3",
+                      "clip": true,
+                      "width": "fill_container",
+                      "fill": "$bg-white",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$border"
+                      },
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "wr4Zd",
+                          "name": "card3Thumb",
+                          "width": "fill_container",
+                          "height": 140,
+                          "fill": "#fef3c7"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "QEfET",
+                          "name": "card3Info",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": [
+                            12,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "S3u1J",
+                              "name": "card3Name",
+                              "gap": 6,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "JR51T",
+                                  "name": "card3NameText",
+                                  "fill": "$text-primary",
+                                  "content": "周会记录",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "icon_font",
+                                  "id": "Iep83",
+                                  "name": "card3Star",
+                                  "width": 14,
+                                  "height": 14,
+                                  "iconFontName": "star",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$warning"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "Ck1CP",
+                              "name": "card3StatusText",
+                              "fill": "$text-muted",
+                              "content": "已收藏",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "cFwqL",
+                  "name": "CardGrid2",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "9Yfkq",
+                      "name": "card4",
+                      "clip": true,
+                      "width": "fill_container",
+                      "fill": "$bg-white",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$border"
+                      },
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "NZ8vs",
+                          "name": "card4Thumb",
+                          "width": "fill_container",
+                          "height": 140,
+                          "fill": "#fce7f3"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "DXgpW",
+                          "name": "card4Info",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": [
+                            12,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "L9rUQ",
+                              "name": "card4Name",
+                              "fill": "$text-primary",
+                              "content": "用户旅程",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "LUPrw",
+                              "name": "card4StatusText",
+                              "fill": "$text-muted",
+                              "content": "编辑于昨天",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "5iRti",
+                      "name": "card5",
+                      "clip": true,
+                      "width": "fill_container",
+                      "fill": "$bg-white",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$border"
+                      },
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "1FcWE",
+                          "name": "card5Thumb",
+                          "width": "fill_container",
+                          "height": 140,
+                          "fill": "#ecfdf5"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "aLY8o",
+                          "name": "card5Info",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": [
+                            12,
+                            14
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "3OLW5",
+                              "name": "card5Name",
+                              "fill": "$text-primary",
+                              "content": "Sprint回顾",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "XRkip",
+                              "name": "card5Status",
+                              "gap": 6,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "UhCVZ",
+                                  "name": "card5Dot",
+                                  "fill": "$success",
+                                  "width": 8,
+                                  "height": 8
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "xg5yH",
+                                  "name": "card5StatusText",
+                                  "fill": "$text-muted",
+                                  "content": "2人在线",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "bhVdC",
+                      "name": "newCard",
+                      "width": "fill_container",
+                      "height": 196,
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$border"
+                      },
+                      "layout": "vertical",
+                      "gap": 8,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "SiZHW",
+                          "name": "newCardIcon",
+                          "width": 32,
+                          "height": 32,
+                          "iconFontName": "plus",
+                          "iconFontFamily": "lucide",
+                          "fill": "$text-muted"
+                        },
+                        {
+                          "type": "text",
+                          "id": "oRYLU",
+                          "name": "newCardText",
+                          "fill": "$text-muted",
+                          "content": "新建白板",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "6fziD",
+      "x": 1560,
+      "y": 1720,
+      "name": "4. Canvas Main",
+      "width": 1440,
+      "height": 900,
+      "fill": "$bg-white",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "GCtFV",
+          "name": "CanvasTopNav",
+          "width": "fill_container",
+          "height": 48,
+          "fill": "$bg-white",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border"
+          },
+          "gap": 12,
+          "padding": [
+            0,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "9UwW8",
+              "name": "backBtn",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "qI4Z2",
+                  "name": "backIcon",
+                  "width": 18,
+                  "height": 18,
+                  "iconFontName": "arrow-left",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-secondary"
+                },
+                {
+                  "type": "text",
+                  "id": "FVQgZ",
+                  "name": "backText",
+                  "fill": "$text-secondary",
+                  "content": "返回",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "mxz2c",
+              "name": "cTitle",
+              "fill": "$text-primary",
+              "content": "产品规划白板",
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "fontWeight": "500"
+            },
+            {
+              "type": "icon_font",
+              "id": "K5H40",
+              "name": "cStar",
+              "width": 18,
+              "height": 18,
+              "iconFontName": "star",
+              "iconFontFamily": "lucide",
+              "fill": "$text-muted"
+            },
+            {
+              "type": "frame",
+              "id": "l4nyq",
+              "name": "cSpacer",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "U7sQ1",
+              "name": "avatarsWrap",
+              "gap": -8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "C5R3H",
+                  "name": "av1",
+                  "width": 28,
+                  "height": 28,
+                  "fill": "#818cf8",
+                  "cornerRadius": 14,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "$bg-white"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "1VM7x",
+                      "name": "av1t",
+                      "fill": "$text-white",
+                      "content": "张",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "vPiKO",
+                  "name": "av2",
+                  "width": 28,
+                  "height": 28,
+                  "fill": "#f472b6",
+                  "cornerRadius": 14,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "$bg-white"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VHGHK",
+                      "name": "av2t",
+                      "fill": "$text-white",
+                      "content": "李",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "GHPJs",
+                  "name": "av3",
+                  "width": 28,
+                  "height": 28,
+                  "fill": "#34d399",
+                  "cornerRadius": 14,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "$bg-white"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lIpYl",
+                      "name": "av3t",
+                      "fill": "$text-white",
+                      "content": "王",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "OEQXT",
+              "name": "onlineText",
+              "fill": "$text-muted",
+              "content": "3人在线",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "id": "oGavo",
+              "type": "ref",
+              "ref": "U30oY",
+              "name": "shareBtn",
+              "x": 1317,
+              "y": 2.5,
+              "width": "fit_content",
+              "height": "fit_content",
+              "descendants": {
+                "vZAEr": {
+                  "content": "分享",
+                  "fontSize": 13,
+                  "x": 24,
+                  "y": 12
+                }
+              }
+            },
+            {
+              "type": "icon_font",
+              "id": "jpCF6",
+              "name": "moreIcon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "more-horizontal",
+              "iconFontFamily": "lucide",
+              "fill": "$text-secondary"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ygC6b",
+          "name": "MidSection",
+          "width": "fill_container",
+          "height": "fill_container",
+          "children": [
+            {
+              "type": "frame",
+              "id": "ml7JM",
+              "name": "LeftToolbar",
+              "width": 48,
+              "height": "fill_container",
+              "fill": "$bg-white",
+              "stroke": {
+                "thickness": {
+                  "right": 1
+                },
+                "fill": "$border"
+              },
+              "layout": "vertical",
+              "gap": 2,
+              "padding": [
+                8,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "LAdX4",
+                  "name": "tool1",
+                  "width": 36,
+                  "height": 36,
+                  "fill": "$surface",
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "JyO2p",
+                      "name": "tool1Icon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "mouse-pointer-2",
+                      "iconFontFamily": "lucide",
+                      "fill": "$primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "QWVsf",
+                  "name": "tool2",
+                  "width": 36,
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "dTpaI",
+                      "name": "tool2Icon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "square",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "VM2iR",
+                  "name": "tool3",
+                  "width": 36,
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "zcTLz",
+                      "name": "tool3Icon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "circle",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "t3hKH",
+                  "name": "tool4",
+                  "width": 36,
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "pZMmC",
+                      "name": "tool4Icon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "triangle",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IKveI",
+                  "name": "tool5",
+                  "width": 36,
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "gVqMQ",
+                      "name": "tool5Icon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "diamond",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "j9mcN",
+                  "name": "tool6",
+                  "width": 36,
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "Lhzs3",
+                      "name": "tool6Icon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "arrow-up-right",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "e0khw",
+                  "name": "tool7",
+                  "width": 36,
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "FX4Ha",
+                      "name": "tool7Icon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "pencil",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "bnGXA",
+                  "name": "tool8",
+                  "width": 36,
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "lvW6X",
+                      "name": "tool8Icon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "type",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "otA4m",
+                  "name": "tool9",
+                  "width": 36,
+                  "height": 36,
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "jMkZm",
+                      "name": "tool9Icon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "image",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "hN6N7",
+              "name": "CanvasArea",
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "$surface",
+              "layout": "none",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "YBD9M",
+                  "x": 40,
+                  "y": 40,
+                  "name": "dotGrid1",
+                  "fill": "#d4d4d4",
+                  "width": 2,
+                  "height": 2
+                },
+                {
+                  "type": "ellipse",
+                  "id": "tbNQQ",
+                  "x": 80,
+                  "y": 40,
+                  "name": "dotGrid2",
+                  "fill": "#d4d4d4",
+                  "width": 2,
+                  "height": 2
+                },
+                {
+                  "type": "ellipse",
+                  "id": "nwoyf",
+                  "x": 120,
+                  "y": 40,
+                  "name": "dotGrid3",
+                  "fill": "#d4d4d4",
+                  "width": 2,
+                  "height": 2
+                },
+                {
+                  "type": "ellipse",
+                  "id": "0C5nU",
+                  "x": 40,
+                  "y": 80,
+                  "name": "dotGrid4",
+                  "fill": "#d4d4d4",
+                  "width": 2,
+                  "height": 2
+                },
+                {
+                  "type": "ellipse",
+                  "id": "k3sq2",
+                  "x": 80,
+                  "y": 80,
+                  "name": "dotGrid5",
+                  "fill": "#d4d4d4",
+                  "width": 2,
+                  "height": 2
+                },
+                {
+                  "type": "ellipse",
+                  "id": "dizWH",
+                  "x": 120,
+                  "y": 80,
+                  "name": "dotGrid6",
+                  "fill": "#d4d4d4",
+                  "width": 2,
+                  "height": 2
+                },
+                {
+                  "type": "frame",
+                  "id": "fLEH8",
+                  "x": 200,
+                  "y": 120,
+                  "name": "rect1",
+                  "width": 220,
+                  "height": 120,
+                  "fill": "$bg-white",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "$primary"
+                  },
+                  "layout": "vertical",
+                  "padding": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cBt0Q",
+                      "name": "rect1Text",
+                      "fill": "$text-primary",
+                      "content": "选中的矩形元素",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IBMW7",
+                  "x": 140,
+                  "y": 320,
+                  "name": "note1",
+                  "width": 180,
+                  "height": 120,
+                  "fill": "#fef9c3",
+                  "cornerRadius": 4,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wZLKl",
+                      "name": "note1Title",
+                      "fill": "$text-primary",
+                      "content": "便签 Note",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "jOxEh",
+                      "name": "note1Body",
+                      "fill": "$text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "这是一段文字内容",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "cwAXl",
+                  "x": 520,
+                  "y": 180,
+                  "name": "rect2",
+                  "width": 180,
+                  "height": 100,
+                  "fill": "$bg-white",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border"
+                  },
+                  "layout": "vertical",
+                  "padding": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "uVKbT",
+                      "name": "rect2Text",
+                      "fill": "$text-primary",
+                      "content": "另一个元素",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "line",
+                  "id": "PfRCe",
+                  "x": 420,
+                  "y": 180,
+                  "name": "connLine",
+                  "width": 100,
+                  "height": 60,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$text-secondary"
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "bvFLg",
+                  "x": 460,
+                  "y": 400,
+                  "name": "cursor1",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "0j0AG",
+                      "name": "cursor1Arrow",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "mouse-pointer-2",
+                      "iconFontFamily": "lucide",
+                      "fill": "#818cf8"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "nHJKQ",
+                      "name": "cursor1Label",
+                      "fill": "#818cf8",
+                      "cornerRadius": 4,
+                      "padding": [
+                        2,
+                        6
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ZyK8p",
+                          "name": "cursor1Name",
+                          "fill": "$text-white",
+                          "content": "张三",
+                          "fontFamily": "Inter",
+                          "fontSize": 10,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jnHgX",
+                  "x": 100,
+                  "y": 480,
+                  "name": "cursor2",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "CCOWu",
+                      "name": "cursor2Arrow",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "mouse-pointer-2",
+                      "iconFontFamily": "lucide",
+                      "fill": "#f472b6"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "UMsBS",
+                      "name": "cursor2Label",
+                      "fill": "#f472b6",
+                      "cornerRadius": 4,
+                      "padding": [
+                        2,
+                        6
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "uTs2I",
+                          "name": "cursor2Name",
+                          "fill": "$text-white",
+                          "content": "李四",
+                          "fontFamily": "Inter",
+                          "fontSize": 10,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "XyOds",
+              "name": "RightPanel",
+              "width": 240,
+              "height": "fill_container",
+              "fill": "$bg-white",
+              "stroke": {
+                "thickness": {
+                  "left": 1
+                },
+                "fill": "$border"
+              },
+              "layout": "vertical",
+              "gap": 20,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "SJBsW",
+                  "name": "propTitle",
+                  "fill": "$text-primary",
+                  "content": "属性",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "ZeKvH",
+                  "name": "fillSection",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xOymy",
+                      "name": "fillLabel",
+                      "fill": "$text-secondary",
+                      "content": "填充",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "V4MYC",
+                      "name": "fillRow",
+                      "width": "fill_container",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "eqfEu",
+                          "name": "fillSwatch",
+                          "width": 28,
+                          "height": 28,
+                          "fill": "$bg-white",
+                          "cornerRadius": 6,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "$border"
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "id": "Xd8dU",
+                          "name": "fillValue",
+                          "fill": "$text-primary",
+                          "content": "#ffffff",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "vFts1",
+                  "name": "strokeSection",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ljiKl",
+                      "name": "strokeLabel",
+                      "fill": "$text-secondary",
+                      "content": "描边",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "dBXLp",
+                      "name": "strokeRow",
+                      "width": "fill_container",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Oj5RT",
+                          "name": "strokeSwatch",
+                          "width": 28,
+                          "height": 28,
+                          "fill": "$primary",
+                          "cornerRadius": 6,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "$border"
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "id": "W7ybj",
+                          "name": "strokeValue",
+                          "fill": "$text-primary",
+                          "content": "#4f46e5",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "injsi",
+                          "name": "strokeWidth",
+                          "fill": "$text-muted",
+                          "content": "2px",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CxGfm",
+                  "name": "opacitySection",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "XSoHL",
+                      "name": "opacityLabel",
+                      "fill": "$text-secondary",
+                      "content": "透明度",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "cR8TG",
+                      "name": "opacityRow",
+                      "width": "fill_container",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "kgqty",
+                          "name": "opacityTrack",
+                          "width": "fill_container",
+                          "height": 4,
+                          "fill": "$border",
+                          "cornerRadius": 2
+                        },
+                        {
+                          "type": "frame",
+                          "id": "7q5fS",
+                          "name": "opacityThumb",
+                          "width": 14,
+                          "height": 14,
+                          "fill": "$primary",
+                          "cornerRadius": 7,
+                          "stroke": {
+                            "thickness": 2,
+                            "fill": "$bg-white"
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "id": "Hx7BQ",
+                          "name": "opacityValue",
+                          "fill": "$text-primary",
+                          "content": "80%",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "d4CJz",
+                  "name": "fontSection",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "C1sa2",
+                      "name": "fontLabel",
+                      "fill": "$text-secondary",
+                      "content": "字体",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "1gtgN",
+                      "name": "fontSizeRow",
+                      "width": "fill_container",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "tNkoO",
+                          "name": "fontSizeVal",
+                          "fill": "$text-primary",
+                          "content": "14px",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "8Mjts",
+                          "name": "boldBtn",
+                          "width": 28,
+                          "height": 28,
+                          "fill": "$surface",
+                          "cornerRadius": 4,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "j5TYV",
+                              "name": "boldText",
+                              "fill": "$text-primary",
+                              "content": "B",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "1gN1F",
+                          "name": "italicBtn",
+                          "width": 28,
+                          "height": 28,
+                          "cornerRadius": 4,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Vzzj5",
+                              "name": "italicText",
+                              "fill": "$text-secondary",
+                              "content": "I",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500",
+                              "fontStyle": "italic"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "jgrqZ",
+          "name": "BottomBar",
+          "width": "fill_container",
+          "height": 36,
+          "fill": "$bg-white",
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$border"
+          },
+          "padding": [
+            0,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "eOh7Z",
+              "name": "tab1",
+              "height": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "right": 1
+                },
+                "fill": "$border"
+              },
+              "padding": [
+                0,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "pVKCk",
+                  "name": "tab1Text",
+                  "fill": "$primary",
+                  "content": "Page 1",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "FhQyd",
+              "name": "tab2",
+              "height": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "right": 1
+                },
+                "fill": "$border"
+              },
+              "padding": [
+                0,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "OC78U",
+                  "name": "tab2Text",
+                  "fill": "$text-secondary",
+                  "content": "Page 2",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "JswEV",
+              "name": "tab3",
+              "height": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "right": 1
+                },
+                "fill": "$border"
+              },
+              "padding": [
+                0,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "IFaao",
+                  "name": "tab3Text",
+                  "fill": "$text-secondary",
+                  "content": "Page 3",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "A4uEJ",
+              "name": "addTab",
+              "height": "fill_container",
+              "padding": [
+                0,
+                12
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "7ilPy",
+                  "name": "addTabIcon",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "plus",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-muted"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "uFclF",
+              "name": "bottomSpacer",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "ellipse",
+              "id": "PTv8j",
+              "name": "statusDot",
+              "fill": "$success",
+              "width": 8,
+              "height": 8
+            },
+            {
+              "type": "text",
+              "id": "1NYQM",
+              "name": "statusText",
+              "fill": "$text-muted",
+              "content": "已连接",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "0Sqqe",
+              "name": "zoomSpacer",
+              "width": 24,
+              "height": 1
+            },
+            {
+              "type": "text",
+              "id": "G8a6P",
+              "name": "zoomMinus",
+              "fill": "$text-muted",
+              "content": "—",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "7X8zb",
+              "name": "zoomValue",
+              "fill": "$text-primary",
+              "content": "50%",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "hy6A6",
+              "name": "zoomPlus",
+              "fill": "$text-muted",
+              "content": "+",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "wSCmN",
+      "x": 0,
+      "y": 2740,
+      "name": "5. New Whiteboard Modal",
+      "width": 1440,
+      "height": 900,
+      "fill": "#00000066",
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "u3oRS",
+          "name": "NewWhiteboardModal",
+          "clip": true,
+          "width": 520,
+          "fill": "$bg-white",
+          "cornerRadius": 16,
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "myJQo",
+              "name": "modalHeader",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border"
+              },
+              "padding": [
+                20,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "455rp",
+                  "name": "modalTitle",
+                  "fill": "$text-primary",
+                  "content": "新建白板",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "J1yp7",
+                  "name": "modalSpacer",
+                  "width": "fill_container",
+                  "height": 1
+                },
+                {
+                  "type": "icon_font",
+                  "id": "71OKn",
+                  "name": "closeIcon",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "x",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-muted"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "48aAC",
+              "name": "modalBody",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "8Fu3Z",
+                  "name": "nameSection",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "NrNdy",
+                      "name": "nameLabel",
+                      "fill": "$text-primary",
+                      "content": "白板名称",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "0WICT",
+                      "name": "nameInput",
+                      "width": "fill_container",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$border"
+                      },
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "fhunx",
+                          "name": "nameText",
+                          "fill": "$text-muted",
+                          "content": "未命名白板",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "np0Re",
+                  "name": "templateSection",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "5BIXd",
+                      "name": "templateLabel",
+                      "fill": "$text-primary",
+                      "content": "选择模板",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "cbhm7",
+                      "name": "templateGrid1",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "tfFqY",
+                          "name": "tpl1",
+                          "width": "fill_container",
+                          "height": 100,
+                          "fill": "$surface",
+                          "cornerRadius": 10,
+                          "stroke": {
+                            "thickness": 2,
+                            "fill": "$primary"
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "7wrSk",
+                              "name": "tpl1Icon",
+                              "width": 24,
+                              "height": 24,
+                              "iconFontName": "file",
+                              "iconFontFamily": "lucide",
+                              "fill": "$primary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "rvtB5",
+                              "name": "tpl1Text",
+                              "fill": "$primary",
+                              "content": "空白画布",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "7u0c3",
+                          "name": "tpl2",
+                          "width": "fill_container",
+                          "height": 100,
+                          "fill": "$surface",
+                          "cornerRadius": 10,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "$border"
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "U8XA9",
+                              "name": "tpl2Icon",
+                              "width": 24,
+                              "height": 24,
+                              "iconFontName": "columns-3",
+                              "iconFontFamily": "lucide",
+                              "fill": "$text-secondary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "AZthz",
+                              "name": "tpl2Text",
+                              "fill": "$text-secondary",
+                              "content": "看板",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "fZAxv",
+                          "name": "tpl3",
+                          "width": "fill_container",
+                          "height": 100,
+                          "fill": "$surface",
+                          "cornerRadius": 10,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "$border"
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "w6aEw",
+                              "name": "tpl3Icon",
+                              "width": 24,
+                              "height": 24,
+                              "iconFontName": "git-branch",
+                              "iconFontFamily": "lucide",
+                              "fill": "$text-secondary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "dFyeE",
+                              "name": "tpl3Text",
+                              "fill": "$text-secondary",
+                              "content": "流程图",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "8TibM",
+                      "name": "templateGrid2",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "IHA6v",
+                          "name": "tpl4",
+                          "width": "fill_container",
+                          "height": 100,
+                          "fill": "$surface",
+                          "cornerRadius": 10,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "$border"
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "BvTsE",
+                              "name": "tpl4Icon",
+                              "width": 24,
+                              "height": 24,
+                              "iconFontName": "lightbulb",
+                              "iconFontFamily": "lucide",
+                              "fill": "$text-secondary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "aVA34",
+                              "name": "tpl4Text",
+                              "fill": "$text-secondary",
+                              "content": "头脑风暴",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "5yvBy",
+                          "name": "tpl5",
+                          "width": "fill_container",
+                          "height": 100,
+                          "fill": "$surface",
+                          "cornerRadius": 10,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "$border"
+                          },
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "i5fRI",
+                              "name": "tpl5Icon",
+                              "width": 24,
+                              "height": 24,
+                              "iconFontName": "network",
+                              "iconFontFamily": "lucide",
+                              "fill": "$text-secondary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "gEztm",
+                              "name": "tpl5Text",
+                              "fill": "$text-secondary",
+                              "content": "思维导图",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "feAeJ",
+                          "name": "tplSpacer",
+                          "width": "fill_container",
+                          "height": 100
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SN6uA",
+                  "name": "teamSection",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "hdly6",
+                      "name": "teamLabel",
+                      "fill": "$text-primary",
+                      "content": "团队空间:",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "7u5S6",
+                      "name": "teamDropdown",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$border"
+                      },
+                      "gap": 6,
+                      "padding": [
+                        8,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "IJ4f3",
+                          "name": "teamDropText",
+                          "fill": "$text-primary",
+                          "content": "个人空间",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "h1nyg",
+                          "name": "teamDropIcon",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "chevron-down",
+                          "iconFontFamily": "lucide",
+                          "fill": "$text-muted"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "gVPel",
+              "name": "modalFooter",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "$border"
+              },
+              "gap": 12,
+              "padding": [
+                16,
+                24
+              ],
+              "justifyContent": "end",
+              "children": [
+                {
+                  "id": "7sTC4",
+                  "type": "ref",
+                  "ref": "8TDkz",
+                  "name": "cancelBtn",
+                  "x": 320,
+                  "y": 16,
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "descendants": {
+                    "Pwh3b": {
+                      "content": "取 消",
+                      "x": 24,
+                      "y": 12
+                    }
+                  }
+                },
+                {
+                  "id": "sgFde",
+                  "type": "ref",
+                  "ref": "U30oY",
+                  "name": "createBtn",
+                  "x": 414,
+                  "y": 16,
+                  "width": "fit_content",
+                  "height": "fit_content",
+                  "descendants": {
+                    "vZAEr": {
+                      "content": "创 建",
+                      "x": 24,
+                      "y": 12
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "W9cOO",
+      "x": 1560,
+      "y": 2740,
+      "name": "6. Share Modal",
+      "width": 1440,
+      "height": 900,
+      "fill": "#00000066",
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "E1JHF",
+          "name": "ShareModal",
+          "clip": true,
+          "width": 460,
+          "fill": "$bg-white",
+          "cornerRadius": 16,
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "LbErg",
+              "name": "shareHeader",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border"
+              },
+              "padding": [
+                20,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "NF3ZA",
+                  "name": "shareTitle",
+                  "fill": "$text-primary",
+                  "content": "分享白板",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "7jh4C",
+                  "name": "shareSpacer",
+                  "width": "fill_container",
+                  "height": 1
+                },
+                {
+                  "type": "icon_font",
+                  "id": "kpaht",
+                  "name": "shareClose",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "x",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-muted"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "zG3iK",
+              "name": "shareBody",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "79bJn",
+                  "name": "inviteSection",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "nSJKt",
+                      "name": "inviteLabel",
+                      "fill": "$text-primary",
+                      "content": "邀请成员",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "DX1NT",
+                      "name": "inviteRow",
+                      "width": "fill_container",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "84jTs",
+                          "name": "inviteInput",
+                          "width": "fill_container",
+                          "cornerRadius": 8,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "$border"
+                          },
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "AK2MS",
+                              "name": "inviteText",
+                              "fill": "$text-muted",
+                              "content": "输入邮箱地址...",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "jQStf",
+                          "type": "ref",
+                          "ref": "U30oY",
+                          "name": "inviteBtn",
+                          "x": 334,
+                          "width": "fit_content",
+                          "height": "fit_content",
+                          "descendants": {
+                            "vZAEr": {
+                              "content": "邀 请",
+                              "fontSize": 13,
+                              "x": 24,
+                              "y": 12
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WEYw6",
+                  "name": "memberSection",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jsxE6",
+                      "name": "memberLabel",
+                      "fill": "$text-primary",
+                      "content": "已有权限的成员",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "rhrIk",
+                      "name": "member1",
+                      "width": "fill_container",
+                      "gap": 10,
+                      "padding": [
+                        8,
+                        0
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "4XirQ",
+                          "name": "m1Avatar",
+                          "width": 32,
+                          "height": 32,
+                          "fill": "#818cf8",
+                          "cornerRadius": 16,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "uJJlr",
+                              "name": "m1AvatarT",
+                              "fill": "$text-white",
+                              "content": "张",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "YZt9P",
+                          "name": "m1Name",
+                          "fill": "$text-primary",
+                          "content": "张三 (你)",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "w2fSt",
+                          "name": "m1Spacer",
+                          "width": "fill_container",
+                          "height": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "dJuHe",
+                          "name": "m1Role",
+                          "fill": "$text-muted",
+                          "content": "所有者",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "J6cNS",
+                      "name": "member2",
+                      "width": "fill_container",
+                      "gap": 10,
+                      "padding": [
+                        8,
+                        0
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "6dtKC",
+                          "name": "m2Avatar",
+                          "width": 32,
+                          "height": 32,
+                          "fill": "#f472b6",
+                          "cornerRadius": 16,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "aDkfF",
+                              "name": "m2AvatarT",
+                              "fill": "$text-white",
+                              "content": "李",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "U2N1o",
+                          "name": "m2Name",
+                          "fill": "$text-primary",
+                          "content": "李四",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "A1D5G",
+                          "name": "m2Spacer",
+                          "width": "fill_container",
+                          "height": 1
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Irzwf",
+                          "name": "m2Role",
+                          "cornerRadius": 4,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "$border"
+                          },
+                          "gap": 4,
+                          "padding": [
+                            4,
+                            8
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "5524U",
+                              "name": "m2RoleText",
+                              "fill": "$text-secondary",
+                              "content": "可编辑",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "icon_font",
+                              "id": "LiPfw",
+                              "name": "m2RoleIcon",
+                              "width": 12,
+                              "height": 12,
+                              "iconFontName": "chevron-down",
+                              "iconFontFamily": "lucide",
+                              "fill": "$text-muted"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "3LLFz",
+                      "name": "member3",
+                      "width": "fill_container",
+                      "gap": 10,
+                      "padding": [
+                        8,
+                        0
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "FA5c8",
+                          "name": "m3Avatar",
+                          "width": 32,
+                          "height": 32,
+                          "fill": "#34d399",
+                          "cornerRadius": 16,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "yY2Kw",
+                              "name": "m3AvatarT",
+                              "fill": "$text-white",
+                              "content": "王",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "d3lhJ",
+                          "name": "m3Name",
+                          "fill": "$text-primary",
+                          "content": "王五",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "H2VUu",
+                          "name": "m3Spacer",
+                          "width": "fill_container",
+                          "height": 1
+                        },
+                        {
+                          "type": "frame",
+                          "id": "s45S1",
+                          "name": "m3Role",
+                          "cornerRadius": 4,
+                          "stroke": {
+                            "thickness": 1,
+                            "fill": "$border"
+                          },
+                          "gap": 4,
+                          "padding": [
+                            4,
+                            8
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "NxMYA",
+                              "name": "m3RoleText",
+                              "fill": "$text-secondary",
+                              "content": "可查看",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "icon_font",
+                              "id": "VtXeI",
+                              "name": "m3RoleIcon",
+                              "width": 12,
+                              "height": 12,
+                              "iconFontName": "chevron-down",
+                              "iconFontFamily": "lucide",
+                              "fill": "$text-muted"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "UhdkP",
+                  "name": "divider2",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "$border"
+                },
+                {
+                  "type": "frame",
+                  "id": "8wR8O",
+                  "name": "linkSection",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "fvcXx",
+                      "name": "linkLabel",
+                      "gap": 6,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "iWX2K",
+                          "name": "linkIcon",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "link",
+                          "iconFontFamily": "lucide",
+                          "fill": "$text-secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "qvPxK",
+                          "name": "linkText",
+                          "fill": "$text-primary",
+                          "content": "链接分享",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "pLQLm",
+                      "name": "linkRow",
+                      "width": "fill_container",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "gPfZj",
+                          "name": "linkInput",
+                          "width": "fill_container",
+                          "fill": "$surface",
+                          "cornerRadius": 8,
+                          "padding": [
+                            8,
+                            12
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Vx3zI",
+                              "name": "linkUrl",
+                              "fill": "$text-secondary",
+                              "content": "https://sync.board/b/xK3..",
+                              "fontFamily": "JetBrains Mono",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "U69lM",
+                          "type": "ref",
+                          "ref": "8TDkz",
+                          "name": "copyBtn",
+                          "x": 339,
+                          "y": 0,
+                          "width": "fit_content",
+                          "height": "fit_content",
+                          "descendants": {
+                            "Pwh3b": {
+                              "content": "复制",
+                              "fontSize": 12,
+                              "x": 24,
+                              "y": 12
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "0BlxD",
+                      "name": "radioRow",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "bekCi",
+                          "name": "radio1",
+                          "gap": 6,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "ellipse",
+                              "id": "G7gGk",
+                              "name": "radio1Circle",
+                              "width": 16,
+                              "height": 16,
+                              "stroke": {
+                                "thickness": 1.5,
+                                "fill": "$border"
+                              }
+                            },
+                            {
+                              "type": "text",
+                              "id": "i9zNW",
+                              "name": "radio1Text",
+                              "fill": "$text-secondary",
+                              "content": "关闭",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Xz1en",
+                          "name": "radio2",
+                          "gap": 6,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "ellipse",
+                              "id": "LlW10",
+                              "name": "radio2Circle",
+                              "width": 16,
+                              "height": 16,
+                              "stroke": {
+                                "thickness": 1.5,
+                                "fill": "$border"
+                              }
+                            },
+                            {
+                              "type": "text",
+                              "id": "kbdOy",
+                              "name": "radio2Text",
+                              "fill": "$text-secondary",
+                              "content": "可查看",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "4mYJd",
+                          "name": "radio3",
+                          "gap": 6,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "ellipse",
+                              "id": "va06d",
+                              "name": "radio3Outer",
+                              "width": 16,
+                              "height": 16,
+                              "stroke": {
+                                "thickness": 1.5,
+                                "fill": "$primary"
+                              }
+                            },
+                            {
+                              "type": "ellipse",
+                              "id": "9RdtM",
+                              "layoutPosition": "absolute",
+                              "x": 4,
+                              "y": 4,
+                              "name": "radio3Inner",
+                              "fill": "$primary",
+                              "width": 8,
+                              "height": 8
+                            },
+                            {
+                              "type": "text",
+                              "id": "nSiBv",
+                              "name": "radio3Text",
+                              "fill": "$primary",
+                              "content": "可编辑",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg-dark": {
+      "type": "color",
+      "value": "#1a1a1a"
+    },
+    "bg-white": {
+      "type": "color",
+      "value": "#ffffff"
+    },
+    "border": {
+      "type": "color",
+      "value": "#e5e5e5"
+    },
+    "border-dark": {
+      "type": "color",
+      "value": "#404040"
+    },
+    "error": {
+      "type": "color",
+      "value": "#ef4444"
+    },
+    "hover-bg": {
+      "type": "color",
+      "value": "#f0f0f0"
+    },
+    "info": {
+      "type": "color",
+      "value": "#3b82f6"
+    },
+    "primary": {
+      "type": "color",
+      "value": "#4f46e5"
+    },
+    "primary-dark": {
+      "type": "color",
+      "value": "#3730a3"
+    },
+    "primary-light": {
+      "type": "color",
+      "value": "#818cf8"
+    },
+    "success": {
+      "type": "color",
+      "value": "#22c55e"
+    },
+    "surface": {
+      "type": "color",
+      "value": "#f5f5f5"
+    },
+    "surface-dark": {
+      "type": "color",
+      "value": "#2d2d2d"
+    },
+    "text-muted": {
+      "type": "color",
+      "value": "#999999"
+    },
+    "text-primary": {
+      "type": "color",
+      "value": "#1a1a1a"
+    },
+    "text-secondary": {
+      "type": "color",
+      "value": "#666666"
+    },
+    "text-white": {
+      "type": "color",
+      "value": "#ffffff"
+    },
+    "warning": {
+      "type": "color",
+      "value": "#eab308"
+    }
+  }
+}
