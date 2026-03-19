@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "项目/SyncBoard/后端设计文档.md",
+                "file": "项目/SyncBoard/开发计划表.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "后端设计文档"
+              "title": "开发计划表"
             }
           }
         ],
@@ -93,7 +93,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3bd0fb1b110dccd6",
@@ -211,13 +212,13 @@
   },
   "active": "0fda657d3734dc4d",
   "lastOpenFiles": [
+    "项目/SyncBoard/前端设计文档.md",
+    "项目/SyncBoard/后端设计文档.md",
     "项目/SyncBoard/共享包设计文档.md",
     "未命名.md",
     "项目/SyncBoard/项目初始化指南.md",
-    "项目/SyncBoard/前端设计文档.md",
     "项目/SyncBoard/开发计划表.md",
     "项目/SyncBoard/计划分析书.md",
-    "项目/SyncBoard/后端设计文档.md",
     "项目/SyncBoard/UI线框图设计文档.md",
     "项目/SyncBoard/pencil-new.pen",
     "项目/SyncBoard/Local-First实时协作空间计划书.md",
