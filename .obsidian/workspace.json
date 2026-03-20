@@ -25,13 +25,14 @@
             "id": "0fda657d3734dc4d",
             "type": "leaf",
             "state": {
-              "type": "bases",
+              "type": "markdown",
               "state": {
-                "file": "未命名.base",
-                "viewName": "表格"
+                "file": "项目/SwarmNote/UI/UI 设计.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-table",
-              "title": "未命名"
+              "icon": "lucide-file",
+              "title": "UI 设计"
             }
           }
         ],
@@ -92,8 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "3bd0fb1b110dccd6",
@@ -212,6 +212,9 @@
   "active": "0fda657d3734dc4d",
   "lastOpenFiles": [
     "项目/SyncBoard/开发计划表.md",
+    "项目/SwarmNote/UI/UI 设计.md",
+    "项目/SwarmNote/UI",
+    "项目/SwarmNote",
     "未命名.base",
     "项目/SyncBoard/前端设计文档.md",
     "项目/SyncBoard/后端设计文档.md",
@@ -244,10 +247,8 @@
     "琪琪/保育工作总结.md",
     "琪琪/需求分析与测试用例 1.md",
     "技术文档",
-    "琪琪",
     "知识点脑图/手写代码面试题.webp",
     "知识点脑图/计算机网络面试题.webp",
-    "项目/开源组件库",
     "知识点脑图/vue面试题.webp",
     "未命名.canvas",
     "技术文档/text/vue/code/vue3-project/src/assets/vue.svg",
