@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "项目/SwarmNote/UI/设计2.md",
+                "file": "项目/SwarmNote/UI/设计3.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "设计2"
+              "title": "设计3"
             }
           }
         ],
@@ -211,8 +211,10 @@
   },
   "active": "0fda657d3734dc4d",
   "lastOpenFiles": [
-    "项目/SwarmNote/UI/UI 设计.md",
     "项目/SwarmNote/UI/设计2.md",
+    "项目/SwarmNote/UI/设计3.md",
+    "项目/SwarmNote/UI/未命名",
+    "项目/SwarmNote/UI/UI 设计.md",
     "项目/SyncBoard/开发计划表.md",
     "项目/SwarmNote/UI",
     "项目/SwarmNote",
@@ -245,8 +247,6 @@
     "conflict-files-obsidian-git.md",
     "work/未命名.md",
     "面试准备/字节校招.md",
-    "琪琪/保育工作总结.md",
-    "技术文档",
     "知识点脑图/手写代码面试题.webp",
     "知识点脑图/计算机网络面试题.webp",
     "知识点脑图/vue面试题.webp",
