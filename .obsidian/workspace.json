@@ -25,14 +25,13 @@
             "id": "0fda657d3734dc4d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "bases",
               "state": {
-                "file": "项目/SyncBoard/开发计划表.md",
-                "mode": "source",
-                "source": false
+                "file": "未命名.base",
+                "viewName": "表格"
               },
-              "icon": "lucide-file",
-              "title": "开发计划表"
+              "icon": "lucide-table",
+              "title": "未命名"
             }
           }
         ],
@@ -212,12 +211,13 @@
   },
   "active": "0fda657d3734dc4d",
   "lastOpenFiles": [
+    "项目/SyncBoard/开发计划表.md",
+    "未命名.base",
     "项目/SyncBoard/前端设计文档.md",
     "项目/SyncBoard/后端设计文档.md",
     "项目/SyncBoard/共享包设计文档.md",
     "未命名.md",
     "项目/SyncBoard/项目初始化指南.md",
-    "项目/SyncBoard/开发计划表.md",
     "项目/SyncBoard/计划分析书.md",
     "项目/SyncBoard/UI线框图设计文档.md",
     "项目/SyncBoard/pencil-new.pen",
@@ -243,13 +243,11 @@
     "面试准备/字节校招.md",
     "琪琪/保育工作总结.md",
     "琪琪/需求分析与测试用例 1.md",
-    "琪琪/需求分析与测试用例.md",
     "技术文档",
     "琪琪",
     "知识点脑图/手写代码面试题.webp",
     "知识点脑图/计算机网络面试题.webp",
     "项目/开源组件库",
-    "项目/新建文件夹",
     "知识点脑图/vue面试题.webp",
     "未命名.canvas",
     "技术文档/text/vue/code/vue3-project/src/assets/vue.svg",
