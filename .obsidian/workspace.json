@@ -171,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "提示.md",
+                "file": "项目/SwarmNote/UI/chatgpt设计.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "提示 的大纲"
+              "title": "chatgpt设计 的大纲"
             }
           },
           {
@@ -191,7 +191,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -209,7 +209,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0fda657d3734dc4d",
+  "active": "7f824f4f7ef20a38",
   "lastOpenFiles": [
     "项目/SwarmNote/UI/设计3.md",
     "项目/SwarmNote/UI/chatgpt设计.md",
