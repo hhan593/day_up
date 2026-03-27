@@ -25,14 +25,12 @@
             "id": "0fda657d3734dc4d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "项目/SwarmNote/visualize-widget-iframe-streaming.md",
-                "mode": "source",
-                "source": false
+                "file": "技术文档/vue/Vue源码分析.svg"
               },
-              "icon": "lucide-file",
-              "title": "visualize-widget-iframe-streaming"
+              "icon": "lucide-image",
+              "title": "Vue源码分析"
             }
           }
         ],
@@ -171,13 +169,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "项目/SwarmNote/visualize-widget-iframe-streaming.md",
+                "file": "技术文档/vue/Vue源码分析.svg",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "visualize-widget-iframe-streaming 的大纲"
+              "title": "Vue源码分析 的大纲"
             }
           },
           {
@@ -211,8 +209,9 @@
   },
   "active": "0fda657d3734dc4d",
   "lastOpenFiles": [
-    "项目/SwarmNote/UI/未命名.md",
+    "技术文档/vue/vue源码分析.jpg",
     "项目/SwarmNote/visualize-widget-iframe-streaming.md",
+    "项目/SwarmNote/UI/未命名.md",
     "项目/SwarmNote/UI/chatgpt设计.md",
     "项目/SwarmNote/design/14-移动端-集群-Mobile-Swarm-Light.png",
     "项目/SwarmNote/design/13-移动端-文件列表-Mobile-Files-Light.png",
@@ -256,7 +255,6 @@
     "项目/SyncBoard/docs",
     "项目/SyncBoard",
     "项目/alipayPublicKey_RSA2.txt",
-    "技术文档/rust/Rust智能指针知识手册.md",
     "未命名.canvas"
   ]
 }
