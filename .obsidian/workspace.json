@@ -189,7 +189,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -207,7 +207,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0fda657d3734dc4d",
+  "active": "a23aa1c6a370bb77",
   "lastOpenFiles": [
     "技术文档/vue/vue源码分析.jpg",
     "项目/SwarmNote/visualize-widget-iframe-streaming.md",

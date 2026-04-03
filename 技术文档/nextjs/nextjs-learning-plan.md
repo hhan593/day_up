@@ -6,24 +6,25 @@
 ## 🎯 写给零基础的你
 
 这份计划专为编程新手设计。不需要你有任何编程经验，只要你：
+
 - 会用电脑上网
 - 有耐心，愿意一步步来
 - 每天能抽出 2-3 小时学习
 
 记住：**慢就是快**。基础打牢了，后面的路才好走。
 
----
+***
 
 ## 准备阶段（第 0 周）
 
 ### 安装必要软件
 
 - [ ] **VS Code**（代码编辑器）
-  - 下载地址：https://code.visualstudio.com/
+  - 下载地址：<https://code.visualstudio.com/>
   - 安装插件：ES7+ React snippets、Prettier
 
 - [ ] **Node.js**（JavaScript 运行环境）
-  - 下载地址：https://nodejs.org/（选 LTS 版本）
+  - 下载地址：<https://nodejs.org/（选> LTS 版本）
   - 验证安装：打开终端输入 `node -v`，能看到版本号即成功
 
 - [ ] **Chrome 浏览器**
@@ -32,12 +33,14 @@
 ### 熟悉开发环境
 
 **Day 0.1：认识 VS Code**
+
 - 打开文件夹
 - 创建新文件
 - 使用终端（Terminal → New Terminal）
 - 安装插件
 
 **Day 0.2：认识命令行**
+
 ```bash
 # 常用命令练习
 pwd           # 显示当前位置
@@ -47,7 +50,7 @@ cd ..         # 返回上级
 mkdir 文件夹名 # 创建文件夹
 ```
 
----
+***
 
 ## 第一阶段：Web 基础（第 1-3 周）
 
@@ -56,11 +59,13 @@ mkdir 文件夹名 # 创建文件夹
 #### Day 1：HTML 是什么？
 
 **学习内容**：
+
 - HTML = 网页的骨架
 - 标签的概念
 - 基本结构
 
 **动手做**：
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -79,6 +84,7 @@ mkdir 文件夹名 # 创建文件夹
 #### Day 2：常用标签（上）
 
 **学习标签**：
+
 - `<h1>` 到 `<h6>`：标题
 - `<p>`：段落
 - `<br>`：换行
@@ -90,11 +96,13 @@ mkdir 文件夹名 # 创建文件夹
 #### Day 3：常用标签（下）
 
 **学习标签**：
+
 - `<a>`：链接
 - `<img>`：图片
 - `<ul>`、`<ol>`、`<li>`：列表
 
 **练习**：
+
 ```html
 <!-- 链接 -->
 <a href="https://www.google.com">访问 Google</a>
@@ -113,6 +121,7 @@ mkdir 文件夹名 # 创建文件夹
 #### Day 4：HTML 属性
 
 **常用属性**：
+
 - `id`：唯一标识
 - `class`：类别（用于 CSS）
 - `style`：内联样式
@@ -123,24 +132,27 @@ mkdir 文件夹名 # 创建文件夹
 #### Day 5-7：小项目：个人简历页
 
 **要求**：
+
 - 个人照片
 - 姓名和联系方式
 - 教育背景（列表）
 - 技能（列表）
 - 项目经验
 
----
+***
 
 ### Week 2：CSS 基础
 
 #### Day 8：CSS 是什么？
 
 **学习内容**：
+
 - CSS = 网页的样式和装饰
 - 选择器的概念
 - 三种引入方式
 
 **跟着做**：
+
 ```html
 <!-- 在 HTML 中引入 CSS -->
 <head>
@@ -164,6 +176,7 @@ h1 {
 #### Day 9：选择器
 
 **基础选择器**：
+
 ```css
 /* 元素选择器 */
 p { color: red; }
@@ -184,6 +197,7 @@ nav a { text-decoration: none; }
 #### Day 10：盒模型
 
 **核心概念**：
+
 - Content（内容）
 - Padding（内边距）
 - Border（边框）
@@ -226,17 +240,19 @@ text {
 **目标**：让 Week 1 的简历变得美观
 
 要求：
+
 - 合理的颜色搭配
 - 适当的间距
 - 响应式布局（在手机上也能看）
 
----
+***
 
 ### Week 3：JavaScript 基础
 
 #### Day 15：JS 是什么？
 
 **学习内容**：
+
 - JavaScript = 让网页动起来
 - 在 HTML 中引入 JS
 - 控制台输出
@@ -343,6 +359,7 @@ console.log(add(3, 5));
 ```
 
 **练习**：
+
 - 写一个计算 BMI 的函数
 - 写一个判断闰年的函数
 
@@ -366,7 +383,7 @@ console.log(person.name);
 person.job = '工程师';
 ```
 
----
+***
 
 ## 第二阶段：React 基础（第 4-5 周）
 
@@ -375,11 +392,13 @@ person.job = '工程师';
 #### Day 22：什么是 React？
 
 **核心概念**：
+
 - 组件化开发
 - 声明式 UI
 - 虚拟 DOM
 
 **创建 React 项目**：
+
 ```bash
 npx create-react-app my-react-app
 cd my-react-app
@@ -401,6 +420,7 @@ function App() {
 ```
 
 **注意**：
+
 - `className` 代替 `class`
 - 用 `{}` 写 JavaScript
 - 必须有一个根元素
@@ -444,7 +464,8 @@ function Counter() {
 ```
 
 **关键点**：
-- `useState` 返回数组 [值, 修改函数]
+
+- `useState` 返回数组 \[值, 修改函数]
 - 不要直接修改 state
 - 状态变化会重新渲染组件
 
@@ -474,12 +495,13 @@ function Form() {
 **项目**：待办事项列表
 
 功能：
+
 - 添加任务
 - 标记完成
 - 删除任务
 - 显示完成进度
 
----
+***
 
 ### Week 5：React 进阶
 
@@ -571,12 +593,13 @@ function LoginForm() {
 **项目**：天气预报应用
 
 功能：
+
 - 城市搜索
 - 显示当前天气
 - 显示未来预报
 - 温度单位切换
 
----
+***
 
 ## 第三阶段：Next.js 核心（第 6-9 周）
 
@@ -591,6 +614,7 @@ npm run dev
 ```
 
 **项目结构**：
+
 ```
 my-next-app/
 ├── app/              # 页面代码
@@ -604,12 +628,14 @@ my-next-app/
 #### Day 37：文件系统路由
 
 **规则**：
+
 - `app/page.tsx` → 访问 `/`
 - `app/about/page.tsx` → 访问 `/about`
 - `app/blog/[id]/page.tsx` → 访问 `/blog/123`
 
 **练习**：
 创建以下页面：
+
 - 首页
 - 关于页
 - 博客列表
@@ -633,6 +659,7 @@ export default function RootLayout({ children }) {
 ```
 
 **特点**：
+
 - 布局在页面切换时保持
 - 可以嵌套
 
@@ -657,18 +684,20 @@ export default function Nav() {
 **项目**：个人博客（静态版）
 
 功能：
+
 - 首页展示文章列表
 - 文章详情页
 - 关于页
 - 响应式布局
 
----
+***
 
 ### Week 7：服务端渲染
 
 #### Day 43：Server Components
 
 **特点**：
+
 - 默认就是 Server Component
 - 可以直接获取数据
 - 不能用了 useState、useEffect
@@ -692,6 +721,7 @@ export default async function Page() {
 #### Day 44：Client Components
 
 **什么时候用？**
+
 - 需要交互（点击、输入）
 - 需要用到 React hooks
 - 需要访问浏览器 API
@@ -710,6 +740,7 @@ export default function Counter() {
 #### Day 45：Loading 和 Error
 
 **Loading**：
+
 ```tsx
 // app/blog/loading.tsx
 export default function Loading() {
@@ -718,6 +749,7 @@ export default function Loading() {
 ```
 
 **Error**：
+
 ```tsx
 'use client';
 
@@ -740,7 +772,7 @@ export default function Error({ error, reset }) {
 - 新闻详情页
 - 加载和错误状态
 
----
+***
 
 ### Week 8：Server Actions
 
@@ -807,13 +839,14 @@ export async function login(formData: FormData) {
 **项目**：笔记应用
 
 功能：
+
 - 创建笔记
 - 查看笔记列表
 - 编辑笔记
 - 删除笔记
 - 搜索笔记
 
----
+***
 
 ### Week 9：进阶特性
 
@@ -869,7 +902,7 @@ export async function POST(request: Request) {
 - 性能检查
 - 环境变量配置
 
----
+***
 
 ## 第四阶段：实战与部署（第 10-12 周）
 
@@ -880,18 +913,21 @@ export async function POST(request: Request) {
 **功能需求**：
 
 #### 基础功能
+
 - [ ] 文章列表（支持分页）
 - [ ] 文章详情
 - [ ] 文章分类/标签
 - [ ] 搜索功能
 
 #### 管理功能
+
 - [ ] 创建文章
 - [ ] 编辑文章
 - [ ] 删除文章
 - [ ] Markdown 编辑器
 
 #### 高级功能
+
 - [ ] 暗黑模式
 - [ ] 评论系统
 - [ ] RSS 订阅
@@ -924,23 +960,26 @@ git push origin main
 - [ ] 访问分析
 - [ ] 持续迭代
 
----
+***
 
 ## 📋 学习检查清单
 
 ### HTML/CSS/JS 基础
+
 - [ ] 能用 HTML 写简单网页
 - [ ] 能用 CSS 美化页面
 - [ ] 理解 JS 基础语法
 - [ ] 能写简单的交互功能
 
 ### React 基础
+
 - [ ] 理解组件概念
 - [ ] 会使用 useState
 - [ ] 会使用 useEffect
 - [ ] 能处理表单
 
 ### Next.js 核心
+
 - [ ] 理解文件系统路由
 - [ ] 能创建各种页面
 - [ ] 理解 Server/Client Components
@@ -948,56 +987,66 @@ git push origin main
 - [ ] 会使用 Server Actions
 
 ### 项目实战
+
 - [ ] 完成一个完整的项目
 - [ ] 部署到线上
 - [ ] 性能优化
 
----
+***
 
 ## 💡 学习建议
 
 ### 1. 每天固定时间学习
+
 建议每天 2-3 小时，保持连续性。
 
 ### 2. 不要只看不练
+
 每学一个知识点，都要动手写代码。
 
 ### 3. 遇到错误别慌
+
 读错误信息，90% 的问题都能自己解决。
 
 ### 4. 善用搜索
+
 - Google
 - Stack Overflow
 - 官方文档
 
 ### 5. 记录笔记
+
 建立自己的知识库，方便复习。
 
 ### 6. 加入社区
+
 - GitHub
 - 掘金
 - Discord 开发者社区
 
----
+***
 
 ## 📚 推荐资源
 
 ### 文档
+
 - [MDN Web 文档](https://developer.mozilla.org/zh-CN/)
 - [React 官方文档](https://react.dev)
 - [Next.js 官方文档](https://nextjs.org/docs)
 
 ### 视频（B站搜索）
+
 - HTML+CSS 基础教程
 - JavaScript 基础教程
 - React 入门教程
 - Next.js 实战教程
 
 ### 练习平台
+
 - freeCodeCamp
 - Codecademy
 - LeetCode（算法）
 
----
+***
 
 **记住：编程是技能，不是知识。多练习，你会越来越好的！** 💪
