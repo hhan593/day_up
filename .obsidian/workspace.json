@@ -25,12 +25,14 @@
             "id": "0fda657d3734dc4d",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "技术文档/vue/Vue源码分析.svg"
+                "file": "项目/SwarmNote/i18n-guide.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Vue源码分析"
+              "icon": "lucide-file",
+              "title": "i18n-guide"
             }
           }
         ],
@@ -169,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "技术文档/vue/Vue源码分析.svg",
+                "file": "项目/SwarmNote/i18n-guide.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Vue源码分析 的大纲"
+              "title": "i18n-guide 的大纲"
             }
           },
           {
@@ -209,6 +211,8 @@
   },
   "active": "a23aa1c6a370bb77",
   "lastOpenFiles": [
+    "技术文档/vue/Vue源码分析.svg",
+    "项目/SwarmNote/i18n-guide.md",
     "技术文档/vue/vue源码分析.jpg",
     "项目/SwarmNote/visualize-widget-iframe-streaming.md",
     "项目/SwarmNote/UI/未命名.md",
@@ -222,7 +226,6 @@
     "项目/SwarmNote/design/08-Light-Cross-Platform-Swarm-Panel.png",
     "项目/SwarmNote/design/07-Light-Cross-Platform-WAN-Pairing.png",
     "项目/SwarmNote/design/06-Light-Cross-Platform-Command-Palette.png",
-    "项目/SwarmNote/design/05-Light-Cross-Platform-Main-Window.png",
     "项目/SwarmNote/design",
     "项目/SwarmNote/UI/设计3.md",
     "项目/SwarmNote/UI/设计2.md",
@@ -251,7 +254,6 @@
     "项目/SyncBoard/docs/UI线框图设计文档.md",
     "项目/SyncBoard/docs/pencil-new.pen",
     "项目/SyncBoard/docs/Local-First技术实现细节.md",
-    "项目/SyncBoard/docs/Local-First实时协作空间计划书.md",
     "项目/SyncBoard/docs",
     "项目/SyncBoard",
     "项目/alipayPublicKey_RSA2.txt",
