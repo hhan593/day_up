@@ -596,18 +596,18 @@ flowchart TD
 
 ## 关键设计决策回顾
 
-| 决策 | 为什么 |
-|------|--------|
-| iframe 而非 dangerouslySetInnerHTML | 安全隔离，LLM 代码无法访问主应用 |
-| Bootstrap + postMessage 而非频繁换 srcdoc | 避免流式阶段白屏闪烁 |
-| 流式阶段 strip 脚本 | 防止重复执行和半截脚本报错 |
-| 300ms 节流 | 平衡实时性和渲染性能 |
-| CSP 白名单 + connect-src: none | 允许 CDN 库加载，禁止网络请求 |
-| 变量映射而非直接透传 | sandbox iframe 无法读取父页面 CSS 变量 |
-| replaceState 式的 srcdoc 刷新技巧 | 确保浏览器感知 srcdoc 变化 |
-| requestAnimationFrame 合并 resize | 避免高频 setHeight 导致卡顿 |
-| height 限制 [100, 2000] | 防止恶意代码攻击页面布局 |
-| sendPrompt 长度限制 1000 字符 | 防止 Widget 发送超长文本 |
+| 决策                                   | 为什么                           |
+| ------------------------------------ | ----------------------------- |
+| iframe 而非 dangerouslySetInnerHTML    | 安全隔离，LLM 代码无法访问主应用            |
+| Bootstrap + postMessage 而非频繁换 srcdoc | 避免流式阶段白屏闪烁                    |
+| 流式阶段 strip 脚本                        | 防止重复执行和半截脚本报错                 |
+| 300ms 节流                             | 平衡实时性和渲染性能                    |
+| CSP 白名单 + connect-src: none          | 允许 CDN 库加载，禁止网络请求             |
+| 变量映射而非直接透传                           | sandbox iframe 无法读取父页面 CSS 变量 |
+| replaceState 式的 srcdoc 刷新技巧          | 确保浏览器感知 srcdoc 变化             |
+| requestAnimationFrame 合并 resize      | 避免高频 setHeight 导致卡顿           |
+| height 限制 [100, 2000]                | 防止恶意代码攻击页面布局                  |
+| sendPrompt 长度限制 1000 字符              | 防止 Widget 发送超长文本              |
 
 ## 可复用的模式
 
