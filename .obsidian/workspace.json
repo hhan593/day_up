@@ -20,23 +20,8 @@
               "icon": "lucide-file",
               "title": "19-Redis核心知识"
             }
-          },
-          {
-            "id": "0c470ea398b81016",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "conflict-files-obsidian-git.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "conflict-files-obsidian-git"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -209,10 +194,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0c470ea398b81016",
+  "active": "fa4a234a21c5d678",
   "lastOpenFiles": [
-    "软考/知识点/19-Redis核心知识.md",
     "conflict-files-obsidian-git.md",
+    "软考/知识点/19-Redis核心知识.md",
     "软考/知识点/03-软件设计原则与模式.md.tmp.25484.6961863bb415",
     "软考/知识点/03-软件设计原则与模式.md.tmp.25484.2aa1e8f5cf1a",
     "软考/知识点/03-软件设计原则与模式.md.tmp.25484.860b031c6632",
