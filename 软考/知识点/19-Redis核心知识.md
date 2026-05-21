@@ -414,14 +414,15 @@ MEMORY USAGE <key>           # 精确内存占用（4.0+）
 
 ### 8.3 Redis vs Memcached
 
-| 维度 | Redis | Memcached |
-|------|-------|-----------|
-| 数据结构 | 丰富 | 仅String |
-| 持久化 | 支持 | 不支持 |
-| 集群 | Cluster原生支持 | 客户端分片 |
-| 线程模型 | 单线程 | 多线程 |
-| 内存管理 | jemalloc | Slab（碎片多） |
-| 最大Value | 512MB | 1MB |
+| 维度      | Redis       | Memcached |
+| ------- | ----------- | --------- |
+| 数据结构    | 丰富          | 仅String   |
+| 持久化     | 支持          | 不支持       |
+| 集群      | Cluster原生支持 | 客户端分片     |
+| 线程模型    | 单线程         | 多线程       |
+| 内存管理    | jemalloc    | Slab（碎片多） |
+| 最大Value | 512MB       | 1MB       |
+|         |             |           |
 
 ### 8.4 Redis 常见配置速查
 
