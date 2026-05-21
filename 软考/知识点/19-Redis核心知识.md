@@ -434,4 +434,4 @@ appendfsync everysec            # AOF同步策略
 slowlog-log-slower-than 10000   # 慢查询阈值(微秒)
 ```
 ### 8.5 Redis持久化机制
-redis是基于内存的非关系型K-V数据库，因为是基于内存，所以当redis服务器挂了之后，数据就丢失了，所以在
+redis是基于内存的非关系型K-V数据库，因为是基于内存，所以当redis服务器挂了之后，数据就丢失了，redis提供的持久化知识就是把数据存储在硬盘上，分为RAD和
