@@ -98,7 +98,10 @@ ssh yexiyue-mac
 
 ## 4. 常见问题
 
-如果提示 `Permission denied (publickey,password)`：
+
+链接cluade 
+security unlock-keychain ~/Library/Keychains/login.keychain-db
+如果提示 `Permission denied (publickey,password)`：1111
 
 - 确认公钥已经添加到远程 Mac 的 `/Users/yexiyue/.ssh/authorized_keys`。
 - 确认添加的是 `.pub` 公钥内容，不是私钥。
