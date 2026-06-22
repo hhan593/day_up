@@ -4,165 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "8b7a0797f3a06dfc",
+        "id": "9ca3afed7704ba19",
         "type": "tabs",
         "children": [
           {
-            "id": "fa4a234a21c5d678",
+            "id": "61445435ee98ccca",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "软考/知识点/19-Redis核心知识.md",
+                "file": "技术文档/nest/NestJS-知识文档.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "19-Redis核心知识"
-            }
-          },
-          {
-            "id": "a10ff01d838bf5b2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/特定领域软件架构的应用.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "特定领域软件架构的应用"
-            }
-          },
-          {
-            "id": "b4685509083c0ef9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/论微服务架构及其应用.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "论微服务架构及其应用"
-            }
-          },
-          {
-            "id": "b7a0d4b70b5e3f01",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/解释器.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "解释器"
-            }
-          },
-          {
-            "id": "126960f71e689a71",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/论基于规则的系统及其应用.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "论基于规则的系统及其应用"
-            }
-          },
-          {
-            "id": "7e14522d0d80d13c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/论虚拟机技术及其应用.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "论虚拟机技术及其应用"
-            }
-          },
-          {
-            "id": "81410e9584ce1206",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/论以数据为中心的架构风格及其应用.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "论以数据为中心的架构风格及其应用"
-            }
-          },
-          {
-            "id": "2d0b600f969cc89d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/论以数据为中心的架构风格及其应用（数据共享主题）.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "论以数据为中心的架构风格及其应用（数据共享主题）"
-            }
-          },
-          {
-            "id": "a7bb66b2e2a45530",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/论层次式架构及其应用.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "论层次式架构及其应用"
-            }
-          },
-          {
-            "id": "370d57740a742253",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/安全架构.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "安全架构"
-            }
-          },
-          {
-            "id": "58fc025fedb74cd6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/安全架构.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "安全架构"
+              "title": "NestJS-知识文档"
             }
           }
-        ],
-        "currentTab": 10
+        ]
       }
     ],
     "direction": "vertical"
@@ -335,8 +194,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "58fc025fedb74cd6",
+  "active": "61445435ee98ccca",
   "lastOpenFiles": [
+    "软考/论文/论基于规则的系统及其应用.md",
+    "软考/论文/安全架构.md",
     "软考/论文/静态测试.md",
     "软考/论文/论面向服务架构（SOA）及其应用.md",
     "软考/论文/未命名.md",
@@ -346,12 +207,10 @@
     "软考/万能模版.md",
     "软考/论文/论大数据架构的应用.md",
     "conflict-files-obsidian-git.md",
-    "软考/论文/安全架构.md",
     "软考/论文/论层次式架构及其应用.md",
     "软考/论文/论以数据为中心的架构风格及其应用（数据共享主题）.md",
     "软考/论文/论以数据为中心的架构风格及其应用.md",
     "软考/论文/论虚拟机技术及其应用.md",
-    "软考/论文/论基于规则的系统及其应用.md",
     "软考/论文/解释器.md",
     "软考/论文/论微服务架构及其应用.md",
     "软考/论文/特定领域软件架构的应用.md",
