@@ -53,14 +53,14 @@
             "id": "9018158e2250b6d1",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "mac-ssh-access-guide.md",
-                "bFile": "mac-ssh-access-guide.md",
-                "aRef": ""
+                "file": "git-directory-account-guide.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: mac-ssh-access-guide"
+              "icon": "lucide-file",
+              "title": "git-directory-account-guide"
             }
           }
         ],
