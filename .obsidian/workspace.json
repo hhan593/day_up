@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "软考/知识点/19-Redis核心知识.md",
+                "file": "work/2026上半年年度总结/2026 年上半年项目工作简要总结.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "19-Redis核心知识"
+              "title": "2026 年上半年项目工作简要总结"
             }
           },
           {
@@ -161,8 +161,7 @@
               "title": "2026 年上半年项目工作简要总结"
             }
           }
-        ],
-        "currentTab": 10
+        ]
       }
     ],
     "direction": "vertical"
@@ -335,10 +334,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "58fc025fedb74cd6",
+  "active": "fa4a234a21c5d678",
   "lastOpenFiles": [
-    "琪琪/问题.md",
+    "软考/知识点/19-Redis核心知识.md",
     "work/2026上半年年度总结/2026 年上半年项目工作简要总结.md",
+    "琪琪/问题.md",
     "work/2026上半年年度总结",
     "技术文档/nest/decorator-summary.md",
     "mac-ssh-access-guide.md",
@@ -358,7 +358,6 @@
     "软考/论文/论基于规则的系统及其应用.md",
     "软考/论文/论虚拟机技术及其应用.md",
     "软考/论文/论以数据为中心的架构风格及其应用.md",
-    "软考/知识点/19-Redis核心知识.md",
     "软考/知识点/17-云原生架构设计理论与实践.md",
     "软考/论文/安全架构.md",
     "软考/论文/论以数据为中心的架构风格及其应用（数据共享主题）.md",
