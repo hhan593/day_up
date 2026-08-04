@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "七月月报 · wx-rabbit"
             }
+          },
+          {
+            "id": "29ee219ec8665632",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "distributor-api.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "distributor-api"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -41,7 +56,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -194,7 +211,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "61445435ee98ccca",
+  "active": "29ee219ec8665632",
   "lastOpenFiles": [
     "work/月度总结/七月/月报-2026-07.md",
     "work/月度总结/七月/月报 · 2026 年 7 月（ai-models-market 前端）.md",
