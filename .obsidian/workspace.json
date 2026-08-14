@@ -11,14 +11,14 @@
             "id": "226311439d77f107",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "技术文档/Three.js/Three.js 通关秘籍/121. 实战：酷家乐装修编辑器（二十八）.md",
-                "bFile": "技术文档/Three.js/Three.js 通关秘籍/121. 实战：酷家乐装修编辑器（二十八）.md",
-                "aRef": ""
+                "file": "技术文档/Three.js/01-基础入门.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: 121. 实战：酷家乐装修编辑器（二十八）"
+              "icon": "lucide-file",
+              "title": "01-基础入门"
             }
           }
         ]
@@ -198,6 +198,12 @@
   },
   "active": "226311439d77f107",
   "lastOpenFiles": [
+    "技术文档/Three.js/02-核心功能.md",
+    "技术文档/Three.js/03-进阶实战.md",
+    "技术文档/Three.js/04-高级前沿.md",
+    "技术文档/Three.js/05-学习资源与实战.md",
+    "技术文档/Three.js/01-基础入门.md",
+    "技术文档/Three.js/README.md",
     "技术文档/Three.js/threejs-learning-roadmap.html",
     "掘金小册/Three.js 通关秘籍/21. 顶点法线和反射原理.md",
     "技术文档/Three.js/Three.js 通关秘籍/97. 实战：酷家乐装修编辑器（四）.md",
@@ -219,11 +225,6 @@
     "技术文档/Three.js/Three.js 通关秘籍/81. 实战：3D 电脑（三）.md",
     "技术文档/Three.js/Three.js 通关秘籍/85. 实战：Three.js Editor（四）.md",
     "技术文档/Three.js/Three.js 通关秘籍/82. 实战：Three.js Editor.md",
-    "技术文档/Three.js/Three.js 通关秘籍/83. 实战：Three.js Editor （二）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/8. 点模型、线模型、网格模型.md",
-    "技术文档/Three.js/Three.js 通关秘籍/80. 实战：3D 电脑（二）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/77. 实战：T恤印花设计（二）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/78. 3D 场景保存为图片、视频.md",
     "技术文档/Three.js/Three.js 通关秘籍",
     "技术文档/Three.js",
     "技术文档/threejs/Three.js 通关秘籍",
@@ -234,7 +235,6 @@
     "技术文档/新建笔记/Document - Google Chrome 2025-07-31 14-03-38.mp4",
     "未命名.base",
     "未命名 1.base",
-    "work/月度总结/七月",
     "Pasted image 20260515153549.png",
     "Pasted image 20260515153414.png",
     "e64e07232fc0056fbed1f906f9d47782.png",
