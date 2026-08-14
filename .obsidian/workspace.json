@@ -11,30 +11,17 @@
             "id": "226311439d77f107",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "技术文档/java/Java 基础语法与学习路线.md",
-                "mode": "source",
-                "source": false
+                "aFile": "技术文档/Three.js/Three.js 通关秘籍/121. 实战：酷家乐装修编辑器（二十八）.md",
+                "bFile": "技术文档/Three.js/Three.js 通关秘籍/121. 实战：酷家乐装修编辑器（二十八）.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "Java 基础语法与学习路线"
-            }
-          },
-          {
-            "id": "19770addbe341084",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.13.7"
-              },
-              "icon": "lucide-book-up",
-              "title": "版本说明 1.13.7"
+              "icon": "diff",
+              "title": "Diff: 121. 实战：酷家乐装修编辑器（二十八）"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -209,45 +196,45 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "19770addbe341084",
+  "active": "226311439d77f107",
   "lastOpenFiles": [
-    "技术文档/java/Java 基础语法与学习路线.md",
-    "技术文档/LeetCode刷题攻略.md",
-    "work/月度总结/七月/七月月报 · wx-rabbit.md",
+    "技术文档/Three.js/threejs-learning-roadmap.html",
+    "掘金小册/Three.js 通关秘籍/21. 顶点法线和反射原理.md",
+    "技术文档/Three.js/Three.js 通关秘籍/97. 实战：酷家乐装修编辑器（四）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/99. 实战：酷家乐装修编辑器（六）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/98. 实战：酷家乐装修编辑器（五）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/96. 实战：酷家乐装修编辑器（三）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/93. 向量点积实现锐角判断.md",
+    "技术文档/Three.js/Three.js 通关秘籍/95. 实战：酷家乐装修编辑器（二）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/92. 实战：Three.js Editor（十一）项目总结.md",
+    "技术文档/Three.js/Three.js 通关秘籍/94. 实战：酷家乐装修编辑器（一）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/90. 实战：Three.js Editor（九）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/91. 实战：Three.js Editor（十）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/89. 实战：Three.js Editor（八）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/86. 实战：Three.js Editor（五）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/9. 实战：随机山脉地形.md",
+    "技术文档/Three.js/Three.js 通关秘籍/88. 实战：Three.js Editor（七）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/87. 实战：Three.js Editor（六）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/84. 实战：Three.js Editor（三）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/81. 实战：3D 电脑（三）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/85. 实战：Three.js Editor（四）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/82. 实战：Three.js Editor.md",
+    "技术文档/Three.js/Three.js 通关秘籍/83. 实战：Three.js Editor （二）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/8. 点模型、线模型、网格模型.md",
+    "技术文档/Three.js/Three.js 通关秘籍/80. 实战：3D 电脑（二）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/77. 实战：T恤印花设计（二）.md",
+    "技术文档/Three.js/Three.js 通关秘籍/78. 3D 场景保存为图片、视频.md",
+    "技术文档/Three.js/Three.js 通关秘籍",
+    "技术文档/Three.js",
+    "技术文档/threejs/Three.js 通关秘籍",
+    "技术文档/Three.js 通关秘籍",
+    "技术文档/threejs",
     "技术文档/java",
-    "技术文档/新建笔记.md",
     "技术文档/新建笔记/111.png",
     "技术文档/新建笔记/Document - Google Chrome 2025-07-31 14-03-38.mp4",
-    "distributor-api.md",
     "未命名.base",
     "未命名 1.base",
-    "work/月度总结/七月/月报-2026-07.md",
-    "work/月度总结/七月/月报 · 2026 年 7 月（ai-models-market 前端）.md",
-    "技术文档/nest/NestJS-知识文档.md",
     "work/月度总结/七月",
-    "技术文档/rust/Rust迭代器知识手册.md",
-    "技术文档/rust/Rust_String知识手册.md",
-    "技术文档/rust/Rust_Trait知识手册.md",
-    "技术文档/rust/Rust泛型Trait与生命周期知识手册.md",
-    "技术文档/rust/枚举与模式匹配.md",
-    "未命名 2.base",
-    "work/2026上半年年度总结/2026 年上半年项目工作总结.md",
-    "work/月度总结/1.md",
-    "work/2026上半年年度总结/2026 年上半年项目工作总结.md.tmp.21964.78543f87461f",
-    "work/月度总结/6月.md",
-    "work/月度总结",
-    "%SystemDrive%/ProgramData/SogouInput/Components/Picface/Cloud/sgim_picface_cloud.bin",
-    "%SystemDrive%/ProgramData/SogouInput/Components/Picface/Cloud/sgim_picface_cloud_bak.bin",
-    "work/2026上半年年度总结/未命名.md",
-    "work/2026上半年年度总结/2026 年上半年项目工作简要素材.md",
-    "mac-ssh-access-guide.md",
-    "git-directory-account-guide.md",
-    "conflict-files-obsidian-git.md",
-    "琪琪/问题.md",
-    "软考/论文/论基于规则的系统及其应用.md",
-    "软考/论文/安全架构.md",
-    "软考/论文/静态测试.md",
-    "软考/论文/论面向服务架构（SOA）及其应用.md",
     "Pasted image 20260515153549.png",
     "Pasted image 20260515153414.png",
     "e64e07232fc0056fbed1f906f9d47782.png",
