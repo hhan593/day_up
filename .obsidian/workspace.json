@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "Java 基础语法与学习路线"
             }
+          },
+          {
+            "id": "19770addbe341084",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.13.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.13.7"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -196,7 +209,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "226311439d77f107",
+  "active": "19770addbe341084",
   "lastOpenFiles": [
     "技术文档/java/Java 基础语法与学习路线.md",
     "技术文档/LeetCode刷题攻略.md",
