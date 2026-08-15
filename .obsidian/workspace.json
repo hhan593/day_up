@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/Three.js/01-基础入门.md",
+                "file": "work/系统菜单架构优化与调整方案.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01-基础入门"
+              "title": "系统菜单架构优化与调整方案"
             }
           }
         ]
@@ -198,11 +198,11 @@
   },
   "active": "226311439d77f107",
   "lastOpenFiles": [
+    "技术文档/Three.js/01-基础入门.md",
     "技术文档/Three.js/02-核心功能.md",
     "技术文档/Three.js/03-进阶实战.md",
     "技术文档/Three.js/04-高级前沿.md",
     "技术文档/Three.js/05-学习资源与实战.md",
-    "技术文档/Three.js/01-基础入门.md",
     "技术文档/Three.js/README.md",
     "技术文档/Three.js/threejs-learning-roadmap.html",
     "掘金小册/Three.js 通关秘籍/21. 顶点法线和反射原理.md",
