@@ -160,8 +160,23 @@
               "icon": "lucide-file",
               "title": "2026 年上半年项目工作简要素材"
             }
+          },
+          {
+            "id": "8932a789526ce451",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "conflict-files-obsidian-git.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "conflict-files-obsidian-git"
+            }
           }
-        ]
+        ],
+        "currentTab": 11
       }
     ],
     "direction": "vertical"
@@ -334,44 +349,45 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "fa4a234a21c5d678",
+  "active": "8932a789526ce451",
   "lastOpenFiles": [
-    "技术文档/新建笔记.md",
-    "work/2026上半年年度总结/2026 年上半年项目工作总结.md",
-    "未命名 2.base",
-    "未命名 1.base",
-    "work/月度总结/6月.md",
-    "work/月度总结/1.md",
-    "work/月度总结",
-    "%SystemDrive%/ProgramData/SogouInput/Components/Picface/Cloud/sgim_picface_cloud_bak.bin",
-    "%SystemDrive%/ProgramData/SogouInput/Components/Picface/Cloud/sgim_picface_cloud.bin",
-    "%SystemDrive%/ProgramData/SogouInput/Components/Picface/Cloud",
-    "%SystemDrive%/ProgramData/SogouInput/Components/Picface",
-    "%SystemDrive%/ProgramData/SogouInput/Components",
-    "%SystemDrive%/ProgramData/SogouInput",
-    "%SystemDrive%/ProgramData",
-    "work/2026上半年年度总结/未命名.md",
     "work/2026上半年年度总结/2026 年上半年项目工作简要素材.md",
-    "软考/知识点/19-Redis核心知识.md",
-    "琪琪/问题.md",
-    "技术文档/nest/decorator-summary.md",
-    "mac-ssh-access-guide.md",
-    "git-directory-account-guide.md",
-    "软考/论文/公共.md",
-    "项目/全栈学习计划书.md",
-    "软考/论文/静态测试.md",
-    "软考/论文/动态测试.md",
-    "软考/论文/论微服务架构及其应用.md",
-    "软考/论文/论面向服务架构（SOA）及其应用.md",
-    "软考/论文/未命名.md",
-    "软考/论文/特定领域软件架构的应用.md",
-    "软考/论文/解释器.md",
+    "conflict-files-obsidian-git.md",
+    "软考/论文/安全架构.md",
     "软考/论文/论层次式架构及其应用.md",
-    "软考/论文/论大数据架构的应用.md",
-    "软考/论文/论基于规则的系统及其应用.md",
-    "软考/论文/论虚拟机技术及其应用.md",
+    "软考/论文/论以数据为中心的架构风格及其应用（数据共享主题）.md",
     "软考/论文/论以数据为中心的架构风格及其应用.md",
-    "软考/知识点/17-云原生架构设计理论与实践.md",
+    "软考/论文/论虚拟机技术及其应用.md",
+    "软考/论文/论基于规则的系统及其应用.md",
+    "软考/论文/解释器.md",
+    "软考/论文/论微服务架构及其应用.md",
+    "软考/论文/特定领域软件架构的应用.md",
+    "work/2026上半年年度总结/2026 年上半年项目工作总结.md",
+    "技术文档/vue/vue3/vue3-tips-and-tricks.md",
+    "技术文档/vue/vue3/vue3-learning-roadmap.md",
+    "技术文档/vue/vue3/vue3-common-pitfalls.md",
+    "技术文档/vue/vue3",
+    "技术文档/vue/vue-core/packages/compiler-dom/__tests__/transforms/__snapshots__/vShow.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-dom/__tests__/transforms/__snapshots__/vModel.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-dom/__tests__/transforms/__snapshots__/stringifyStatic.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-dom/__tests__/transforms/__snapshots__/Transition.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-sfc/__tests__/compileScript/__snapshots__/importUsageCheck.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-sfc/__tests__/compileScript/__snapshots__/hoistStatic.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineSlots.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-sfc/__tests__/compileScript/__snapshots__/definePropsDestructure.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+    "技术文档/vue/vue-core/packages-private/sfc-playground/src/download/template/README.md",
+    "技术文档/vue/vue-core/packages-private/sfc-playground/public/logo.svg",
+    "技术文档/vue/vue-core/packages/shared/README.md",
+    "技术文档/vue/vue-core/packages/vue-compat/README.md",
+    "技术文档/vue/vue-core/packages/vue/README.md",
+    "技术文档/vue/vue-core/packages/server-renderer/README.md",
+    "技术文档/vue/vue-core/packages/runtime-test/README.md",
+    "技术文档/vue/vue-core/packages/runtime-dom/README.md",
+    "技术文档/vue/vue-core/packages/runtime-core/README.md",
+    "技术文档/vue/vue-core/packages/reactivity/README.md",
+    "技术文档/vue/vue-core/packages/compiler-ssr/README.md",
+    "技术文档/vue/vue-core/packages/compiler-dom/README.md",
     "Pasted image 20260515153549.png",
     "Pasted image 20260515153414.png",
     "e64e07232fc0056fbed1f906f9d47782.png",
@@ -381,7 +397,6 @@
     "项目/SwarmNote/design/13-移动端-文件列表-Mobile-Files-Light.png",
     "项目/SwarmNote/design/12-移动端-编辑器-Mobile-Editor-Light.png",
     "项目/SwarmNote/design/11-移动端-集群-Mobile-Swarm-Dark.png",
-    "项目/SwarmNote/design/10-移动端-文件列表-Mobile-Files-Dark.png",
     "未命名.canvas"
   ]
 }

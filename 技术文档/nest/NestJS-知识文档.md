@@ -168,17 +168,17 @@ export class UsersController {
 
 **常用装饰器：**
 
-| 装饰器 | 说明 |
-|--------|------|
-| `@Controller('prefix')` | 定义控制器和路由前缀 |
-| `@Get()` `@Post()` `@Put()` `@Delete()` `@Patch()` | HTTP 方法装饰器 |
-| `@Param('key')` | 获取路由参数 |
-| `@Query('key')` | 获取查询参数 |
-| `@Body()` | 获取请求体 |
-| `@Headers('key')` | 获取请求头 |
-| `@Req()` / `@Res()` | 获取原始请求/响应对象 |
-| `@HttpCode(code)` | 设置响应状态码 |
-| `@Redirect(url, code)` | 重定向 |
+| 装饰器                                                | 说明          |
+| -------------------------------------------------- | ----------- |
+| `@Controller('prefix')`                            | 定义控制器和路由前缀  |
+| `@Get()` `@Post()` `@Put()` `@Delete()` `@Patch()` | HTTP 方法装饰器  |
+| `@Param('key')`                                    | 获取路由参数      |
+| `@Query('key')`                                    | 获取查询参数      |
+| `@Body()`                                          | 获取请求体       |
+| `@Headers('key')`                                  | 获取请求头       |
+| `@Req()` / `@Res()`                                | 获取原始请求/响应对象 |
+| `@HttpCode(code)`                                  | 设置响应状态码     |
+| `@Redirect(url, code)`                             | 重定向         |
 
 ### 2.3 提供者 (Providers / Services)
 
