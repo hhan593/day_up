@@ -8,20 +8,49 @@
         "type": "tabs",
         "children": [
           {
-            "id": "226311439d77f107",
+            "id": "4b62f3eab1287a25",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "work/系统菜单架构优化与调整方案.md",
+                "file": "技术文档/rust/Rust学习路线图与计划书.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Rust学习路线图与计划书"
+            }
+          },
+          {
+            "id": "ee8803ef14f7ef9f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "项目/SyncBoard/计划分析书.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "系统菜单架构优化与调整方案"
+              "title": "计划分析书"
+            }
+          },
+          {
+            "id": "78db4d90f39e601c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "conflict-files-obsidian-git.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "conflict-files-obsidian-git"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -196,35 +225,35 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "226311439d77f107",
+  "active": "78db4d90f39e601c",
   "lastOpenFiles": [
-    "技术文档/Three.js/01-基础入门.md",
+    "项目/SyncBoard/计划分析书.md",
+    "conflict-files-obsidian-git.md",
+    "项目/SyncBoard/后端设计文档.md",
+    "项目/SyncBoard/共享包设计文档.md",
+    "项目/thesis-guide.md",
+    "项目/全栈学习计划书.md",
+    "项目/开源组件库/tauri-mobile-ecosystem-report.md",
+    "项目/工单系统/api.md",
+    "技术文档/rust/Rust智能指针知识手册.md",
+    "work/加班/加班日记（已提）.md",
+    "技术文档/rust/Rust学习路线图与计划书.md",
+    "技术文档/rust/Rust_String知识手册.md",
+    "技术文档/rust/Rust_Trait知识手册.md",
+    "技术文档/rust/Rust闭包知识手册.md",
+    "技术文档/rust/Rust测试与文档手册.md",
+    "技术文档/rust/Rust错误处理知识手册.md",
+    "技术文档/rust/Rust模块系统与包管理手册.md",
+    "技术文档/Three.js/Three.js 通关秘籍/5. dat.gui 可视化调试.md",
+    "技术文档/Three.js/Three.js 通关秘籍/4. 第一个 3D 场景.md",
     "技术文档/Three.js/02-核心功能.md",
+    "技术文档/Three.js/01-基础入门.md",
+    "work/系统菜单架构优化与调整方案.md",
     "技术文档/Three.js/03-进阶实战.md",
     "技术文档/Three.js/04-高级前沿.md",
     "技术文档/Three.js/05-学习资源与实战.md",
     "技术文档/Three.js/README.md",
     "技术文档/Three.js/threejs-learning-roadmap.html",
-    "掘金小册/Three.js 通关秘籍/21. 顶点法线和反射原理.md",
-    "技术文档/Three.js/Three.js 通关秘籍/97. 实战：酷家乐装修编辑器（四）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/99. 实战：酷家乐装修编辑器（六）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/98. 实战：酷家乐装修编辑器（五）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/96. 实战：酷家乐装修编辑器（三）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/93. 向量点积实现锐角判断.md",
-    "技术文档/Three.js/Three.js 通关秘籍/95. 实战：酷家乐装修编辑器（二）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/92. 实战：Three.js Editor（十一）项目总结.md",
-    "技术文档/Three.js/Three.js 通关秘籍/94. 实战：酷家乐装修编辑器（一）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/90. 实战：Three.js Editor（九）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/91. 实战：Three.js Editor（十）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/89. 实战：Three.js Editor（八）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/86. 实战：Three.js Editor（五）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/9. 实战：随机山脉地形.md",
-    "技术文档/Three.js/Three.js 通关秘籍/88. 实战：Three.js Editor（七）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/87. 实战：Three.js Editor（六）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/84. 实战：Three.js Editor（三）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/81. 实战：3D 电脑（三）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/85. 实战：Three.js Editor（四）.md",
-    "技术文档/Three.js/Three.js 通关秘籍/82. 实战：Three.js Editor.md",
     "技术文档/Three.js/Three.js 通关秘籍",
     "技术文档/Three.js",
     "技术文档/threejs/Three.js 通关秘籍",
