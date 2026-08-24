@@ -4,39 +4,165 @@
     "type": "split",
     "children": [
       {
-        "id": "b730f3e18d405731",
+        "id": "8b7a0797f3a06dfc",
         "type": "tabs",
         "children": [
           {
-            "id": "4b62f3eab1287a25",
+            "id": "fa4a234a21c5d678",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/rust/Rust学习路线图与计划书.md",
-                "mode": "preview",
+                "file": "work/2026上半年年度总结/2026 年上半年项目工作总结.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Rust学习路线图与计划书"
+              "title": "2026 年上半年项目工作总结"
             }
           },
           {
-            "id": "ee8803ef14f7ef9f",
+            "id": "a10ff01d838bf5b2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/nest/NestJS模块共享Service.md",
+                "file": "软考/论文/特定领域软件架构的应用.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "特定领域软件架构的应用"
+            }
+          },
+          {
+            "id": "b4685509083c0ef9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "软考/论文/论微服务架构及其应用.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "论微服务架构及其应用"
+            }
+          },
+          {
+            "id": "b7a0d4b70b5e3f01",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "软考/论文/解释器.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "解释器"
+            }
+          },
+          {
+            "id": "126960f71e689a71",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "软考/论文/论基于规则的系统及其应用.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "论基于规则的系统及其应用"
+            }
+          },
+          {
+            "id": "7e14522d0d80d13c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "软考/论文/论虚拟机技术及其应用.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "论虚拟机技术及其应用"
+            }
+          },
+          {
+            "id": "81410e9584ce1206",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "软考/论文/论以数据为中心的架构风格及其应用.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "论以数据为中心的架构风格及其应用"
+            }
+          },
+          {
+            "id": "2d0b600f969cc89d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "软考/论文/论以数据为中心的架构风格及其应用（数据共享主题）.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "论以数据为中心的架构风格及其应用（数据共享主题）"
+            }
+          },
+          {
+            "id": "a7bb66b2e2a45530",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "软考/论文/论层次式架构及其应用.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "论层次式架构及其应用"
+            }
+          },
+          {
+            "id": "370d57740a742253",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "软考/论文/安全架构.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "安全架构"
+            }
+          },
+          {
+            "id": "58fc025fedb74cd6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "技术文档/nest/NestJS-知识文档.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "NestJS模块共享Service"
+              "title": "NestJS-知识文档"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 10
       }
     ],
     "direction": "vertical"
@@ -197,7 +323,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 348.5
+    "width": 348.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -211,47 +338,47 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ee8803ef14f7ef9f",
+  "active": "58fc025fedb74cd6",
   "lastOpenFiles": [
+    "技术文档/nest/01-NestJS-AOP面向切面编程.md",
     "技术文档/nest/NestJS-知识文档.md",
-    "技术文档/nest/NestJS装饰器与自定义装饰器.md",
-    "技术文档/nest/NestJS中间件类与函数式对比.md",
-    "技术文档/nest/NestJS异常过滤器与校验管道协作机制.md",
-    "技术文档/nest/NestJS依赖注入与过滤器注入.md",
-    "技术文档/nest/NestJS学习架构图.md",
-    "技术文档/nest/NestJS守卫知识点.md",
-    "技术文档/nest/NestJS请求到写入数据全流程.md",
-    "技术文档/nest/NestJS模块共享Service.md",
-    "技术文档/nest/NestJS管道用法.md",
-    "技术文档/nest/NestJSAOP面向切面编程.md",
+    "work/2026上半年年度总结/2026 年上半年项目工作简要素材.md",
+    "技术文档/nest/12-RxJS核心概念与API详解.md",
+    "技术文档/nest/11-NestJS学习架构图.md",
+    "技术文档/nest/10-NestJS请求到写入数据全流程.md",
+    "技术文档/nest/09-NestJS模块共享Service.md",
+    "技术文档/nest/08-NestJS自定义提供者知识点.md",
+    "技术文档/nest/07-NestJS依赖注入与过滤器注入.md",
+    "技术文档/nest/06-NestJS装饰器与自定义装饰器.md",
+    "技术文档/nest/05-NestJS异常过滤器与校验管道协作机制.md",
+    "技术文档/nest/04-NestJS管道用法.md",
+    "技术文档/nest/03-NestJS守卫知识点.md",
+    "技术文档/nest/02-NestJS中间件类与函数式对比.md",
     "技术文档/nest/images/NestJS请求到写入数据全流程示意图.png",
     "技术文档/nest/images/NestJS学习架构示意图.png",
     "技术文档/nest/images",
     "技术文档/nest/RxJS核心概念与API详解.md",
-    "技术文档/nest/decorator-summary.md",
-    "技术文档/Three.js/Three.js 通关秘籍/6. 深入理解透视相机和视椎体.md",
-    "技术文档/Three.js/Three.js 通关秘籍/7. BufferGeometry：顶点生成各种几何体.md",
-    "技术文档/Three.js/Three.js 通关秘籍/8. 点模型、线模型、网格模型.md",
-    "项目/SyncBoard/计划分析书.md",
-    "conflict-files-obsidian-git.md",
-    "项目/SyncBoard/后端设计文档.md",
-    "项目/SyncBoard/共享包设计文档.md",
-    "项目/thesis-guide.md",
-    "项目/全栈学习计划书.md",
-    "项目/开源组件库/tauri-mobile-ecosystem-report.md",
-    "项目/工单系统/api.md",
-    "技术文档/rust/Rust智能指针知识手册.md",
-    "work/加班/加班日记（已提）.md",
-    "技术文档/Three.js/threejs-learning-roadmap.html",
-    "技术文档/Three.js/Three.js 通关秘籍",
-    "技术文档/Three.js",
-    "技术文档/threejs/Three.js 通关秘籍",
-    "技术文档/Three.js 通关秘籍",
-    "技术文档/threejs",
-    "技术文档/java",
-    "技术文档/新建笔记/111.png",
-    "技术文档/新建笔记/Document - Google Chrome 2025-07-31 14-03-38.mp4",
-    "未命名.base",
+    "技术文档/nest/NestJS请求到写入数据全流程.md",
+    "技术文档/nest/NestJS装饰器与自定义装饰器.md",
+    "技术文档/nest/NestJS管道用法.md",
+    "技术文档/nest/NestJS模块共享Service.md",
+    "技术文档/nest/NestJS异常过滤器与校验管道协作机制.md",
+    "技术文档/nest/NestJS守卫知识点.md",
+    "技术文档/nest/NestJS学习架构图.md",
+    "技术文档/nest/NestJS依赖注入与过滤器注入.md",
+    "技术文档/nest/NestJS中间件类与函数式对比.md",
+    "技术文档/nest/NestJSAOP面向切面编程.md",
+    "work/系统菜单架构优化与调整方案.md",
+    "技术文档/vue/vue3",
+    "技术文档/vue/vue-core/packages/compiler-dom/__tests__/transforms/__snapshots__/vShow.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-dom/__tests__/transforms/__snapshots__/vModel.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-dom/__tests__/transforms/__snapshots__/stringifyStatic.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-dom/__tests__/transforms/__snapshots__/Transition.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-sfc/__tests__/compileScript/__snapshots__/importUsageCheck.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-sfc/__tests__/compileScript/__snapshots__/hoistStatic.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineSlots.spec.ts.snap",
+    "技术文档/vue/vue-core/packages/compiler-sfc/__tests__/compileScript/__snapshots__/definePropsDestructure.spec.ts.snap",
+    "技术文档/vue/vue-core/packages-private/sfc-playground/public/logo.svg",
     "Pasted image 20260515153549.png",
     "Pasted image 20260515153414.png",
     "e64e07232fc0056fbed1f906f9d47782.png",

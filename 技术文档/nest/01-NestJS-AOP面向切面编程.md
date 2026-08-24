@@ -60,14 +60,14 @@ AOP 的思想：**把这些通用逻辑抽成独立的「切面」，在请求�
 
 ### 4.1 中间件（Middleware）
 
-- 见 `docs/NestJS中间件类与函数式对比.md`。
+- 见 `docs/02-NestJS中间件类与函数式对比.md`。
 - 类式中间件（如 `LoggerMiddleware`）标注 `@Injectable()` 后可注入 `LoggerService`；
   函数式中间件（如 `logger_funMidderware`）脱离 DI 容器，无法注入，适合无状态逻辑。
 - 在 `app.module.ts` 的 `configure()` 中通过 `consumer.apply(...).exclude(...).forRoutes(...)` 配置。
 
 ### 4.2 守卫（Guard）
 
-- 见 `docs/NestJS守卫知识点.md`。
+- 见 `docs/03-NestJS守卫知识点.md`。
 - 实现 `CanActivate` 接口，返回 `boolean`；失败抛 `ForbiddenException`/`UnauthorizedException`。
 - 通过 `@UseGuards()` 或全局 `app.useGlobalGuards()` 注册。
 
@@ -78,13 +78,13 @@ AOP 的思想：**把这些通用逻辑抽成独立的「切面」，在请求�
 
 ### 4.4 管道（Pipe）
 
-- 见 `docs/NestJS管道用法.md` 与 `docs/NestJS异常过滤器与校验管道协作机制.md`。
+- 见 `docs/04-NestJS管道用法.md` 与 `docs/05-NestJS异常过滤器与校验管道协作机制.md`。
 - `ValidationPipe`（class-validator）与 `ZodValidationPipe`（zod）已实现，校验失败抛
   `BadRequestException`（属 `HttpException`），返回结构化 `errors`。
 
 ### 4.5 异常过滤器（Exception Filter）
 
-- 见 `docs/NestJS依赖注入与过滤器注入.md`、`docs/NestJS异常过滤器与校验管道协作机制.md`。
+- 见 `docs/07-NestJS依赖注入与过滤器注入.md`、`docs/05-NestJS异常过滤器与校验管道协作机制.md`。
 - `HttpExceptionFilter`（`@Catch(HttpException)`，注入 `LoggerService` 记日志）；
   `CatchEverythingFilter`（`@Catch()` 兜底，内部对 `HttpException` 透传 `errors`）。
 - 注册方式：全局用 `APP_FILTER` + `useClass`（传类以支持 DI），莫用 `new` 实例。
@@ -113,7 +113,7 @@ AOP 的思想：**把这些通用逻辑抽成独立的「切面」，在请求�
 
 - **责任链 / 洋葱模型**：中间件、守卫、拦截器、过滤器按嵌套顺序逐层进入、逆序返回，异常时由外层向内匹配第一个能处理的过滤器。
 - **装饰器模式**：`@UseGuards()`/`@UseFilters()` 等把切面「织入」到目标上，符合 AOP 的「声明式织入」。
-- **依赖注入**：所有切面组件都是 Nest 容器托管的 Bean，体现 IoC（见 `docs/NestJS依赖注入与过滤器注入.md`）。
+- **依赖注入**：所有切面组件都是 Nest 容器托管的 Bean，体现 IoC（见 `docs/07-NestJS依赖注入与过滤器注入.md`）。
 
 ## 8. 一句话总结
 
