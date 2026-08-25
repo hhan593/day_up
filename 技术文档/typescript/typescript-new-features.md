@@ -230,6 +230,13 @@ palette.scale(2);   // 可调用
 - 用 `: Record<...>`：属性被拓宽成联合，丢失精确性
 - 不写注解：没有校验
 
+**为什么需要它（通俗 + 对比）**：在没有 `satisfies` 之前，你只能二选一——要么写类型注解（安全但类型被"抹平"成宽泛的联合，丢了 `"red"` 这种具体字面量），要么不写（保留精确字面量但失去约束）。`satisfies` 让你**既要又要**：像一个"只检查、不改写"的断言。
+
+- 类比 Rust：有点像 `let x: SomeTrait = value` 会抹掉具体类型，而 `satisfies` 相当于"我保证 value 实现了这个 trait，但变量类型还是具体类型"。
+- 类比 Java：类似你写 `Object o = new String("x")`，`o` 的类型变成 `Object` 丢了 `String` 的具体方法；`satisfies` 则让你用 `String` 的检查却保留 `String` 的精确类型。
+
+真实场景：配置对象、常量映射表、路由表——既想让编辑器给出精确提示（不拓宽），又想防止手抖写错字段类型（有校验）。
+
 ### 9.2 `unlisted property` 检查
 
 对象字面量访问未声明属性直接报错（`noPropertyAccessFromIndexSignature`）。

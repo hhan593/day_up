@@ -101,6 +101,15 @@ const c: object = {};         // OK
 | 逆变（contravariance） | 父类型可以出现在子类型位置 | 函数参数（strict 下） |
 | 双变（bivariance） | 两个方向都允许 | 方法声明（method syntax）的参数 |
 
+**通俗理解**：把"类型"看成"接受范围"。
+- 协变（容器/返回值）：接受范围跟着子类型**同向走**。狗是动物的一种，那装狗的盒子也算装动物的盒子。
+- 逆变（函数参数）：接受范围**反向走**。一个"能处理任何动物"的函数，拿去当"能处理狗"的函数用是安全的（狗 ⊂ 动物，范围更大的一方可以冒充范围更小的一方）。
+
+**对比其他语言**：
+- **Java/C#**：数组协变（`Dog[]` → `Animal[]`），但**泛型不变**——`List<Dog>` 既不能赋给 `List<Animal>` 也不能反过来，必须写 `List<? extends Animal>`（上界通配符，协变）或 `List<? super Dog>`（下界通配符，逆变）。TS 没有通配符语法，而是**直接对数组协变、对函数参数逆变**，规则更内建于语言。
+- **C++**：模板默认不变，没有内置协变/逆变概念（返回类型协变是特例），完全靠程序员自己保证。
+- 注意 Java 数组协变的历史坑：`Object[] a = new Dog[1]; a[0] = new Cat();` 是**运行时**才抛 `ArrayStoreException`。TS 在 `strictFunctionTypes` 下对函数参数做逆变检查，把这类错误提前到了编译期。
+
 ### 2.2 `strictFunctionTypes` 的影响
 
 ```ts
@@ -110,7 +119,7 @@ declare let hAnimal: Handler<Animal>;
 declare let hDog: Handler<Dog>;
 
 // 严格模式：参数逆变
-hAnimal = hDog; // 报错（hDog 只能处理 Dog，不能处理 Animal）
+hAnimal = hDog; // 报错（hDog 只能处理 Dog，冒充不了"能处理任何动物"）
 hDog = hAnimal; // OK（hAnimal 能处理所有 Animal，自然包括 Dog）
 ```
 
@@ -647,3 +656,51 @@ type Paths = PathOf<Obj>; // "/user/profile/name" | "/user/profile" | ...
 | TS2352 | 断言不兼容 | 需要经 `unknown` 中转 |
 | TS2741 | 缺少必填属性 | 补全属性 |
 | TS2578 | 未使用 `@ts-expect-error` | 错误已消失，删除注释 |
+
+---
+
+## 十、附录：对比其他语言建立直觉
+
+> 如果你有 Java / C# / C++ / Rust 背景，下面这张对照表能帮你快速把 TS 的概念"挂"到已有认知上。
+
+### 10.1 概念对照总表
+
+| TS 概念 | Java | C# | C++ | Rust | 关键差异 |
+|---|---|---|---|---|---|
+| `interface` | `interface` | `interface` | 抽象类/纯虚 | `trait` | TS 接口也支持声明合并，且不需 `implements` 也能赋值 |
+| `type` 别名 | （无直接对应） | `using` / `typedef` | `typedef` | `type` | TS 还能给联合/元组起别名，最像 Rust 的 `type` |
+| `any` | `Object` | `dynamic` | `void*` / `auto` | `()` / `Any` | `any` 比 Java `Object` 更松（连方法都随便调） |
+| `unknown` | `<?>` / 泛型上界 | `object` + 强转 | — | `dyn Any` | 用前必须"证明"类型 |
+| `never` | 抛异常的方法 | 抛异常的方法 | `[[noreturn]]` | `!`（never 类型） | 显式成为类型，用于穷尽检查 |
+| `void` | `void` | `void` | `void` | `()` | 基本一致 |
+| 联合 `A \| B` | （无） | （无） | `union`（裸） | `enum`（带数据） | TS ≈ Rust 的 enum + 收窄，远安全于 C++ union |
+| 判别联合 | `sealed class` + `switch`（Java 17+） | `record` + 模式匹配 | — | `enum` + `match` | TS 用 `kind` 字段 + `switch`，编译器自动收窄 |
+| 结构化类型 | 名义类型 | 名义类型 | 名义类型 | trait 偏结构 | TS 看形状不看名字，这是最大差异 |
+| 泛型 | `List<T>` | `List<T>` | `vector<T>` | `Vec<T>` | 基本一致；TS 无运行时类型擦除概念（本就无类型） |
+| 泛型约束 `T extends` | `T extends Bound` | `where T : Bound` | `requires`（C++20） | `T: Trait` | 语义一致 |
+| 协变/逆变 | 数组协变；泛型不变 + `? extends`/`? super` | 数组协变；`out`/`in` | 默认不变 | `Vec<T>` 逆变协变按规则 | TS 直接内建，无通配符 |
+| `readonly` 深层 | `Collections.unmodifiable*` | `IReadOnlyList` | `const T*` | `&T`/`&mut T` | TS 在类型层面免费提供 |
+| `enum` | `enum`（名义、真实类型） | `enum`（强类型） | `enum`（整型） | `enum`（带数据） | TS 数字枚举会反向映射、可和 number 互通，不如 Java 严格 |
+| `satisfies` | （无） | （无） | （无） | `impl` 检查 | TS 独有：既校验又保留字面量类型 |
+| `as const` | （无） | （无） | `constexpr` 偏运行期 | 无直接对应 | TS 独有的"编译期定死字面量" |
+| 装饰器 | 注解（仅元数据，不改行为） | 特性（Attribute） | （无） | 过程宏/属性 | TS 旧装饰器像 Java 注解，新标准更接近宏 |
+| 类型擦除 | 运行时泛型擦除 | 运行时保留 | 模板实例化 | 单态化 | TS 是整个类型系统都擦除，运行时零类型成本 |
+
+### 10.2 最容易"想当然"的 5 个差异
+
+1. **以为"名字不同就不能赋值"**：Java/C# 训练出的直觉。TS 是结构类型，两个名字不同的 interface 只要字段对得上就能互赋（见 1.1）。想阻止这种误兼容，用 brand 技巧（8.2）。
+
+2. **以为联合类型像 C++ union**：C++ 的 union 是同内存多类型、需手动记 tag。TS 联合是"可能是 A 或 B"，编译器靠判别字段自动收窄，安全得多（8.3）。
+
+3. **以为 `const` 就完全不可变**：C++ `const` 常被理解成"整块只读"。TS 的 `const` 只锁引用（指针本身），对象内部仍可改；要锁内容用 `readonly`（见面试文档 41）。
+
+4. **以为泛型约束和 Java 一样**：基本一致（`T extends Bound`），但 TS 的 `infer extends`（4.7）能在条件类型里给"待推断变量"直接加约束并给默认，这是 Java 泛型做不到的（7.x 类型体操大量用到）。
+
+5. **以为 `enum` 和 Java 一样强**：TS 数字枚举默认 `0,1,2`、还能 `Enum[0]` 反查名字，且能和 `number` 隐式互通。生产里推荐 `as const` 对象代替（面试文档 44）。
+
+### 10.3 一段话总结思维切换
+
+> 从 Java/C# 来：把"类型 = 名字"换成"类型 = 形状"；把"泛型通配符 `? extends/super`"换成"数组协变、函数参数逆变，自动判定"；把"强枚举"换成"字符串字面量联合 + 判别联合"。
+> 从 C++ 来：把"裸 union"换成"带判别字段的安全联合"；记住 TS 没有运行时类型，所有类型检查发生在 `tsc` 阶段。
+> 从 Rust 来：TS 的联合/判别联合最接近 Rust 的 `enum` + `match`；但 TS 是结构化、可擦除、宽松得多（没有借用检查、没有生命周期）。
+

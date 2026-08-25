@@ -37,11 +37,17 @@ let name = "Alice"; // 自动推断为 string
 | `never` | 永不返回的类型（抛出异常、死循环、穷尽检查） | 穷尽性检查（exhaustive check）、不可达分支 |
 | `void` | 不返回有意义的值（函数没有 return） | 函数返回类型 |
 
+**对比其他语言，更好理解**：
+- `any` ≈ **Java 的 `Object` / C# 的 `dynamic`**：什么都装得下，但装进去之后编译器就不管了。区别在于 Java `Object` 只能调 `toString()` 这种根方法，而 `any` 连方法都随便调（更危险），所以 `any` 又被戏称"类型黑洞"。
+- `unknown` ≈ **Java 的泛型上界 `<?>` / C# 的 `object` 但加强制转**：你拿到的东西类型未知，想用它必须"先证明它是什么"（TS 用 `typeof`/`instanceof` 收窄，Java 用强制类型转换）。这是 `unknown` 比 `any` 安全的地方。
+- `never` ≈ **Java/C# 里"方法声明了返回类型却抛异常"的底层概念**：函数正常逻辑不会返回。TS 把这种"不可达"显式成了一个类型，常用来在 `switch` 的 `default` 里兜底——如果以后加了新的 `case` 却忘了处理，编译器会在 `never` 处报错。
+- `void` ≈ **C/C++/Java 的 `void`**：表示"不返回东西"。注意 TS 里 `void` 函数其实可以返回 `undefined`，这点和 Java 类似（Java 方法也可以 `return;` 不写值）。
+
 ```ts
 function handleUnknown(value: unknown) {
-  // value.toUpperCase(); // 报错：unknown 不能直接调用
+  // value.toUpperCase(); // 报错：unknown 不能直接调用（就像 Java 里 Object 不能直接调子类的特有方法）
   if (typeof value === "string") {
-    value.toUpperCase(); // 缩小后可以
+    value.toUpperCase(); // 收窄后可以（就像 Java 里 obj instanceof String 后强转）
   }
 }
 
@@ -49,6 +55,8 @@ function assertNever(x: never): never {
   throw new Error(`Unexpected value: ${x}`);
 }
 ```
+
+> 一句话记忆：**`any` 是"我不管"，`unknown` 是"我不知道但你能证明"，`never` 是"这不可能发生"，`void` 是"什么都不返回"。**
 
 ### 4. `interface` 与 `type` 的区别？什么时候用哪个？
 
@@ -81,6 +89,11 @@ type Point = [number, number];   // 元组只能 type
 - 对外 API / 库的类型（需扩展、合并）→ `interface`
 - 内部业务类型、联合/交叉/元组 → `type`
 - 官方推荐：能用 `interface` 优先 `interface`，需要联合/交叉时用 `type`
+
+**直觉类比（对比其他语言）**：
+- 把 `interface` 想成 **Java/C# 的 `interface`**：本就是"描述一种契约/形状"，天然支持"同名的后来者补充（声明合并）"——就像你可以给一个接口不断加方法签名。
+- 把 `type` 想成 **C/C++ 的 `typedef` 或 Rust 的 `type` 别名**：它就是给"一个已有的类型表达式"起个新名字。`type ID = string | number` 这种"联合"是 Java 的 `interface` 做不到的（Java 没有联合类型，只有一个类只能实现一个接口）。
+- 一个关键差异：`interface` 只能描述"对象/类的形状"；`type` 还能给**基本类型、联合、元组、函数**起别名。所以当你需要 `type Status = "loading" | "done"` 这种"字符串字面量联合"时，只能用 `type`。这正好对应 Rust 里常用 `type` 给复杂泛型起别名、而 `trait` 才描述行为。
 
 ### 5. `type` 别名与 `interface` 能否互相继承？
 
@@ -216,8 +229,12 @@ type ExtractId<S extends string> =
 
 ### 13. 什么是协变（covariance）与逆变（contravariance）？
 
-- **协变**：`Dog` 是 `Animal` 子类，则 `Dog[]` 是 `Animal[]` 子类（数组、对象属性是协变）。
-- **逆变**：函数参数方向相反。`strictFunctionTypes` 开启后，函数参数是**逆变**检查（参数可收窄不可放宽）。
+- **协变**：`Dog` 是 `Animal` 子类，则 `Dog[]` 是 `Animal[]` 子类（数组、对象属性是协变）。**方向一致**——子类在前，子类型的容器也在前。
+- **逆变**：函数参数方向相反。`strictFunctionTypes` 开启后，函数参数是**逆变**检查（参数可收窄不可放宽）。**方向反过来**——能处理"更宽"类型的函数，可以当作能处理"更窄"类型的函数用。
+
+**通俗比喻**：把"类型"想成"能接受的东西的范围"。
+- 协变（容器）：你能装大筐（Animal），那装小筐（Dog）也行（小筐本来就是大筐的一部分）。方向一致。
+- 逆变（函数参数）：一个函数"能处理任何动物"（`Handler<Animal>`），那么你把它当"能处理狗"的函数（`Handler<Dog>`）用也完全没问题，因为狗也是动物。**接受范围更大的一方，可以冒充接受范围更小的一方**——方向反了。
 
 ```ts
 interface Animal { name: string }
@@ -225,13 +242,18 @@ interface Dog extends Animal { bark(): void }
 
 let animals: Animal[] = []; 
 let dogs: Dog[] = [];
-animals = dogs; // OK：数组协变
+animals = dogs; // OK：数组协变（方向一致）
 
 type Handler<T> = (arg: T) => void;
 let hAnimal: Handler<Animal> = (a) => a.name;
 let hDog: Handler<Dog> = (d) => d.bark();
-// hAnimal = hDog; // 报错（strictFunctionTypes）：参数逆变
+// hAnimal = hDog; // 报错（strictFunctionTypes）：hDog 只能处理狗，冒充不了"能处理任何动物"
+hDog = hAnimal;   // OK：hAnimal 能处理任何动物，自然能处理狗（逆变：范围大的冒充范围小的）
 ```
+
+**对比其他语言**：
+- **Java/C#**：数组是协变的（`Dog[]` 可赋给 `Animal[]`），但 Java 的**泛型是不变的**（`List<Dog>` 不能赋给 `List<Animal>`，也不反过来），想协变得写 `List<? extends Animal>`（Java 上界通配符），想逆变得写 `List<? super Dog>`（下界通配符）。TS 这里更简单：**数组协变、函数参数逆变**，不需要写通配符。
+- 关键区别：Java 因为"数组协变 + 运行时类型擦除"，会出现 `Object[] arr = new Dog[1]; arr[0] = new Cat();` 运行时才抛 `ArrayStoreException` 的隐患。TS 在严格模式下对函数参数做了逆变检查，反而比 Java 数组更不容易踩坑。
 
 - 方法参数（method syntax）是**双变**（bivariant）的，不受 strictFunctionTypes 影响——这是为什么推荐用属性函数写法。
 
@@ -245,6 +267,11 @@ interface Point { x: number; y: number }
 function draw(p: Point) {}
 draw({ x: 1, y: 2 });   // OK，哪怕不是 Point 实例
 ```
+
+**对比其他语言**：
+- **名义类型（nominal）**：Java、C++、C# 都是名义类型——两个类**名字不同就不能互相赋值**，哪怕字段一模一样。比如 Java 里 `class A { int x; }` 和 `class B { int x; }`，`A a = new B();` 直接编译报错，因为名字不同。
+- **结构类型（structural）**：TS、Go（部分）、Rust（trait 实现上偏结构）看"形状"。只要 `{ x: number; y: number }` 长这样，谁来都行。这也正是 TypeScript 为什么可以**不用 class 也能玩面向对象**——一个普通对象字面量就能冒充接口。
+- **代价**：两个语义不同但形状相同的类型会"误兼容"（这正是第 14 题 brand 技巧要解决的问题）。
 
 - 需要名义类型（防止结构相同但语义不同）时用 **brand** 技巧：
 
@@ -565,11 +592,80 @@ const bf = badFirst([1, "a"]); // number | string，丢精确性
 - `#private`（ES 原生）：运行时真正私有，用 WeakMap 实现。
 - TS 5.x 建议新代码用 `#`，或 `private` + `noPrivateIdentifier` 规则统一。
 
+### 41. `readonly` 与 `const` 的区别？（高频混淆）
+
+这是初学者最爱搞混的一对，关键区别在**"锁定谁"**：
+
+```ts
+const obj = { x: 1 };
+obj.x = 2;        // OK！const 只锁定"变量不能再指向别的对象"，对象内部可改
+
+const arr: readonly number[] = [1, 2];
+// arr.push(3);    // 报错：readonly 锁定"数组内容不可变"
+arr[0] = 9;       // 报错：同上
+const another = [3, 4]; // 可以指向新数组
+```
+
+| | 锁定对象 | 锁定内容 |
+|---|---|---|
+| `const` | ✅（不能再赋值给别的引用） | ❌ |
+| `readonly`（属性/数组） | ❌（引用本身可改） | ✅ |
+
+**对比其他语言**：
+- 类似 C++ 的 `const`：`const int* p`（指向的内容不可改）vs `int* const p`（指针本身不可改）vs `const int* const p`（都不可改）。TS 里 `const` 对应"指针本身不可改"，`readonly` 对应"指向的内容不可改"。
+- Java 的 `final` 只相当于 TS 的 `const`（锁定引用），Java 没有内置"深度只读"——要只读集合得用 `Collections.unmodifiableList`。TS 的 `Readonly<T>` / `DeepReadonly<T>` 在类型层面就能做到。
+
+### 42. `typeof` 的两种用法（值 vs 类型）
+
+很多人只见过运行时的 `typeof`，其实 TS 里 `typeof` 还能"从值反推类型"：
+
+```ts
+// 运行时：返回字符串 "object" / "number" ...
+console.log(typeof 42); // "number"
+
+// 类型上下文：从已有值提取类型（编译期）
+const user = { name: "Alice", age: 30 };
+type User = typeof user; // { name: string; age: number }
+```
+
+**对比其他语言**：C# 的 `typeof(List<int>)` 拿的是**运行时 Type 对象**（元数据），不是给变量用的类型注解；TS 的 `typeof` 在类型位置是**编译期类型查询**，直接当类型用。这是 TS 独有的"值 → 类型"桥梁，常配合 `as const` 一起用：`typeof config as const` 或 `const config = {...} as const; type C = typeof config`。
+
+### 43. 联合类型 `A | B` 对比其他语言有什么特别？
+
+```ts
+type Status = "loading" | "success" | "error";
+let s: Status = "loading";
+```
+
+**对比其他语言**：
+- **Java/C# 的枚举**：`enum Status { LOADING, SUCCESS, ERROR }` 是"一组命名常量"，但每个值是独立的对象/整型，**不能当字符串直接拼 URL**。TS 的字符串字面量联合本质是"这些具体的字符串"，可以直接 `fetch(\`/api?status=${s}\`)`。
+- **C++ 的 `union`**：C++ 的 union 是"同一块内存放不同类型，同时只占一个大小"，而且默认**不知道当前是哪个类型**，得自己记 tag。TS 的联合是"这个值可能是 A 或 B 之一"，配合**判别联合（discriminated union）** 编译器会自动帮你 `switch` 收窄——这比 C++ 的裸 union 安全得多，也类似 Rust 的 `enum`（Rust 的 `enum` 才是"带数据的联合"，和 TS 判别联合最像）。
+- 一句话：TS 的联合 ≈ **Rust 的 enum + 类型收窄**，而不是 C++ 的 union。
+
+### 44. TS 的 `enum` 对比 Java/C# 的 enum（为什么推荐用 `as const` 代替）
+
+```ts
+// TS 数字枚举（有运行时对象，还能反向映射）
+enum Direction { Up, Down }   // Direction.Up === 0; Direction[0] === "Up"
+// 字符串枚举
+enum Color { Red = "red" }
+```
+
+**对比**：
+- **Java/C# enum**：是编译期存在的真实类型，且是"名义类型"（不同 enum 不能混用），运行时也是独立类。TS 的 `enum` 在运行时确实生成对象，但**可以和 number/string 隐式互通**（数字枚举默认从 0 开始、可反向查），类型上不如 Java 严格。
+- **坑**：`enum` 在 `isolatedModules` / 单文件转译（esbuild）下有问题（`const enum` 会被内联、普通 enum 会产生运行时 import），且数值枚举的反向映射容易让人迷惑。
+- **推荐替代**：用 `as const` 对象 + 提取联合类型，得到零运行时成本、纯类型安全的"枚举"：
+
+```ts
+const Direction = { Up: "up", Down: "down" } as const;
+type Direction = typeof Direction[keyof typeof Direction]; // "up" | "down"
+```
+
 ---
 
 ## 六、开放性问题
 
-### 41. 你在项目中如何组织 TS 类型？（代码组织）
+### 45. 你在项目中如何组织 TS 类型？（代码组织）
 
 **回答框架**（展示工程化能力）：
 1. 业务类型放 `src/types/` 或与模块同目录
@@ -579,7 +675,7 @@ const bf = badFirst([1, "a"]); // number | string，丢精确性
 5. 共享类型提到 monorepo 的公共包
 6. 类型复用优先内置工具类型 + 组合，避免类型体操过度设计
 
-### 42. TS 性能优化你做过哪些？
+### 46. TS 性能优化你做过哪些？
 
 - 避免 `any` 带来的宽泛类型传播（隐性 any）
 - 大 union 类型拆小（检查器对 union 开销大）
@@ -588,7 +684,7 @@ const bf = badFirst([1, "a"]); // number | string，丢精确性
 - 增量构建：`incremental: true` / 项目引用（project references）
 - 复杂库类型：开启 `skipLibCheck`
 
-### 43. 你如何保证 TS 代码质量？（团队规范）
+### 47. 你如何保证 TS 代码质量？（团队规范）
 
 - `strict: true` + `noUncheckedIndexedAccess` + `exactOptionalPropertyTypes`
 - ESLint + `typescript-eslint`（推荐 `recommended-type-checked` 配置）
