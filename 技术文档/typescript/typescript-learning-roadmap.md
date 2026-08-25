@@ -5,6 +5,21 @@
 
 ---
 
+## 📑 本目录文档索引
+
+| 文档 | 内容 | 适合 |
+|---|---|---|
+| [typescript-learning-roadmap.md](./typescript-learning-roadmap.md) | 零基础到进阶的学习路线（本文件） | 初学者按周推进 |
+| [typescript-cheatsheet.md](./typescript-cheatsheet.md) | 语法与类型速查手册 | 日常开发随手查 |
+| [typescript-best-practices.md](./typescript-best-practices.md) | 工程化配置、高级技巧、最佳实践 | 有基础后系统提升 |
+| [typescript-advanced-type-system.md](./typescript-advanced-type-system.md) | 类型系统底层原理：协变/逆变、infer、递归、类型体操进阶题 | 面试/攻坚必看 |
+| [typescript-interview-questions.md](./typescript-interview-questions.md) | 面试高频题（含手写题与答题要点） | 面试前冲刺 |
+| [typescript-new-features.md](./typescript-new-features.md) | TS 4.1 → 5.9 版本新特性速览 | 了解新语法、版本演进 |
+
+> 学习建议：先按本路线图推进，配合 cheatsheet 查阅；面试前重点复习 interview-questions 与 advanced-type-system。
+
+---
+
 ## 🎯 写给初学者
 
 **TypeScript 是什么？**
@@ -1403,6 +1418,13 @@ const orderId = createOrderId("order-1");
 ---
 
 ## 📚 推荐资源
+
+### 本仓库文档
+- [typescript-cheatsheet.md](./typescript-cheatsheet.md) - 语法速查
+- [typescript-best-practices.md](./typescript-best-practices.md) - 工程化与最佳实践
+- [typescript-advanced-type-system.md](./typescript-advanced-type-system.md) - 类型系统深入
+- [typescript-interview-questions.md](./typescript-interview-questions.md) - 面试高频题
+- [typescript-new-features.md](./typescript-new-features.md) - 版本新特性
 
 ### 官方资源
 - [TypeScript 官方文档](https://www.typescriptlang.org/docs/)（必读）
