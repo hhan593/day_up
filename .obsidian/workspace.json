@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/nest/14-NestJS动态模块.md",
+                "file": "技术文档/typescript/typescript-advanced-type-system.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "14-NestJS动态模块"
+              "title": "typescript-advanced-type-system"
             }
           }
         ]
@@ -199,10 +199,13 @@
   "active": "4b62f3eab1287a25",
   "lastOpenFiles": [
     "技术文档/typescript/typescript-new-features.md",
-    "技术文档/typescript/typescript-advanced-type-system.md",
+    "技术文档/typescript/typescript-learning-roadmap.md",
     "技术文档/typescript/typescript-interview-questions.md",
-    "技术文档/rust/Rust学习路线图与计划书.md",
+    "技术文档/typescript/typescript-cheatsheet.md",
+    "技术文档/typescript/typescript-best-practices.md",
+    "技术文档/typescript/typescript-advanced-type-system.md",
     "技术文档/nest/14-NestJS动态模块.md",
+    "技术文档/rust/Rust学习路线图与计划书.md",
     "技术文档/nest/12-RxJS核心概念与API详解.md",
     "技术文档/nest/11-NestJS学习架构图.md",
     "技术文档/nest/10-NestJS请求到写入数据全流程.md",
@@ -221,9 +224,6 @@
     "技术文档/nest/NestJS中间件类与函数式对比.md",
     "技术文档/nest/NestJS异常过滤器与校验管道协作机制.md",
     "技术文档/nest/NestJS依赖注入与过滤器注入.md",
-    "技术文档/nest/NestJS学习架构图.md",
-    "技术文档/nest/NestJS守卫知识点.md",
-    "技术文档/nest/NestJS请求到写入数据全流程.md",
     "技术文档/nest/images/NestJS请求到写入数据全流程示意图.png",
     "技术文档/nest/images/NestJS学习架构示意图.png",
     "技术文档/nest/images",
