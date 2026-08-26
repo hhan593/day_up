@@ -73,57 +73,99 @@ src/
 - 商品卡片、购物车、订单流
 - 管理后台独立布局
 
-## 9. 详细实现步骤（按优先级分步）
+## 9. 详细实现步骤（命令优先，按优先级分步）
 
-> 本方案复杂度 ⭐⭐⭐，建议先完成 01、02。重点新增：**角色守卫 + `@Roles()`、复杂业务管道、响应拦截器、下单事务**。
+> 复杂度 ⭐⭐⭐，建议先完成 01、02。重点：**角色守卫 `@Roles()`、复杂业务管道、响应拦截器、下单事务**。步骤 0 同 01（用 PostgreSQL 替代 SQLite）。
 
-### 步骤 1：PostgreSQL 连接 + 全局守卫/拦截器（知识点：动态模块 / 拦截器）
+### 步骤 1：PostgreSQL 连接 + 全局拦截器（知识点：动态模块 / 拦截器）
 
-- **目标**：接 PG；全局挂载角色守卫与日志拦截器。
-- **命令**：`pnpm add pg`；在 `app.module.ts`：
+```bash
+pnpm add pg
+# 在 app.module.ts 用 forRootAsync 接 PG（读取 ConfigService，见 doc 23）
+# 全局日志拦截器：
+nest g interceptor common/interceptors/logging
+```
+- **改动**：`app.module.ts`：
   ```ts
-  TypeOrmModule.forRootAsync({  // 异步配置，读取 ConfigService（见 doc 23）
+  TypeOrmModule.forRootAsync({
     imports: [ConfigModule], inject: [ConfigService],
-    useFactory: (c: ConfigService) => ({ type:'postgres', host:c.get('DB_HOST'), /* ... */ autoLoadEntities:true }),
+    useFactory: (c: ConfigService) => ({
+      type:'postgres', host:c.get('DB_HOST'), port:+c.get('DB_PORT'),
+      username:c.get('DB_USER'), password:c.get('DB_PASS'),
+      database:c.get('DB_NAME'), autoLoadEntities:true, synchronize:false,
+    }),
   })
   ```
-- **拦截器**：`src/common/interceptors/logging.interceptor.ts` 用 `tap` 记录响应耗时；`main.ts` 或 `app.module.ts` 的 `provide: APP_INTERCEPTOR` 全局注册（对应架构图「后续增加」的拦截器位置）。
+  `logging.interceptor.ts` 用 `tap` 记录响应耗时；`app.module.ts` 加 `providers:[{provide:APP_INTERCEPTOR,useClass:LoggingInterceptor}]` 全局注册（对应架构图「后续增加」的拦截器位置）。
+- **验收**：任意请求响应头/日志带有耗时。
 
 ### 步骤 2：Auth + 角色体系（知识点：角色守卫 / 自定义装饰器）
 
-- **目标**：用户带 `role`；接口按角色放行。
-- **文件**：
-  - `src/common/decorators/roles.decorator.ts`：`export const Roles = (...r:Role[]) => SetMetadata('role', r);`
-  - `src/common/guards/role.guard.ts`：`reflector.get('role', ctx.getHandler())`，比对 `req.user.role`，不符抛 `403 Forbidden`。
+```bash
+nest g module modules/auth
+nest g service modules/auth
+nest g guard modules/auth/jwt-auth
+nest g guard common/guards/role           # 角色守卫
+nest g decorator common/decorators/roles   # @Roles() 装饰器
+pnpm add @nestjs/jwt @nestjs/passport passport passport-jwt bcrypt
+```
+- **改动**：
+  - `roles.decorator.ts`：`export const Roles=(...r:Role[])=>SetMetadata('role',r);`
+  - `role.guard.ts`：`reflector.get('role', ctx.getHandler())` 比对 `req.user.role`，不符抛 `403`。
   - 用法：`@Roles('SELLER') @UseGuards(JwtAuthGuard, RoleGuard) @Post('products')`。
+- **验收**：普通用户调 `POST /products` 返回 403。
 
 ### 步骤 3：ProductsModule 卖家 CRUD + MoneyPipe（知识点：复杂管道）
 
-- **目标**：卖家管理商品；发布时校验价格合法。
-- **文件**：`src/common/pipes/money.pipe.ts`（实现 `PipeTransform`，把字符串金额转 `number` 并校验 `> 0`，否则抛 `BadRequestException`）；`@Body('price', MoneyPipe)`。
+```bash
+nest g module modules/products
+nest g service modules/products
+nest g controller modules/products
+nest g class modules/products/product.entity --flat
+nest g pipe common/pipes/money   # 金额校验管道
+```
+- **改动**：`money.pipe.ts` 实现 `PipeTransform`：`const n=Number(value); if(!(n>0)) throw new BadRequestException('price>0'); return n;`；`@Body('price', MoneyPipe)`。卖家仅能改自己的商品（比对 `sellerId`）。
+- **验收**：`price=-5` 返回 400 统一错误体。
 
 ### 步骤 4：OrdersModule 下单事务 + StockPipe（知识点：事务 / 管道协作）
 
-- **目标**：下单原子性扣库存，库存不足回滚。
-- **文件**：`src/common/pipes/stock.pipe.ts`（下单前查库存）；`orders.service.ts`：
+```bash
+nest g module modules/orders
+nest g service modules/orders
+nest g controller modules/orders
+nest g class modules/orders/order.entity --flat
+nest g pipe common/pipes/stock   # 库存校验管道
+```
+- **改动**：`stock.pipe.ts` 下单前查库存；`orders.service.ts`：
   ```ts
   await this.dataSource.transaction(async manager => {
     await manager.decrement(Product, {id}, { stock: qty }); // 扣库存
     await manager.save(order);                              // 落订单
   });
   ```
-- **验收**：并发下单或库存不足时，数据无脏写（事务回滚），返回统一业务错误体。
+- **验收**：库存不足或并发下单时数据无脏写（回滚），返回统一业务错误体。
 
 ### 步骤 5：CategoriesModule（管理员）
 
-- **目标**：管理员管类目；`@Roles('ADMIN')` 保护。
-- **文件**：`categories/categories.controller.ts` + service + entity。
+```bash
+nest g module modules/categories
+nest g service modules/categories
+nest g controller modules/categories
+nest g class modules/categories/category.entity --flat
+```
+- **改动**：建类目接口用 `@Roles('ADMIN')` 保护；`categories.module.ts` `imports:[TypeOrmModule.forFeature([Category])]`。
+- **验收**：非 ADMIN 调建类目返回 403。
 
 ### 步骤 6：前端三端
 
-- **目标**：买家/卖家/管理员三套布局；前端角色路由守卫与后端 `@Roles` 对齐。
+```bash
+pnpm dlx create-vite@latest packages/web --template react-ts
+cd packages/web && pnpm i && pnpm add axios
+```
+- **要点**：买家/卖家/管理员三套布局；前端路由守卫与后端 `@Roles` 对齐；买家购物车→下单走步骤 4。
+- **验收**：三端各自功能闭环，跨角色访问被 403 拦截。
 
-> 完成后你已掌握「守卫+管道+拦截器+事务」全链路，强烈建议再挑战 **04 实时聊天室**。
+> 完成后已掌握「守卫+管道+拦截器+事务」全链路，强烈建议挑战 **04 实时聊天室**。
 
 ## 10. 验收标准
 

@@ -72,71 +72,88 @@ src/
 - 表单用 TS 类型校验（与后端 DTO 对齐）
 - 登录态用 context / pinia 管理
 
-## 9. 详细实现步骤（按优先级分步）
+## 9. 详细实现步骤（命令优先，按优先级分步）
 
-> 本方案在 01 基础上新增三个本项目特色点：**`@User()` 自定义装饰器、`useFactory` 自定义提供者、异常过滤器与管道协作**。步骤 0 同 01，不再赘述。
+> 步骤 0 同 01（monorepo + `nest new` + 装 `@nestjs/config` 等）。本方案新增：**`@User()` 装饰器、`useFactory` 提供者、Prisma**。每步给「目标 → 命令 → 改动 → 验收」。
 
 ### 步骤 1：Prisma 初始化（知识点：自定义提供者铺垫）
 
-- **目标**：用 Prisma + SQLite 建模 User / Task。
-- **命令**：
-  ```bash
-  pnpm add prisma @prisma/client
-  pnpm exec prisma init --datasource-provider sqlite
-  # 编辑 prisma/schema.prisma 定义 User/Task（见第 5 节）
-  pnpm exec prisma generate && pnpm exec prisma migrate dev --name init
-  ```
-- **文件**：`prisma/schema.prisma`、`src/prisma/prisma.service.ts`（`@Injectable()` 封装 `PrismaClient`）。
+```bash
+pnpm add prisma @prisma/client
+pnpm exec prisma init --datasource-provider sqlite
+# 编辑 prisma/schema.prisma 写 User/Task（见第 5 节模型）
+pnpm exec prisma generate
+pnpm exec prisma migrate dev --name init
+nest g service prisma
+```
+- **改动**：`src/prisma/prisma.service.ts` 内 `new PrismaClient()` 并 `onModuleInit` 中 `$connect()`；`prisma.module.ts` `exports:[PrismaService]`。
+- **验收**：能 `prismaService.user.findMany()` 查出数据。
 
 ### 步骤 2：AuthModule + JWT + `@User()` 装饰器（知识点：自定义装饰器）
 
-- **目标**：登录后，控制器里用 `@User()` 直接拿到当前用户，不再手动读 `req.user`。
-- **文件**：
-  - `src/common/decorators/current-user.decorator.ts`：
-    ```ts
-    import { createParamDecorator, ExecutionContext } from '@nestjs/common';
-    export const User = createParamDecorator(
-      (data: unknown, ctx: ExecutionContext) => ctx.switchToHttp().getRequest().user,
-    );
-    ```
-  - `TasksController`：`findAll(@User() user: User)` → 仅查 `ownerId = user.id` 的任务。
-- **验收**：不同用户登录后只能看到自己的任务（隔离）。
+```bash
+nest g module modules/auth
+nest g service modules/auth
+nest g guard modules/auth/jwt-auth
+nest g decorator common/decorators/current-user   # 生成自定义参数装饰器
+pnpm add @nestjs/jwt @nestjs/passport passport passport-jwt bcrypt
+```
+- **改动**：
+  - `current-user.decorator.ts`：`createParamDecorator((_, ctx)=> ctx.switchToHttp().getRequest().user)` → 控制器里 `@User() user` 直接取当前用户。
+  - `auth.service.ts`：`register` 哈希密码、`login` 签发 JWT；`auth.module.ts` `imports:[PrismaModule, JwtModule.register({secret})]`。
+- **验收**：不同用户登录后，`GET /tasks` 只返回自己 `ownerId` 的任务（数据隔离）。
 
 ### 步骤 3：TasksModule CRUD + 软删除（知识点：管道 / DTO 校验）
 
-- **目标**：任务增删改查；非法 DTO 返回 400 标准体；删除走软删除（`deletedAt`）。
-- **文件**：`tasks/task.dto.ts`（`@IsString`、`@IsEnum(['low','mid','high'])` 优先级）、`tasks/tasks.service.ts`（`update` 设 `deletedAt`，`findAll` 过滤 `deletedAt = null`）、回收站恢复接口。
-- **注意**：`PATCH` 更新先查归属再改，防越权。
+```bash
+nest g module modules/tasks
+nest g service modules/tasks
+nest g controller modules/tasks
+nest g class modules/tasks/task.dto --flat
+```
+- **改动**：`task.dto.ts` 用 `@IsString() title`、`@IsEnum(['low','mid','high']) priority`、`@IsBoolean() done`；`tasks.service.ts` 用 Prisma：`create({data:{...dto, ownerId:user.id}})`、`update`（先校验归属）、`remove` 设 `deletedAt`（软删）；`findAll` 过滤 `deletedAt=null`；额外加回收站 `restore(id)`。
+- **验收**：非 owner 调 `PATCH /tasks/:id` 返回 403；`DELETE` 后列表不再出现、回收站可恢复。
 
 ### 步骤 4：useFactory 配置提供者（知识点：自定义提供者）
 
-- **目标**：把配置对象通过 `useFactory` 注入，支持按环境变量切换（如分页大小、软删保留天数）。
-- **文件**：`src/providers/config.provider.ts`：
+```bash
+nest g module providers/config
+```
+- **改动**：`config.provider.ts` 导出 `export const CONFIG='APP_CONFIG'`，`config.module.ts`：
   ```ts
-  export const CONFIG = 'APP_CONFIG';
-  // app.module.ts
-  providers: [{
-    provide: CONFIG, useFactory: (config: ConfigService) => ({
-      pageSize: +config.get('PAGE_SIZE', 20),
-      softDeleteRetentionDays: +config.get('RETENTION', 30),
+  providers:[{
+    provide: CONFIG,
+    useFactory: (c: ConfigService) => ({
+      pageSize: +c.get('PAGE_SIZE', 20),
+      retentionDays: +c.get('RETENTION', 30),
     }),
     inject: [ConfigService],
-  }]
-  // 使用：constructor(@Inject(CONFIG) private cfg) {}
+  }],
+  exports: [CONFIG],
   ```
-- **验收**：改 `.env` 的 `PAGE_SIZE` 后分页大小随之变化。
+  用法：`constructor(@Inject(CONFIG) private cfg){}` 控制分页大小。
+- **验收**：改 `.env` 的 `PAGE_SIZE`，列表分页条数随之变化。
 
-### 步骤 5：统一异常过滤器 + 管道协作
+### 步骤 5：统一异常过滤器 + 管道协作（复用 01）
 
-- **目标**：`ValidationPipe` 抛 `BadRequestException` → 过滤器包装成标准错误体（复用 01 的 `HttpExceptionFilter`）。
-- **验收**：发非法 DTO，响应为统一 `{ code:400, message, data:null }`。
+```bash
+nest g filter common/filters/http-exception
+```
+- **改动**：过滤器统一包装 `ValidationPipe` 抛出的 `BadRequestException` 为标准体（同 01 步骤 5）。
+- **验收**：发非法 DTO → `{ code:400, message, data:null }`。
 
 ### 步骤 6：前端 + 统计模块（知识点：模块共享）
 
-- **目标**：React 任务看板；`StatsModule` 通过 `TasksModule` 导出的 `TaskService` 做统计（如各优先级数量）。
-- **关键点**：`TasksModule` 必须 `exports: [TasksService]` 才能被 `StatsModule` 导入复用。
+```bash
+pnpm dlx create-vite@latest packages/web --template react-ts
+cd packages/web && pnpm i && pnpm add axios
+nest g module modules/stats
+nest g service modules/stats
+```
+- **改动**：`stats.module.ts` `imports:[TasksModule]`；`stats.service.ts` 注入 `TasksService` 统计各优先级数量；`TasksModule` 必须 `exports:[TasksService]`。
+- **验收**：看板显示「进行中/已完成/各优先级」计数，且与当前用户数据一致。
 
-> 完成 02 后，自定义装饰器与自定义提供者已扎实，可挑战 **03（事务/拦截器）** 或 **04（WebSocket）**。
+> 完成后自定义装饰器与自定义提供者已扎实，可挑战 **03（事务/拦截器）** 或 **04（WebSocket）**。
 
 ## 10. 验收标准
 
