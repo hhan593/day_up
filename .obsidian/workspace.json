@@ -153,12 +153,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/nest/NestJS-知识文档.md",
+                "file": "技术文档/nest/08-NestJS自定义提供者知识点.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "NestJS-知识文档"
+              "title": "08-NestJS自定义提供者知识点"
             }
           }
         ],
@@ -340,8 +340,9 @@
   },
   "active": "58fc025fedb74cd6",
   "lastOpenFiles": [
-    "技术文档/nest/01-NestJS-AOP面向切面编程.md",
+    "技术文档/nest/02-NestJS中间件类与函数式对比.md",
     "技术文档/nest/NestJS-知识文档.md",
+    "技术文档/nest/01-NestJS-AOP面向切面编程.md",
     "work/2026上半年年度总结/2026 年上半年项目工作简要素材.md",
     "技术文档/nest/12-RxJS核心概念与API详解.md",
     "技术文档/nest/11-NestJS学习架构图.md",
@@ -353,7 +354,6 @@
     "技术文档/nest/05-NestJS异常过滤器与校验管道协作机制.md",
     "技术文档/nest/04-NestJS管道用法.md",
     "技术文档/nest/03-NestJS守卫知识点.md",
-    "技术文档/nest/02-NestJS中间件类与函数式对比.md",
     "技术文档/nest/images/NestJS请求到写入数据全流程示意图.png",
     "技术文档/nest/images/NestJS学习架构示意图.png",
     "技术文档/nest/images",
