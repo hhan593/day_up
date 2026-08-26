@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/typescript/typescript-advanced-type-system.md",
+                "file": "技术文档/nest/托尔斯泰/01-个人博客系统.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "typescript-advanced-type-system"
+              "title": "01-个人博客系统"
             }
           }
         ]
@@ -196,13 +196,20 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "dd812f3372d742f9",
+  "active": "4b62f3eab1287a25",
   "lastOpenFiles": [
+    "技术文档/nest/blog.md",
+    "技术文档/nest/托尔斯泰/01-个人博客系统.md",
+    "技术文档/nest/托尔斯泰",
+    "技术文档/nest/新建文件夹",
+    "技术文档/nest/project/01-个人博客系统.md",
+    "技术文档/nest/project/02-任务管理Todo.md",
+    "技术文档/nest/02-NestJS中间件类与函数式对比.md",
+    "技术文档/nest/04-NestJS管道用法.md",
+    "技术文档/nest/NestJS-知识文档.md",
     "技术文档/nest/project/README.md",
     "技术文档/nest/project/04-实时聊天室.md",
     "技术文档/nest/project/03-电商Demo.md",
-    "技术文档/nest/project/02-任务管理Todo.md",
-    "技术文档/nest/project/01-个人博客系统.md",
     "技术文档/nest/project",
     "技术文档/typescript/typescript-advanced-type-system.md",
     "技术文档/typescript/typescript-new-features.md",
@@ -220,10 +227,6 @@
     "技术文档/nest/07-NestJS依赖注入与过滤器注入.md",
     "技术文档/nest/06-NestJS装饰器与自定义装饰器.md",
     "技术文档/nest/05-NestJS异常过滤器与校验管道协作机制.md",
-    "技术文档/nest/04-NestJS管道用法.md",
-    "技术文档/nest/NestJS模块共享Service.md",
-    "技术文档/nest/03-NestJS守卫知识点.md",
-    "技术文档/nest/02-NestJS中间件类与函数式对比.md",
     "技术文档/nest/images/NestJS请求到写入数据全流程示意图.png",
     "技术文档/nest/images/NestJS学习架构示意图.png",
     "技术文档/nest/images",
@@ -233,9 +236,7 @@
     "技术文档/threejs/Three.js 通关秘籍",
     "技术文档/Three.js 通关秘籍",
     "技术文档/threejs",
-    "技术文档/java",
     "技术文档/新建笔记/111.png",
-    "技术文档/新建笔记/Document - Google Chrome 2025-07-31 14-03-38.mp4",
     "Pasted image 20260515153549.png",
     "Pasted image 20260515153414.png",
     "e64e07232fc0056fbed1f906f9d47782.png",
