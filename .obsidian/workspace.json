@@ -4,165 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "8b7a0797f3a06dfc",
+        "id": "b6ab8b49a43363b5",
         "type": "tabs",
         "children": [
           {
-            "id": "fa4a234a21c5d678",
+            "id": "a6d8b85a1432eac5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "work/2026上半年年度总结/2026 年上半年项目工作总结.md",
+                "file": "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/00-用Nest官方Monorepo搭建全栈骨架.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026 年上半年项目工作总结"
+              "title": "00-用Nest官方Monorepo搭建全栈骨架"
             }
           },
           {
-            "id": "a10ff01d838bf5b2",
+            "id": "c16b84a745b2756f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "软考/论文/特定领域软件架构的应用.md",
+                "file": "conflict-files-obsidian-git.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "特定领域软件架构的应用"
-            }
-          },
-          {
-            "id": "b4685509083c0ef9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/论微服务架构及其应用.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "论微服务架构及其应用"
-            }
-          },
-          {
-            "id": "b7a0d4b70b5e3f01",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/解释器.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "解释器"
-            }
-          },
-          {
-            "id": "126960f71e689a71",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/论基于规则的系统及其应用.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "论基于规则的系统及其应用"
-            }
-          },
-          {
-            "id": "7e14522d0d80d13c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/论虚拟机技术及其应用.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "论虚拟机技术及其应用"
-            }
-          },
-          {
-            "id": "81410e9584ce1206",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/论以数据为中心的架构风格及其应用.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "论以数据为中心的架构风格及其应用"
-            }
-          },
-          {
-            "id": "2d0b600f969cc89d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/论以数据为中心的架构风格及其应用（数据共享主题）.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "论以数据为中心的架构风格及其应用（数据共享主题）"
-            }
-          },
-          {
-            "id": "a7bb66b2e2a45530",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/论层次式架构及其应用.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "论层次式架构及其应用"
-            }
-          },
-          {
-            "id": "370d57740a742253",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "软考/论文/安全架构.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "安全架构"
-            }
-          },
-          {
-            "id": "58fc025fedb74cd6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "技术文档/nest/08-NestJS自定义提供者知识点.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "08-NestJS自定义提供者知识点"
+              "title": "conflict-files-obsidian-git"
             }
           }
         ],
-        "currentTab": 10
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -221,7 +95,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3bd0fb1b110dccd6",
@@ -338,8 +213,24 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "58fc025fedb74cd6",
+  "active": "c16b84a745b2756f",
   "lastOpenFiles": [
+    "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/00-用Nest官方Monorepo搭建全栈骨架.md",
+    "conflict-files-obsidian-git.md",
+    "技术文档/nest/托尔斯泰/00-从零搭建全栈骨架指南 2.md",
+    "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/00-从零搭建全栈骨架指南.md",
+    "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/01-个人博客系统.md",
+    "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/00-从零搭建全栈骨架指南 2.md",
+    "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架",
+    "技术文档/nest/托尔斯泰/00-从零搭建全栈骨架指南.md",
+    "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架.md",
+    "技术文档/nest/托尔斯泰/01-个人博客系统.md",
+    "技术文档/nest/08-NestJS自定义提供者知识点.md",
+    "技术文档/typescript/typescript-new-features.md",
+    "技术文档/typescript/typescript-interview-questions.md",
+    "技术文档/typescript/typescript-advanced-type-system.md",
+    "技术文档/nest/托尔斯泰",
+    "技术文档/nest/14-NestJS动态模块.md",
     "技术文档/nest/02-NestJS中间件类与函数式对比.md",
     "技术文档/nest/NestJS-知识文档.md",
     "技术文档/nest/01-NestJS-AOP面向切面编程.md",
@@ -348,27 +239,13 @@
     "技术文档/nest/11-NestJS学习架构图.md",
     "技术文档/nest/10-NestJS请求到写入数据全流程.md",
     "技术文档/nest/09-NestJS模块共享Service.md",
-    "技术文档/nest/08-NestJS自定义提供者知识点.md",
     "技术文档/nest/07-NestJS依赖注入与过滤器注入.md",
     "技术文档/nest/06-NestJS装饰器与自定义装饰器.md",
     "技术文档/nest/05-NestJS异常过滤器与校验管道协作机制.md",
     "技术文档/nest/04-NestJS管道用法.md",
-    "技术文档/nest/03-NestJS守卫知识点.md",
     "技术文档/nest/images/NestJS请求到写入数据全流程示意图.png",
     "技术文档/nest/images/NestJS学习架构示意图.png",
     "技术文档/nest/images",
-    "技术文档/nest/RxJS核心概念与API详解.md",
-    "技术文档/nest/NestJS请求到写入数据全流程.md",
-    "技术文档/nest/NestJS装饰器与自定义装饰器.md",
-    "技术文档/nest/NestJS管道用法.md",
-    "技术文档/nest/NestJS模块共享Service.md",
-    "技术文档/nest/NestJS异常过滤器与校验管道协作机制.md",
-    "技术文档/nest/NestJS守卫知识点.md",
-    "技术文档/nest/NestJS学习架构图.md",
-    "技术文档/nest/NestJS依赖注入与过滤器注入.md",
-    "技术文档/nest/NestJS中间件类与函数式对比.md",
-    "技术文档/nest/NestJSAOP面向切面编程.md",
-    "work/系统菜单架构优化与调整方案.md",
     "技术文档/vue/vue3",
     "技术文档/vue/vue-core/packages/compiler-dom/__tests__/transforms/__snapshots__/vShow.spec.ts.snap",
     "技术文档/vue/vue-core/packages/compiler-dom/__tests__/transforms/__snapshots__/vModel.spec.ts.snap",
@@ -376,8 +253,6 @@
     "技术文档/vue/vue-core/packages/compiler-dom/__tests__/transforms/__snapshots__/Transition.spec.ts.snap",
     "技术文档/vue/vue-core/packages/compiler-sfc/__tests__/compileScript/__snapshots__/importUsageCheck.spec.ts.snap",
     "技术文档/vue/vue-core/packages/compiler-sfc/__tests__/compileScript/__snapshots__/hoistStatic.spec.ts.snap",
-    "技术文档/vue/vue-core/packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineSlots.spec.ts.snap",
-    "技术文档/vue/vue-core/packages/compiler-sfc/__tests__/compileScript/__snapshots__/definePropsDestructure.spec.ts.snap",
     "技术文档/vue/vue-core/packages-private/sfc-playground/public/logo.svg",
     "Pasted image 20260515153549.png",
     "Pasted image 20260515153414.png",
