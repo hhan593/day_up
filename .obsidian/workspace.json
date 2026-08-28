@@ -198,8 +198,9 @@
   },
   "active": "b81ac946975e0558",
   "lastOpenFiles": [
-    "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/01-个人博客系统.md",
     "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/02-实现步骤.md",
+    "技术文档/nest/02-实现步骤.md",
+    "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/01-个人博客系统.md",
     "技术文档/nest/托尔斯泰/01-个人博客系统.md",
     "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/00-用Nest官方Monorepo搭建全栈骨架.md",
     "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/00-从零搭建全栈骨架指南.md",
@@ -227,7 +228,6 @@
     "技术文档/nest/14-NestJS动态模块.md",
     "技术文档/rust/Rust学习路线图与计划书.md",
     "技术文档/nest/12-RxJS核心概念与API详解.md",
-    "技术文档/nest/11-NestJS学习架构图.md",
     "技术文档/nest/images/NestJS请求到写入数据全流程示意图.png",
     "技术文档/nest/images/NestJS学习架构示意图.png",
     "技术文档/nest/images",
