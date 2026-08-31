@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/02-实现步骤.md",
+                "file": "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/00-从零搭建全栈骨架指南 2.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02-实现步骤"
+              "title": "00-从零搭建全栈骨架指南 2"
             }
           }
         ]
@@ -198,9 +198,9 @@
   },
   "active": "b81ac946975e0558",
   "lastOpenFiles": [
+    "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/01-个人博客系统.md",
     "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/02-实现步骤.md",
     "技术文档/nest/02-实现步骤.md",
-    "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/01-个人博客系统.md",
     "技术文档/nest/托尔斯泰/01-个人博客系统.md",
     "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/00-用Nest官方Monorepo搭建全栈骨架.md",
     "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/00-从零搭建全栈骨架指南.md",
