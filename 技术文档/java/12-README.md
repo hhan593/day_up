@@ -22,6 +22,11 @@
 | 10 | `virtual-threads.md` | 虚拟线程（Java 21 并发革新） | JEP 444 |
 | 11 | `new-features-java8-21.md` | Java 8→21 新特性演进总览 | OpenJDK JEPs |
 | 12 | `README.md` | 索引（本文件） | — |
+| 13 | `spring-boot.md` | Spring Boot：自动配置/@SpringBootApplication/Starter/REST/Actuator | Spring Boot Reference (current) |
+| 14 | `spring-core.md` | Spring Core：IoC/DI/AOP/@Component/@Bean/Scope | Spring Framework 7.0.9 Reference |
+| 15 | `concurrency-advanced.md` | 并发进阶：synchronized/Lock/JUC/CompletableFuture | The Java Tutorials — Concurrency |
+| 16 | `jvm-memory-model.md` | JVM 内存模型/分代/GC 收集器(ZGC)/调优 | JVM Specification / JEP 439 |
+| 17 | `junit-testing.md` | JUnit 6 单元测试/断言/参数化/Mockito/Spring 测试 | JUnit 6.1.3 User Guide |
 
 ---
 
@@ -46,11 +51,11 @@
 
 ## 补充建议（未覆盖主题）
 
-本目录侧重语言核心；如需继续补充，建议下一批：
-- **Spring Boot / Spring Framework**：依赖注入、AOP、自动配置（企业最常用）
-- **JDBC / JPA / MyBatis**：数据库访问
-- **并发进阶**：`synchronized` / `Lock` / `ConcurrentHashMap` / `CompletableFuture`
-- **JVM 与内存模型**：GC、堆/栈、字节码、调优
-- **单元测试**：JUnit 5 / Mockito
+本目录已覆盖语言核心 + 企业主流栈（Spring / 并发 / JVM / 测试）；如需继续补充，建议下一批：
+- **JDBC / JPA / MyBatis**：数据库访问（JPA 实体映射、`@Entity`、Repository；MyBatis 动态 SQL）
+- **Spring Data JPA / MyBatis-Plus**：持久层进阶
+- **Spring Security / OAuth2 / JWT**：认证授权
+- **消息队列 / Redis / 微服务**：Spring Cloud、Kafka、Redis 缓存
+- **设计模式 / 算法 / 面试题专项**：Java 面试高频考点整理
 
 > 如需我继续补充上述任一主题（同样从官方文档取最新 API），告知即可。
