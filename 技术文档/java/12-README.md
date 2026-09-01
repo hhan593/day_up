@@ -27,6 +27,14 @@
 | 15 | `concurrency-advanced.md` | 并发进阶：synchronized/Lock/JUC/CompletableFuture | The Java Tutorials — Concurrency |
 | 16 | `jvm-memory-model.md` | JVM 内存模型/分代/GC 收集器(ZGC)/调优 | JVM Specification / JEP 439 |
 | 17 | `junit-testing.md` | JUnit 6 单元测试/断言/参数化/Mockito/Spring 测试 | JUnit 6.1.3 User Guide |
+| 18 | `jdbc.md` | JDBC：DriverManager/Connection/PreparedStatement/事务/批处理 | Java SE 21 `java.sql` API |
+| 19 | `jpa.md` | JPA/Spring Data JPA：@Entity/关联/Repository/@Query/@Transactional | Jakarta Persistence + Spring Data JPA 4.1.1 |
+| 20 | `mybatis.md` | MyBatis 3.5.19：XML 映射/#{} vs ${}/resultMap/动态 SQL/缓存 | MyBatis 官方中文文档 |
+| 21 | `jpa-mybatisplus-advanced.md` | 持久层进阶：分页/审计/逻辑删除/多数据源（JPA vs MyBatis-Plus） | Spring Data JPA 4.1.1 + MyBatis-Plus |
+| 22 | `spring-security.md` | Spring Security 6.5.6 / OAuth2 / JWT 资源服务器 / @PreAuthorize | Spring Security 官方文档 6.5.6 |
+| 23 | `redis-cache.md` | Redis / Spring Data Redis / RedisTemplate / @Cacheable / 缓存问题 | Spring Data Redis 官方文档 |
+| 24 | `messaging-microservices.md` | Kafka / RabbitMQ / Spring Cloud（注册/网关/负载均衡/熔断） | Spring for Apache Kafka + Spring Cloud |
+| 25 | `design-patterns-interview.md` | 设计模式（GoF）/ 算法 / 面试题专项串讲（含 Spring 循环依赖等） | GoF + 全目录联动 |
 
 ---
 
@@ -49,13 +57,10 @@
 
 ---
 
-## 补充建议（未覆盖主题）
+## 目录状态：已完整覆盖
 
-本目录已覆盖语言核心 + 企业主流栈（Spring / 并发 / JVM / 测试）；如需继续补充，建议下一批：
-- **JDBC / JPA / MyBatis**：数据库访问（JPA 实体映射、`@Entity`、Repository；MyBatis 动态 SQL）
-- **Spring Data JPA / MyBatis-Plus**：持久层进阶
-- **Spring Security / OAuth2 / JWT**：认证授权
-- **消息队列 / Redis / 微服务**：Spring Cloud、Kafka、Redis 缓存
-- **设计模式 / 算法 / 面试题专项**：Java 面试高频考点整理
+`技术文档/java` 共 **25 篇**，已覆盖从语言核心 → 企业主流栈（Spring / 并发 / JVM / 测试）→ 数据库访问（JDBC / JPA / MyBatis）→ 持久层进阶 / 安全 / 缓存 / 消息微服务 → 设计模式与面试题专项的完整学习链路。
 
-> 如需我继续补充上述任一主题（同样从官方文档取最新 API），告知即可。
+至此与 `技术文档/` 下 **typescript（16）、nest（9）、react（16）、nextjs（16）、vue（13）、java（25）** 六个目录共同构成完整的技术求职复习体系。
+
+> 如需在 java 目录新增其他主题（如 Netty、GraalVM 原生镜像、Java 22+ 持续预览特性、响应式编程 WebFlux、分布式事务 Seata 等），告知即可。
