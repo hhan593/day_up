@@ -198,6 +198,7 @@
   },
   "active": "dd812f3372d742f9",
   "lastOpenFiles": [
+    "技术文档/nest/03-security",
     "技术文档/nest/02-techniques/README.md",
     "技术文档/nest/02-techniques/server-sent-events.md",
     "技术文档/nest/02-techniques/performance.md",
@@ -224,7 +225,6 @@
     "技术文档/nest/01-overview/11-NestJS学习架构图.md",
     "技术文档/nest/01-overview/10-NestJS请求到写入数据全流程.md",
     "技术文档/nest/01-overview/08-NestJS自定义提供者知识点.md",
-    "技术文档/nest/01-overview/07-NestJS依赖注入与过滤器注入.md",
     "技术文档/nest/01-overview",
     "技术文档/nest/techniques-2",
     "技术文档/nest/1-overview",
