@@ -198,6 +198,7 @@
   },
   "active": "dd812f3372d742f9",
   "lastOpenFiles": [
+    "技术文档/typescript/16-README.md",
     "技术文档/typescript/15-typescript-new-features.md",
     "技术文档/typescript/14-typescript-interview-questions.md",
     "技术文档/typescript/13-typescript-best-practices.md",
@@ -223,7 +224,6 @@
     "技术文档/typescript/more-on-functions.md",
     "技术文档/typescript/everyday-types.md",
     "技术文档/typescript/narrowing.md",
-    "技术文档/nest/09-recipes/README.md",
     "技术文档/nest/09-recipes",
     "技术文档/nest/08-cli",
     "技术文档/nest/07-testing",
