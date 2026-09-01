@@ -11,10 +11,14 @@
             "id": "b81ac946975e0558",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "技术文档/LeetCode刷题攻略.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "LeetCode刷题攻略"
             }
           }
         ]
@@ -194,6 +198,10 @@
   },
   "active": "dd812f3372d742f9",
   "lastOpenFiles": [
+    "技术文档/vue/vue3/03-vue3-tips-and-tricks.md",
+    "技术文档/vue/vue3/02-vue3-common-pitfalls.md",
+    "技术文档/vue/vue3/01-vue3-learning-roadmap.md",
+    "技术文档/react/react-learning-roadmap.md",
     "技术文档/nextjs/16-README.md",
     "技术文档/nextjs/15-next-config.md",
     "技术文档/nextjs/14-server-functions.md",
@@ -216,10 +224,6 @@
     "技术文档/nextjs/XX-nextjs-for-react-devs.md",
     "技术文档/nextjs/XX-nextjs-cheatsheet.md",
     "技术文档/react/16-README.md",
-    "技术文档/react/15-suspense-concurrency.md",
-    "技术文档/react/14-performance-memo.md",
-    "技术文档/react/13-custom-hooks.md",
-    "技术文档/react/12-you-might-not-need-effect.md",
     "技术文档/nest/09-recipes",
     "技术文档/nest/08-cli",
     "技术文档/nest/07-testing",
