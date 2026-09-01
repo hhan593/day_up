@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/00-从零搭建全栈骨架指南 2.md",
+                "file": "技术文档/Three.js/Three.js 通关秘籍/8. 点模型、线模型、网格模型.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "00-从零搭建全栈骨架指南 2"
+              "title": "8. 点模型、线模型、网格模型"
             }
           }
         ]
@@ -198,13 +198,18 @@
   },
   "active": "b81ac946975e0558",
   "lastOpenFiles": [
+    "技术文档/Three.js/Three.js 通关秘籍/9. 实战：随机山脉地形.md",
+    "技术文档/Three.js/Three.js 通关秘籍/8. 点模型、线模型、网格模型.md",
+    "技术文档/Three.js/Three.js 通关秘籍/6. 深入理解透视相机和视椎体.md",
+    "技术文档/Three.js/Three.js 通关秘籍/7. BufferGeometry：顶点生成各种几何体.md",
+    "技术文档/Three.js/Three.js 通关秘籍/10. 材质颜色和纹理贴图.md",
+    "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/00-从零搭建全栈骨架指南 2.md",
     "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/01-个人博客系统.md",
     "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/02-实现步骤.md",
     "技术文档/nest/02-实现步骤.md",
     "技术文档/nest/托尔斯泰/01-个人博客系统.md",
     "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/00-用Nest官方Monorepo搭建全栈骨架.md",
     "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/00-从零搭建全栈骨架指南.md",
-    "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架/00-从零搭建全栈骨架指南 2.md",
     "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架",
     "技术文档/nest/00-用Nest官方Monorepo搭建全栈骨架.md",
     "技术文档/nest/blog.md",
@@ -223,11 +228,6 @@
     "技术文档/typescript/typescript-new-features.md",
     "技术文档/typescript/typescript-learning-roadmap.md",
     "技术文档/typescript/typescript-interview-questions.md",
-    "技术文档/typescript/typescript-cheatsheet.md",
-    "技术文档/typescript/typescript-best-practices.md",
-    "技术文档/nest/14-NestJS动态模块.md",
-    "技术文档/rust/Rust学习路线图与计划书.md",
-    "技术文档/nest/12-RxJS核心概念与API详解.md",
     "技术文档/nest/images/NestJS请求到写入数据全流程示意图.png",
     "技术文档/nest/images/NestJS学习架构示意图.png",
     "技术文档/nest/images",
