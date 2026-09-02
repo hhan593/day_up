@@ -4,69 +4,71 @@
 
 ---
 
-## 📚 文档索引
+## 📚 文档索引（编号体系，推荐阅读顺序）
 
 ### 🎯 学习指南
 
-| 文档 | 说明 | 推荐顺序 |
-|------|------|----------|
-| [Rust 学习路线图与计划书](Rust学习路线图与计划书.md) | 完整的学习路径规划，从入门到精通 | **第 1 步** |
+| 编号 | 文档 | 说明 |
+|------|------|------|
+| 01 | [Rust 学习路线图与计划书](01-Rust学习路线图与计划书.md) | 完整学习路径规划，从入门到精通 |
+| 02 | [Rust 快速参考手册](02-Rust快速参考手册.md) | 语法速查、常用模式、Trait 速查 |
 
-### 📖 核心概念手册
+### 📖 基础核心手册
 
-| 文档 | 说明 | 推荐顺序 |
-|------|------|----------|
-| [Rust 快速参考手册](Rust快速参考手册.md) | 语法速查、常用模式、Trait 速查 | 随时查阅 |
-| [结构体语法.md](结构体语法.md) | 结构体定义、实例化、方法 | 基础阶段 |
-| [枚举与模式匹配.md](枚举与模式匹配.md) | 枚举、Option、Result、match | 基础阶段 |
-| [references-and-borrowing.md](./references-and-borrowing.md) | 引用与借用基础 | 核心概念阶段 |
-| [Rust_String知识手册.md](Rust_String知识手册.md) | String 与 &str 深入讲解 | 核心概念阶段 |
-| [Rust 泛型 Trait 与生命周期知识手册](Rust泛型Trait与生命周期知识手册.md) | 泛型、Trait、生命周期综合 | 核心概念阶段 |
-| [Rust 错误处理知识手册](Rust错误处理知识手册.md) | Result、Option、panic、自定义错误 | 核心概念阶段 |
+| 编号 | 文档 | 主题 |
+|------|------|------|
+| 03 | [结构体语法](03-结构体语法.md) | 结构体定义、实例化、方法 |
+| 04 | [枚举与模式匹配](04-枚举与模式匹配.md) | 枚举、Option、Result、match |
+| 05 | [借用与引用](05-借用与引用.md) | 引用与借用（所有权核心） |
+| 06 | [Rust_String 知识手册](06-Rust_String知识手册.md) | String 与 &str 深入 |
+| 07 | [泛型 Trait 与生命周期](07-Rust泛型Trait与生命周期知识手册.md) | 泛型、Trait、生命周期综合 |
+| 08 | [错误处理知识手册](08-Rust错误处理知识手册.md) | Result、Option、panic、自定义错误 |
+| 09 | [集合类型与迭代器](09-Rust集合类型与迭代器手册.md) | Vec、HashMap、迭代器 |
+| 10 | [模块系统与包管理](10-Rust模块系统与包管理手册.md) | 模块、crate、workspace、Cargo 基础 |
+| 11 | [测试与文档](11-Rust测试与文档手册.md) | 单元测试、集成测试、文档 |
+| 12 | [Trait 知识手册](12-Rust_Trait知识手册.md) | Trait 深入 |
+| 13 | [闭包知识手册](13-Rust闭包知识手册.md) | 闭包、Fn/FnMut/FnOnce |
+| 14 | [迭代器知识手册](14-Rust迭代器知识手册.md) | 迭代器适配器、惰性求值 |
+| 15 | [智能指针知识手册](15-Rust智能指针知识手册.md) | Box/Rc/RefCell/Arc/Mutex |
+| 16 | [Option 与 Result 深度解析](16-Option 与 Result 深度解析.md) | 可选值与错误处理的本质 |
 
-### 🚀 进阶主题手册
+### 🚀 进阶主题（官方权威补充）
 
-| 文档 | 说明 | 推荐顺序 |
-|------|------|----------|
-| [Rust 集合类型与迭代器手册](Rust集合类型与迭代器手册.md) | Vec、HashMap、迭代器等 | 进阶阶段 |
-| [Rust 模块系统与包管理手册](Rust模块系统与包管理手册.md) | 模块、crate、workspace、Cargo | 进阶阶段 |
-| [Rust 测试与文档手册](Rust测试与文档手册.md) | 单元测试、集成测试、文档编写 | 进阶阶段 |
+| 编号 | 文档 | 主题 | 官方来源 |
+|------|------|------|----------|
+| 17 | [并发与并行](17-concurrency-parallel.md) | thread/spawn/move/channel/Mutex/Send/Sync | The Book Ch16 Fearless Concurrency |
+| 18 | [异步编程](18-async-await.md) | async/await/Future/executor/Pin/tokio/Stream | Async Book + tokio |
+| 19 | [宏](19-macros.md) | 声明宏/过程宏/derive | The Rust Reference — Macros |
+| 20 | [Cargo 进阶](20-cargo-advanced.md) | workspace/features/发布/profile | The Cargo Book |
+| 21 | [unsafe 与 FFI](21-unsafe-ffi.md) | 裸指针/extern "C"/cbindgen | The Rust Reference — Unsafe |
+| 22 | [Web 框架](22-web-framework-axum.md) | axum/Actix/tokio/sqlx/中间件 | axum/Actix/tokio 官方 |
+| 23 | [跨语言对照](23-cross-lang-comparison.md) | Rust vs Java/Go/Node/C++ 对照 | 全系列联动 |
 
 ---
 
 ## 🎓 学习路径
 
 ### Phase 1: 基础入门（1-2周）
+1. [01 路线图](01-Rust学习路线图与计划书.md) 了解整体规划
+2. 基础文档：03 结构体、04 枚举、05 借用与引用
+3. 完成 Rustlings 前 50% 练习
 
-1. 阅读 [Rust 学习路线图与计划书](Rust学习路线图与计划书.md) 了解整体规划
-2. 完成 Rustlings 前 50% 练习
-3. 学习基础文档：
-   - [结构体语法.md](结构体语法.md)
-   - [枚举与模式匹配.md](枚举与模式匹配.md)
-
-### Phase 2: 核心概念（3-4周）
-
-这是 Rust 最重要的部分，务必深入理解：
-
-1. **所有权系统**
-   - [references-and-borrowing.md](./references-and-borrowing.md)
-   - [Rust_String知识手册.md](Rust_String知识手册.md)（所有权实践）
-
-2. **类型系统三支柱**
-   - [Rust 泛型 Trait 与生命周期知识手册](Rust泛型Trait与生命周期知识手册.md)
-
-3. **错误处理**
-   - [Rust 错误处理知识手册](Rust错误处理知识手册.md)
+### Phase 2: 核心概念（3-4周，最重要）
+1. **所有权系统**：05 借用与引用、06 String
+2. **类型系统三支柱**：07 泛型/Trait/生命周期、12 Trait
+3. **错误处理**：08 错误处理、16 Option/Result
 
 ### Phase 3: 进阶特性（2-3周）
+1. 09 集合与迭代器、13 闭包、14 迭代器
+2. 10 模块与包管理、11 测试、15 智能指针
 
-1. [Rust 集合类型与迭代器手册](Rust集合类型与迭代器手册.md)
-2. [Rust 模块系统与包管理手册](Rust模块系统与包管理手册.md)
-3. [Rust 测试与文档手册](Rust测试与文档手册.md)
+### Phase 4: 专家级（持续，官方补充篇）
+1. 17 并发、18 异步、19 宏
+2. 20 Cargo 进阶、21 unsafe/FFI
+3. 22 Web 框架（axum/tokio）、23 跨语言对照
 
-### Phase 4: 实战项目（持续）
-
-参考路线图中的项目建议，动手实践。
+### Phase 5: 实战项目（持续）
+参考路线图项目建议，动手实践。
 
 ---
 
@@ -76,30 +78,24 @@
 
 | 主题 | 相关文档 |
 |------|----------|
-| **所有权/借用** | references-and-borrowing.md, Rust_String知识手册.md |
-| **泛型/Trait** | Rust泛型Trait与生命周期知识手册.md |
-| **生命周期** | Rust泛型Trait与生命周期知识手册.md |
-| **错误处理** | Rust错误处理知识手册.md, 枚举与模式匹配.md |
-| **集合类型** | Rust集合类型与迭代器手册.md |
-| **项目组织** | Rust模块系统与包管理手册.md |
-| **测试** | Rust测试与文档手册.md |
+| **所有权/借用** | 05 借用与引用、06 String |
+| **泛型/Trait** | 07 泛型Trait与生命周期、12 Trait |
+| **生命周期** | 07 泛型Trait与生命周期 |
+| **错误处理** | 08 错误处理、16 Option/Result、04 枚举 |
+| **集合类型** | 09 集合类型与迭代器、14 迭代器 |
+| **项目组织** | 10 模块系统、20 Cargo 进阶 |
+| **测试** | 11 测试与文档 |
+| **并发/异步** | 17 并发、18 异步 |
+| **宏/元编程** | 19 宏 |
+| **FFI** | 21 unsafe/FFI |
+| **Web 后端** | 22 Web 框架、23 跨语言对照 |
 
 ### 按难度分级
 
-**初级** 🌱
-- 结构体语法.md
-- 枚举与模式匹配.md
-- references-and-borrowing.md
-
-**中级** 🌿
-- Rust_String知识手册.md
-- Rust错误处理知识手册.md
-- Rust集合类型与迭代器手册.md
-
-**高级** 🌳
-- Rust泛型Trait与生命周期知识手册.md
-- Rust模块系统与包管理手册.md
-- Rust测试与文档手册.md
+**初级** 🌱：03 结构体、04 枚举、05 借用与引用
+**中级** 🌿：06 String、08 错误处理、09 集合与迭代器
+**高级** 🌳：07 泛型Trait、10 模块、11 测试、15 智能指针
+**专家** 🔥：17 并发、18 异步、19 宏、21 unsafe、22 Web
 
 ---
 
@@ -153,6 +149,7 @@ cargo fmt        # 格式化
 | 2024-02-27 | 新增 Rust_String知识手册.md |
 | 2024-02-28 | 新增 Rust错误处理知识手册.md、Rust泛型Trait与生命周期知识手册.md |
 | 2024-03-01 | 新增 Rust学习路线图与计划书.md、Rust集合类型与迭代器手册.md、Rust模块系统与包管理手册.md、Rust测试与文档手册.md、Rust快速参考手册.md |
+| 2026-09-02 | **编号化整合**：原 17 篇基础手册重命名为 01-16；新增进阶官方文档 17-23（并发/异步/宏/Cargo/unsafe-FFI/Web 框架/跨语言对照），与 typescript/nest/react/nextjs/vue/java/node 系列统一风格 |
 
 ---
 
