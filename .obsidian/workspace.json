@@ -11,10 +11,14 @@
             "id": "7b83d7db1030840b",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "技术文档/rust/01-基础核心/01-环境安装与HelloWorld.md",
+                "mode": "preview",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "01-环境安装与HelloWorld"
             }
           }
         ]
