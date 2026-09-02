@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/rust/01-基础核心/01-环境安装与HelloWorld.md",
+                "file": "技术文档/rust/01-基础核心/02-变量常量与标量类型.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01-环境安装与HelloWorld"
+              "title": "02-变量常量与标量类型"
             }
           }
         ]
@@ -80,7 +80,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3bd0fb1b110dccd6",
@@ -182,7 +183,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 348.5
+    "width": 348.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -198,6 +200,7 @@
   },
   "active": "7b83d7db1030840b",
   "lastOpenFiles": [
+    "技术文档/rust/01-基础核心/01-环境安装与HelloWorld.md",
     "conflict-files-obsidian-git.md",
     "技术文档/vue/vue3/17-vue3-testing-ecosystem.md",
     "技术文档/vue/vue3/16-vue3-ssr-nuxt.md",
@@ -225,7 +228,6 @@
     "技术文档/rust/补充知识点",
     "技术文档/rust/08-动手项目/59-动手项目计划.md",
     "技术文档/rust/08-动手项目",
-    "技术文档/rust/07-前沿安全/58-unsafe-audit-miri.md",
     "技术文档/rust/07-前沿安全",
     "技术文档/rust/06-工程化可观测",
     "技术文档/rust/05-并行中间件内核",
