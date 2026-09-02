@@ -43,6 +43,13 @@
 | 21 | [unsafe 与 FFI](21-unsafe-ffi.md) | 裸指针/extern "C"/cbindgen | The Rust Reference — Unsafe |
 | 22 | [Web 框架](22-web-framework-axum.md) | axum/Actix/tokio/sqlx/中间件 | axum/Actix/tokio 官方 |
 | 23 | [跨语言对照](23-cross-lang-comparison.md) | Rust vs Java/Go/Node/C++ 对照 | 全系列联动 |
+| 24 | [Rustlings 习题](24-rustlings-exercises.md) | 官方练习集/题型解析/学习法 | rust-lang/rustlings |
+| 25 | [Rust + WASM](25-wasm-web.md) | wasm-bindgen/wasm-pack/web-sys/DOM | Rust-WASM Book（已停维） |
+| 26 | [过程宏实战](26-proc-macro-deep.md) | syn/quote/DeriveInput/属性宏 | syn-3.0.4 官方文档（完整） |
+| 27 | [嵌入式与 RTIC](27-embedded-rtic.md) | no_std/RTIC 实时任务/中断 | RTIC + rust-embedded 官方 |
+| 28 | [性能剖析](28-performance-profiling.md) | criterion/flamegraph/perf/dhat/tokio-console | The Rust Performance Book |
+| 29 | [Actor 框架](29-actor-frameworks.md) | RActor/Actix/监督树/分布式 | RActor/Actix 官方 |
+| 30 | [Rust↔Java JNI](30-rust-java-jni.md) | JNI/cdylib/JavaVM/异常/类型映射 | jni-0.22.4 官方（完整） |
 
 ---
 
@@ -150,7 +157,16 @@ cargo fmt        # 格式化
 | 2024-02-28 | 新增 Rust错误处理知识手册.md、Rust泛型Trait与生命周期知识手册.md |
 | 2024-03-01 | 新增 Rust学习路线图与计划书.md、Rust集合类型与迭代器手册.md、Rust模块系统与包管理手册.md、Rust测试与文档手册.md、Rust快速参考手册.md |
 | 2026-09-02 | **编号化整合**：原 17 篇基础手册重命名为 01-16；新增进阶官方文档 17-23（并发/异步/宏/Cargo/unsafe-FFI/Web 框架/跨语言对照），与 typescript/nest/react/nextjs/vue/java/node 系列统一风格 |
+| 2026-09-02 | **扩展补充**：新增 24-30（Rustlings/WASM/过程宏实战/嵌入式 RTIC/性能剖析/Actor/JNI 互操作），rust 目录共 30 篇完整覆盖入门→专家→跨语言集成 |
 
 ---
+
+## 📊 目录状态：已完整覆盖
+
+`技术文档/rust` 共 **30 篇**，链路：学习路线(01) → 速查(02) → 基础手册(03-16) → 并发/异步/宏(17-19) → Cargo/unsafe-FFI/Web(20-22) → 跨语言对照(23) → 进阶实战(24-30)。
+
+至此与 `技术文档/` 下 **typescript(16)/nest(9)/react(16)/nextjs(16)/vue(13)/java(25)/node(15)/rust(30)** 八个目录共同构成完整的技术求职复习体系。
+
+> 如需在 rust 目录新增其他主题（如 async-graphql、tonic gRPC、Redis/SQLx 深入、CLI 框架 clap/ratatui、游戏开发 Bevy、Linux 内核 Rust），告知即可。
 
 祝学习愉快！🦀
