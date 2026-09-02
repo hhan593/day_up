@@ -21,6 +21,10 @@
 | 10 | `built-in-components.md` | Teleport / Suspense / Transition | /guide/built-ins/teleport（余为标准补充） |
 | 11 | `routing-vue-router.md` | Vue Router 4：routes / RouterView / 守卫 | router.vuejs.org/guide |
 | 12 | `state-pinia.md` | Pinia：defineStore / state-getters-actions | pinia.vuejs.org/introduction |
+| 14 | `14-composition-api-deep.md` | Composition API 深入：Proxy 响应式 / `<script setup>` / composable | /guide/reusability/composables |
+| 15 | `15-vue3-performance.md` | 性能优化：静态提升 / PatchFlag / shallowRef / markRaw | /guide/best-practices/performance |
+| 16 | `16-vue3-ssr-nuxt.md` | SSR 与 Nuxt 3：`createSSRApp` / `useFetch` | vuejs.org/guide/scaling-up/ssr、nuxt.com |
+| 17 | `17-vue3-testing-ecosystem.md` | 测试与生态：Vitest / Test Utils / VueUse | test-utils.vuejs.org |
 | 13 | `README.md` | 本索引 | — |
 
 ---
