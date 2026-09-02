@@ -50,6 +50,34 @@
 | 28 | [性能剖析](28-performance-profiling.md) | criterion/flamegraph/perf/dhat/tokio-console | The Rust Performance Book |
 | 29 | [Actor 框架](29-actor-frameworks.md) | RActor/Actix/监督树/分布式 | RActor/Actix 官方 |
 | 30 | [Rust↔Java JNI](30-rust-java-jni.md) | JNI/cdylib/JavaVM/异常/类型映射 | jni-0.22.4 官方（完整） |
+| 31 | [async-graphql](31-async-graphql.md) | Schema/Object/Query/Mutation/Subscription/axum 集成 | async-graphql 官方书 |
+| 32 | [tonic gRPC](32-tonic-grpc.md) | proto/tonic-build/Server/Client/Streaming/tokio | tonic-0.14.6 官方（完整） |
+| 33 | [CLI clap/ratatui](33-cli-clap-ratatui.md) | clap derive/子命令/ratatui TUI | clap-4.6.6 官方（完整） |
+| 34 | [Bevy 游戏](34-bevy-game.md) | ECS/Entity/Component/System/Plugin/Event | Bevy 官方书（目录式） |
+| 35 | [Linux 内核 Rust](35-linux-kernel-rust.md) | 内核 Rust/abstractions/bindgen/Opaque | Linux Kernel Rust 6.12 官方 |
+| 36 | [Redis/SQLx 深入](36-data-redis-sqlx.md) | redis-rs/sqlx query!/PgPool/事务/PubSub | redis-1.6.0 + sqlx-0.9.0 官方（完整） |
+| 37 | [Actix Web 深入](37-actix-web-deep.md) | Handler/extractors/middleware/state/WebSocket/测试 | Actix Web 官方（目录式） |
+| 38 | [WASM 前端](38-wasm-frontend-leptos-yew.md) | Leptos signals/server-fn / Yew html! / SSR+hdyration | Leptos 官方 + Yew（标注） |
+| 39 | [Tokio 深度](39-tokio-deep.md) | Runtime/Scheduler/I-O driver/spawn_blocking/sync | tokio-1.53.1 官方（完整） |
+| 40 | [Serde 内部](40-serde-internals.md) | 四大 trait/derive/数据格式/零开销/零拷贝 | serde-1.0.229 官方（完整） |
+| 41 | [Rust 编译模型](41-rustc-compiler-model.md) | HIR→MIR/borrow check/NLL/LLVM/LTO | Rustc Dev Guide（MIR 完整） |
+| 42 | [分布式 tonic 集群](42-tonic-distributed.md) | LB/服务发现/拦截器/重试/可观测/与 MQ 结合 | tonic-0.14.6 + gRPC 标准 |
+| 43 | [Rayon 数据并行](43-rayon-data-parallel.md) | par_iter/join/par_sort/ThreadPoolBuilder | rayon-1.12.0 官方（完整） |
+| 44 | [Tower 中间件](44-tower-middleware.md) | Service/Layer/ServiceBuilder/timeout/retry/limit | tower-0.5.3 官方（完整） |
+| 45 | [WASM 优化实战](45-wasm-optimization.md) | 体积/TypedArray 零拷贝/多线程/twiggy | 官方结构 + 标准实践 |
+| 46 | [Postgres 深入](46-postgres-deep.md) | sqlx/PgPool/query_as!/事务/迁移/JSONB | sqlx-0.9.0 官方（完整） |
+| 47 | [RActor 集群](47-ractor-cluster.md) | Actor/Msg/State/handle/监督树/cluster RPC | ractor-0.16.5 官方（完整） |
+| 48 | [内核驱动实战](48-kernel-driver-practice.md) | module!/platform::Driver/probe/devres | Rust-for-Linux 官方（结构） |
+| 49 | [tracing 可观测性](49-tracing-observability.md) | Span/Event/Subscriber/#[instrument]/OTel | tracing-0.1.44 官方（完整） |
+| 50 | [Wasmtime 与 WASI](50-wasmtime-wasi.md) | Engine/Store/Linker/Module/fuel/epoch/AOT | wasmtime-48.0.1 官方（完整） |
+| 51 | [测试进阶](51-testing-advanced.md) | proptest/criterion/mockall/覆盖率 | proptest-1.11.0 官方（完整） |
+| 52 | [rustls 与密码学](52-rustls-crypto.md) | TLS/Arc 复用/mTLS/Argon2/AES-GCM/Ed25519 | rustls + RustCrypto（结构+实践） |
+| 53 | [no_std 与嵌入式](53-no-std-embedded.md) | core/alloc/embedded-hal/Embassy/defmt | embedded-hal + Embassy（结构） |
+| 54 | [交叉编译与发布](54-cross-compile-release.md) | target triple/musl/cross/zigbuild/cargo-dist | Rust 官方 + cross（结构+实践） |
+| 55 | [异步运行时生态选型](55-async-runtime-ecosystem.md) | tokio/smol/glommio/monoio/Embassy/async-compat | async-std 1.13.2 官方声明（完整）⚠️已停维 |
+| 56 | [WASM 组件模型](56-wasm-component-model.md) | WIT/Component/cargo-component/wac compose/WASIp2 | wasmtime 48 官方 component 模块 |
+| 57 | [wgpu GPU 计算](57-wgpu-gpu-computing.md) | Instance/Device/ComputePipeline/WGSL/深度[0,1]/HDR | wgpu-30.0.1 官方（完整） |
+| 58 | [unsafe 审计与 Miri](58-unsafe-audit-miri.md) | UB 清单/# Safety 契约/Miri/ASan-TSan/Loom/cargo-geiger | Rust Reference + Miri 官方 |
 
 ---
 
@@ -158,15 +186,20 @@ cargo fmt        # 格式化
 | 2024-03-01 | 新增 Rust学习路线图与计划书.md、Rust集合类型与迭代器手册.md、Rust模块系统与包管理手册.md、Rust测试与文档手册.md、Rust快速参考手册.md |
 | 2026-09-02 | **编号化整合**：原 17 篇基础手册重命名为 01-16；新增进阶官方文档 17-23（并发/异步/宏/Cargo/unsafe-FFI/Web 框架/跨语言对照），与 typescript/nest/react/nextjs/vue/java/node 系列统一风格 |
 | 2026-09-02 | **扩展补充**：新增 24-30（Rustlings/WASM/过程宏实战/嵌入式 RTIC/性能剖析/Actor/JNI 互操作），rust 目录共 30 篇完整覆盖入门→专家→跨语言集成 |
+| 2026-09-02 | **生态扩展**：新增 31-36（async-graphql/tonic gRPC/clap+ratatui/Bevy 游戏/Linux 内核 Rust/Redis+SQLx 数据层），rust 目录共 36 篇 |
+| 2026-09-02 | **框架/运行时/编译深挖**：新增 37-42（actix-web/Leptos+Yew WASM 前端/tokio 深度/Serde 内部/Rust 编译模型+LLVM/分布式 tonic 集群），rust 目录共 42 篇 |
+| 2026-09-02 | **并行数据/中间件/内核深挖**：新增 43-48（Rayon 数据并行/tower 中间件/ WASM 优化实战/Rust+Postgres 深入/RActor 集群/Actor 实战/内核 Rust 驱动实战），rust 目录共 48 篇 |
+| 2026-09-02 | **可观测/运行时/工程化**：新增 49-54（tracing 可观测性/Wasmtime+WASI/proptest+criterion+mockall 测试进阶/rustls 与密码学/no_std 与嵌入式 Embassy/交叉编译与发布），rust 目录共 54 篇 |
+| 2026-09-02 | **运行时选型/组件模型/GPU/安全审计**：新增 55-58（异步运行时生态选型 + ⚠️async-std 已停维改用 smol、WASM 组件模型与 WIT、wgpu 30 GPU 计算、unsafe 审计与 Miri），rust 目录共 58 篇 |
 
 ---
 
 ## 📊 目录状态：已完整覆盖
 
-`技术文档/rust` 共 **30 篇**，链路：学习路线(01) → 速查(02) → 基础手册(03-16) → 并发/异步/宏(17-19) → Cargo/unsafe-FFI/Web(20-22) → 跨语言对照(23) → 进阶实战(24-30)。
+`技术文档/rust` 共 **58 篇**，链路：学习路线(01) → 速查(02) → 基础手册(03-16) → 并发/异步/宏(17-19) → Cargo/unsafe-FFI/Web(20-22) → 跨语言对照(23) → 进阶实战(24-30) → 生态扩展(31-36) → 框架/运行时/编译深挖(37-42) → 并行/中间件/内核实战(43-48) → 可观测/WASM 运行时/工程化(49-54) → 选型/组件模型/GPU/安全(55-58)。
 
-至此与 `技术文档/` 下 **typescript(16)/nest(9)/react(16)/nextjs(16)/vue(13)/java(25)/node(15)/rust(30)** 八个目录共同构成完整的技术求职复习体系。
+至此与 `技术文档/` 下 typescript(20) / nest(13) / react(20) / nextjs(20) / vue(17) / java(30) / node(20) / go(20) / rust(58) / Three.js(22) 等目录共同构成完整的技术求职复习体系。
 
-> 如需在 rust 目录新增其他主题（如 async-graphql、tonic gRPC、Redis/SQLx 深入、CLI 框架 clap/ratatui、游戏开发 Bevy、Linux 内核 Rust），告知即可。
+> 如需在 rust 目录新增其他主题（如 Rust+GPU 计算进阶、wasm 组件模型组合深入、形式化验证 Kani），告知即可。
 
 祝学习愉快！🦀
