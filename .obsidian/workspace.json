@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/go/04-types-interfaces-generics.md",
+                "file": "技术文档/nest/decorator-summary.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04-types-interfaces-generics"
+              "title": "decorator-summary"
             }
           }
         ]
@@ -198,6 +198,19 @@
   },
   "active": "dd812f3372d742f9",
   "lastOpenFiles": [
+    "mac-ssh-access-guide.md",
+    "git-directory-account-guide.md",
+    "distributor-api.md",
+    "技术文档/nest/decorator-summary.md",
+    "技术文档/go/README.md",
+    "技术文档/go/05-errors-defer-tests.md",
+    "技术文档/go/04-types-interfaces-generics.md",
+    "技术文档/go/03-basic-syntax.md",
+    "技术文档/go/01-what-is-go.md",
+    "技术文档/go/09-http-api-net-http.md",
+    "技术文档/go/07-ecosystem-roadmap.md",
+    "技术文档/go/02-project-and-modules.md",
+    "00-用Nest官方Monorepo搭建全栈骨架.md",
     "技术文档/nest/10-全流程/12-RxJS核心概念与API详解.md",
     "技术文档/nest/10-全流程/11-NestJS学习架构图.md",
     "技术文档/nest/10-全流程/10-NestJS请求到写入数据全流程.md",
@@ -211,21 +224,8 @@
     "技术文档/nest/10-全流程/02-NestJS中间件类与函数式对比.md",
     "技术文档/nest/10-全流程/01-NestJS-AOP面向切面编程.md",
     "技术文档/nest/10-全流程/00-用Nest官方Monorepo搭建全栈骨架.md",
-    "技术文档/nest/10-全流程/14-NestJS动态模块.md",
     "技术文档/nest/10-全流程",
     "技术文档/nest/新建文件夹",
-    "技术文档/go/04-types-interfaces-generics.md",
-    "技术文档/go/02-project-and-modules.md",
-    "技术文档/go/01-what-is-go.md",
-    "技术文档/rust/01-基础核心/01-环境安装与HelloWorld.md",
-    "技术文档/rust/00-学习指南/02-Rust快速参考手册.md",
-    "技术文档/rust/00-学习指南/01-Rust学习路线图与计划书.md",
-    "技术文档/rust/17-concurrency-parallel.md",
-    "技术文档/rust/02-进阶特性/23-cross-lang-comparison.md",
-    "技术文档/rust/02-进阶特性/22-web-framework-axum.md",
-    "技术文档/rust/02-进阶特性/21-unsafe-ffi.md",
-    "技术文档/rust/02-进阶特性/20-cargo-advanced.md",
-    "技术文档/rust/02-进阶特性/19-macros.md",
     "技术文档/rust/补充知识点",
     "技术文档/rust/08-动手项目",
     "技术文档/rust/07-前沿安全",
