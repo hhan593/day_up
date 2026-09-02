@@ -43,6 +43,27 @@
 
 ---
 
+## 顶层整合专题（生产实战向）
+
+> 以上 1–14 章为框架知识点；子目录 `01-overview/` `01-fundamentals/` `02-techniques/` `03-security/` `04-microservices/` `05-websockets/` `06-graphql/` `07-testing/` `08-cli/` `09-recipes/` 为官方分主题文档。
+> 以下 4 篇是**整合向生产专题**，把分散知识点串成可落地的完整方案：
+
+| 文档 | 主题 | 要点 |
+|------|------|------|
+| [10-认证鉴权实战](./10-认证鉴权实战.md) | JWT + Refresh Token 完整方案 | access(15m, Bearer) + refresh(7d, httpOnly Cookie + Redis 记录 + 轮换)、Passport Strategy、全局 `JwtAuthGuard` + `@Public()`、`RolesGuard` 授权、throttler 限流 |
+| [11-性能优化与缓存体系](./11-性能优化与缓存体系.md) | 五层优化 + 缓存三防 | CDN/HTTP 缓存 → `@nestjs/cache-manager`+Redis → 序列化裁剪 → 数据库(索引/防 N+1/批量) → 运行时(并行化/Fastify/限流)；防穿透/击穿/雪崩；`prom-client` 埋 P95 |
+| [12-测试体系](./12-测试体系.md) | 单元 / 集成 / E2E | `Test.createTestingModule()` + `overrideProvider/Guard`；Testcontainers 起真实 DB/Redis；Supertest E2E；事务回滚隔离；覆盖率门禁 |
+| [13-生产部署与运维](./13-生产部署与运维.md) | Docker / K8s / PM2 | 多阶段构建(alpine+非 root+`--omit=dev`+`dumb-init`)、Joi 配置校验、`@nestjs/terminus` 双探针、`enableShutdownHooks` 优雅关停、pino 结构化日志、K8s Deployment/HPA/Secret |
+
+### 学习顺序建议
+
+1. 框架基础：`01-overview/` → `01-fundamentals/`（模块/DI/守卫/拦截器/管道/过滤器）
+2. 常用技术：`02-techniques/`（缓存/验证/序列化/日志/队列/任务/文件上传）
+3. 进阶能力：`04-microservices/` `05-websockets/` `06-graphql/` `03-security/`
+4. **生产落地**：`10` 认证 → `11` 性能 → `12` 测试 → `13` 部署
+
+---
+
 ## 1. 框架概述
 
 ### 什么是 NestJS
