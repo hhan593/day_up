@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "3f5e1138882bd077",
+        "id": "c09a9439c24100d0",
         "type": "tabs",
         "children": [
           {
-            "id": "1076ecb1af75ffb6",
+            "id": "a44e61cda4d80fed",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "技术文档/rust/01-基础核心/03-所有权与移动语义.md",
-                "mode": "preview",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "03-所有权与移动语义"
+              "title": "新标签页"
             }
           }
         ]
@@ -196,10 +192,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a23aa1c6a370bb77",
+  "active": "a44e61cda4d80fed",
   "lastOpenFiles": [
-    "技术文档/rust/01-基础核心/03-所有权与移动语义.md",
     "conflict-files-obsidian-git.md",
+    "技术文档/rust/01-基础核心/03-所有权与移动语义.md",
     "技术文档/rust/01-基础核心/02-变量常量与标量类型.md",
     "技术文档/nest/decorator-summary.md",
     "mac-ssh-access-guide.md",
