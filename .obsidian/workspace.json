@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/nest/decorator-summary.md",
+                "file": "技术文档/rust/01-基础核心/03-所有权与移动语义.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "decorator-summary"
+              "title": "03-所有权与移动语义"
             }
           }
         ]
@@ -196,12 +196,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "dd812f3372d742f9",
+  "active": "a23aa1c6a370bb77",
   "lastOpenFiles": [
+    "技术文档/rust/01-基础核心/03-所有权与移动语义.md",
+    "conflict-files-obsidian-git.md",
+    "技术文档/rust/01-基础核心/02-变量常量与标量类型.md",
+    "技术文档/nest/decorator-summary.md",
     "mac-ssh-access-guide.md",
     "git-directory-account-guide.md",
     "distributor-api.md",
-    "技术文档/nest/decorator-summary.md",
     "技术文档/go/README.md",
     "技术文档/go/05-errors-defer-tests.md",
     "技术文档/go/04-types-interfaces-generics.md",
@@ -221,9 +224,6 @@
     "技术文档/nest/10-全流程/05-NestJS异常过滤器与校验管道协作机制.md",
     "技术文档/nest/10-全流程/04-NestJS管道用法.md",
     "技术文档/nest/10-全流程/03-NestJS守卫知识点.md",
-    "技术文档/nest/10-全流程/02-NestJS中间件类与函数式对比.md",
-    "技术文档/nest/10-全流程/01-NestJS-AOP面向切面编程.md",
-    "技术文档/nest/10-全流程/00-用Nest官方Monorepo搭建全栈骨架.md",
     "技术文档/nest/10-全流程",
     "技术文档/nest/新建文件夹",
     "技术文档/rust/补充知识点",
