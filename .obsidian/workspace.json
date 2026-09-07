@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "c09a9439c24100d0",
+        "id": "b6ab8b49a43363b5",
         "type": "tabs",
         "children": [
           {
-            "id": "a44e61cda4d80fed",
+            "id": "7b83d7db1030840b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/rust/01-基础核心/06-枚举与模式匹配.md",
-                "mode": "source",
+                "file": "技术文档/rust/01-基础核心/02-变量常量与标量类型.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "06-枚举与模式匹配"
+              "title": "02-变量常量与标量类型"
             }
           }
         ]
@@ -80,7 +80,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3bd0fb1b110dccd6",
@@ -182,7 +183,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 348.5
+    "width": 348.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -196,36 +198,34 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a44e61cda4d80fed",
+  "active": "7b83d7db1030840b",
   "lastOpenFiles": [
-    "技术文档/rust/01-基础核心/05-结构体与方法.md",
-    "技术文档/rust/01-基础核心/04-借用与引用.md",
-    "技术文档/rust/01-基础核心/03-所有权与移动语义.md",
-    "conflict-files-obsidian-git.md",
-    "技术文档/rust/01-基础核心/02-变量常量与标量类型.md",
     "技术文档/nest/decorator-summary.md",
-    "mac-ssh-access-guide.md",
-    "git-directory-account-guide.md",
-    "distributor-api.md",
-    "技术文档/go/README.md",
-    "技术文档/go/05-errors-defer-tests.md",
-    "技术文档/go/04-types-interfaces-generics.md",
-    "技术文档/go/03-basic-syntax.md",
-    "技术文档/go/01-what-is-go.md",
-    "技术文档/go/09-http-api-net-http.md",
-    "技术文档/go/07-ecosystem-roadmap.md",
-    "技术文档/go/02-project-and-modules.md",
-    "00-用Nest官方Monorepo搭建全栈骨架.md",
-    "技术文档/nest/10-全流程/12-RxJS核心概念与API详解.md",
-    "技术文档/nest/10-全流程/11-NestJS学习架构图.md",
-    "技术文档/nest/10-全流程/10-NestJS请求到写入数据全流程.md",
-    "技术文档/nest/10-全流程/09-NestJS模块共享Service.md",
-    "技术文档/nest/10-全流程/08-NestJS自定义提供者知识点.md",
-    "技术文档/nest/10-全流程/07-NestJS依赖注入与过滤器注入.md",
-    "技术文档/nest/10-全流程/06-NestJS装饰器与自定义装饰器.md",
-    "技术文档/nest/10-全流程/05-NestJS异常过滤器与校验管道协作机制.md",
-    "技术文档/nest/10-全流程",
-    "技术文档/nest/新建文件夹",
+    "技术文档/rust/01-基础核心/01-环境安装与HelloWorld.md",
+    "conflict-files-obsidian-git.md",
+    "技术文档/vue/vue3/17-vue3-testing-ecosystem.md",
+    "技术文档/vue/vue3/16-vue3-ssr-nuxt.md",
+    "技术文档/vue/vue3/15-vue3-performance.md",
+    "技术文档/vue/vue3/14-composition-api-deep.md",
+    "技术文档/typescript/README.md",
+    "技术文档/typescript/20-tsx-and-runtime.md",
+    "技术文档/typescript/19-types-vs-rust.md",
+    "技术文档/typescript/18-decorators-deep.md",
+    "技术文档/typescript/17-engineering-tsup-vitest.md",
+    "技术文档/rust/补充知识点/16-Option 与 Result 深度解析.md",
+    "技术文档/rust/补充知识点/15-Rust智能指针知识手册.md",
+    "技术文档/rust/补充知识点/14-Rust迭代器知识手册.md",
+    "技术文档/rust/补充知识点/13-Rust闭包知识手册.md",
+    "技术文档/rust/补充知识点/12-Rust_Trait知识手册.md",
+    "技术文档/rust/补充知识点/11-Rust测试与文档手册.md",
+    "技术文档/rust/补充知识点/10-Rust模块系统与包管理手册.md",
+    "技术文档/rust/补充知识点/09-Rust集合类型与迭代器手册.md",
+    "技术文档/rust/补充知识点/08-Rust错误处理知识手册.md",
+    "技术文档/rust/补充知识点/07-Rust泛型Trait与生命周期知识手册.md",
+    "技术文档/rust/补充知识点/06-Rust_String知识手册.md",
+    "技术文档/rust/补充知识点/05-借用与引用.md",
+    "技术文档/rust/补充知识点/04-枚举与模式匹配.md",
+    "技术文档/rust/补充知识点/03-结构体语法.md",
     "技术文档/rust/补充知识点",
     "技术文档/rust/08-动手项目",
     "技术文档/rust/07-前沿安全",
@@ -234,9 +234,11 @@
     "技术文档/rust/04-框架运行时",
     "技术文档/rust/03-实战生态",
     "技术文档/rust/02-进阶特性",
+    "技术文档/rust/01-基础核心",
+    "技术文档/rust/00-学习指南",
     "技术文档/nest/images/NestJS请求到写入数据全流程示意图.png",
     "技术文档/nest/images/NestJS学习架构示意图.png",
-    "技术文档/新建笔记/111.png",
+    "技术文档/vue/vue-core/packages-private/sfc-playground/public/logo.svg",
     "Pasted image 20260515153549.png",
     "Pasted image 20260515153414.png",
     "e64e07232fc0056fbed1f906f9d47782.png",
