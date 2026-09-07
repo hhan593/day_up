@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/rust/01-基础核心/03-所有权与移动语义.md",
+                "file": "技术文档/rust/01-基础核心/04-借用与引用.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03-所有权与移动语义"
+              "title": "04-借用与引用"
             }
           }
         ]
@@ -198,8 +198,8 @@
   },
   "active": "a44e61cda4d80fed",
   "lastOpenFiles": [
-    "conflict-files-obsidian-git.md",
     "技术文档/rust/01-基础核心/03-所有权与移动语义.md",
+    "conflict-files-obsidian-git.md",
     "技术文档/rust/01-基础核心/02-变量常量与标量类型.md",
     "技术文档/nest/decorator-summary.md",
     "mac-ssh-access-guide.md",
