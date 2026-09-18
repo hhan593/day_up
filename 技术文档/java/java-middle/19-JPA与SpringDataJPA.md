@@ -121,7 +121,7 @@ public class UserService {
 }
 ```
 
-- `@Transactional`：声明事务边界（Spring AOP 代理，见 `14-spring-core.md`）。
+- `@Transactional`：声明事务边界（Spring AOP 代理，见 `14-Spring核心IoC与AOP.md`）。
 
 ---
 
@@ -150,4 +150,4 @@ public class UserService {
 
 - 底层是 JDBC（18）；事务靠 Spring `@Transactional`（13/14）。
 - 对比 Nest（TypeORM/Prisma，见 `技术文档/nest`）：TypeORM 的 `@Entity`/`@Column` 直接借鉴 JPA 注解风格。
-- 关联懒加载 / N+1 与虚拟线程并发（`10-virtual-threads.md`）配合可缓解 IO 等待。
+- 关联懒加载 / N+1 与虚拟线程并发（`10-虚拟线程.md`）配合可缓解 IO 等待。

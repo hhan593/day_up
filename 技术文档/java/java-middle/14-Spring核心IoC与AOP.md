@@ -151,6 +151,6 @@ public class LogAspect {
 
 ## 七、与系列其他文档的关系
 
-- Spring Boot 在其上封装自动配置 → `13-spring-boot.md`
+- Spring Boot 在其上封装自动配置 → `13-SpringBoot.md`
 - 对比 Nest（TS，见 `技术文档/nest`）：Nest 的 `@Injectable()`、`@Module`、拦截器、`@UseGuards` 与 Spring 的 `@Component`、AOP、拦截器高度对应；Nest 借鉴了 Spring 的设计。
 - AOP 与 Java 注解机制相关，但 AOP 是运行时代理，不同于编译期注解处理。

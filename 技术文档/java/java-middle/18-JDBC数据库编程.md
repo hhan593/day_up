@@ -35,7 +35,7 @@ try (Connection conn = DriverManager.getConnection(url, user, pwd)) {
 
 - JDBC 4.0+ 驱动通过 SPI 自动注册，**无需 `Class.forName("com.mysql.cj.jdbc.Driver")`**。
 - URL 格式：`jdbc:<子协议>:<子名称>`，如 `jdbc:mysql://host:port/db`、`jdbc:postgresql://...`、`jdbc:h2:mem:test`。
-- 生产环境应用**连接池**（HikariCP / Druid），而非每次 `DriverManager.getConnection`（见 `13-spring-boot.md` 数据源自动配置）。
+- 生产环境应用**连接池**（HikariCP / Druid），而非每次 `DriverManager.getConnection`（见 `13-SpringBoot.md` 数据源自动配置）。
 
 ---
 
@@ -139,6 +139,6 @@ try (PreparedStatement ps = conn.prepareStatement("INSERT INTO t(a) VALUES(?)"))
 ## 七、与系列其他文档的关系
 
 - JDBC 是 JPA / MyBatis 的底层，本篇是 19/20 的基础。
-- Spring 的 `JdbcTemplate` 封装了 JDBC 样板（`13-spring-boot.md`）；`DataSource` 由连接池提供。
+- Spring 的 `JdbcTemplate` 封装了 JDBC 样板（`13-SpringBoot.md`）；`DataSource` 由连接池提供。
 - 对比其他语言：JDBC ≈ Python `DB-API` / Node `mysql2` 驱动，但 Java 强类型、`ResultSet` 游标式。
-- 并发执行 DB 操作时配合虚拟线程（`10-virtual-threads.md`）可提升吞吐。
+- 并发执行 DB 操作时配合虚拟线程（`10-虚拟线程.md`）可提升吞吐。

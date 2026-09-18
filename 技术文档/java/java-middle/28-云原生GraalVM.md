@@ -1,6 +1,6 @@
 # 28. Java 云原生（GraalVM / Spring Native）
 
-> 来源可信度：**官方文档确认**（基于 GraalVM Native Image、Spring Boot Native 官方文档；与 `13-spring-boot.md` 衔接）
+> 来源可信度：**官方文档确认**（基于 GraalVM Native Image、Spring Boot Native 官方文档；与 `13-SpringBoot.md` 衔接）
 > 关联：Go `18-web-framework-gin-echo.md`（Go 原生二进制对照）
 
 ## 1. 为什么云原生 Java

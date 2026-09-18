@@ -107,7 +107,7 @@ record Const(int value) implements Expr { }
 record Add(Expr left, Expr right) implements Expr { }
 ```
 
-> 配合模式匹配 switch 可写出极简求值器，见 `09-sealed-pattern-matching.md`。
+> 配合模式匹配 switch 可写出极简求值器，见 `09-密封类与模式匹配.md`。
 
 ---
 
@@ -116,4 +116,4 @@ record Add(Expr left, Expr right) implements Expr { }
 - 对比 TS：Record 类似 `type Point = { readonly x: number; readonly y: number }` 但更省代码；
   访问器 `length()` 而非 `getLength()`（Lombok 习惯）。
 - 对比 Kotlin：`data class`；对比 C#：`record`（C# 12 也有）。
-- 替代大量 DTO / 值对象样板，是 Java 现代化的重要一环 → 见 `11-new-features-java8-21.md`。
+- 替代大量 DTO / 值对象样板，是 Java 现代化的重要一环 → 见 `11-Java8到21新特性.md`。

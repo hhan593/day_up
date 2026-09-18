@@ -94,7 +94,7 @@ switch (day) {
     default: System.out.println("weekend");
 }
 ```
-> Java 21 起 switch 支持**类型模式 + `when` 守卫 + `case null`**，见 `09-sealed-pattern-matching.md`。
+> Java 21 起 switch 支持**类型模式 + `when` 守卫 + `case null`**，见 `09-密封类与模式匹配.md`。
 
 ### 2. 循环
 ```java
@@ -140,8 +140,8 @@ System.out.println(Arrays.toString(copy));
 
 ## 六、与系列其他文档的关系
 
-- 面向对象（类/接口/继承）→ `03-oop-classes-objects.md`
-- 错误处理 → `04-exceptions.md`
+- 面向对象（类/接口/继承）→ `03-面向对象类与对象.md`
+- 错误处理 → `04-异常处理.md`
 - 现代特性（Record / 模式匹配 / 虚拟线程）→ `08 ~ 11`
 - 对比：Java 数组类似 TS `number[]`、Python `list`，但**定长且同类型**；
   `instanceof` 类似 TS 类型守卫，但 Java 需显式强转（模式匹配后免强转，见 09）。

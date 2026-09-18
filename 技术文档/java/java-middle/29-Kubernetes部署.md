@@ -1,6 +1,6 @@
 # 29. Java 与 Kubernetes 部署
 
-> 来源可信度：**标准实践**（基于 K8s 官方文档 + Spring Boot 生产就绪特性；与 `28-cloud-native.md`/`23-redis-cache.md` 衔接）
+> 来源可信度：**标准实践**（基于 K8s 官方文档 + Spring Boot 生产就绪特性；与 `28-云原生GraalVM.md`/`23-Redis缓存.md` 衔接）
 > 关联：Next `18-deployment.md`、Go `12-project-layout.md`
 
 ## 1. 容器化 Spring Boot
@@ -13,7 +13,7 @@ EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
 
-- 用 `eclipse-temurin` 官方 JRE 镜像；配合 `28-cloud-native.md` 可换 Native 镜像。
+- 用 `eclipse-temurin` 官方 JRE 镜像；配合 `28-云原生GraalVM.md` 可换 Native 镜像。
 
 ## 2. 生产就绪：Actuator
 
@@ -45,7 +45,7 @@ resources:
 ## 4. 配置与密钥
 
 - 外部化配置：`ConfigMap` + `Secret`，通过 env/volume 注入（Spring 读 `SPRING_*` env）。
-- 不用硬编码，遵守 `13-spring-boot.md` 的外部化配置原则。
+- 不用硬编码，遵守 `13-SpringBoot.md` 的外部化配置原则。
 
 ## 5. 弹性与伸缩
 

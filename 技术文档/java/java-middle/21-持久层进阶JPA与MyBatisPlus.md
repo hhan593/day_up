@@ -168,6 +168,6 @@ public List<User> listFromSlave() { return userMapper.selectList(null); }
 ## 六、与系列其他文档的关系
 
 - 基础：JDBC（18）/ JPA（19）/ MyBatis（20）。
-- 审计依赖安全上下文 → `22-spring-security.md`。
+- 审计依赖安全上下文 → `22-SpringSecurity与OAuth2与JWT.md`。
 - 多数据源常配读写分离，与缓存（23）、消息队列（24）配合。
 - 对比 Nest（TypeORM，见 `技术文档/nest`）：TypeORM 的 `@CreateDateColumn` 等价于 JPA 审计；Nest 无内置逻辑删除注解。

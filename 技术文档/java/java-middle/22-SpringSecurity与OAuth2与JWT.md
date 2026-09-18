@@ -148,5 +148,5 @@ public class OrderService {
 
 - 认证才能取 `AuditorAware`（21 篇审计用当前用户）。
 - 对比 Nest（Passport/JWT，见 `技术文档/nest`）：Nest 的 `@UseGuards()` + JWT 策略与 Spring `@PreAuthorize` + 资源服务器高度对应。
-- 网关统一鉴权见 `24-消息队列-微服务.md`；Token 存入 Redis 见 `23-redis-cache.md`。
+- 网关统一鉴权见 `24-消息队列-微服务.md`；Token 存入 Redis 见 `23-Redis缓存.md`。
 - 密码哈希 BCrypt 与前端无直接关系，是后端职责。

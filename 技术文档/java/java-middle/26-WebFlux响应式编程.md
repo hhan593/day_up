@@ -1,6 +1,6 @@
 # 26. Spring WebFlux 响应式编程
 
-> 来源可信度：**官方文档确认**（基于 Spring WebFlux 官方文档；与 `10-virtual-threads.md`/`14-spring-core.md` 衔接）
+> 来源可信度：**官方文档确认**（基于 Spring WebFlux 官方文档；与 `10-虚拟线程.md`/`14-Spring核心IoC与AOP.md` 衔接）
 > 关联：Go `16-grpc-microservices.md`、Rust `18-async-await.md`
 
 ## 1. 为什么 WebFlux
@@ -55,7 +55,7 @@ public class UserController {
 
 ## 5. WebFlux vs 虚拟线程
 
-| | WebFlux | MVC + 虚拟线程 (`10-virtual-threads.md`) |
+| | WebFlux | MVC + 虚拟线程 (`10-虚拟线程.md`) |
 |---|---------|----------------------------------------|
 | 模型 | 事件循环非阻塞 | 每请求一虚拟线程（阻塞写法） |
 | 心智 | 响应式操作符 | 传统同步代码 |

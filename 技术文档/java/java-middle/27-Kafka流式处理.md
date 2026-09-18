@@ -1,6 +1,6 @@
 # 27. Kafka 与 Java 流式处理
 
-> 来源可信度：**官方文档确认**（基于 Apache Kafka Java Client、Spring Kafka 官方文档；与 `24-messaging-microservices.md` 衔接）
+> 来源可信度：**官方文档确认**（基于 Apache Kafka Java Client、Spring Kafka 官方文档；与 `24-消息队列与微服务.md` 衔接）
 > 关联：Go `19-microservices-messaging.md`
 
 ## 1. Kafka 核心概念
@@ -24,7 +24,7 @@ public void listen(String msg) {
 ```
 
 - `@KafkaListener` 声明式消费；`KafkaTemplate` 发。
-- 与 `24-messaging-microservices.md` 的 Spring Cloud Stream 互补。
+- 与 `24-消息队列与微服务.md` 的 Spring Cloud Stream 互补。
 
 ## 3. 精确一次（Exactly-Once）
 

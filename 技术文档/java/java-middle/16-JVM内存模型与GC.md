@@ -110,6 +110,6 @@ java -XX:+UseG1GC MyApp             # 启用 G1（默认）
 
 ## 八、与系列其他文档的关系
 
-- 并发锁机制见 `15-concurrency-advanced.md`；虚拟线程调度与载体线程见 `10-virtual-threads.md`。
+- 并发锁机制见 `15-并发进阶.md`；虚拟线程调度与载体线程见 `10-虚拟线程.md`。
 - 对比 Go：Go 的 GC 也是并发三色标记、低延迟，但 Go 无分代（1.19 前）；Java ZGC 停顿更可控。
-- Spring 应用 OOM/Full GC 频繁时，本篇是排错起点 → `13-spring-boot.md`
+- Spring 应用 OOM/Full GC 频繁时，本篇是排错起点 → `13-SpringBoot.md`

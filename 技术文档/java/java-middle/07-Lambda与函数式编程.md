@@ -84,7 +84,7 @@ Map<Integer, List<String>> byLen =
 long count = list.parallelStream().filter(s -> s.length() > 2).count();
 ```
 
-> 并行流适合 CPU 密集型大数据；IO 密集型请用虚拟线程（见 `10-virtual-threads.md`）。
+> 并行流适合 CPU 密集型大数据；IO 密集型请用虚拟线程（见 `10-虚拟线程.md`）。
 
 ---
 
@@ -107,7 +107,7 @@ String upper = opt.map(String::toUpperCase).orElse("");
 
 ## 五、与系列其他文档的关系
 
-- Stream 操作集合 → `05-collections-framework.md`
-- Lambda 配合同步代码可简化为虚拟线程 → `10-virtual-threads.md`
+- Stream 操作集合 → `05-集合框架.md`
+- Lambda 配合同步代码可简化为虚拟线程 → `10-虚拟线程.md`
 - 对比 TS：`stream().filter().map()` ≈ `arr.filter().map()`；但 Java Stream 是**一次性、不可复用**的，TS 数组方法返回新数组可链式多次。
 - 对比 JS 的 `Optional`/`?.`：Java 用类型包装强制处理空，TS 用 `?.` 和 `??` 短路。

@@ -156,7 +156,7 @@ class OrderControllerTest {
 
 ## 八、与系列其他文档的关系
 
-- 测试对象常是 Spring Bean → `13-spring-boot.md` / `14-spring-core.md`
-- 并发代码用 JUnit 测线程安全 → `15-concurrency-advanced.md`
+- 测试对象常是 Spring Bean → `13-SpringBoot.md` / `14-Spring核心IoC与AOP.md`
+- 并发代码用 JUnit 测线程安全 → `15-并发进阶.md`
 - 对比其他语言：JUnit ≈ pytest（Python）≈ Jest（JS，见 `技术文档/react` 测试）；JUnit 注解式、`@Nested` 分组是特色。
 - 推荐配合 AssertJ（流式断言）、Mockito（Mock）、Testcontainers（集成测试 DB）。
