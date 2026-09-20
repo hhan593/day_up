@@ -148,6 +148,7 @@ public class UserService {
 
 ## 七、与系列其他文档的关系
 
-- 底层是 JDBC（18）；事务靠 Spring `@Transactional`（13/14）。
+- 底层是 JDBC（18）；**事务本篇只给注解位置** —— 传播行为、回滚规则、`readOnly`/超时、自调用与异常吞掉导致的失效、`@Version` 乐观锁与丢失更新解法全在 `39-Spring事务与传播机制.md`。
+- `@Entity`/`@Table`/`@Column` 的读取靠反射 → `31-反射与注解.md`；Repository 代理与 `FactoryBean` 机制 → `40-Bean生命周期与循环依赖.md`。
 - 对比 Nest（TypeORM/Prisma，见 `技术文档/nest`）：TypeORM 的 `@Entity`/`@Column` 直接借鉴 JPA 注解风格。
 - 关联懒加载 / N+1 与虚拟线程并发（`10-虚拟线程.md`）配合可缓解 IO 等待。

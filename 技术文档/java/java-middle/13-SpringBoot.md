@@ -131,7 +131,9 @@ management.endpoints.web.exposure.include=health,metrics,info
 
 ## 八、与系列其他文档的关系
 
-- Spring Core 的 IoC/DI/AOP 机制见 `14-Spring核心IoC与AOP.md`。
+- Spring Core 的 IoC/DI/AOP 机制见 `14-Spring核心IoC与AOP.md`；**Bean 从定义到销毁的完整流水线、三级缓存与循环依赖**见 `40-Bean生命周期与循环依赖.md`。
+- **本篇只教「怎么写接口」**：请求在框架内部的流转、参数绑定、全局异常、Bean Validation、Filter/拦截器选型、CORS 见 `38-SpringMVC请求流程与Web层.md`。
+- 事务（传播行为、失效场景、乐观锁）见 `39-Spring事务与传播机制.md`。
 - 对比 Nest（TS 后端，见 `技术文档/nest`）：Nest 用 TS 装饰器 + 模块，Spring 用注解 + 自动配置，理念相通（DI、拦截器、异常过滤器）。
 - 对比 Next.js Route Handlers（见 `技术文档/nextjs`）：两者都做 HTTP 接口，Spring 是独立后端服务，Next 是 BFF/全栈。
 - 并发场景用虚拟线程见 `10-虚拟线程.md`；Spring MVC 在 Java 21 下可配虚拟线程执行器提升吞吐。

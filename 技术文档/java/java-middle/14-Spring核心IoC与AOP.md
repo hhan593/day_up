@@ -151,6 +151,9 @@ public class LogAspect {
 
 ## 七、与系列其他文档的关系
 
+- **本篇是用法层**（有哪些注解、怎么注入、怎么写切面）；Bean 从 `BeanDefinition` 到销毁的完整流水线、`BeanPostProcessor`/`BeanFactoryPostProcessor` 两类扩展点、**三级缓存与循环依赖**、三种初始化回调顺序见 `40-Bean生命周期与循环依赖.md`。
+- 声明式事务 `@Transactional` 的传播行为、回滚规则与十条失效清单 → `39-Spring事务与传播机制.md`；Web 层异常与参数校验 → `38-SpringMVC请求流程与Web层.md`。
+- 反射与 JDK/CGLIB 代理机制本身 → `31-反射与注解.md`（AOP 是它的框架级应用）。
 - Spring Boot 在其上封装自动配置 → `13-SpringBoot.md`
 - 对比 Nest（TS，见 `技术文档/nest`）：Nest 的 `@Injectable()`、`@Module`、拦截器、`@UseGuards` 与 Spring 的 `@Component`、AOP、拦截器高度对应；Nest 借鉴了 Spring 的设计。
 - AOP 与 Java 注解机制相关，但 AOP 是运行时代理，不同于编译期注解处理。

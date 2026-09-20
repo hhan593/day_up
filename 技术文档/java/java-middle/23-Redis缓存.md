@@ -139,5 +139,5 @@ if (ok) { try { /* 临界区 */ } finally { releaseLock(); } }
 
 - 缓存注解常与 JPA/MyBatis 配合（21 篇分页结果缓存、19/20 实体缓存）。
 - JWT 注销黑名单存 Redis（22 篇）。
-- 微服务间共享缓存 / 限流见 `24-消息队列-微服务.md`。
+- 微服务间共享缓存 / 限流见 `24-消息队列与微服务.md`。
 - 对比前端：Redis 类似浏览器 `localStorage` 但服务端共享、可过期、结构化；性能关键路径（热点数据）放 Redis 类比 React 的 `useMemo` 记忆化（`技术文档/react`）。
