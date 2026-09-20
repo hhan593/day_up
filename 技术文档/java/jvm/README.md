@@ -1,7 +1,7 @@
 # JVM 与性能调优知识总纲
 
 > 定位：Java 程序运行基石，排查 OOM、GC 停顿、内存泄漏的必备知识，面试高频。
-> 衔接：`java-middle/16-JVM内存模型与GC.md`、`concurrency/README.md`（内存模型差异）、`linux/README.md`（排查命令）。
+> 衔接：`java-middle/16-JVM内存模型与GC.md`（结构与收集器）、`java-middle/37-JVM调优与故障排查.md`（GC Roots/四种引用/类加载与双亲委派/诊断命令与 8 个线上案例，**总纲第六、七、八节的深挖全在那**）、`java-middle/34-并发底层原理JMM与锁.md`（另一个 JMM：并发规范）、`concurrency/README.md`（内存模型差异）、`linux/README.md`（排查命令）。
 
 ---
 

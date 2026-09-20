@@ -1,7 +1,7 @@
 # 分布式系统基础知识总纲
 
 > 定位：多机协作下的核心难题——一致性、可用性、分区容错、锁、ID、幂等。后端进阶必考。
-> 衔接：`microservices/README.md`、`redis/README.md#六分布式锁`、`mq/README.md`（最终一致）、`nacos/README.md`（注册/配置）。
+> 衔接：`microservices/README.md`、`java-middle/39-Spring事务与传播机制.md`（第十二节分布式事务取舍与各方案对比的本地事务前提）、`redis/README.md#六分布式锁`、`mq/README.md`（最终一致）、`nacos/README.md`（注册/配置）。
 
 ---
 

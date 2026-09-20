@@ -1,7 +1,7 @@
 # Spring Boot 知识总纲
 
 > 定位：构建生产级 Spring 应用的事实标准，核心理念是 **约定优于配置（Convention over Configuration）**。
-> 衔接：`java-middle/14-Spring核心IoC与AOP.md`、`java-middle/19-JPA与SpringDataJPA.md`、`java-middle/22-SpringSecurity与OAuth2与JWT.md`。
+> 衔接：`java-middle/14-Spring核心IoC与AOP.md`、`java-middle/40-Bean生命周期与循环依赖.md`（**总纲自动配置原理/Starter 机制的底层：BeanDefinition、`@Import`、两类后置处理器、三级缓存，深挖在 40**）、`java-middle/38-SpringMVC请求流程与Web层.md`（总纲第五、十节 Web 开发与统一异常深挖：请求链路、Bean Validation、全局异常三种、Filter/拦截器/AOP 选型、CORS）、`java-middle/39-Spring事务与传播机制.md`（总纲第七节事务管理深挖：七种传播、十条失效清单、乐观锁）、`java-middle/35-线程池与线程协作.md` + 总纲第八节异步与定时 → `java-middle/39` 第十一节、`java-middle/19-JPA与SpringDataJPA.md`、`java-middle/22-SpringSecurity与OAuth2与JWT.md`、`java-middle/31-反射与注解.md`（注解与代理机制本身）。
 
 ---
 

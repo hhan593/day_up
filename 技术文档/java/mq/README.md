@@ -1,7 +1,7 @@
 # 消息队列（MQ）知识总纲
 
 > 定位：异步解耦、削峰填谷、最终一致，微服务核心中间件。常见：Kafka / RabbitMQ / RocketMQ。
-> 衔接：`java-middle/24-消息队列与微服务.md`、`microservices/README.md#四二异步消息队列`、`distributed/README.md`（最终一致）。
+> 衔接：`java-middle/24-消息队列与微服务.md`（Spring Kafka/RabbitMQ 代码层）、`java-middle/27-Kafka流式处理.md`（Kafka Streams/exactly-once，对应总纲第四、五节）、`java-middle/32-IO与NIO.md`（零拷贝与 sendfile，Kafka 快的根因）、`microservices/README.md#四二异步消息队列`、`distributed/README.md`（最终一致）。
 
 ---
 

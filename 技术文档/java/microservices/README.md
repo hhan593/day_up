@@ -1,7 +1,7 @@
 # 微服务架构知识总纲
 
 > 定位：把单体应用拆分为**可独立开发、部署、伸缩**的小服务，围绕业务能力组织团队。
-> 衔接：`springboot/README.md`（单服务实现）、`nacos/README.md`（注册/配置）、`kubernetes/README.md`（编排）、`docker/README.md`（容器化）。
+> 衔接：`java-middle/24-消息队列与微服务.md`（Spring Cloud 代码层：注册发现/网关/熔断）、`java-middle/30-可观测性.md`（总纲第十节链路追踪深挖）、`springboot/README.md`（单服务实现）、`nacos/README.md`（注册/配置）、`kubernetes/README.md`（编排）、`docker/README.md`（容器化）。
 
 ---
 

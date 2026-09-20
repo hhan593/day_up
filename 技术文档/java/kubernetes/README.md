@@ -1,7 +1,7 @@
 # Kubernetes (K8s) 知识总纲
 
 > 定位：容器编排的事实标准，负责**调度、伸缩、自愈、服务发现、配置与密钥管理**。
-> 衔接：`docker/README.md`（容器）、`springboot/README.md#十一actuator-生产就绪`（探针）、`nacos/README.md`（服务注册）。
+> 衔接：`java-middle/29-Kubernetes部署.md`（Spring Boot 侧的镜像/探针/容器内存落地）、`docker/README.md`（容器）、`springboot/README.md#十一actuator-生产就绪`（探针）、`nacos/README.md`（服务注册）。
 
 ---
 

@@ -1,7 +1,7 @@
 # Java 并发编程知识总纲
 
 > 定位：Java 后端高并发的基石，面试必考。涉及线程、内存模型、锁、线程池、并发容器。
-> 衔接：`java-middle/15-并发进阶.md`、`java-middle/16-JVM内存模型与GC.md`、`distributed/README.md`（分布式并发）。
+> 衔接：`java-middle/15-并发进阶.md`（API 用法）、`java-middle/34-并发底层原理JMM与锁.md`（happens-before/内存屏障/Mark Word 与锁状态/AQS/CAS，**总纲第二、三、四、七节的深挖全在那**）、`java-middle/35-线程池与线程协作.md`（七参数/流程推演/wait-notify/三大同步工具/ThreadLocal 泄漏，对应总纲第五、九节）、`java-middle/36-集合底层源码剖析.md`（并发容器底层，对应总纲第六节）、`java-middle/16-JVM内存模型与GC.md`、`distributed/README.md`（分布式并发）。
 
 ---
 

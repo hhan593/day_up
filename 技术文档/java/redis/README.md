@@ -1,7 +1,7 @@
 # Redis 缓存与分布式锁知识总纲
 
 > 定位：高性能缓存 + 计数器 + 分布式锁 + 消息/排行榜，后端高频组件。
-> 衔接：`java-middle/23-Redis缓存.md`、`springboot/README.md#九缓存抽象`（Spring Cache 接 Redis）、`distributed/README.md`（分布式锁）。
+> 衔接：`java-middle/23-Redis缓存.md`（Spring Data Redis / `@Cacheable` 用法层）、`java-middle/39-Spring事务与传播机制.md`（缓存与 DB 一致性与事务提交时机的配合）、`springboot/README.md#九缓存抽象`（Spring Cache 接 Redis）、`distributed/README.md`（分布式锁）。
 
 ---
 
