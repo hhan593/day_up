@@ -351,7 +351,7 @@ kubectl rollout restart deploy/order-service              # 模板没变也要�
 ```
 `revisionHistoryLimit`（示例里设 5）决定留几份旧 ReplicaSet：**设成 0 就等于放弃了 `rollout undo`**。另外，回滚是「换回旧模板」，旧模板引用的**镜像 tag 必须仍然存在**（`latest` 会让回滚变成玄学，见第二节）。
 
-- 金丝雀/蓝绿在 K8s 里两种做法：**多 Deployment + 同一个 Service 的 label 权重**（副本数即流量比例，简单粗糙但零依赖），或交给服务网格/**Argo Rollouts** 做带指标门禁的渐进式发布。本篇不展开，见 `../15-kubernetes/README.md` 与 `../microservices` 侧内容。
+- 金丝雀/蓝绿在 K8s 里两种做法：**多 Deployment + 同一个 Service 的 label 权重**（副本数即流量比例，简单粗糙但零依赖），或交给服务网格/**Argo Rollouts** 做带指标门禁的渐进式发布。本篇不展开，见 `../15-kubernetes/README.md` 与 `../09-microservices` 侧内容。
 - **「新 Pod ready 就 equal 健康」是最大的错觉**：没有 `readinessProbe`、没有预热就发布 = 把冷 JVM 直接推到线上。相关取舍：`spring.main.lazy-initialization=true` 能把启动时间砍下来，但把成本搬到了**每个 Bean 的首次使用**（第一个真实请求替你付钱，还顺手掩盖启动期本该暴露的 Bean 初始化异常）——只适合本地开发或极低频服务，别当生产加速开关。真正的加速路线是 CDS/AppCDS 与 native image（`28-云原生GraalVM.md`）。
 
 ---
