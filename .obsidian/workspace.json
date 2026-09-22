@@ -227,8 +227,9 @@
   },
   "active": "bef3f21252d960c9",
   "lastOpenFiles": [
-    "技术文档/java/01-java_base/08-面向对象基础.md",
+    "conflict-files-obsidian-git.md",
     "技术文档/java/01-java_base/09-进阶数组.md",
+    "技术文档/java/01-java_base/08-面向对象基础.md",
     "技术文档/java/01-java_base/04-判断和循环.md",
     "技术文档/java/01-java_base/06-方法.md",
     "技术文档/java/01-java_base/07-基础综合练习.md",
@@ -256,7 +257,6 @@
     "技术文档/java/kubernetes/README.md",
     "技术文档/java/docker/README.md",
     "技术文档/java/springboot/README.md",
-    "conflict-files-obsidian-git.md",
     "技术文档/java/01-Java基础语法与学习路线.md",
     "技术文档/java/mysql/22-读写分离.md",
     "技术文档/java/mysql/21-分库分表.md",
