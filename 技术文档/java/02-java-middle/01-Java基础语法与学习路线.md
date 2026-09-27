@@ -251,7 +251,10 @@ Java 是典型的面向对象语言。面向对象是 Java 的核心。
 ```java  
 class Student {  
     String name;    int age;  
-    void sayHello() {        System.out.println("你好，我是 " + name);    }}  
+    void sayHello() {       
+     System.out.println("你好，我是 " + name);   
+    }
+}  
 ```  
   
 使用对象：  
@@ -274,8 +277,13 @@ s.sayHello();
   
 ```java  
 class Student {  
-    String name;    int age;  
-    Student(String name, int age) {        this.name = name;        this.age = age;    }}  
+    String name;    
+    int age;  
+    Student(String name, int age) {        
+    this.name = name;        
+    this.age = age;    
+    }
+}  
 ```  
   
 使用：  
@@ -298,8 +306,13 @@ Student s = new Student("Tom", 18);
 ```java  
 class Student {  
     private String name;  
-    public String getName() {        return name;    }  
-    public void setName(String name) {        this.name = name;    }}  
+    public String getName() {        
+    return name;    
+    }  
+    public void setName(String name) {        
+    this.name = name;    
+    }
+}  
 ```  
   
 重点掌握：  
