@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/java/02-java-middle/13-SpringBoot.md",
+                "file": "技术文档/java/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "13-SpringBoot"
+              "title": "README"
             }
           }
         ],
@@ -228,6 +228,7 @@
   },
   "active": "bef3f21252d960c9",
   "lastOpenFiles": [
+    "技术文档/java/02-java-middle/13-SpringBoot.md",
     "技术文档/java/02-java-middle/02-Java语言基础.md",
     "技术文档/java/02-java-middle/01-Java基础语法与学习路线.md",
     "技术文档/java/02-java-middle/04-异常处理.md",
@@ -263,7 +264,6 @@
     "技术文档/java/kubernetes/README.md",
     "技术文档/java/docker/README.md",
     "技术文档/java/springboot/README.md",
-    "技术文档/java/01-Java基础语法与学习路线.md",
     "技术文档/nest/images/NestJS请求到写入数据全流程示意图.png",
     "技术文档/nest/images/NestJS学习架构示意图.png",
     "技术文档/vue/vue-core/packages-private/sfc-playground/public/logo.svg",
