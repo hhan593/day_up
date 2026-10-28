@@ -1,7 +1,5 @@
 {
   "cssTheme": "Blue Topaz",
   "accentColor": "#8f84e1",
-  "enabledCssSnippets": [
-    "custom-bg"
-  ]
+  "enabledCssSnippets": []
 }

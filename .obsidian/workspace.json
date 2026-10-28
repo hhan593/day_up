@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "14f6fee7d65fa27d",
+        "id": "e196af73c14ead62",
         "type": "tabs",
         "children": [
           {
-            "id": "d1a3848020bd5313",
+            "id": "091b3897febc8b7a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "技术文档/go/18-web-framework-gin-echo.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "18-web-framework-gin-echo"
+              "title": "新标签页"
             }
           }
         ]
@@ -80,7 +76,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3bd0fb1b110dccd6",
@@ -158,13 +155,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "项目/SwarmNote/i18n-guide.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "i18n-guide 的大纲"
+              "title": "大纲"
             }
           },
           {
@@ -178,26 +174,29 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 348.5
+    "width": 428.5
   },
   "left-ribbon": {
     "hiddenItems": {
+      "daily-notes:打开/创建今天的日记": false,
       "bases:新建数据库": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d1a3848020bd5313",
+  "active": "091b3897febc8b7a",
   "lastOpenFiles": [
+    "2026-10-28.md",
+    "技术文档/go/18-web-framework-gin-echo.md",
+    "错误总结/小程序.md",
     "掘金小册/前端调试通关秘籍/2. 初识调试.md",
     "技术文档/go/02-project-and-modules.md",
     "技术文档/rust/01-基础核心/08-泛型Trait与生命周期.md",
@@ -229,11 +228,8 @@
     "技术文档/java/redis",
     "技术文档/java/jvm/README.md",
     "技术文档/java/jvm",
-    "技术文档/java/concurrency/README.md",
     "技术文档/java/concurrency",
-    "技术文档/java/microservices/README.md",
     "技术文档/java/microservices",
-    "技术文档/java/nacos/README.md",
     "技术文档/nest/images/NestJS请求到写入数据全流程示意图.png",
     "技术文档/nest/images/NestJS学习架构示意图.png",
     "技术文档/vue/vue-core/packages-private/sfc-playground/public/logo.svg",
