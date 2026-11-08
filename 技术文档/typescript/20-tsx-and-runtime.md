@@ -26,6 +26,13 @@ node --experimental-transform-types app.ts   # 需要转换语法（enum/namespa
 ```
 
 - 实现机制：Node 内部用 **amaro**（swc 的 TS strip 编译器编译成的 WASM）在模块加载阶段剥类型。剥类型是**纯删除**：类型注解、interface、type、泛型参数、`declare`、`satisfies`、`import type` 全部消失，生成的 JS 与手写等价。
+- 原生能力顺带解锁（不再需要 nodemon/外挂）：
+
+```bash
+node --watch app.ts     # 原生 watch：文件变化自动重启，与类型擦除天然组合
+node --test             # 原生测试运行器；22.18+ 起测试文件也可以直接是 .ts（见 node/13-node-test.md）
+```
+
 - ⚠️ 三件 Node 原生模式下**不做**的事：
   1. 不读 tsconfig（`paths`/`target`/`strict` 全无效——它不检查类型，也不做路径映射）；
   2. 不做语法降级（你写什么 ES 语法就跑什么，Node 本身支持的版本就是下限）；
@@ -142,6 +149,23 @@ tsx ./script.ts --flag=1         # 参数透传给 process.argv
 - 适用：本地脚本、开发期热重载、CLI 工具、CI 里临时跑 TS。
 - **与 vite-node 的关系**：vite-node 是 Vitest 曾经的执行内核——走完整 Vite 插件管线（别名、插件、HMR 全生效），所以「Vitest 里跑的代码」和「tsx 里跑的代码」解析规则可能略有差异；Vitest 4 起改为内置 module runner（同一思路：复用 Vite 转换能力跑测试，截至 2026-11）。区别一句话：**tsx = 纯 esbuild 转译（快、少功能），vite-node = Vite 管线（功能全、稍慢）**。
 
+npm scripts 里的典型分工（开发轨与检查轨分开写）：
+
+```jsonc
+// package.json
+{
+  "scripts": {
+    "dev": "tsx watch src/main.ts",        // 开发：热重载 + 全语法
+    "cli": "tsx scripts/admin.ts",         // 临时脚本入口
+    "typecheck": "tsc --noEmit",           // 检查轨：CI 与 pre-commit 跑这个
+    "test": "vitest run",                  // 测试走 Vitest（内部自己的转换管线）
+    "start": "node dist/main.js"           // 生产：跑编译产物，不依赖任何运行器
+  }
+}
+```
+
+- 这份 scripts 就是三轨制的落地形态：`dev` 快、`typecheck` 严、`start` 稳，互不替代。
+
 ## 7. ts-node 现状：老牌、缓慢、有 SWC 加速器
 
 ```jsonc
@@ -164,6 +188,17 @@ tsx ./script.ts --flag=1         # 参数透传给 process.argv
 - 共同点：**两者都不做类型检查**（Deno 有独立的 `deno check`），类型门禁照样在 tsc——别被「内置 TS」宣传误导。
 
 ## 9. 生产建议表：三轨制
+
+先给一张运行时方案能力对比，选型时对号入座：
+
+| 能力 | Node 原生 strip | tsx | ts-node | Deno / Bun |
+|---|---|---|---|---|
+| 全 TS 语法（enum/参数属性等） | ❌（需 transform flag） | ✅ | ✅ | ✅ |
+| tsconfig paths 别名 | ❌ | ✅ 原生 | ⚠️ 需 tsconfig-paths | ✅（Deno 用 deno.json；Bun 认 tsconfig） |
+| ESM/CJS 互操作 | 按 package type，不做转换 | ✅ loader 层打通 | ⚠️ ESM 坑多 | ✅ |
+| 类型检查 | ❌ | ❌ | ✅ 可开（慢，不推荐） | ❌（Deno 另跑 `deno check`） |
+| watch | `node --watch` | `tsx watch` | 外挂 nodemon | 内置 |
+| 维护活跃度（截至 2026-11） | Node 核心，长期投入 | 活跃 | 缓慢 | 活跃 |
 
 | 场景 | 首选 | 理由 |
 |---|---|---|
