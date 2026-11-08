@@ -228,6 +228,7 @@
   },
   "active": "dd812f3372d742f9",
   "lastOpenFiles": [
+    "技术文档/typescript/18-decorators-deep.md.tmp.42402.c995e71e1d89",
     "技术文档/Three.js/28-数据标注平台架构详解.md",
     "技术文档/typescript/07-enums.md.tmp.42402.6c9246e29390",
     "技术文档/typescript/08-creating-types-from-types.md.tmp.42402.28431d72afd2",
@@ -263,7 +264,6 @@
     "技术文档/java/network/README.md",
     "技术文档/java/distributed/README.md",
     "技术文档/java/mq/README.md",
-    "技术文档/java/redis/README.md",
     "技术文档/nest/images/NestJS请求到写入数据全流程示意图.png",
     "技术文档/nest/images/NestJS学习架构示意图.png",
     "技术文档/vue/vue-core/packages-private/sfc-playground/public/logo.svg",

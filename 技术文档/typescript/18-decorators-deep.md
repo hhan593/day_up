@@ -71,29 +71,28 @@ $ tsx decorator/class-demo.ts
 [deco] class UserService defined     ← 类定义求值时执行一次，与是否 new 无关
 ```
 
-- 需要替换类时，签名要带构造器泛型才能保住类型：
+- 需要替换类时，用类似 mixin 的写法返回一个子类（泛型约束保住构造器参数）：
 
 ```ts
 // decorator/class-replace.ts
-function singleton<C extends new (...args: any[]) => any>(value: C, context: ClassDecoratorContext): C {
+function singleton<C extends new (...args: any[]) => any>(value: C) {
   return class extends value {
     static #instance: unknown;
-    constructor(...args: any[]) {
-      if (value.prototype !== undefined && (value as any).hasInstance?.()) { /* 示意 */ }
-      super(...args);
-    }
     static getInstance(...args: any[]) {
-      this.#instance ??= new this(...args);
+      this.#instance ??= new this(...args);   // this = 子类本身（或其派生类）
       return this.#instance;
     }
-  } as C;
+  };
 }
 
 @singleton
 class Config {
   constructor(public host: string) {}
 }
-console.log(Config.getInstance('a') === Config.getInstance('b'));  // true
+
+const a = (Config as any).getInstance('a');
+const b = (Config as any).getInstance('b');
+console.log(a === b);   // true —— 两次调用拿到同一实例
 ```
 
 ### 3.2 方法装饰器（简版；生产版 @log/@retry 见第 5 章）
@@ -232,13 +231,8 @@ class CounterEquiv {
 
 ```ts
 // decorator/reactive.ts
-type Listener = () => void;
-const listeners = new Map<string, Set<Listener>>();
+const listeners = new Map<string, Array<() => void>>();
 
-function track(key: string, cb: Listener) {
-  if (!listeners.has(key)) listeners.set(key, new Set());
-  listeners.get(key)!.add(cb);
-}
 function notify(key: string) {
   listeners.get(key)?.forEach((fn) => fn());
 }
@@ -250,15 +244,15 @@ function reactive<This, V>(
   const key = String(context.name);
   return {
     get(this: This): V {
-      console.log(`[track] ${key}`);
+      console.log(`[track] ${key}`);          // 真实框架在此收集依赖
       return target.get.call(this);
     },
     set(this: This, v: V): void {
       target.set.call(this, v);
       console.log(`[notify] ${key} -> ${String(v)}`);
-      notify(key);
+      notify(key);                            // 真实框架在此触发副作用（重渲染等）
     },
-    init(value: V): V {                 // 可选：字段初始化的最后一环，可改写初值
+    init(value: V): V {                       // 可选：字段初始化的最后一环，可改写初值
       console.log(`[init] ${key} = ${value}`);
       return value;
     },
@@ -367,8 +361,8 @@ function deco(tag: string) {
   };
 }
 
-@deco('outer')   // 后应用：包在最外层
-@deco('inner')   // 先应用
+@deco('outer')   // 求值最早；应用最晚（包在最外层）
+@deco('inner')
 class Order {
   @deco('m1') method1() {}
   @deco('m2') method2() {}
@@ -377,24 +371,24 @@ class Order {
 
 ```text
 $ tsx decorator/order.ts
-evaluate outer
+evaluate outer        ← ① 求值：全部表达式先按源码自上而下求值
 evaluate inner
-apply inner on Order        ← inner 先应用
-apply outer on Order        ← outer 后应用，包住 inner
 evaluate m1
-apply m1 on method1
 evaluate m2
+apply m1 on method1   ← ② 应用：成员按声明顺序，先于类装饰器
 apply m2 on method2
+apply inner on Order  ← ③ 类装饰器最后应用；同成员多层自下而上（inner 先、outer 包住它）
+apply outer on Order
 ```
 
-**③ 成员之间**：按声明顺序依次装饰；**类装饰器最后应用**（所有成员装饰完才轮到类本身）——上面输出里 `outer/inner` 先于 `m1/m2` 打印正是这个规则（表达式求值最先，应用时成员先行、类最后）。旧实验装饰器的求值/应用规则与此一致，见 `09-decorators.md`。
+**③ 成员之间**：按声明顺序依次应用；**类装饰器最后应用**（所有成员装饰完才轮到类本身）。TC39 原文的两条规则：「装饰器表达式与 computed property names 交错求值，自左向右、自上而下」「类装饰器在所有方法/字段装饰器被调用并应用之后才被调用」。
 
 **④ 初始化序（运行期）**：
 
-- 字段/访问器的 `init` 与初始化函数：**每次实例化**时按声明顺序执行；
-- 方法/访问器/getter/setter 的 `addInitializer` 回调：实例构造期间执行（`this` = 实例）；
-- 字段装饰器的 `addInitializer` 回调：该字段初始化之前执行（`this` = 实例）；
-- 类装饰器的 `addInitializer` 回调：类定义结束后执行一次（`this` = 类本身）。
+- 字段/accessor 的 `init` 与字段初始化函数：**每次实例化**时按声明顺序执行；
+- 方法/getter/setter 装饰器的 `addInitializer` 回调：实例构造期间、**任何字段初始化之前**执行（`this` = 实例）；
+- 字段装饰器的 `addInitializer` 回调：**紧随该字段初始化之后**执行（`this` = 实例，此刻字段已有初值）；
+- 类装饰器的 `addInitializer` 回调：类完全定义结束后执行一次（`this` = 类本身）。
 
 ## 7. metadata 与 addInitializer（TS 5.2+）
 
@@ -451,7 +445,7 @@ console.log([...REGISTRY.keys()]);   // [ 'user', 'order' ]
 // decorator/initializer-field.ts —— 字段装饰器版：实例构造时自动登记
 function observable<This, T>(_v: undefined, context: ClassFieldDecoratorContext<This, T>) {
   context.addInitializer(function (this: This) {
-    // 此刻字段还没赋初值，适合先登记「这个实例有这些可观察键」
+    // 时机：该字段初始化之后执行（此时 a/b 已有初值），适合登记「这个实例有这些可观察键」
     (this as any).__keys ??= [];
     (this as any).__keys.push(String(context.name));
   });
@@ -466,7 +460,7 @@ const m = new Model();
 console.log((m as any).__keys);   // [ 'a', 'b' ]
 ```
 
-- 为什么不直接在装饰器体里注册？类装饰器体执行时类还未赋值完成、字段装饰器体执行时还没有实例——`addInitializer` 把动作推迟到**正确的时机**，这是新代比旧代精致的核心设计之一。
+- 为什么不直接在装饰器体里注册？类装饰器体执行时类尚未定义完成、字段装饰器体执行时还没有实例——`addInitializer` 把动作推迟到**正确的时机**（构造期/定义期），这是新代比旧代精致的核心设计之一。
 
 ## 8. 旧实验装饰器：5 种签名完整对照
 
