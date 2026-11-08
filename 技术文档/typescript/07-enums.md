@@ -124,17 +124,19 @@ let d = [Direction.Up, Direction.Down];
 TS2748: Cannot access ambient const enums when the '--isolatedModules' flag is provided.
 ```
 
-**坑 ② 单文件转译器无法内联 → 运行时 undefined**：Babel/SWC/esbuild 逐文件转译，看不到"别的文件里定义的枚举对象"，跨文件使用 `const enum` 成员时**编译通过、运行时爆炸**：
+**坑 ② 单文件转译器无法内联 → 运行时崩溃/undefined**：Babel/SWC/esbuild 逐文件转译，看不到"别的文件里定义的枚举对象"，跨文件使用 `const enum` 时**编译通过、运行时爆炸**：
 
 ```ts
 // a.ts
 export const enum Status { Ok = 1, Fail = 2 }
 
-// b.ts（由 Babel/esbuild 转译）
+// b.ts（单文件转译，无类型信息）
 import { Status } from "./a";
-console.log(Status.Ok); // 编译后仍是 Status.Ok，但 Status 没有运行时对象
+console.log(Status.Ok); // 声明被剥离/未生成对象时，Status 在运行时是 undefined
 // → TypeError: Cannot read properties of undefined (reading 'Ok')
 ```
+
+各家行为不一致更添乱：esbuild/Babel 把 const enum **当普通枚举**处理（对象保留但内联收益消失）；SWC 历史版本直接剥离声明，跨文件引用直接 ReferenceError；`declare const enum`（纯 .d.ts）则**必定**没有运行时对象。共同结论：跨转译器/跨包分发**不能依赖 const enum**。
 
 **坑 ③ 跨包内联值版本不一致**：库 A 发布 `.d.ts`，消费方编译时把成员值**内联**进自己的产物；之后 A 升级改了枚举值而消费方没重编译——两边的"同一个枚举"对不上号，这类 bug 极难排查。
 
