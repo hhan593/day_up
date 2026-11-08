@@ -228,6 +228,7 @@
   },
   "active": "dd812f3372d742f9",
   "lastOpenFiles": [
+    "技术文档/typescript/23-error-debugging.md",
     "技术文档/typescript/22-type-gymnastics.md",
     "技术文档/typescript/21-declaration-files.md",
     "技术文档/typescript/20-tsx-and-runtime.md.tmp.42402.1dccb8000bf7",
@@ -263,7 +264,6 @@
     "技术文档/java/nginx/README.md",
     "技术文档/java/linux/README.md",
     "技术文档/java/network/README.md",
-    "技术文档/java/distributed/README.md",
     "技术文档/nest/images/NestJS请求到写入数据全流程示意图.png",
     "技术文档/nest/images/NestJS学习架构示意图.png",
     "技术文档/vue/vue-core/packages-private/sfc-playground/public/logo.svg",
