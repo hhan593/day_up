@@ -1,891 +1,643 @@
-# TypeScript 速查手册
+# 2. TypeScript 速查表（Cheatsheet）
 
-> 快速查阅 TypeScript 常用语法和模式
+> 来源可信度：**官方 Handbook 与 lib.es5.d.ts 内置定义**（TS 5.x 时代，所有类型示例可在 `tsc --strict` 下验证；每条均给一行签名/用法 + 一行结果）
+> 关联：本表是全系列的"索引层"——每节末尾指向详解篇：类型标注见 `03-everyday-types.md`、收窄见 `04-narrowing.md`、函数见 `05-more-on-functions.md`、类见 `06-classes.md`、枚举见 `07-enums.md`、类型运算见 `08-creating-types-from-types.md`、装饰器见 `09-decorators.md`、模块见 `10-modules.md`、tsconfig 见 `11-tsconfig.md`、类型系统底层见 `12-typescript-advanced-type-system.md`。
 
----
+## 1. 类型标注速查
 
-## 📦 基础类型
+```ts
+// primitives.ts
+let s: string = "hello";
+let n: number = 42;                 // 整数/浮点/hex 不分家
+let b: boolean = true;
+let nl: null = null;
+let un: undefined = undefined;
+let sy: symbol = Symbol("k");
+let big: bigint = 100n;             // target >= ES2020
 
-```typescript
-// 原始类型
-let str: string = "hello";
-let num: number = 42;
-let bool: boolean = true;
-let nil: null = null;
-let undef: undefined = undefined;
-let sym: symbol = Symbol("key");
-let big: bigint = 100n;
-
-// 数组
+// 数组两种等价写法
 let arr1: number[] = [1, 2, 3];
-let arr2: Array<string> = ["a", "b", "c"];
+let arr2: Array<number> = [1, 2, 3];
+let grid: number[][] = [[1], [2]];
 
-// 元组（固定长度和类型）
-let tuple: [string, number, boolean] = ["age", 25, true];
+// 元组：定长定序，可加标签
+let tup: [name: string, age: number] = ["Alice", 25];
+let ro: readonly [number, number] = [1, 2];   // 只读元组
 
-// 任意类型（尽量避免）
-let anything: any = 4;
+// 对象与可选/只读
+let user: { id: number; name: string; email?: string; readonly createdAt: Date } =
+  { id: 1, name: "a", createdAt: new Date() };
 
-// 未知类型（安全的 any）
-let unknownValue: unknown = 4;
-
-// 空值
-function log(): void {
-  console.log("hello");
-}
-
-// 永不返回
-function error(): never {
-  throw new Error("error");
-}
+// 特殊类型
+let anything: any = 4;              // 关闭检查，能不用就不用
+let unknownValue: unknown = 4;      // 安全 any，先收窄再用
+function log(): void { console.log("log"); }
+function fail(): never { throw new Error("boom"); }
+let obj: object = { x: 0 };         // 非原始类型集合，很少直接用
 ```
 
----
+| 写法 | 含义 | 坑 |
+|---|---|---|
+| `string` vs `String` | 原始类型 vs 包装对象 | 标注一律小写（`03` 篇 1.1） |
+| `T[]` vs `Array<T>` | 完全等价 | 嵌套时 `T[][]` 别写成 `[T[]]` |
+| `(A \| B)[]` | 每个元素各自 A 或 B，可混装 `[1, "a"]` | 与 `A[] \| B[]`（整条数组同质）不同 |
+| `Promise<number>[]` | 数组里装 Promise | 别与 `Promise<number[]>`（Promise 里装数组）写反 |
+| `[string, number]` | 元组定长 | 长度/顺序都可校验；`string[]` 做不到 |
+| `readonly T[]` | 只读数组 | 无 push/splice 等变更方法 |
 
-## 🔧 接口与类型
+## 2. any / unknown / never / void 对比
 
-### Interface
-```typescript
-interface User {
-  id: number;
-  name: string;
-  email?: string;        // 可选属性
-  readonly createdAt: Date;  // 只读属性
-}
+| 维度 | any | unknown | never | void |
+|---|---|---|---|---|
+| 语义 | 关闭类型检查 | 类型未定，检查全开 | 空集，不可能存在 | 无有意义返回值 |
+| 什么能赋给它 | 任何值 | 任何值 | 只有 never | undefined（strict 下） |
+| 它能赋给谁 | 任何类型（传染） | 仅 unknown/any | 任何类型 | 仅 void/unknown/any |
+| 使用限制 | 无（危险） | 必须先收窄/断言 | 不可用 | 调用结果没信息 |
+| 典型场景 | 渐进迁移逃生舱 | `JSON.parse`、catch 变量 | 抛错函数、穷尽兜底 | 无返回值的函数 |
 
-// 扩展接口
-interface Admin extends User {
-  role: "admin" | "superadmin";
-  permissions: string[];
-}
+```ts
+// quad.ts
+let a: any = JSON.parse("{}");
+a.foo.bar;                    // 编译通过，运行时崩 —— any 放行一切
 
-// 接口合并（声明合并）
-interface User {
-  avatar?: string;  // 自动合并到上面的定义
-}
+let u: unknown = JSON.parse("{}");
+// u.foo;                     // ❌ TS18046：'u' is of type 'unknown'
+if (typeof u === "object" && u !== null && "foo" in u) { /* 收窄后可用 */ }
+
+function fail(): never { throw new Error("x"); }   // never：调用后代码不可达
+type VoidFn = () => void;
+const f: VoidFn = () => 42;   // ✅ 目标类型是 void 时允许 return 值（回调复用）
 ```
 
-### Type Alias
-```typescript
+## 3. type vs interface
+
+| 维度 | interface | type |
+|---|---|---|
+| 扩展 | `extends`（可多个） | `&` 交叉 |
+| 同名重复声明 | ✅ 声明合并 | ❌ 报重复标识符 |
+| 联合/元组/映射/条件类型 | ❌ | ✅ |
+| 错误信息可读性 | 显示接口名，较清晰 | 复杂交叉被展开，难读 |
+| 官方态度 | 对象形状首选，其余随你（风格问题） | |
+
+```ts
+// t-vs-i.ts
+interface IPoint { x: number; y: number }
+interface IPoint3D extends IPoint { z: number }
+interface IPoint { label?: string }        // ✅ 合并进第一个 IPoint
+
+type TPoint = { x: number; y: number };
+type TPoint3D = TPoint & { z: number };
+type ID = string | number;                 // type 独占：联合
+type Pair = [string, number];              // type 独占：元组
+type PartialIPoint = { [K in keyof IPoint]?: IPoint[K] };  // type 独占：映射
+```
+
+约定：对象/类形状用 `interface`，联合/元组/工具类型组合用 `type`，全项目一致即可（lint：`@typescript-eslint/consistent-type-definitions`）。
+
+## 4. 联合 / 交叉 / 字面量 / as const
+
+```ts
+// union-literal.ts
+type Status = "pending" | "success" | "error";   // 字面量联合 = 轻量枚举
 type ID = string | number;
-type Status = "pending" | "success" | "error";
 
-// 对象类型
-type User = {
-  id: number;
-  name: string;
-};
+let st: Status = "pending";
+// st = "done";            // ❌ TS2322：不在三个成员里
 
-// 联合类型
-type Input = string | number | boolean;
+type Named = { name: string };
+type Aged = { age: number };
+type Person = Named & Aged;               // 交叉：同时满足
+const p: Person = { name: "a", age: 1 };  // ✅
+// type Bad = string & number;            // never（原始类型交叉为空集）
 
-// 交叉类型
-type Employee = Person & Worker;
+const req = { url: "/a", method: "GET" };          // 坑：method 拓宽为 string
+const req2 = { url: "/a", method: "GET" } as const; // method: "GET"，全只读
 
-// 元组类型
-type Point = [number, number];
-
-// 函数类型
-type Handler = (event: Event) => void;
+const colors = ["red", "green", "blue"] as const;   // readonly ["red","green","blue"]
+type Color = (typeof colors)[number];               // "red" | "green" | "blue"
 ```
 
----
+| 操作 | 语义 | 注意 |
+|---|---|---|
+| `A \| B` | 或（先收窄再用成员，见 `04` 篇） | 只能访问共有成员 |
+| `A & B` | 且 | 属性冲突时变 `never`；方法冲突难读 |
+| `'a' \| 'b'` | 字面量联合 | 比 enum 轻（`07` 篇） |
+| `as const` | 深只读 + 保留字面量 | 只改类型不改运行时；变量引用上不能用 |
 
-## ⚡ 函数
+## 5. 函数速查
 
-```typescript
-// 函数声明
-function add(a: number, b: number): number {
-  return a + b;
-}
+```ts
+// functions.ts
+function add(a: number, b: number): number { return a + b; }
+const mul = (a: number, b: number): number => a * b;
 
-// 箭头函数
-const multiply = (a: number, b: number): number => a * b;
-
-// 可选参数
-function greet(name: string, greeting?: string): string {
+function greet(name: string, greeting?: string): string {   // 可选参数
   return `${greeting ?? "Hello"}, ${name}`;
 }
+function hi(name: string, greeting: string = "Hello") { return `${greeting}, ${name}`; }  // 默认值（体内收窄为 string）
+function sum(...nums: number[]): number { return nums.reduce((a, b) => a + b, 0); }        // rest
 
-// 默认参数
-function greetDefault(name: string, greeting: string = "Hello"): string {
-  return `${greeting}, ${name}`;
-}
-
-// 剩余参数
-function sum(...numbers: number[]): number {
-  return numbers.reduce((a, b) => a + b, 0);
-}
-
-// 函数重载
+// 函数重载：声明签名给调用方看，实现签名不对外
 function process(input: string): string;
 function process(input: number): number;
 function process(input: string | number): string | number {
   return typeof input === "string" ? input.toUpperCase() : input * 2;
 }
+process("a").toLowerCase();   // ✅ 调用方只见 string 版
+// process(true);             // ❌ TS2769：没有匹配的重载
 
-// this 类型
-function clickHandler(this: HTMLButtonElement, event: MouseEvent): void {
+// this 参数（伪参数，占第一位）
+function clickHandler(this: HTMLButtonElement, e: MouseEvent): void {
   this.disabled = true;
 }
 ```
 
----
+| 形态 | 写法 | 备注 |
+|---|---|---|
+| 可选参数 | `y?: number` | 实际类型 `number \| undefined` |
+| 默认参数 | `y = 10` | 体内 `y` 收窄为 `number` |
+| rest | `(...args: string[])` | 元组 rest `(...args: [string, number])` 更精确 |
+| 函数类型 | `type F = (a: number) => string` | 变量/回调/参数用 |
+| 构造签名 | `new (name: string) => Person` | 可实例化的类型 |
+| 泛型函数 | `function f<T>(x: T): T` | 见第 8 节 |
 
-## 🏗️ 类
+## 6. 类速查
 
-```typescript
+```ts
+// classes.ts
 class Animal {
-  // 属性简写（自动赋值）
   constructor(
-    public name: string,
+    public name: string,          // 参数属性：声明 + 赋值一步到位
     private age: number,
     protected species: string
   ) {}
 
-  // 方法
-  move(distance: number): void {
-    console.log(`${this.name} moved ${distance}m`);
-  }
-
-  // Getter
-  get info(): string {
-    return `${this.name} is ${this.age} years old`;
-  }
-
-  // Setter
-  set setAge(value: number) {
-    if (value > 0) this.age = value;
-  }
+  get info(): string { return `${this.name}/${this.age}`; }
+  set setAge(v: number) { if (v > 0) this.age = v; }
+  move(d: number): void { console.log(`${this.name} moved ${d}m`); }
 }
 
-// 继承
 class Dog extends Animal {
-  constructor(name: string, age: number) {
-    super(name, age, "Canine");
+  constructor(name: string, age: number, public breed: string) {
+    super(name, age, "Canine");          // super 必须在访问 this 前调用
   }
-
-  bark(): void {
-    console.log("Woof!");
-  }
+  move(d: number): void { super.move(d); console.log("...running"); }
 }
 
-// 抽象类
 abstract class Shape {
-  abstract getArea(): number;
-
-  printArea(): void {
-    console.log(`Area: ${this.getArea()}`);
-  }
+  abstract getArea(): number;            // 抽象成员，子类必须实现
+  print(): void { console.log(this.getArea()); }
 }
 
-// 实现接口
-interface Printable {
-  print(): void;
-}
+interface Printable { print(): void }
+class Doc implements Printable { print(): void {} }
 
-class Document implements Printable {
-  print(): void {
-    console.log("Printing document");
+class Lazy {
+  db!: Database;   // definite assignment：声明非空但延后初始化（框架场景）
+}
+```
+
+| 成员 | 关键字 | 说明 |
+|---|---|---|
+| 可见性 | `public`（默认）/`private`/`protected` | `#field` 是 JS 私有（运行时硬私有） |
+| 只读 | `readonly` | 构造外不可再赋值 |
+| 静态 | `static` | 类自身成员；`static count = 0` |
+| 抽象 | `abstract` | 不能实例化，只能被 extends |
+| 参数属性 | `constructor(public x: T)` | 注意与 `useDefineForClassFields` 的兼容细节（`06` 篇） |
+
+## 7. Narrowing 手法速查
+
+| 手法 | 写法 | 一句话 |
+|---|---|---|
+| typeof | `if (typeof x === "string")` | 八种字面量；`"object"` 含 null |
+| 真值 | `if (x)` | 排除 falsy；误伤合法 `0`/`""` |
+| 等值 | `if (x === y)` / `x == null` | 取交集；`== null` 一次排除两个 nullish |
+| in | `if ("swim" in x)` | 区分对象形状；可选属性会失效 |
+| instanceof | `if (x instanceof Date)` | 类实例；数组用 `Array.isArray` |
+| 判别联合 | `switch (x.kind)` | 每成员带字面量标签，最推荐 |
+| 类型谓词 | `function isFish(p): p is Fish` | 自定义守卫，可配 filter |
+| 断言函数 | `function assert(x): asserts x is T` | 抛错式收窄，收窄不了属性 |
+| 穷尽兜底 | `const _e: never = x` | 漏分支变编译错 |
+
+```ts
+// narrowing.ts
+function getArea(shape: { kind: "circle"; r: number } | { kind: "square"; a: number }) {
+  switch (shape.kind) {          // 判别联合是实战首选
+    case "circle": return Math.PI * shape.r ** 2;
+    case "square": return shape.a ** 2;
+    default: {
+      const _exhaustive: never = shape;   // 穷尽检查
+      return _exhaustive;
+    }
   }
 }
 ```
 
----
+全部细节与控制流边界见 `04-narrowing.md`。
 
-## 🎯 泛型
+## 8. 泛型与约束速查
 
-```typescript
-// 基础泛型
-function identity<T>(arg: T): T {
-  return arg;
+```ts
+// generics.ts
+function identity<T>(arg: T): T { return arg; }
+identity("a");                    // 推断 T = string，通常不手写 <string>
+
+function logLen<T extends { length: number }>(x: T): T {   // 约束
+  console.log(x.length);
+  return x;
 }
 
-// 泛型约束
-function logLength<T extends { length: number }>(arg: T): T {
-  console.log(arg.length);
-  return arg;
-}
+function pair<T, U>(a: T, b: U): [T, U] { return [a, b]; } // 多参数
 
-// 多个泛型
-function pair<T, U>(a: T, b: U): [T, U] {
-  return [a, b];
-}
+interface ApiResponse<T = unknown> { data: T; status: number }   // 默认类型
 
-// 泛型接口
-interface Container<T> {
-  value: T;
-  getValue(): T;
-}
-
-// 泛型类
 class Stack<T> {
   private items: T[] = [];
   push(item: T): void { this.items.push(item); }
   pop(): T | undefined { return this.items.pop(); }
 }
 
-// 泛型别名
-type Nullable<T> = T | null;
-type ArrayElement<T> = T extends (infer U)[] ? U : T;
-
-// 默认泛型参数
-type Response<T = any> = {
-  data: T;
-  status: number;
-};
+// 泛型约束到某个键：K extends keyof T
+function pick<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key];
+}
+const name = pick({ id: 1, name: "a" } as const, "name");   // "a"
 ```
 
----
+| 语法 | 作用 | 坑 |
+|---|---|---|
+| `<T>` | 类型参数 | 命名用 `T`/`TData` 等大写驼峰 |
+| `T extends U` | 上界约束 | `T extends object` 排除原始类型 |
+| `<T = unknown>` | 默认类型 | 默认 `any` 的库 API 首选改 unknown |
+| `K extends keyof T` | 键约束 | 让返回 `T[K]` 精确对应 |
+| 元组 rest | `<T extends unknown[], R>` | 高阶函数透传参数类型 |
 
-## 🛡️ 类型守卫
+## 9. 类型运算符速查：keyof / typeof / 索引访问 / 条件类型 / infer / 映射 / 模板字面量
 
-```typescript
-// typeof
-type Primitive = string | number | boolean;
-function processPrimitive(value: Primitive) {
-  if (typeof value === "string") {
-    return value.toUpperCase();  // string 类型
-  }
-  if (typeof value === "number") {
-    return value.toFixed(2);     // number 类型
-  }
-  return value;                   // boolean 类型
-}
+```ts
+// type-operators.ts
+interface User { id: number; name: string }
 
-// instanceof
-class Cat {
-  meow() { return "meow"; }
-}
-class Dog {
-  bark() { return "woof"; }
-}
-function makeSound(animal: Cat | Dog) {
-  if (animal instanceof Cat) {
-    return animal.meow();
-  }
-  return animal.bark();
-}
+type K1 = keyof User;                      // "id" | "name"（键联合）
+const u = { id: 1, name: "a" };
+type U = typeof u;                         // { id: number; name: string }（从值取类型）
+type V = User["id"];                       // number（索引访问）
+type VK = User[keyof User];                // number | string（值联合）
 
-// in
-interface Car {
-  drive(): void;
-  wheels: number;
-}
-interface Boat {
-  sail(): void;
-}
-function move(vehicle: Car | Boat) {
-  if ("drive" in vehicle) {
-    vehicle.drive();
-  } else {
-    vehicle.sail();
-  }
-}
+type IsStr<T> = T extends string ? true : false;    // 条件类型
+type A = IsStr<string>;                    // true
 
-// 自定义类型守卫
-function isStringArray(value: unknown): value is string[] {
-  return Array.isArray(value) && value.every(item => typeof item === "string");
-}
+type Elem<T> = T extends (infer U)[] ? U : never;   // infer：在条件里"声明待推断位"
+type E = Elem<number[]>;                   // number
 
-// 可辨识联合
-interface Square {
-  kind: "square";
-  size: number;
-}
-interface Circle {
-  kind: "circle";
-  radius: number;
-}
-type Shape = Square | Circle;
-function getArea(shape: Shape): number {
-  switch (shape.kind) {
-    case "square": return shape.size ** 2;
-    case "circle": return Math.PI * shape.radius ** 2;
-  }
-}
+// 映射类型 + as 重映射 + 修饰符
+type PartialLike<T> = { [K in keyof T]?: T[K] };    // ? 可选 / -? 去可选 / readonly / -readonly
+type Getters<T> = { [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K] };
+type G = Getters<User>;                    // { getId: () => number; getName: () => string }
+
+// 模板字面量类型
+type EventName<T extends string> = `on${Capitalize<T>}`;
+type Click = EventName<"click">;           // "onClick"
+type Route = `/${"a" | "b"}/${number}`;    // "/a/1"、"/b/2" 等组合
 ```
 
----
+| 运算符 | 用途 | 一行结果 |
+|---|---|---|
+| `keyof T` | 取键联合 | `keyof User` → `"id" \| "name"` |
+| `typeof v` | 从值取类型 | 注意与运行时 `typeof` 同名不同物 |
+| `T["k"]` | 索引访问 | 可用联合键取值联合 |
+| `X extends Y ? A : B` | 条件类型 | 裸类型参数对联合**分发**（`12` 篇） |
+| `infer U` | 条件内推断占位 | 只能在 `extends` 右侧用 |
+| `[K in keyof T]` | 映射 | 修饰符 `?`/`readonly`/`-?`/`-readonly` |
+| `[K in keyof T as NewK]` | as 重映射 | `never` 可过滤键 |
+| `` `pre${T}` `` | 模板字面量 | 与联合组合会展开成联合 |
 
-## 🧰 内置工具类型
+## 10. 内置 Utility Types 全家（22 个）
 
-```typescript
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  age: number;
-}
+签名 + 一行示例（基于 `interface User { id: number; name: string; email?: string }`）：
 
-// Partial - 所有属性变为可选
-type PartialUser = Partial<User>;
-// { id?: number; name?: string; ... }
+| 工具类型 | 签名（简化） | 示例 → 结果 |
+|---|---|---|
+| `Partial<T>` | 全属性可选 | `Partial<User>` → `{ id?: number; name?: string; email?: string }` |
+| `Required<T>` | 全属性必选 | `Required<User>` → `email` 变必选 |
+| `Readonly<T>` | 全属性只读 | `Readonly<User>` → 赋值后改属性报 TS2540 |
+| `Pick<T, K>` | 选取子集 | `Pick<User, "id">` → `{ id: number }` |
+| `Omit<T, K>` | 排除子集 | `Omit<User, "id">` → `{ name: string; email?: string }` |
+| `Record<K, V>` | 键到值的映射 | `Record<"a" \| "b", number>` → `{ a: number; b: number }` |
+| `Exclude<T, U>` | 从联合剔除 | `Exclude<"a"\|"b"\|"c", "a">` → `"b" \| "c"` |
+| `Extract<T, U>` | 从联合提取 | `Extract<"a"\|"b", string>` → `"a" \| "b"` |
+| `NonNullable<T>` | 排除 nullish | `NonNullable<string \| null>` → `string` |
+| `Parameters<T>` | 函数参数元组 | `Parameters<(a: number) => void>` → `[a: number]` |
+| `ConstructorParameters<T>` | 构造参数元组 | `ConstructorParameters<typeof Date>` → `[(value: number \| string) \| undefined]`... |
+| `ReturnType<T>` | 取返回类型 | `ReturnType<() => string>` → `string` |
+| `InstanceType<T>` | 取实例类型 | `InstanceType<typeof Error>` → `Error` |
+| `Awaited<T>` | 递归解 Promise | `Awaited<Promise<Promise<number>>>` → `number` |
+| `ThisParameterType<T>` | 取 this 参数 | `ThisParameterType<typeof clickHandler>` → `HTMLButtonElement` |
+| `OmitThisParameter<T>` | 去掉 this 参数 | 得到"无 this"的函数类型 |
+| `ThisType<T>` | 上下文 this 标记 | 只在对象字面量 `noImplicitThis` 下生效，无运行时产物 |
+| `Uppercase<S>` | 字面量大写 | `Uppercase<"abc">` → `"ABC"` |
+| `Lowercase<S>` | 字面量小写 | `Lowercase<"ABC">` → `"abc"` |
+| `Capitalize<S>` | 首字母大写 | `Capitalize<"abc">` → `"Abc"` |
+| `Uncapitalize<S>` | 首字母小写 | `Uncapitalize<"Abc">` → `"abc"` |
+| `NoInfer<T>` | 阻止推断（TS 5.4） | 包住某参数，强制从其他参数推断 |
 
-// Required - 所有属性变为必选
-type RequiredUser = Required<User>;
-
-// Readonly - 所有属性变为只读
-type ReadonlyUser = Readonly<User>;
-
-// Pick - 选取指定属性
+```ts
+// utility-demo.ts
+type UserForm = Partial<Omit<User, "id">>;        // 组合拳：表单类型
 type UserSummary = Pick<User, "id" | "name">;
-// { id: number; name: string; }
-
-// Omit - 排除指定属性
-type PublicUser = Omit<User, "email">;
-// { id: number; name: string; age: number; }
-
-// Record - 创建对象类型
 type UsersById = Record<number, User>;
-// { [key: number]: User }
-
-// Exclude - 从联合类型中排除
-type Primitive = string | number | boolean;
-type NonBoolean = Exclude<Primitive, boolean>;
-// string | number
-
-// Extract - 从联合类型中提取
-type OnlyString = Extract<Primitive, string>;
-// string
-
-// NonNullable - 排除 null 和 undefined
-type Value = string | null | undefined;
-type NonNull = NonNullable<Value>;
-// string
-
-// Parameters - 获取函数参数类型
-type Fn = (a: number, b: string) => void;
-type FnParams = Parameters<Fn>;
-// [number, string]
-
-// ReturnType - 获取函数返回类型
-type FnReturn = ReturnType<Fn>;
-// void
-
-// Awaited - 获取 Promise 解析类型
-type PromiseValue = Awaited<Promise<string>>;
-// string
+type Handler = (...args: any[]) => any;
+type Args = Parameters<Handler>;                   // any[]
+type Res = ReturnType<typeof fetchUser>;           // Promise<User>（想拿 User 再套 Awaited）
+type FlatUser = Awaited<ReturnType<typeof fetchUser>>;
+type Dict = Record<string, unknown>;               // 安全的"任意对象"
 ```
 
----
+## 11. 自定义工具类型常用款
 
-## 🔨 自定义工具类型
+```ts
+// custom-utilities.ts
+type DeepPartial<T> = { [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K] };
+type DeepReadonly<T> = { readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T[K]> : T[K] };
 
-```typescript
-// 深度 Partial
-type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
-};
+// 过滤/挑选键（as 重映射 + never）
+type FunctionProps<T> = { [K in keyof T as T[K] extends Function ? K : never]: T[K] };
+type ValueProps<T>   = { [K in keyof T as T[K] extends Function ? never : K]: T[K] };
 
-// 深度 Readonly
-type DeepReadonly<T> = {
-  readonly [P in keyof T]: T[P] extends object ? DeepReadonly<T[P]> : T[P];
-};
+// 必选/可选键集合
+type RequiredKeys<T> = { [K in keyof T]-?: {} extends Pick<T, K> ? never : K }[keyof T];
+type OptionalKeys<T> = { [K in keyof T]-?: {} extends Pick<T, K> ? K : never }[keyof T];
 
-// 提取对象中的函数类型
-type FunctionProperties<T> = {
-  [K in keyof T as T[K] extends Function ? K : never]: T[K];
-};
-
-// 提取对象中的非函数类型
-type NonFunctionProperties<T> = {
-  [K in keyof T as T[K] extends Function ? never : K]: T[K];
-};
-
-// 必填字段（排除可选）
-type RequiredKeys<T> = {
-  [K in keyof T]-?: {} extends Pick<T, K> ? never : K;
-}[keyof T];
-
-// 可选字段
-type OptionalKeys<T> = {
-  [K in keyof T]-?: {} extends Pick<T, K> ? K : never;
-}[keyof T];
-
-// 只读数组转元组
-type TupleFromArray<T extends readonly unknown[]> = [...T];
-
-// 展平数组
-type Flatten<T extends any[]> = T extends (infer U)[] ? U : never;
-
-// 安全导航（处理可选链）
-type DeepNullable<T> = {
-  [P in keyof T]: DeepNullable<T[P]> | null;
-};
-
-// 事件处理器类型
-type EventHandler<E extends Event> = (event: E) => void;
-type MouseEventHandler = EventHandler<MouseEvent>;
-type KeyboardEventHandler = EventHandler<KeyboardEvent>;
-
-// API 响应类型
-type ApiResponse<T> =
-  | { success: true; data: T }
-  | { success: false; error: string };
-
-// 分页响应
-type PaginatedResponse<T> = {
-  data: T[];
-  total: number;
-  page: number;
-  pageSize: number;
-  hasMore: boolean;
-};
-
-// 表单字段类型（用于 React Hook Form 等）
-type FormField<T> = {
-  value: T;
-  error?: string;
-  touched: boolean;
-  valid: boolean;
-};
-
-type FormState<T> = {
-  [K in keyof T]: FormField<T[K]>;
-};
-```
-
----
-
-## 🔄 类型操作技巧
-
-```typescript
-// 重映射键名（添加前缀）
-type WithGetters<T> = {
-  [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K];
-};
-
-// 重映射键名（添加后缀）
-type WithSetters<T> = {
-  [K in keyof T as `set${Capitalize<string & K>}`]: (value: T[K]) => void;
-};
-
-// 过滤特定类型
-type StringValuesOnly<T> = {
-  [K in keyof T as T[K] extends string ? K : never]: T[K];
-};
-
-// 过滤可选属性
-type PickRequired<T> = Pick<T, RequiredKeys<T>>;
-
-// 过滤必选属性
-type PickOptional<T> = Pick<T, OptionalKeys<T>>;
-
-// 将特定类型设为可选
+// 定向修饰
 type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
-
-// 将特定类型设为必选
 type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
+
+type Nullable<T> = T | null;
+type Maybe<T> = T | null | undefined;
+type Dict<T> = Record<string, T>;
 ```
 
----
+## 12. 装饰器速查
 
-## ⚛️ React + TypeScript
+启用（传统实验性）：`tsconfig` 里 `"experimentalDecorators": true`（Nest 等框架生态仍是此模式；TS 5.0 标准 Stage 3 装饰器签名不同，见 `09-decorators.md`）。
 
-### 组件 Props
-```typescript
-import React, { ReactNode, CSSProperties } from "react";
+| 装饰器 | 签名（实验性） | 典型用途 |
+|---|---|---|
+| 类 | `(ctor: Function)` | `@sealed`、注册路由表 |
+| 方法 | `(target, key: string, desc: PropertyDescriptor)` | `@log`、`@Catch`（改 desc.value） |
+| 访问器 | 同方法 | 包装 getter/setter |
+| 属性 | `(target, key: string)` | **没有 descriptor**（高频翻车点） |
+| 参数 | `(target, key: string \| undefined, index: number)` | `@Inject()` 按下标注入 |
 
-// 基础 Props
-interface ButtonProps {
-  children: ReactNode;
-  onClick?: () => void;
-  disabled?: boolean;
-  variant?: "primary" | "secondary" | "danger";
-  style?: CSSProperties;
-  className?: string;
-}
-
-// 使用
-const Button: React.FC<ButtonProps> = ({
-  children,
-  onClick,
-  variant = "primary",
-  ...props
-}) => {
-  return (
-    <button onClick={onClick} {...props}>
-      {children}
-    </button>
-  );
-};
-
-// 泛型组件
-interface ListProps<T> {
-  items: T[];
-  renderItem: (item: T) => ReactNode;
-  keyExtractor: (item: T) => string | number;
-}
-
-function List<T>({ items, renderItem, keyExtractor }: ListProps<T>) {
-  return (
-    <ul>
-      {items.map(item => (
-        <li key={keyExtractor(item)}>{renderItem(item)}</li>
-      ))}
-    </ul>
-  );
-}
-```
-
-### Hooks
-```typescript
-import { useState, useEffect, useRef, useCallback } from "react";
-
-// useState
-const [count, setCount] = useState<number>(0);
-const [user, setUser] = useState<User | null>(null);
-
-// useRef
-const inputRef = useRef<HTMLInputElement>(null);
-const countRef = useRef<number>(0);  // 不触发重新渲染的值
-
-// useCallback
-const handleClick = useCallback(() => {
-  console.log("clicked");
-}, []);
-
-// useMemo
-const expensiveValue = useMemo(() => {
-  return computeExpensiveValue(a, b);
-}, [a, b]);
-
-// 自定义 Hook
-type UseFetchResult<T> = {
-  data: T | null;
-  loading: boolean;
-  error: Error | null;
-  refetch: () => void;
-};
-
-function useFetch<T>(url: string): UseFetchResult<T> {
-  const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-
-  const refetch = useCallback(() => {
-    setLoading(true);
-    fetch(url)
-      .then(res => res.json())
-      .then(setData)
-      .catch(setError)
-      .finally(() => setLoading(false));
-  }, [url]);
-
-  useEffect(refetch, [refetch]);
-
-  return { data, loading, error, refetch };
-}
-
-// useEventListener Hook
-function useEventListener<K extends keyof WindowEventMap>(
-  event: K,
-  handler: (event: WindowEventMap[K]) => void
-) {
-  useEffect(() => {
-    window.addEventListener(event, handler);
-    return () => window.removeEventListener(event, handler);
-  }, [event, handler]);
-}
-```
-
-### Context
-```typescript
-import { createContext, useContext } from "react";
-
-interface ThemeContextType {
-  theme: "light" | "dark";
-  toggleTheme: () => void;
-}
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
-  children
-}) => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  const toggleTheme = () => {
-    setTheme(prev => (prev === "light" ? "dark" : "light"));
+```ts
+// decorators.ts
+function log(target: object, key: string, desc: PropertyDescriptor) {
+  const original = desc.value;
+  desc.value = function (...args: unknown[]) {
+    console.log(`call ${key}`, args);
+    return original.apply(this, args);
   };
-
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
-
-export const useTheme = (): ThemeContextType => {
-  const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
-};
+}
+class Calc {
+  @log
+  add(a: number, b: number): number { return a + b; }
+}
+new Calc().add(1, 2);   // 先打日志再返回 3
 ```
 
----
+## 13. 模块语法速查
 
-## 📋 类型声明文件 (.d.ts)
+```ts
+// modules.ts
+export const PI = 3.14;                       // 命名导出
+export function add(a: number, b: number) { return a + b; }
+export default class Calculator {}            // 默认导出（每模块至多一个）
+export type User = { id: number };            // 类型导出
+export type { User };                         // 重导出类型
+export { add as plus };                       // 重命名导出
+export * from "./math";                       // 聚合导出
 
-```typescript
-// 声明全局变量
-declare const VERSION: string;
-declare function log(message: string): void;
-
-// 声明模块
-declare module "my-library" {
-  export function add(a: number, b: number): number;
-  export function subtract(a: number, b: number): number;
-}
-
-// 扩展已有模块
-declare module "express" {
-  interface Request {
-    user?: User;
-  }
-}
-
-// 声明全局命名空间
-declare namespace NodeJS {
-  interface ProcessEnv {
-    NODE_ENV: "development" | "production";
-    API_URL: string;
-  }
-}
-
-// 声明图片等资源模块
-declare module "*.png" {
-  const value: string;
-  export default value;
-}
-
-declare module "*.svg" {
-  const content: React.FC<React.SVGProps<SVGSVGElement>>;
-  export default content;
-}
-
-// 声明 CSS 模块
-declare module "*.module.css" {
-  const classes: { [key: string]: string };
-  export default classes;
-}
-
-// 扩展 Window 对象
-declare global {
-  interface Window {
-    myLib: {
-      version: string;
-      init(config: Config): void;
-    };
-  }
-}
-
-export {};
+import Calculator, { PI, add as plus } from "./math";   // 默认 + 命名
+import * as math from "./math";               // 命名空间导入
+import type { User } from "./types";          // 仅类型导入（编译后擦除）
+import { type User, createUser } from "./types";         // 混合导入
+const mod = await import("./math");           // 动态导入，类型自动推断
+import "./polyfill";                          // 副作用导入
+import fs from "node:fs";                     // CJS 互操作（需 esModuleInterop）
 ```
 
----
+| 语法 | 坑 |
+|---|---|
+| `import type` | 用作值时报 TS1361；`verbatimModuleSyntax` 下类型必须 type 导入 |
+| `export *` | 不导出 default；命名冲突时静默丢弃 |
+| 动态 import | 返回 Promise<模块命名空间>，`await` 后用 |
+| `namespace` | 非 module 的组织方式，现代代码少用（`10` 篇） |
 
-## 🎨 常用模式
+## 14. tsconfig 高频项速查
 
-### 结果类型（替代抛出异常）
-```typescript
-type Result<T, E = Error> =
-  | { success: true; data: T }
-  | { success: false; error: E };
+| 选项 | 推荐值 | 一句话 |
+|---|---|---|
+| `target` | `ES2022` | 编译产物 JS 版本 |
+| `module` / `moduleResolution` | `ESNext` / `bundler` 或 `NodeNext` | 模块格式与解析策略（Node 下须配对） |
+| `lib` | `["ES2022", "DOM"]` | 可用的内置 API 声明 |
+| `strict` | `true` | 全家桶总开关，必开 |
+| `noUncheckedIndexedAccess` | `true` | `arr[i]` 变 `T \| undefined`（`04` 篇 10.2） |
+| `exactOptionalPropertyTypes` | 可选 `true` | 区分"缺属性"与"显式 undefined" |
+| `noImplicitAny` / `strictNullChecks` | strict 已含 | 隐式 any / null 检查 |
+| `esModuleInterop` | `true` | CJS 默认导出互操作 |
+| `skipLibCheck` | `true` | 跳过 .d.ts 检查，提速 |
+| `baseUrl` + `paths` | `"@/*": ["src/*"]` | 路径别名 |
+| `outDir` / `rootDir` / `declaration` / `sourceMap` | `dist` / `src` / 视情况 / `true` | 输出控制 |
+| `noEmit` | 用打包器时 `true` | 只检查不产出 |
+| `verbatimModuleSyntax` | 可选 `true` | 强制 type 导入写法，导入语句按原样保留 |
+| `isolatedModules` | `true` | 兼容单文件转译器（esbuild/tsx） |
+| `include` / `exclude` | `["src"]` / `["node_modules", "dist"]` | 编译范围 |
 
-async function fetchUser(id: number): Promise<Result<User>> {
+完整逐项说明见 `11-tsconfig.md`。
+
+## 15. 常见报错码速查
+
+| 报错码 | 典型信息 | 一行修法 |
+|---|---|---|
+| TS2304 | Cannot find name 'X' | 忘了 import / 类型不在作用域 |
+| TS2307 | Cannot find module './x' | 路径错；缺声明装 `@types/x` 或自写 `.d.ts` |
+| TS2322 | Type 'A' is not assignable to type 'B' | 结构不匹配：对齐字段/收窄/检查字面量拓宽（`03` 篇 9.2） |
+| TS2345 | Argument of type 'A' is not assignable to parameter 'B' | 参数类型不符：多为字面量被拓宽，标注或 `as const` |
+| TS2339 | Property 'x' does not exist on type 'Y' | 联合未收窄先访问独有成员；或拼错（TS2551 会提示相似名） |
+| TS2367 | This comparison appears to be unintentional | 两类型无交集，比较逻辑写错了 |
+| TS2540 | Cannot assign to 'x' because it is a read-only property | readonly 别改；需要可变就换掉 Readonly/as const |
+| TS2531 / TS18047 | Object is possibly 'null' / 'undefined' | 先收窄（`if (x)`/`?.`），能不用 `!` 就不用 |
+| TS18046 | 'x' is of type 'unknown' | unknown 先收窄：typeof/in/谓词（`04` 篇） |
+| TS2564 | Property has no initializer and is not definitely assigned | 构造里赋值，或确属框架注入用 `!` + 注释 |
+| TS2366 | Function lacks ending return statement | 分支未全覆盖，常与穷尽检查一起看 |
+| TS2769 | No overload matches this call | 重载全不匹配，对照各签名找参数错位 |
+| TS7006 | Parameter 'x' implicitly has an 'any' type | 函数参数补类型标注 |
+| TS7016 | Could not find a declaration file for module 'x' | 装 `@types/x`，或 `declare module "x"` 补声明 |
+| TS1361 | 'X' cannot be used as a value (import type) | 类型导入不能当代值用，另起普通 import |
+| TS2578 | Unused '@ts-expect-error' directive | 错误已修好，删掉这行注释 |
+
+## 16. .d.ts 声明速查
+
+```ts
+// globals.d.ts
+declare const VERSION: string;                    // 全局常量
+declare function track(event: string): void;      // 全局函数
+
+declare module "no-types-lib" {                   // 给无类型库补声明
+  export function debounce<T extends (...args: any[]) => any>(fn: T, wait?: number): T;
+}
+
+declare module "*.png" {                          // 资源模块
+  const src: string;
+  export default src;
+}
+
+declare global {                                  // 扩展全局（模块文件内需 declare global）
+  interface Window { myLib: { init(): void } }
+}
+
+// 扩展第三方模块（interface 合并，见 03 篇 8.3）
+declare module "express-serve-static-core" {
+  interface Request { currentUser?: { id: number } }
+}
+
+export {};   // 让 .d.ts 变模块文件，避免全局污染（declare global 必需）
+```
+
+## 17. 常用模式
+
+### Result（错误作返回值，替代 throw）
+
+```ts
+// result.ts
+type Result<T, E = Error> = { ok: true; value: T } | { ok: false; error: E };
+
+async function fetchUser(id: number): Promise<Result<{ id: number }>> {
   try {
-    const response = await fetch(`/api/users/${id}`);
-    if (!response.ok) {
-      return { success: false, error: new Error("Failed to fetch") };
-    }
-    const data = await response.json();
-    return { success: true, data };
-  } catch (error) {
-    return { success: false, error: error as Error };
+    const res = await fetch(`/api/users/${id}`);
+    if (!res.ok) return { ok: false, error: new Error(`HTTP ${res.status}`) };
+    return { ok: true, value: await res.json() };
+  } catch (e) {
+    return { ok: false, error: e as Error };
   }
 }
 
-// 使用
-const result = await fetchUser(1);
-if (result.success) {
-  console.log(result.data.name);
-} else {
-  console.error(result.error.message);
-}
+const r = await fetchUser(1);
+if (r.ok) console.log(r.value.id);   // 判别联合收窄：ok 为真才有 value
+else console.error(r.error.message);
 ```
 
-### Builder 模式
-```typescript
-class QueryBuilder<T> {
-  private conditions: string[] = [];
-  private orderByField?: keyof T;
-  private limitValue?: number;
+### Branding（名义类型，防 ID 混用）
 
-  where(field: keyof T, value: unknown): this {
-    this.conditions.push(`${String(field)} = ${value}`);
+```ts
+// branding.ts
+type UserId = string & { readonly __brand: "UserId" };
+type OrderId = string & { readonly __brand: "OrderId" };
+const asUserId = (s: string) => s as UserId;
+
+function charge(id: UserId) {}
+charge(asUserId("u_1"));   // ✅
+// charge("raw-string");   // ❌ TS2345：裸 string 没有 brand
+// const o: OrderId = asUserId("u_1");   // ❌ brand 不同不能互赋
+```
+
+### Builder（返回 this 支持链式调用）
+
+```ts
+// builder.ts
+class Query<T> {
+  private conds: string[] = [];
+  where<K extends keyof T>(k: K, v: unknown): this {    // 返回 this 才能子类链式
+    this.conds.push(`${String(k)}=${String(v)}`);
     return this;
   }
-
-  orderBy(field: keyof T): this {
-    this.orderByField = field;
-    return this;
-  }
-
-  limit(n: number): this {
-    this.limitValue = n;
-    return this;
-  }
-
-  build(): string {
-    let query = `SELECT * FROM table`;
-    if (this.conditions.length) {
-      query += ` WHERE ${this.conditions.join(" AND ")}`;
-    }
-    if (this.orderByField) {
-      query += ` ORDER BY ${String(this.orderByField)}`;
-    }
-    if (this.limitValue) {
-      query += ` LIMIT ${this.limitValue}`;
-    }
-    return query;
-  }
+  build(): string { return `SELECT * WHERE ${this.conds.join(" AND ")}`; }
 }
-
-// 使用
-const query = new QueryBuilder<User>()
-  .where("age", 25)
-  .where("active", true)
-  .orderBy("name")
-  .limit(10)
-  .build();
+new Query<{ age: number; active: boolean }>().where("age", 25).where("active", true).build();
 ```
 
-### 名义类型（Nominal Typing）
-```typescript
-// 使用 branding 创建名义类型
-type UserId = string & { readonly __brand: unique symbol };
-type OrderId = string & { readonly __brand: unique symbol };
+### satisfies（校验并保留推断，TS 4.9+）
 
-function createUserId(id: string): UserId {
-  return id as UserId;
-}
-
-function createOrderId(id: string): OrderId {
-  return id as OrderId;
-}
-
-// 现在不能混用 UserId 和 OrderId
-const userId = createUserId("user-1");
-const orderId = createOrderId("order-1");
-
-function processUser(id: UserId) { /* ... */ }
-function processOrder(id: OrderId) { /* ... */ }
-
-processUser(userId);     // ✅
-// processUser(orderId); // ❌ 类型错误
-```
-
----
-
-## 📚 类型体操挑战
-
-```typescript
-// 1. HelloWorld - 返回字符串 "Hello, World"
-type HelloWorld = "Hello, World";
-
-// 2. Pick - 实现内置 Pick
-type MyPick<T, K extends keyof T> = {
-  [P in K]: T[P];
-};
-
-// 3. Readonly - 实现内置 Readonly
-type MyReadonly<T> = {
-  readonly [P in keyof T]: T[P];
-};
-
-// 4. Tuple to Object - 将元组转为对象
-type TupleToObject<T extends readonly string[]> = {
-  [P in T[number]]: P;
-};
-
-// 5. First of Array - 获取数组第一个元素
-type First<T extends any[]> = T extends [infer F, ...any[]] ? F : never;
-
-// 6. Length of Tuple - 获取元组长度
-type Length<T extends readonly any[]> = T["length"];
-
-// 7. Exclude - 实现内置 Exclude
-type MyExclude<T, U> = T extends U ? never : T;
-
-// 8. Awaited - 实现内置 Awaited
-type MyAwaited<T> = T extends Promise<infer U> ? MyAwaited<U> : T;
-
-// 9. If - 条件类型
-type If<C extends boolean, T, F> = C extends true ? T : F;
-
-// 10. Concat - 连接两个数组
-type Concat<T extends any[], U extends any[]> = [...T, ...U];
-```
-
----
-
-## 💡 快速技巧
-
-### 1. 使用 `satisfies` 检查类型同时保留推断
-```typescript
+```ts
+// satisfies.ts
 const config = {
   host: "localhost",
-  port: 3000
+  port: 3000,                    // 保持推断为 number（标注会拓宽成 string | number）
 } satisfies Record<string, string | number>;
 
-config.port.toFixed();  // ✅ 知道是 number
+config.port.toFixed();           // ✅ 仍是具体类型 number
+// config.ssl = true;            // ❌ 超出 satisfies 的约束范围
 ```
 
-### 2. 使用 `as const` 创建不可变类型
-```typescript
-const colors = ["red", "green", "blue"] as const;
-// typeof colors = readonly ["red", "green", "blue"]
+### 轻量枚举（as const 对象，`07` 篇详述 enum 取舍）
 
-type Color = typeof colors[number];
-// "red" | "green" | "blue"
+```ts
+// const-enum.ts
+const STATUS = { pending: "pending", success: "success", error: "error" } as const;
+type Status = (typeof STATUS)[keyof typeof STATUS];   // "pending" | "success" | "error"
+function render(s: Status) {}
+render(STATUS.success);
 ```
 
-### 3. 使用 `keyof` 获取所有键
-```typescript
-interface User {
-  name: string;
-  age: number;
+## 18. React + TS 速查
+
+```tsx
+// components.tsx
+import { useState, useRef, useCallback, createContext, useContext } from "react";
+import type { ReactNode, CSSProperties } from "react";
+
+interface ButtonProps {
+  children: ReactNode;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  disabled?: boolean;
+  variant?: "primary" | "secondary";     // 字面量联合代替 string
+  style?: CSSProperties;
 }
 
-type UserKey = keyof User;  // "name" | "age"
+// 社区惯例已少用 React.FC（隐式 children 等历史问题），直接函数组件 + Props 类型：
+function Button({ children, onClick, variant = "primary" }: ButtonProps) {
+  return <button onClick={onClick} data-variant={variant}>{children}</button>;
+}
+
+// 泛型组件
+function List<T>({ items, renderItem }: { items: T[]; renderItem: (t: T) => ReactNode }) {
+  return <ul>{items.map((it, i) => <li key={i}>{renderItem(it)}</li>)}</ul>;
+}
+
+// Hooks
+const [count, setCount] = useState(0);              // 推断 number；可空显式 useState<User | null>(null)
+const inputRef = useRef<HTMLInputElement>(null);    // DOM 引用
+const timerRef = useRef(0);                         // 不触发渲染的值
+const onSave = useCallback(() => {}, [count]);      // 依赖数组类型自动校验
+
+// Context：undefined 初值 + 自定义 hook 兜底
+const ThemeCtx = createContext<"light" | "dark" | undefined>(undefined);
+export function useTheme(): "light" | "dark" {
+  const ctx = useContext(ThemeCtx);
+  if (ctx === undefined) throw new Error("useTheme must be used within Provider");
+  return ctx;
+}
 ```
 
-### 4. 使用 `typeof` 获取变量类型
-```typescript
-const user = {
-  name: "Alice",
-  age: 25
-};
+## 19. 类型体操起步题（10 题）
 
-type User = typeof user;  // { name: string; age: number; }
+```ts
+// type-challenges.ts
+type MyPick<T, K extends keyof T> = { [P in K]: T[P] };                 // 1. 实现 Pick
+type MyReadonly<T> = { readonly [P in keyof T]: T[P] };                 // 2. 实现 Readonly
+type TupleToObject<T extends readonly string[]> = { [P in T[number]]: P };   // 3. 元组转对象
+type First<T extends any[]> = T extends [infer F, ...any[]] ? F : never;     // 4. 取首元素
+type Length<T extends readonly any[]> = T["length"];                    // 5. 元组长度
+type MyExclude<T, U> = T extends U ? never : T;                         // 6. 实现 Exclude
+type MyAwaited<T> = T extends Promise<infer U> ? MyAwaited<U> : T;      // 7. 递归解包
+type Concat<A extends any[], B extends any[]> = [...A, ...B];           // 8. 拼接元组
+type TupleToUnion<T extends readonly any[]> = T[number];                // 9. 元组转联合
+type DeepReadonly<T> = { readonly [K in keyof T]: T[K] extends object
+  ? DeepReadonly<T[K]> : T[K] };                                        // 10. 深只读
 ```
 
-### 5. 使用 `infer` 提取类型
-```typescript
-// 提取数组元素类型
-type ElementType<T> = T extends (infer U)[] ? U : T;
+进阶体操（分发律、IsUnion、DeepPick 等）见 `12-typescript-advanced-type-system.md` 与 `14-typescript-interview-questions.md`。
 
-// 提取函数返回类型
-type ReturnType<T> = T extends (...args: any[]) => infer R ? R : never;
+## 20. 一句话总结
 
-// 提取 Promise 解析类型
-type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
-```
-
----
-
-**保存这份速查表，随时查阅！** 📖
+> 速查表 = 每节一张表 + 一段短代码：标注认小写、any/unknown/never 分清、type/interface 分工、收窄八法（详见 `04-narrowing.md`）、泛型约束 `K extends keyof T`、类型运算七件套（keyof/typeof/索引/条件/infer/映射/模板字面量）、22 个内置工具类型、报错码先查 2322/2345/2339/7006——查得到语法后，回详解篇补"为什么"。
