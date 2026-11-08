@@ -328,7 +328,7 @@ type Route = `/${"a" | "b"}/${number}`;    // "/a/1"、"/b/2" 等组合
 | `Extract<T, U>` | 从联合提取 | `Extract<"a"\|"b", string>` → `"a" \| "b"` |
 | `NonNullable<T>` | 排除 nullish | `NonNullable<string \| null>` → `string` |
 | `Parameters<T>` | 函数参数元组 | `Parameters<(a: number) => void>` → `[a: number]` |
-| `ConstructorParameters<T>` | 构造参数元组 | `ConstructorParameters<typeof Date>` → `[(value: number \| string) \| undefined]`... |
+| `ConstructorParameters<T>` | 构造参数元组 | `ConstructorParameters<typeof Date>` → `[value?: string \| number]` |
 | `ReturnType<T>` | 取返回类型 | `ReturnType<() => string>` → `string` |
 | `InstanceType<T>` | 取实例类型 | `InstanceType<typeof Error>` → `Error` |
 | `Awaited<T>` | 递归解 Promise | `Awaited<Promise<Promise<number>>>` → `number` |

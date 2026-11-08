@@ -88,10 +88,10 @@ function printCount(count: number) {
 }
 
 function shout(x: string | number) {
-  // 0 和 "" 会被 if 挡掉：
   // if (x) console.log(x.toUpperCase());
-  //           ❌ 报错：string | number 上没有 toUpperCase —— number 没被完全排除？
-  // 实际上 TS 收窄后 x 为 string | number 里非 falsy 的部分，仍含 number
+  // ❌ 报错 TS2339：x 仍是 string | number！
+  //    真值判断只能剔除 null/undefined 与"falsy 字面量"（""、0 这类字面量类型），
+  //    宽的 string/number 因为可能装着 falsy 值，整个成员都保留
 }
 ```
 
@@ -454,7 +454,7 @@ const maybe = names.find((n) => n.length > 3);   // find 返回 string | undefin
 
 ### 10.3 其他边界速记
 
-- **`const` 断言的对象仍是"属性可变"的引用**：`as const` 收窄的是类型不是运行时（`03-everyday-types.md` 9.3）。
+- **`as const` 只改类型不改运行时**：类型上属性全 readonly，但运行时那个对象仍可被 `Object.assign` 等改写（`03-everyday-types.md` 9.3）。
 - **跨 `await` / 回调后的收窄**：TS 对 let 变量的收窄会跨越 `await` 保持（它不做并发分析），这是"信任开发者"的又一例，多人协作时注意闭包捕获。
 - **谓词/断言收窄不能作用于表达式**（见 8 节坑 2）：先赋给 const 变量再收窄。
 - 收窄只在**同一次函数调用**内有效：`isString(x)` 返回 true 后，另一次调用 `isString(x)` 的结果编译器不会复用——循环体内每轮重新收窄。
