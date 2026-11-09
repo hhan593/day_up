@@ -1,4 +1,4 @@
-# 22. 类型体操实战（type-challenges 风格：15 道题完整拆解）
+# 22. 类型体操实战（type-challenges 风格：21 道题完整拆解）
 
 > 来源可信度：**官方文档确认 + 对比分析**（语法规则以 TypeScript Handbook / lib.es5.d.ts 官方内置类型为准；题目风格来自 type-challenges 仓库，解法为社区通行写法，易错点为对比归纳）
 > 关联：`12-typescript-advanced-type-system.md`（分布律/逆变/infer 的理论底座）、`08-creating-types-from-types.md`（keyof/映射/条件类型语法）、`04-narrowing.md`（never 与穷尽）、`17-engineering-tsup-vitest.md`（expectTypeOf 类型测试）、`13-typescript-best-practices.md`（生产代码克制原则）、`23-error-debugging.md`（TS2589 递归爆栈）
@@ -386,6 +386,207 @@ type IsNever<T> = [T] extends [never] ? true : false;
   4. 晦涩类型必须配「用例注释 + expectTypeOf 测试」，否则下一个维护者只会 `as any`。
 - 收手信号：你在类型上花的时间超过业务逻辑本身；报错信息没人看得懂；类型能跑但 IDE hover 出来三屏。
 
-## 7. 一句话总结
+## 7. Hard 级（题 16–21）：组合技与递归控制
 
-> 类型体操的正确姿势是固定四步——观察用例、拆解为 keyof/索引访问/infer/映射/递归/分布这些原语、组合、expectTypeOf 验证；十五道题各喂饱一个原语：MyPick 练映射约束、MyReadonly2 练默认参数与交叉合并、First/Concat 练元组模式与展开、TupleToUnion 练索引访问、Includes 练 Equal 精确比较、Exclude/Extract 练分布律、Awaited 练 thenable 递归、DeepReadonly/DeepPartial 练分流加递归、OptionalKeys 练 `{}` 探测可选性、Get 练模板字面量拆链、UnionToIntersection 练「分布进逆变位、infer 收交叉」、AnyOf 练 falsy 枚举、IsNever 练 `[T]` 抑制分布对 never 的魔法；练完请收手——体操用来理解类型系统，生产代码要的是三行以内、别人读得懂的类型。
+> 本节 6 题的实现与全部测试用例已在 tsc 5.9.3 实测通过；难度特征是「单一原语不够用了」，需要两个以上原语叠加（重映射 × 递归、模板 × 递归、深度计费 × 展开）。
+
+### 7.1 题 16：Diff（联合差集）与 DeepDiff（多级差集）
+
+```ts
+// 题目：求两个对象类型的对称差——只出现在其中一方的键，值取自它所在的一方。
+type cases = [
+  Expect<Equal<Diff<{ a: number; b: string }, { b: number; c: boolean }>, { a: number; c: boolean }>>,
+  Expect<Equal<Diff<{ a: 1 }, {}>, { a: 1 }>>,
+];
+```
+
+思路：Diff 是「键集合的 XOR」。映射类型的键列表可以直接写联合 `keyof O | keyof O1`，再用 `as` 重映射把「双方共有的键」映射成 never 删除（题 11 的 `{}` 探测换成更直接的 `keyof O & keyof O1` 交集判断）。
+
+```ts
+type Diff<O, O1> = {
+  [K in keyof O | keyof O1 as
+    K extends keyof O & keyof O1 ? never : K          // 重映射删共有键
+  ]: K extends keyof O ? O[K] : K extends keyof O1 ? O1[K] : never;
+};
+```
+
+- **逐行解释**：`keyof O | keyof O1` 遍历双方全部键；共有键产出 `never` 被重映射删除（同题 3 MyReadonly2 的 never 语义：删键不是置空）；值位先查 O 再查 O1——独有键必然只在一方，两个分支互斥兜底。
+- **易错点**：把值位写成 `T[K]` 的取巧形式会因 K 不在单独一方的 keyof 里报 TS2536；`as` 分支里的 never 是「删键」，与值位 never（联合吸收）语义不同，别混淆。
+
+进阶：DeepDiff——共有键的**值**若是对象则继续下钻，值相同则整键删除：
+
+```ts
+// 题目：深一层——共有键值不同也保留（同为对象则递归），值相同整键消失。
+type cases = [
+  Expect<Equal<DeepDiff<{ a: { x: 1; y: 2 }; b: string }, { a: { x: 1; z: 3 } }>, { a: { y: 2; z: 3 }; b: string }>>,
+];
+
+type DeepDiff<O, O1> = {
+  [K in keyof O | keyof O1 as
+    K extends keyof O & keyof O1
+      ? Equal<O[K], O1[K]> extends true ? never : K    // 双方都有且值相同 → 删
+      : K
+  ]: K extends keyof O
+    ? K extends keyof O1
+      ? O[K] extends object ? DeepDiff<O[K], O1[K]> : O[K]   // 都有且不同：对象递归，标量取 O 侧
+      : O[K]                                                  // 仅 O 有
+    : K extends keyof O1 ? O1[K] : never;                     // 仅 O1 有
+};
+```
+
+- **思路增量**：删键条件从「共有」升级为「共有且 Equal 相同」（第 2 章的 Equal 正式上岗）；值位多一层「双方都有 → 递归或取值」的分流。
+- **易错点**：Equal 换成 `extends` 可赋值判断会把 `{x:1}` vs `{x:1; extra:2}` 误判为相同；`O[K] extends object` 的分流是防递归失控的最小闸门，不分会把标量也卷进映射（产出 `{}`）。
+
+### 7.2 题 17：TrimLeft / ReplaceAll（模板字面量递归）
+
+```ts
+// 题目：TrimLeft 去掉开头的空格/\t/\n；ReplaceAll 把子串 From 全量替换成 To。
+type cases = [
+  Expect<Equal<TrimLeft<'   \n\t hi'>, 'hi'>>,
+  Expect<Equal<TrimLeft<'a b'>, 'a b'>>,                       // 中间的空白不动
+  Expect<Equal<ReplaceAll<'foobar', 'ob', 'x'>, 'foxar'>>,
+  Expect<Equal<ReplaceAll<'aba', 'a', 'x'>, 'xbx'>>,
+  Expect<Equal<ReplaceAll<'foo', '', 'x'>, 'foo'>>,            // 空串防死循环
+];
+```
+
+思路：字符串问题 = 「模式匹配 + 吃掉一段再递归」。TrimLeft 每轮剥一个前导空白；ReplaceAll 用模板 infer 定位第一个 From，替换后对尾部递归。
+
+```ts
+type TrimLeft<S extends string> =
+  S extends ` ${infer R}` | `\t${infer R}` | `\n${infer R}` ? TrimLeft<R> : S;
+
+type ReplaceAll<S extends string, From extends string, To extends string> =
+  From extends '' ? S                                          // 基线：空 From 会无限匹配
+  : S extends `${infer Head}${From}${infer Tail}`
+    ? `${Head}${To}${ReplaceAll<Tail, From, To>}`              // 首个匹配处替换，尾部递归
+    : S;                                                       // 基线：无匹配，字符串原样返回
+```
+
+- **逐行解释**：TrimLeft 的模式是三个模板字面量的**联合**——条件类型对联合分发，任一匹配即递归（分布律用在字符串模式上）；ReplaceAll 里 `${infer Head}${From}${infer Tail}` 按第一个出现的 From 切三段，Head 保留、中间换 To、Tail 继续。
+- **易错点**：
+  1. **ReplaceAll 忘写 `From extends ''` 守卫是经典死循环**（TS2589 爆栈）：空串在任何位置都「匹配」，递归永不到达基线——所有「按模式切分」的模板递归都要自问「空模式会不会死」；
+  2. 重叠匹配行为要对齐 JS 语义：实测 `ReplaceAll<'aaaa', 'aa', 'b'>` 得 `'bb'`（最左匹配、匹配后从 Tail 继续，与 `String.prototype.replaceAll` 一致），自造用例时别写重叠歧义题；
+  3. TrimLeft 想多支持 `\r` 就往模式联合里加成员，递归体不变——模式联合是这类题的扩展点。
+
+### 7.3 题 18：FlattenDepth（递归深度计费）
+
+```ts
+// 题目：按指定深度拍平元组，depth 默认 1；超深部分保留嵌套。
+type cases = [
+  Expect<Equal<FlattenDepth<[1, [2, [3, [4]]], 5]>, [1, 2, [3, [4]], 5]>>,
+  Expect<Equal<FlattenDepth<[1, [2, [3, [4]]], 5], 2>, [1, 2, 3, [4], 5]>>,
+  Expect<Equal<FlattenDepth<[1, [2, [3, [4]]], 5], 3>, [1, 2, 3, 4, 5]>>,
+  Expect<Equal<FlattenDepth<[1, [2, [3, [4]]], 5], 10>, [1, 2, 3, 4, 5]>>,   // 深度超出自然收敛
+];
+```
+
+思路：拍平一次 `[a, [b, [c]]] → [a, b, [c]]` 不难（题 4 Concat 的反向），难在「只拍 D 层」。技巧：**给递归配一个计费元组 `C`**，每下钻一层 `C` 长度 +1，`C['length']` 追上 D 就停止拍平——把「数值深度」翻译成「元组长度」（数值只有 extends 可比，元组可计数）。
+
+```ts
+type FlattenDepth<T extends unknown[], D extends number = 1, C extends unknown[] = []> =
+  C['length'] extends D
+    ? T                                                        // 预算用完：剩余嵌套原样返回
+    : T extends [infer F, ...infer R]
+      ? F extends unknown[]
+        ? [...FlattenDepth<F, D, [unknown, ...C]>, ...FlattenDepth<R, D, C>]   // 数组元素：下钻，+1 费用
+        : [F, ...FlattenDepth<R, D, C>]                        // 标量元素：原样带走，不扣费
+      : T;                                                     // 基线：元组耗尽
+```
+
+- **逐行解释**：`C` 是「已拍平层数」的计数器（`[unknown, ...C]` 追加一个占位）；遇到数组元素时，先带着 `+1` 的预算拍平它内部，再带着**原预算**拍平余部 R——兄弟分支共享同一层预算，嵌套分支才涨价；D 用默认参数 `= 1`（与题 2 的默认键联合同语法）。
+- **易错点**：
+  1. **两个递归分支的计费参数极易写反**：下钻分支必须 `[unknown, ...C]`、余部分支必须保持 `C`——写成两个都涨价会提前耗尽预算，写成两个都不涨就退化成无限拍平；
+  2. `C['length'] extends D` 在 D 为字面量 `10` 而实际嵌套只有 3 层时，靠「元组耗尽」基线自然收敛——基线必须先于预算判断不到达时也安全；
+  3. D 很大时 C 会真的构造出对应长度的元组类型，嵌套又深会撞 TS2589（修法见 23 篇 9）——实战给 D 收敛上限。
+
+### 7.4 题 19：Permutation（联合排列）
+
+```ts
+// 题目：把 'A' | 'B' | 'C' 排列成所有可能顺序的元组联合。
+type cases = [
+  Expect<Equal<Permutation<'A' | 'B' | 'C'>,
+    ['A', 'B', 'C'] | ['A', 'C', 'B'] | ['B', 'A', 'C'] | ['B', 'C', 'A'] | ['C', 'A', 'B'] | ['C', 'B', 'A']>>,
+  Expect<Equal<Permutation<'A'>, ['A']>>,
+  Expect<Equal<Permutation<never>, []>>,
+];
+```
+
+思路：排列 = 「固定首位 + 剩余全排列」的递归。联合的**分布律**天然承担「每个成员轮流当首位」：`T extends T` 让 T 的每个成员独立进入分支；「剩余」用 `Exclude<K, T>` 从**原始联合**里扣掉（K = T 在参数位缓存原始联合，避开 T 被逐层收窄）。
+
+```ts
+type Permutation<T, K = T> = [T] extends [never]
+  ? []                                                        // 基线：没有可排的了
+  : T extends T
+    ? [T, ...Permutation<Exclude<K, T>>]                      // T 轮流当首位（分布），余部继续排
+    : never;
+```
+
+- **逐行解释**：`K = T`（默认参数）在类型进入分布**前**快照原始联合；`T extends T` 分布使 T 成为单成员，`Exclude<K, T>` 得到「去掉首位」的余集递归；`[T, ...余]` 用元组展开（题 5 Concat）拼装；空联合的分支处理靠 `[T] extends [never]`（题 15 的抑制分布魔法）——没有它，`Permutation<never>` 会因「分布零次」返回 never 而不是 `[]`。
+- **易错点**：
+  1. `K = T` 不能省——直接在递归里写 `Exclude<T, T>`（T 已是单成员）会丢掉其他候选，排列只剩一种；
+  2. 基线写成 `T extends never ? []` 永远不触发（题 15 的坑在这题实锤）；
+  3. 结果是**元组联合**而非单个元组——用例里要写全排列的 `|`，手写用例时 3 个成员已是 6 项，验证成本提醒你排列题只适合类型层面的「理解练习」。
+
+### 7.5 题 20：BEM（模板字面量组合的爆炸控制）
+
+```ts
+// 题目：BEM 命名——block__element--modifier；element/modifier 可为空或多段（string[]），空段不产出分隔符。
+type cases = [
+  Expect<Equal<BEM<'btn', [], []>, 'btn'>>,
+  Expect<Equal<BEM<'btn', ['price'], []>, 'btn__price'>>,
+  Expect<Equal<BEM<'btn', [], ['disabled']>, 'btn--disabled'>>,
+  Expect<Equal<BEM<'btn', ['price', 'warning'], ['disabled']>, 'btn__price__warning--disabled'>>,
+  Expect<Equal<BEM<'btn', ['price', 'warning'], ['disabled', 'big']>, 'btn__price__warning--disabled--big'>>,
+];
+```
+
+思路：三个拼接槽，各有一套「空则整段消失、非空则逐段加分隔符」的规则。直接写 `${B}__${E}--${M}` 会踩两个雷：空数组时 `E[number]` 是 never、模板含 never 整体变 never（'btn' 也消失了）；多段需要**递归 join**，不能靠一次模板展开。
+
+```ts
+type JoinParts<P extends string[], Sep extends string> =
+  P extends [] ? ''
+  : P extends [infer F extends string, ...infer R extends string[]]
+    ? `${Sep}${F}${JoinParts<R, Sep>}`                        // 每段前面补分隔符，尾部递归
+    : never;
+
+type BEM<B extends string, E extends string[], M extends string[]> =
+  `${B}${E extends [] ? '' : JoinParts<E, '__'>}${M extends [] ? '' : JoinParts<M, '--'>}`;
+```
+
+- **逐行解释**：`JoinParts` 是「带前缀的字符串数组拼接器」——每轮解构首段 F、其余 R 递归，基线返回 `''`（模板里的 `''` 拼接无害）；BEM 外层只负责「空数组短路 + 选分隔符」，段内拼接全部委托给 JoinParts。
+- **易错点**：
+  1. **空槽守卫不可省**：`E` 为 `[]` 时若直接 `__${E[number]}`，`E[number]` 是 never，`__${never}` 求值为 never，整个模板坍缩成 never——用例 `BEM<'btn', [], []>` 必须得到 `'btn'`，这条守卫就是为它活的；
+  2. `infer F extends string` 的 extends 约束（TS 4.8+）让 infer 变量直接满足模板槽的 string 要求，没有它会报「F 不能用于模板字面量」；
+  3. **组合爆炸意识**：模板槽里塞大联合（如 `E[number]` 是 50 个成员）会产出笛卡尔积级模板联合，两三个大槽叠加就撞 TS2589——这正是「组合爆炸控制」的题眼：先短路、再递归、不把大联合塞进多个槽。
+
+### 7.6 题 21：TupleToNestedObject（元组 → 嵌套对象递归）
+
+```ts
+// 题目：['a', 'b', 'c'] 与值 U → { a: { b: { c: U } } }；空元组直接返回 U；成员可以是联合键。
+type cases = [
+  Expect<Equal<TupleToNestedObject<['a'], true>, { a: true }>>,
+  Expect<Equal<TupleToNestedObject<['a', 'b', 'c'], false>, { a: { b: { c: false } } }>>,
+  Expect<Equal<TupleToNestedObject<[], boolean>, boolean>>,
+  Expect<Equal<TupleToNestedObject<['a' | 'b', 'c'], 1>, { a: { c: 1 }; b: { c: 1 } }>>,
+];
+```
+
+思路：每轮把「首键 + 余部」翻译成「一层对象，值为余部的递归结果」——`{ [K in F]: 剩余的递归 }`；元组耗尽时 U 就是最终值。分布律这次藏在**映射键**里：F 是联合时 `[K in F]` 自动生成多键。
+
+```ts
+type TupleToNestedObject<T extends readonly PropertyKey[], U> =
+  T extends [infer F extends PropertyKey, ...infer R extends readonly PropertyKey[]]
+    ? { [K in F]: TupleToNestedObject<R, U> }                 // F 是联合 → 一层生成多键
+    : U;                                                      // 基线：元组耗尽，落底值
+```
+
+- **逐行解释**：`infer F extends PropertyKey` 同时完成「捕获首元素」与「约束其为合法键」（TS 4.8+ 的 infer extends，题 20 同款）；`...infer R extends readonly PropertyKey[]` 捕获余部并保持递归输入合法；映射键 `[K in F]` 在 F 为 `'a' | 'b'` 时生成 `{ a: ...; b: ... }`——**映射类型遍历联合键**是分布律的另一个入口（不经过条件类型）。
+- **易错点**：
+  1. infer 约束写成 `infer F` 裸捕，`[K in F]` 会报「K 不能是任意类型」——映射键要求 PropertyKey；
+  2. `readonly` 要贯穿：入参约束 `readonly PropertyKey[]`，R 的 infer 也带 readonly，否则 `as const` 传参（`['a', 'b'] as const`）在递归第二轮被拒；
+  3. 与题 12 Get 的对照记忆：Get 是「字符串链下钻取值」（拆字符串），本题是「元组逐层构造对象」（拆元组）——同构的递归骨架，方向相反，一起记。
+
+## 8. 一句话总结
+
+> 类型体操的正确姿势是固定四步——观察用例、拆解为 keyof/索引访问/infer/映射/递归/分布这些原语、组合、expectTypeOf 验证；二十一道题各喂饱一个原语：MyPick 练映射约束、MyReadonly2 练默认参数与交叉合并、First/Concat 练元组模式与展开、TupleToUnion 练索引访问、Includes 练 Equal 精确比较、Exclude/Extract 练分布律、Awaited 练 thenable 递归、DeepReadonly/DeepPartial 练分流加递归、OptionalKeys 练 `{}` 探测可选性、Get 练模板字面量拆链、UnionToIntersection 练「分布进逆变位、infer 收交叉」、AnyOf 练 falsy 枚举、IsNever 练 `[T]` 抑制分布对 never 的魔法；Hard 级六题练组合技——Diff/DeepDiff 练重映射删键与递归差集、TrimLeft/ReplaceAll 练模板模式递归（空模式守卫）、FlattenDepth 练元组计费控深、Permutation 练分布轮换首位、BEM 练空槽短路防组合爆炸、TupleToNestedObject 练映射键遍历联合；练完请收手——体操用来理解类型系统，生产代码要的是三行以内、别人读得懂的类型。
