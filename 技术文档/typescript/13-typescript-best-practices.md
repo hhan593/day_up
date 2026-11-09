@@ -1,5 +1,7 @@
-# TypeScript 高级技巧与最佳实践
+# 13. TypeScript 高级技巧与最佳实践
 
+> 来源可信度：**标准实践**（官方风格建议 + 社区工程共识，条目均配正/反例）
+> 关联：`11-tsconfig.md`（strict 配置）、`04-narrowing.md`（守卫收窄）、`21-declaration-files.md`/`23-error-debugging.md`（运行时边界）、`12-typescript-advanced-type-system.md`（类型层能力边界）
 > 提升 TypeScript 代码质量的实用技巧
 
 ---
@@ -684,3 +686,7 @@ interface PaymentState { /* ... */ }
 ---
 
 **持续学习和实践是掌握 TypeScript 的关键！** 🚀
+
+## 一句话总结
+
+> 最佳实践的核心只有一句：**让类型描述你的业务约束，让运行时校验守住数据边界**——strict 全开、断言克制（satisfies/守卫优先）、API 用判别联合、边界交给 zod，剩下的都是这条原则的展开。

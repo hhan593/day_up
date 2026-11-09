@@ -1,5 +1,7 @@
-# TypeScript 版本新特性速览（4.1 → 5.9）
+# 15. TypeScript 版本新特性速览（4.1 → 5.9）
 
+> 来源可信度：**官方文档确认**（基于 TS 官方发布说明与 What's New，截至 5.9 / 2026-11）
+> 关联：`20-tsx-and-runtime.md`（运行时现状）、`11-tsconfig.md`（新编译项）、`18-decorators-deep.md`（5.0 新装饰器）
 > 汇总 TS 4.1 至 5.9 的核心新特性，按版本演进阅读，重点标注「高频使用」特性。
 > 面试/复习时重点关注：4.1 模板字符串、4.7 infer extends、4.9 satisfies、5.0 const 类型参数与新装饰器、5.5 推断类型谓词。
 
@@ -531,3 +533,7 @@ console.log(feature.specialConstant); // 此时才真正求值
 | 5.7 | 相对路径扩展名重写 |
 | 5.8 | 细粒度返回检查、`erasableSyntaxOnly` |
 | 5.9 | `import defer`、精简 init、node20 |
+
+## 一句话总结
+
+> 4.9→5.9 的主线是三条：**类型更强**（satisfies/const 泛型/noInfer/自动谓词）、**编译更快**（声明优化/--noCheck，直到 tsgo 原生移植）、**与 ESM 对齐**（import attributes/defer、module nodenext）——升级心智负担小，收益集中在 DX。

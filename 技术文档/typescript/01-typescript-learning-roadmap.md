@@ -1,1125 +1,421 @@
-# TypeScript 零基础学习路线图
+# 1. TypeScript 学习路线图
 
-> 从 JavaScript 到 TypeScript，构建类型安全的应用程序
-> 预计学习周期：4-6 周
+> 来源可信度：**官方 Handbook 章节编排 + 社区共识路线**（TypeScript Handbook「The Basics → Everyday Types → Narrowing → More on Functions → …」，TS 5.x 时代；本篇是全系列的"目录与调度中心"，知识点详解在各篇内完成）
+> 关联：`02-typescript-cheatsheet.md`（随手查）、`03-everyday-types.md` ~ `11-tsconfig.md`（逐篇详解）、`12-typescript-advanced-type-system.md`（类型系统底层）、`13-typescript-best-practices.md`（工程实践）、`14-typescript-interview-questions.md`（面试冲刺）、`15-typescript-new-features.md`（版本演进）、`17-engineering-tsup-vitest.md`（构建与测试工具链）。
 
----
+## 1. 本系列怎么用
 
-## 📑 本目录文档索引
-
-| 文档 | 内容 | 适合 |
+| 篇目 | 内容 | 什么时候读 |
 |---|---|---|
-| [typescript-learning-roadmap.md](./typescript-learning-roadmap.md) | 零基础到进阶的学习路线（本文件） | 初学者按周推进 |
-| [typescript-cheatsheet.md](./typescript-cheatsheet.md) | 语法与类型速查手册 | 日常开发随手查 |
-| [typescript-best-practices.md](./typescript-best-practices.md) | 工程化配置、高级技巧、最佳实践 | 有基础后系统提升 |
-| [typescript-advanced-type-system.md](./typescript-advanced-type-system.md) | 类型系统底层原理：协变/逆变、infer、递归、类型体操进阶题 | 面试/攻坚必看 |
-| [typescript-interview-questions.md](./typescript-interview-questions.md) | 面试高频题（含手写题与答题要点） | 面试前冲刺 |
-| [typescript-new-features.md](./typescript-new-features.md) | TS 4.1 → 5.9 版本新特性速览 | 了解新语法、版本演进 |
+| [01 本篇](./01-typescript-learning-roadmap.md) | 路线、里程碑自测、最小工程 | 入门前通读，之后按阶段回查 |
+| [02 速查表](./02-typescript-cheatsheet.md) | 全表格化语法/工具类型/报错码 | 日常开发随手查 |
+| [03 日常类型](./03-everyday-types.md) | 原始类型/联合/type vs interface/null 全家 | 阶段一 |
+| [04 类型收窄](./04-narrowing.md) | typeof/in/instanceof/谓词/穷尽 | 阶段二 |
+| [05 函数进阶](./05-more-on-functions.md) | 重载/泛型函数/this/构造签名 | 阶段二 |
+| [06 类](./06-classes.md) | 修饰符/继承/抽象类/this 类型 | 阶段二 |
+| [07 枚举](./07-enums.md) | 数字/字符串/const enum/替代方案 | 阶段一（可跳读） |
+| [08 从类型创建类型](./08-creating-types-from-types.md) | 联合/映射/条件类型/infer | 阶段三 |
+| [09 装饰器](./09-decorators.md) | 实验性与标准装饰器 | 阶段三（后端必读） |
+| [10 模块](./10-modules.md) | import/export/声明合并/namespace | 阶段三 |
+| [11 tsconfig](./11-tsconfig.md) | 编译选项逐项说明 | 阶段三 |
+| [12 类型系统深入](./12-typescript-advanced-type-system.md) | 协变逆变/推断机制/分发律/体操 | 面试/攻坚 |
+| [13 最佳实践](./13-typescript-best-practices.md) | 工程规范与模式 | 有基础后 |
+| [14 面试高频题](./14-typescript-interview-questions.md) | 高频题 + 手写题 | 面试前冲刺 |
+| [15 版本新特性](./15-typescript-new-features.md) | TS 4.1 → 5.9 | 按需 |
 
-> 学习建议：先按本路线图推进，配合 cheatsheet 查阅；面试前重点复习 interview-questions 与 advanced-type-system。
+阅读顺序：**本篇 §3 建好工程 → 03 → 04 → 05/06 → 07 → 08 → 09/10/11 → 13**；12/14 面试前集中刷。
 
----
+## 2. 写在前面
 
-## 🎯 写给初学者
+**TypeScript 是什么**：JS 的超集，加上静态类型系统。所有合法 JS 都是合法 TS；类型只在编译期存在，编译产物就是 JS。
 
-**TypeScript 是什么？**
-TypeScript 是 JavaScript 的超集，添加了类型系统。它让你的代码更健壮、更易维护，是现代前端开发的标准选择。
+**为什么要学**：编码期发现错误而非运行期；IDE 补全与重构质量质变；大型项目协作与维护成本下降；React/Vue/Angular/Nest 全生态默认 TS。
 
-**为什么要学 TypeScript？**
-- ✅ 在编码时就能发现错误，而不是运行时
-- ✅ 更好的 IDE 支持（自动补全、代码提示）
-- ✅ 更易于重构大型项目
-- ✅ 提高团队协作效率
-- ✅ 大多数现代框架（React、Vue、Angular）都推荐使用
+**需要什么基础**：扎实的 JS + ES6+（箭头函数、解构、模块、async/await）；不需要框架经验。
 
-**学习 TypeScript 需要什么基础？**
-- ✅ 扎实的 JavaScript 基础
-- ✅ ES6+ 语法知识（箭头函数、解构、模块等）
-- ❌ 不需要有框架经验
+**预计学习周期**：4~6 周（每天 1~2 小时）。每个阶段以"里程碑自测清单"过关，而不是"看完了"。
 
----
+## 3. 最小工程上手：pnpm + tsx + vitest 从零到一
 
-## 📍 学习路线图概览
+学习期所有代码都在一个可运行工程里写，不装全局包、不用 ts-node（已停滞，改用 tsx）。完整命令流：
 
-```
-阶段一：TypeScript 基础（第 1-2 周）
-    ├── 环境搭建与配置
-    ├── 基本类型系统
-    ├── 接口（Interface）
-    └── 类型别名（Type Alias）
-
-阶段二：TypeScript 核心（第 2-3 周）
-    ├── 函数与类型
-    ├── 类与面向对象
-    ├── 泛型（Generics）
-    └── 类型推断与类型断言
-
-阶段三：TypeScript 进阶（第 3-4 周）
-    ├── 高级类型操作
-    ├── 条件类型与映射类型
-    ├── 类型守卫与类型缩小
-    └── 模块与命名空间
-
-阶段四：实战与工程化（第 5-6 周）
-    ├── 与 React/Vue 结合
-    ├── 配置 tsconfig.json
-    ├── 类型声明文件
-    └── 项目实战
-```
-
----
-
-## 阶段一：TypeScript 基础（第 1-2 周）
-
-### 第 1 周：认识 TypeScript
-
-#### Day 1：环境搭建
-
-**安装 TypeScript：**
 ```bash
-# 全局安装
-npm install -g typescript
+# 1) 创建项目（pnpm 已装：npm i -g pnpm）
+mkdir my-ts && cd my-ts
+pnpm init
 
-# 项目内安装（推荐）
-npm install -D typescript
+# 2) 安装开发依赖
+pnpm add -D typescript tsx vitest @types/node
 
-# 验证安装
-tsc --version
+# 3) 生成并覆盖 tsconfig
+pnpm tsc --init
 ```
 
-**第一个 TypeScript 文件：**
-```typescript
-// hello.ts
-function greet(name: string): string {
-  return `Hello, ${name}!`;
-}
-
-console.log(greet("TypeScript"));
-```
-
-**编译运行：**
-```bash
-# 编译 TS 文件为 JS
-tsc hello.ts
-
-# 运行生成的 JS
-node hello.js
-```
-
-**使用 ts-node 直接运行：**
-```bash
-npm install -D ts-node
-npx ts-node hello.ts
-```
-
-#### Day 2：基本类型
-
-**原始类型：**
-```typescript
-// 字符串
-let userName: string = "Alice";
-
-// 数字
-let age: number = 25;
-
-// 布尔值
-let isActive: boolean = true;
-
-// null 和 undefined
-let nullValue: null = null;
-let undefinedValue: undefined = undefined;
-
-// symbol
-let sym: symbol = Symbol("key");
-
-// bigint
-let bigNum: bigint = 100n;
-```
-
-**数组类型：**
-```typescript
-// 方式一：类型[]
-let numbers: number[] = [1, 2, 3, 4, 5];
-let names: string[] = ["Alice", "Bob", "Charlie"];
-
-// 方式二：Array<类型>
-let scores: Array<number> = [90, 85, 95];
-
-// 混合数组（元组）
-let person: [string, number] = ["Alice", 25];
-```
-
-**特殊类型：**
-```typescript
-// any - 禁用类型检查（尽量避免使用）
-let anything: any = 4;
-anything = "string";
-anything = true;
-
-// unknown - 安全的 any
-let unknownValue: unknown = 4;
-// 使用前需要类型检查
-if (typeof unknownValue === "number") {
-  console.log(unknownValue + 1);
-}
-
-// void - 无返回值
-function logMessage(message: string): void {
-  console.log(message);
-}
-
-// never - 永不返回
-function throwError(message: string): never {
-  throw new Error(message);
-}
-```
-
-**练习：**
-- [ ] 创建一个包含各种基本类型的变量集合
-- [ ] 编写一个函数，接收不同类型的参数
-
-#### Day 3：接口（Interface）
-
-**基础接口：**
-```typescript
-interface User {
-  name: string;
-  age: number;
-  email: string;
-}
-
-// 使用接口
-const user: User = {
-  name: "Alice",
-  age: 25,
-  email: "alice@example.com"
-};
-```
-
-**可选属性：**
-```typescript
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  description?: string;  // 可选属性
-}
-
-const product: Product = {
-  id: 1,
-  name: "iPhone",
-  price: 999
-  // description 可以省略
-};
-```
-
-**只读属性：**
-```typescript
-interface Point {
-  readonly x: number;
-  readonly y: number;
-}
-
-const point: Point = { x: 10, y: 20 };
-// point.x = 5;  // ❌ 错误：无法修改只读属性
-```
-
-**函数接口：**
-```typescript
-interface SearchFunc {
-  (source: string, subString: string): boolean;
-}
-
-const mySearch: SearchFunc = function(source, subString) {
-  return source.includes(subString);
-};
-```
-
-**练习：**
-- [ ] 定义一个接口描述书籍信息
-- [ ] 定义一个接口描述 API 响应格式
-
-#### Day 4：类型别名（Type Alias）
-
-**基础类型别名：**
-```typescript
-type UserID = string;
-type Age = number;
-
-let userId: UserID = "user123";
-let userAge: Age = 25;
-```
-
-**对象类型：**
-```typescript
-type Person = {
-  name: string;
-  age: number;
-  hobbies?: string[];
-};
-
-const person: Person = {
-  name: "Bob",
-  age: 30
-};
-```
-
-**联合类型：**
-```typescript
-type Status = "pending" | "success" | "error";
-type ID = string | number;
-
-let userStatus: Status = "pending";
-let userId: ID = 123;  // 或 "abc"
-```
-
-**交叉类型：**
-```typescript
-type Animal = {
-  name: string;
-};
-
-type Bird = {
-  canFly: boolean;
-};
-
-type Eagle = Animal & Bird;
-
-const eagle: Eagle = {
-  name: "Eagle",
-  canFly: true
-};
-```
-
-**Interface vs Type：**
-| 特性 | Interface | Type |
-|------|-----------|------|
-| 可扩展性 | 可以声明合并 | 不能声明合并 |
-| 扩展方式 | extends | & 交叉类型 |
-| 适用场景 | 对象结构 | 任意类型 |
-
-**练习：**
-- [ ] 使用类型别名定义一个颜色类型（字符串字面量联合）
-- [ ] 创建一个交叉类型组合多个类型
-
-#### Day 5：枚举（Enum）
-
-**数字枚举：**
-```typescript
-enum Direction {
-  Up,      // 0
-  Down,    // 1
-  Left,    // 2
-  Right    // 3
-}
-
-console.log(Direction.Up);     // 0
-console.log(Direction[0]);     // "Up"
-```
-
-**自定义值枚举：**
-```typescript
-enum StatusCode {
-  OK = 200,
-  NotFound = 404,
-  ServerError = 500
-}
-
-enum Direction {
-  Up = "UP",
-  Down = "DOWN",
-  Left = "LEFT",
-  Right = "RIGHT"
-}
-```
-
-**常量枚举：**
-```typescript
-const enum Permission {
-  Read = 1,
-  Write = 2,
-  Execute = 4
-}
-```
-
-#### Day 6-7：阶段练习
-
-**项目：用户信息管理系统（基础版）**
-
-功能：
-- [ ] 定义 User 接口（包含 id, name, email, age, role）
-- [ ] 创建用户数组
-- [ ] 实现添加用户函数
-- [ ] 实现查找用户函数
-- [ ] 使用枚举定义用户角色
-
----
-
-### 第 2 周：函数与对象
-
-#### Day 8：函数类型
-
-**函数声明：**
-```typescript
-// 命名函数
-function add(a: number, b: number): number {
-  return a + b;
-}
-
-// 箭头函数
-const multiply = (a: number, b: number): number => a * b;
-
-// 函数表达式
-const subtract: (a: number, b: number) => number = function(a, b) {
-  return a - b;
-};
-```
-
-**可选参数和默认参数：**
-```typescript
-// 可选参数
-function greet(name: string, greeting?: string): string {
-  return `${greeting || "Hello"}, ${name}!`;
-}
-
-// 默认参数
-function greetWithDefault(name: string, greeting: string = "Hello"): string {
-  return `${greeting}, ${name}!`;
-}
-
-// 剩余参数
-function sum(...numbers: number[]): number {
-  return numbers.reduce((total, num) => total + num, 0);
-}
-```
-
-**函数重载：**
-```typescript
-function processInput(input: string): string;
-function processInput(input: number): number;
-function processInput(input: string | number): string | number {
-  if (typeof input === "string") {
-    return input.toUpperCase();
-  }
-  return input * 2;
-}
-```
-
-#### Day 9：类基础
-
-**基本类：**
-```typescript
-class Animal {
-  name: string;
-
-  constructor(name: string) {
-    this.name = name;
-  }
-
-  move(distance: number): void {
-    console.log(`${this.name} moved ${distance} meters`);
-  }
-}
-
-const dog = new Animal("Dog");
-dog.move(10);
-```
-
-**访问修饰符：**
-```typescript
-class Person {
-  public name: string;      // 公开（默认）
-  private age: number;      // 私有
-  protected email: string;  // 受保护
-
-  constructor(name: string, age: number, email: string) {
-    this.name = name;
-    this.age = age;
-    this.email = email;
-  }
-
-  public getAge(): number {
-    return this.age;
-  }
-}
-
-class Employee extends Person {
-  constructor(name: string, age: number, email: string) {
-    super(name, age, email);
-    // 可以访问 this.email（protected）
-    // 不能访问 this.age（private）
-  }
-}
-```
-
-**只读属性：**
-```typescript
-class Car {
-  readonly brand: string;
-
-  constructor(brand: string) {
-    this.brand = brand;
-  }
-}
-
-const car = new Car("Toyota");
-// car.brand = "Honda";  // ❌ 错误
-```
-
-**Getter 和 Setter：**
-```typescript
-class Rectangle {
-  private _width: number = 0;
-  private _height: number = 0;
-
-  get area(): number {
-    return this._width * this._height;
-  }
-
-  set width(value: number) {
-    if (value > 0) {
-      this._width = value;
-    }
-  }
-
-  set height(value: number) {
-    if (value > 0) {
-      this._height = value;
-    }
-  }
-}
-```
-
-#### Day 10：继承与多态
-
-**类继承：**
-```typescript
-class Animal {
-  constructor(public name: string) {}
-
-  move(distance: number): void {
-    console.log(`${this.name} moved ${distance}m`);
-  }
-}
-
-class Dog extends Animal {
-  constructor(name: string, public breed: string) {
-    super(name);
-  }
-
-  bark(): void {
-    console.log("Woof! Woof!");
-  }
-
-  // 重写父类方法
-  move(distance: number): void {
-    console.log("Running...");
-    super.move(distance);
-  }
-}
-
-const dog = new Dog("Buddy", "Golden Retriever");
-dog.move(10);
-dog.bark();
-```
-
-**抽象类：**
-```typescript
-abstract class Shape {
-  abstract getArea(): number;
-
-  printArea(): void {
-    console.log(`Area: ${this.getArea()}`);
-  }
-}
-
-class Circle extends Shape {
-  constructor(private radius: number) {
-    super();
-  }
-
-  getArea(): number {
-    return Math.PI * this.radius ** 2;
-  }
-}
-```
-
-#### Day 11：接口实现
-
-**类实现接口：**
-```typescript
-interface Printable {
-  print(): void;
-}
-
-interface Scannable {
-  scan(): void;
-}
-
-class Printer implements Printable {
-  print(): void {
-    console.log("Printing...");
-  }
-}
-
-class MultiFunctionDevice implements Printable, Scannable {
-  print(): void {
-    console.log("Printing...");
-  }
-
-  scan(): void {
-    console.log("Scanning...");
-  }
-}
-```
-
-#### Day 12-14：阶段项目
-
-**项目：电商商品系统**
-
-功能：
-- [ ] 定义 Product 接口
-- [ ] 创建抽象类 BaseProduct
-- [ ] 实现 Electronics 和 Clothing 类
-- [ ] 实现折扣计算功能
-- [ ] 使用访问修饰符保护数据
-
----
-
-## 阶段二：TypeScript 核心（第 3-4 周）
-
-### 第 3 周：泛型与类型操作
-
-#### Day 15：泛型基础
-
-**为什么需要泛型？**
-```typescript
-// 不使用泛型 - 需要为每种类型写重复代码
-function identityString(arg: string): string {
-  return arg;
-}
-
-function identityNumber(arg: number): number {
-  return arg;
-}
-
-// 使用泛型 - 一个函数处理所有类型
-function identity<T>(arg: T): T {
-  return arg;
-}
-
-// 使用
-let output1 = identity<string>("hello");
-let output2 = identity<number>(42);
-let output3 = identity("hello");  // 类型推断
-```
-
-**泛型约束：**
-```typescript
-interface HasLength {
-  length: number;
-}
-
-function logLength<T extends HasLength>(arg: T): T {
-  console.log(arg.length);
-  return arg;
-}
-
-logLength("hello");     // ✅
-logLength([1, 2, 3]);   // ✅
-// logLength(123);      // ❌ 错误：number 没有 length 属性
-```
-
-**多个泛型参数：**
-```typescript
-function pair<T, U>(first: T, second: U): [T, U] {
-  return [first, second];
-}
-
-const result = pair<string, number>("age", 25);
-```
-
-#### Day 16：泛型接口与类
-
-**泛型接口：**
-```typescript
-interface GenericResponse<T> {
-  data: T;
-  status: number;
-  message: string;
-}
-
-interface User {
-  id: number;
-  name: string;
-}
-
-const userResponse: GenericResponse<User> = {
-  data: { id: 1, name: "Alice" },
-  status: 200,
-  message: "Success"
-};
-```
-
-**泛型类：**
-```typescript
-class GenericStack<T> {
-  private items: T[] = [];
-
-  push(item: T): void {
-    this.items.push(item);
-  }
-
-  pop(): T | undefined {
-    return this.items.pop();
-  }
-
-  peek(): T | undefined {
-    return this.items[this.items.length - 1];
-  }
-
-  isEmpty(): boolean {
-    return this.items.length === 0;
-  }
-}
-
-// 使用
-const numberStack = new GenericStack<number>();
-numberStack.push(1);
-numberStack.push(2);
-console.log(numberStack.pop());  // 2
-
-const stringStack = new GenericStack<string>();
-stringStack.push("hello");
-```
-
-#### Day 17：类型推断与类型断言
-
-**类型推断：**
-```typescript
-// TypeScript 自动推断类型
-let x = 3;                    // 推断为 number
-let y = [0, 1, null];        // 推断为 (number | null)[]
-
-// 上下文类型推断
-window.onmousedown = function(event) {
-  console.log(event.button);  // TypeScript 知道 event 是 MouseEvent
-};
-```
-
-**类型断言：**
-```typescript
-// 方式一：尖括号语法
-let someValue: unknown = "this is a string";
-let strLength: number = (<string>someValue).length;
-
-// 方式二：as 语法（推荐，JSX 中必须使用）
-let strLength2: number = (someValue as string).length;
-
-// 非空断言
-function processElement(element?: HTMLElement) {
-  // 告诉 TypeScript 我确定这里不会是 null/undefined
-  element!.style.color = "red";
-}
-```
-
-**常量断言：**
-```typescript
-// as const 创建只读字面量类型
-const config = {
-  host: "localhost",
-  port: 3000
-} as const;
-
-// config.host = "example.com";  // ❌ 错误
-```
-
-#### Day 18-19：练习
-
-**项目：通用数据存储系统**
-
-- [ ] 创建泛型 Storage 类
-- [ ] 实现 CRUD 操作
-- [ ] 添加类型约束
-- [ ] 实现缓存机制
-
-### 第 4 周：高级类型
-
-#### Day 20：类型守卫
-
-**typeof 类型守卫：**
-```typescript
-function padLeft(value: string, padding: string | number) {
-  if (typeof padding === "number") {
-    // TypeScript 知道这里 padding 是 number
-    return Array(padding + 1).join(" ") + value;
-  }
-  // TypeScript 知道这里 padding 是 string
-  return padding + value;
-}
-```
-
-**instanceof 类型守卫：**
-```typescript
-class Bird {
-  fly() {
-    console.log("Flying");
-  }
-}
-
-class Fish {
-  swim() {
-    console.log("Swimming");
-  }
-}
-
-function move(animal: Bird | Fish) {
-  if (animal instanceof Bird) {
-    animal.fly();
-  } else {
-    animal.swim();
-  }
-}
-```
-
-**in 类型守卫：**
-```typescript
-interface Car {
-  drive(): void;
-  wheels: number;
-}
-
-interface Boat {
-  sail(): void;
-  anchor(): void;
-}
-
-function operate(vehicle: Car | Boat) {
-  if ("drive" in vehicle) {
-    vehicle.drive();
-  } else {
-    vehicle.sail();
-  }
-}
-```
-
-**自定义类型守卫：**
-```typescript
-interface Cat {
-  meow(): void;
-}
-
-interface Dog {
-  bark(): void;
-}
-
-function isCat(animal: Cat | Dog): animal is Cat {
-  return (animal as Cat).meow !== undefined;
-}
-
-function makeSound(animal: Cat | Dog) {
-  if (isCat(animal)) {
-    animal.meow();
-  } else {
-    animal.bark();
-  }
-}
-```
-
-#### Day 21：联合类型与交叉类型进阶
-
-**可辨识联合：**
-```typescript
-interface Square {
-  kind: "square";
-  size: number;
-}
-
-interface Rectangle {
-  kind: "rectangle";
-  width: number;
-  height: number;
-}
-
-interface Circle {
-  kind: "circle";
-  radius: number;
-}
-
-type Shape = Square | Rectangle | Circle;
-
-function getArea(shape: Shape): number {
-  switch (shape.kind) {
-    case "square":
-      return shape.size ** 2;
-    case "rectangle":
-      return shape.width * shape.height;
-    case "circle":
-      return Math.PI * shape.radius ** 2;
-    default:
-      // 穷尽检查
-      const _exhaustiveCheck: never = shape;
-      return _exhaustiveCheck;
-  }
-}
-```
-
-#### Day 22：映射类型
-
-**基础映射类型：**
-```typescript
-type Readonly<T> = {
-  readonly [P in keyof T]: T[P];
-};
-
-type Partial<T> = {
-  [P in keyof T]?: T[P];
-};
-
-type Required<T> = {
-  [P in keyof T]-?: T[P];
-};
-
-type Pick<T, K extends keyof T> = {
-  [P in K]: T[P];
-};
-
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
-
-// 使用
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-}
-
-type ReadonlyUser = Readonly<User>;
-type UserUpdate = Partial<User>;
-type PublicUser = Omit<User, "password">;
-type UserSummary = Pick<User, "id" | "name">;
-```
-
-**自定义映射类型：**
-```typescript
-// 将所有属性变为可空字符串
-type NullableString<T> = {
-  [P in keyof T]: string | null;
-};
-
-// 为所有属性添加 getter
-type Getters<T> = {
-  [P in keyof T as `get${Capitalize<string & P>}`]: () => T[P];
-};
-```
-
-#### Day 23-24：条件类型
-
-**基础条件类型：**
-```typescript
-type IsString<T> = T extends string ? true : false;
-
-type A = IsString<string>;   // true
-type B = IsString<number>;   // false
-```
-
-**内置条件类型：**
-```typescript
-// Exclude<T, U> - 从 T 中排除 U
-type T0 = Exclude<"a" | "b" | "c", "a">;  // "b" | "c"
-
-// Extract<T, U> - 从 T 中提取 U
-type T1 = Extract<"a" | "b" | "c", "a" | "f">;  // "a"
-
-// NonNullable<T> - 排除 null 和 undefined
-type T2 = NonNullable<string | number | undefined>;  // string | number
-
-// ReturnType<T> - 获取函数返回类型
-type T3 = ReturnType<() => string>;  // string
-
-// Parameters<T> - 获取函数参数类型
-type T4 = Parameters<(a: number, b: string) => void>;  // [number, string]
-```
-
-**infer 关键字：**
-```typescript
-// 提取数组元素类型
-type ElementType<T> = T extends (infer U)[] ? U : T;
-
-type Num = ElementType<number[]>;  // number
-type Str = ElementType<string>;    // string
-
-// 提取 Promise 返回值
-type Awaited<T> = T extends Promise<infer U> ? U : T;
-```
-
-#### Day 25-28：综合练习
-
-**项目：类型安全的 API 客户端**
-
-- [ ] 定义 API 响应类型
-- [ ] 实现泛型请求函数
-- [ ] 使用条件类型处理错误
-- [ ] 创建类型守卫验证响应
-
----
-
-## 阶段三：TypeScript 进阶（第 5-6 周）
-
-### 第 5 周：工程化与装饰器
-
-#### Day 29：装饰器
-
-**启用装饰器：**
-```json
-// tsconfig.json
+```jsonc
+// 4) tsconfig.json —— 学习工程最小可用配置（逐项见 11-tsconfig.md）
 {
   "compilerOptions": {
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,                    // 一开始就全严格，见 §9 误区 2
+    "noUncheckedIndexedAccess": true,  // arr[i] 出 undefined（04 篇 10.2）
+    "skipLibCheck": true,
+    "types": ["node"],
+    "noEmit": true                     // 运行交给 tsx，tsc 只做类型检查
+  },
+  "include": ["src", "tests"]
+}
+```
+
+```jsonc
+// 5) package.json 增加脚本与 ESM 标记
+{
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",   // 改动即重启
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
   }
 }
 ```
 
-**类装饰器：**
-```typescript
-function sealed(constructor: Function) {
-  Object.seal(constructor);
-  Object.seal(constructor.prototype);
-}
-
-@sealed
-class Greeter {
-  greeting: string;
-  constructor(message: string) {
-    this.greeting = message;
-  }
-  greet() {
-    return "Hello, " + this.greeting;
-  }
-}
+```bash
+# 6) 建文件
+mkdir src tests
+# src/math.ts、src/index.ts、tests/math.test.ts 内容如下
 ```
 
-**方法装饰器：**
-```typescript
-function log(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-  const originalMethod = descriptor.value;
-
-  descriptor.value = function(...args: any[]) {
-    console.log(`Calling ${propertyKey} with`, args);
-    const result = originalMethod.apply(this, args);
-    console.log(`Result:`, result);
-    return result;
-  };
-}
-
-class Calculator {
-  @log
-  add(a: number, b: number): number {
-    return a + b;
-  }
-}
-```
-
-#### Day 30：模块系统
-
-**导出：**
-```typescript
-// math.ts
-export const PI = 3.14;
-
+```ts
+// src/math.ts
 export function add(a: number, b: number): number {
   return a + b;
 }
 
-export default class Calculator {
-  // ...
+export function clamp(n: number, min: number, max: number): number {
+  return Math.min(Math.max(n, min), max);
 }
 ```
 
-**导入：**
-```typescript
-// main.ts
-import Calculator, { PI, add } from "./math";
-import * as math from "./math";
-import type { User } from "./types";  // 仅类型导入
+```ts
+// src/index.ts
+import { add, clamp } from "./math.js";   // NodeNext 下相对导入要带 .js（指向编译后产物）
+
+console.log(add(1, 2));        // 预期输出：3
+console.log(clamp(15, 0, 10)); // 预期输出：10
 ```
 
-**模块解析：**
-```json
-// tsconfig.json
-{
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "@utils/*": ["src/utils/*"]
+```ts
+// tests/math.test.ts —— vitest 测试
+import { describe, expect, it } from "vitest";
+import { add, clamp } from "../src/math.js";
+
+describe("math", () => {
+  it("adds numbers", () => {
+    expect(add(1, 2)).toBe(3);
+  });
+  it("clamps into range", () => {
+    expect(clamp(15, 0, 10)).toBe(10);
+    expect(clamp(-5, 0, 10)).toBe(0);
+  });
+});
+```
+
+```bash
+# 7) 三个常用命令
+pnpm dev            # 运行 src/index.ts，预期输出 3 和 10
+pnpm test           # 2 个测试通过
+pnpm typecheck      # 全项目类型检查（CI 里也跑这条）
+```
+
+> 一次性脚本也可以直接 `pnpm tsx hello.ts` 运行；编译到 JS 产物的完整流程（tsc hello.ts → node hello.js）与构建工具选型见 `17-engineering-tsup-vitest.md`。
+
+## 4. 路线总览
+
+```
+阶段一 入门（第 1 周）     基本类型 / interface / type / 字面量 / enum
+阶段二 核心（第 2-3 周）   函数 / 类 / 泛型 / 推断与断言 / 收窄
+阶段三 进阶（第 4 周）     映射 / 条件类型 / 装饰器 / 模块 / tsconfig / d.ts
+阶段四 实战（第 5-6 周）   React / Vue / Nest 衔接 / 类型体操 / 项目
+```
+
+## 5. 阶段一：入门（第 1 周）
+
+### 5.1 知识点清单
+
+| 主题 | 必会要点 | 详解 |
+|---|---|---|
+| 原始类型 | 7 种原始类型小写标注；`String`≠`string` | `03` 篇 1 节 |
+| 数组/元组 | `T[]` ≡ `Array<T>`；元组定长定序 | `03` 篇 2 节 |
+| any/unknown/never | unknown 是安全 any；never 是空集 | `03` 篇 3 节 |
+| interface | 可选 `?`、只读 `readonly`、函数类型接口 | `03` 篇 6 节 |
+| type 别名 | 联合/元组/对象；与 interface 分工 | `03` 篇 8 节 |
+| 字面量类型 | 联合当轻量枚举；`as const` 防拓宽 | `03` 篇 9 节 |
+| enum | 数字/字符串/const enum 与替代方案 | `07` 篇 |
+| null/undefined | strictNullChecks、`?.`/`??`、少用 `!` | `03` 篇 10 节 |
+
+### 5.2 代码速览（一屏回顾）
+
+```ts
+// stage1.ts
+let userName: string = "Alice";
+let age: number = 25;
+let isActive: boolean = true;
+let bigNum: bigint = 100n;
+let sym: symbol = Symbol("key");
+let scores: number[] = [90, 85, 95];
+let person: [string, number] = ["Alice", 25];   // 元组
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  description?: string;             // 可选
+  readonly createdAt: Date;         // 只读
+}
+
+interface SearchFunc { (source: string, sub: string): boolean }  // 函数类型接口
+const mySearch: SearchFunc = (src, sub) => src.includes(sub);
+
+type Status = "pending" | "success" | "error";    // 字面量联合
+type Eagle = { name: string } & { canFly: boolean };  // 交叉
+
+enum Direction { Up, Down, Left, Right }          // 数字枚举
+enum StatusCode { OK = 200, NotFound = 404, ServerError = 500 }
+const enum Permission { Read = 1, Write = 2, Execute = 4 }  // 编译期内联（isolatedModules 下跨文件受限，见 11 篇）
+
+let unknownValue: unknown = 4;
+if (typeof unknownValue === "number") console.log(unknownValue + 1);  // 先收窄再用
+
+const cfg = { host: "localhost", port: 3000 } as const;  // 深只读 + 字面量
+// cfg.port = 8080;   // ❌ TS2540 read-only
+```
+
+### 5.3 每日安排与阶段项目
+
+- Day 1：§3 建好工程；`pnpm tsx` 跑通第一个文件（保持 tsc 手动编译流程的理解即可）。
+- Day 2：基本类型 + 数组/元组（读 `03` 篇 1~3 节）。
+- Day 3：interface（含函数类型接口）。
+- Day 4：type 别名、联合/交叉、Interface vs Type 表。
+- Day 5：enum 与字面量联合的取舍（读 `07` 篇）。
+- Day 6~7 阶段项目——**用户信息管理系统（基础版）**：
+  - [ ] 定义 `User` 接口（id/name/email/age/role）
+  - [ ] 用字面量联合或 enum 表达 role
+  - [ ] 实现 add/find 函数（参数、返回值全部显式标注）
+  - [ ] `pnpm typecheck` 零报错，为 `add` 写 2 个 vitest 用例
+
+### 5.4 里程碑自测清单（能独立完成才算过关）
+
+- [ ] 不看资料写出 7 种原始类型标注，并说清 `String` 与 `string` 的赋值方向差异。
+- [ ] 给定一个"商品"业务描述，30 秒内写出对应 interface，含可选与只读字段。
+- [ ] 说得出什么时候必须用 type（联合/元组/映射），什么时候优先 interface。
+- [ ] 把 `let m = "GET"` 改成能通过 `"GET" | "POST"` 校验的写法（至少两种：标注、as const）。
+- [ ] 项目代码里搜不到 `any`；`pnpm typecheck` 通过。
+
+## 6. 阶段二：核心（第 2-3 周）
+
+### 6.1 知识点清单
+
+| 主题 | 必会要点 | 详解 |
+|---|---|---|
+| 函数类型 | 可选/默认/rest 参数、重载、this 参数 | `05` 篇 |
+| 类 | 修饰符、参数属性、getter/setter、继承、抽象类、implements | `06` 篇 |
+| 泛型 | 函数/接口/类、`extends` 约束、`K extends keyof T` | `05`/`08` 篇 |
+| 类型推断 | 上下文类型（回调参数自动推断）、let 拓宽 | `03` 篇 4/9 节 |
+| 断言 | `as`（优先）、尖括号（非 JSX）、`!`、`as const` | `03` 篇 9/10 节 |
+| 类型收窄 | typeof/真值/等值/in/instanceof/谓词/穷尽 | `04` 篇全篇 |
+| 判别联合 | `kind` 标签 + switch + never 穷尽兜底 | `04` 篇 9 节 |
+
+### 6.2 代码速览
+
+```ts
+// stage2.ts
+// —— 函数 ——
+function greet(name: string, greeting?: string): string {
+  return `${greeting ?? "Hello"}, ${name}!`;
+}
+function sum(...nums: number[]): number { return nums.reduce((t, n) => t + n, 0); }
+
+function process(input: string): string;
+function process(input: number): number;
+function process(input: string | number): string | number {
+  return typeof input === "string" ? input.toUpperCase() : input * 2;
+}
+
+// —— 类 ——
+class Person {
+  constructor(
+    public name: string,        // 参数属性
+    private age: number,        // 仅类内
+    protected email: string     // 类内 + 子类
+  ) {}
+  get info(): string { return `${this.name}/${this.age}`; }
+}
+class Employee extends Person {
+  constructor(name: string, age: number, email: string, public dept: string) {
+    super(name, age, email);
+  }
+  move(d: number): void { console.log(`${this.name} moved ${d}m`); }
+}
+abstract class Shape {
+  abstract getArea(): number;
+  print(): void { console.log(`Area: ${this.getArea()}`); }
+}
+
+// —— 泛型 ——
+function identity<T>(arg: T): T { return arg; }
+identity("hello");                                   // 推断 T = string
+
+function logLength<T extends { length: number }>(arg: T): T {
+  console.log(arg.length);
+  return arg;
+}
+logLength("hi");      // ✅
+// logLength(123);    // ❌ TS2345：number 没有 length
+
+class GenericStack<T> {
+  private items: T[] = [];
+  push(item: T): void { this.items.push(item); }
+  pop(): T | undefined { return this.items.pop(); }   // 空栈返回 undefined
+  isEmpty(): boolean { return this.items.length === 0; }
+}
+
+// —— 推断与断言 ——
+let x = 3;                                  // number
+window.onmousedown = (event) => event.button;  // event: MouseEvent（上下文推断）
+let someValue: unknown = "string here";
+const len = (someValue as string).length;   // as 断言（JSX/前端必须用 as）
+const el = document.getElementById("app")!; // 非空断言：仅当确证存在时
+
+// —— 收窄与判别联合 ——
+type Square = { kind: "square"; size: number };
+type Circle = { kind: "circle"; radius: number };
+type Shape = Square | Circle;
+
+function getArea(shape: Shape): number {
+  switch (shape.kind) {
+    case "square": return shape.size ** 2;
+    case "circle": return Math.PI * shape.radius ** 2;
+    default: {
+      const _exhaustive: never = shape;   // 漏分支时这里编译报错
+      return _exhaustive;
     }
   }
 }
+
+interface Cat { meow(): void }
+interface Dog { bark(): void }
+function isCat(a: Cat | Dog): a is Cat {    // 类型谓词
+  return "meow" in a;
+}
+function makeSound(a: Cat | Dog) {
+  if (isCat(a)) a.meow(); else a.bark();
+}
 ```
 
-#### Day 31：命名空间
+### 6.3 每日安排与阶段项目
 
-```typescript
+- Day 8：函数类型与重载（`05` 篇）。
+- Day 9~11：类：修饰符/readonly/getter/setter → 继承与多态（super、方法重写）→ 抽象类与 implements。
+- Day 12~14 阶段项目——**电商商品系统**：定义 `Product` 接口、抽象类 `BaseProduct`、`Electronics`/`Clothing` 子类、折扣计算；访问修饰符保护价格逻辑。
+- Day 15~16：泛型（identity/约束/多参数/泛型接口/泛型类）。
+- Day 17：推断（上下文类型）与断言（as / `!` / as const）。
+- Day 18~19 阶段项目——**泛型 Storage 类**：CRUD、约束、缓存；`pop()` 必须返回 `T | undefined` 并解释原因。
+- Day 20~21：收窄六法 + 判别联合 + 穷尽检查（通读 `04` 篇）。
+- Day 22~28：映射/条件类型入门（`08` 篇）+ 项目**类型安全 API 客户端**：泛型请求函数、`Result<T, E>` 判别返回、类型谓词校验响应。
+
+### 6.4 里程碑自测清单
+
+- [ ] 手写 `GenericStack<T>`：解释 `pop()` 为何是 `T | undefined` 而不是 `T`。
+- [ ] 手写 `function pick<T, K extends keyof T>(obj: T, key: K): T[K]` 并通过编译。
+- [ ] 给 `string | number` 参数写重载，调用方分别拿到精确返回类型。
+- [ ] 用判别联合 + switch + never 兜底实现 `getArea`，并故意新增一个 `Triangle` 成员让兜底报错，再补全 case。
+- [ ] 写一个 `isUser(v: unknown): v is User` 谓词守卫 `JSON.parse` 的结果。
+- [ ] 说得出 `!`、`as`、`asserts x is T` 三者区别（见 `04` 篇 7/8 节）。
+
+## 7. 阶段三：进阶（第 4 周）
+
+### 7.1 知识点清单
+
+| 主题 | 必会要点 | 详解 |
+|---|---|---|
+| 映射类型 | `in keyof`、修饰符 `?`/`readonly`/`-?`、as 重映射 | `08` 篇 |
+| 条件类型 | `extends ? :`、分发律、`infer` | `08`/`12` 篇 |
+| 内置工具类型 | Partial/Required/Readonly/Pick/Omit/Record/Exclude/Extract/NonNullable/Parameters/ReturnType/Awaited | `02` 篇 10 节 |
+| 装饰器 | 类/方法/属性/参数装饰器签名；Nest 生态用法 | `09` 篇 |
+| 模块 | export/import 全形态、`import type`、声明合并、namespace | `10` 篇 |
+| tsconfig | strict 家族、moduleResolution、paths、检查类选项 | `11` 篇 |
+| 声明文件 | `.d.ts`、`declare`、为无类型库补声明、发布类型 | `02` 篇 16 节 |
+
+### 7.2 代码速览
+
+```ts
+// stage3.ts
+// —— 映射与工具类型 ——
+type MyPartial<T> = { [P in keyof T]?: T[P] };
+type MyReadonly<T> = { readonly [P in keyof T]: T[P] };
+type MyRequired<T> = { [P in keyof T]-?: T[P] };      // -? 去掉可选
+type MyOmit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
+interface User { id: number; name: string; email: string; password: string }
+type UserUpdate = Partial<Omit<User, "id">>;          // 更新体
+type PublicUser = Omit<User, "password">;             // 出参脱敏
+type Getters<T> = { [P in keyof T as `get${Capitalize<string & P>}`]: () => T[P] };
+
+// —— 条件类型与 infer ——
+type IsString<T> = T extends string ? true : false;
+type ElementType<T> = T extends (infer U)[] ? U : T;
+type Num = ElementType<number[]>;                     // number
+type T0 = Exclude<"a" | "b" | "c", "a">;              // "b" | "c"
+type T3 = ReturnType<() => string>;                   // string
+type T4 = Parameters<(a: number, b: string) => void>; // [number, string]
+
+// —— 装饰器（tsconfig: experimentalDecorators + emitDecoratorMetadata）——
+function sealed(constructor: Function) {
+  Object.seal(constructor);
+  Object.seal(constructor.prototype);
+}
+function log(target: object, key: string, desc: PropertyDescriptor) {
+  const original = desc.value;
+  desc.value = function (...args: unknown[]) {
+    console.log(`Calling ${key} with`, args);
+    return original.apply(this, args);
+  };
+}
+@sealed
+class Calculator {
+  @log
+  add(a: number, b: number): number { return a + b; }
+}
+
+// —— 命名空间（非模块组织，现代代码少用但面试会问）——
 namespace Validation {
-  export interface StringValidator {
-    isValid(s: string): boolean;
-  }
-
+  export interface StringValidator { isValid(s: string): boolean }
   const lettersRegexp = /^[A-Za-z]+$/;
-  const numberRegexp = /^[0-9]+$/;
-
   export class LettersOnlyValidator implements StringValidator {
-    isValid(s: string): boolean {
-      return lettersRegexp.test(s);
-    }
-  }
-
-  export class ZipCodeValidator implements StringValidator {
-    isValid(s: string): boolean {
-      return s.length === 5 && numberRegexp.test(s);
-    }
+    isValid(s: string): boolean { return lettersRegexp.test(s); }
   }
 }
-
-// 使用
 const validator = new Validation.LettersOnlyValidator();
 ```
 
-#### Day 32-35：tsconfig.json 配置
-
-**完整配置示例：**
-```json
+```jsonc
+// tsconfig.json 生产骨架（完整逐项见 11-tsconfig.md）
 {
   "compilerOptions": {
-    /* 基础选项 */
     "target": "ES2020",
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "jsx": "react-jsx",
-
-    /* 输出选项 */
     "outDir": "./dist",
     "rootDir": "./src",
     "declaration": true,
     "sourceMap": true,
-
-    /* 严格类型检查 */
     "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-
-    /* 模块解析 */
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
+    "paths": { "@/*": ["src/*"] },
     "resolveJsonModule": true,
-
-    /* 其他 */
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
@@ -1129,361 +425,159 @@ const validator = new Validation.LettersOnlyValidator();
 }
 ```
 
-### 第 6 周：类型声明文件
-
-#### Day 36：声明文件基础
-
-**创建 .d.ts 文件：**
-```typescript
-// types.d.ts
+```ts
+// types.d.ts —— 声明文件
 interface Window {
-  myLib: {
-    version: string;
-    doSomething(): void;
-  };
+  myLib: { version: string; doSomething(): void };
 }
-
 declare const MY_CONSTANT: string;
-
-declare function myFunction(a: number): string;
-```
-
-**为第三方库写声明：**
-```typescript
-// lodash.d.ts
 declare module "lodash" {
   export function cloneDeep<T>(value: T): T;
-  export function debounce<T extends (...args: any[]) => any>(
-    func: T,
-    wait?: number
-  ): T;
-  // ...
 }
+// 发布自己的库：编译时 declaration: true 生成 .d.ts，入口由 package.json 的 types 字段指向
 ```
 
-#### Day 37：发布类型定义
+### 7.3 每日安排与阶段项目
 
-```typescript
-// index.d.ts
-export interface Options {
-  verbose?: boolean;
-  timeout?: number;
-}
+- Day 29：装饰器（`09` 篇；类/方法装饰器各写一个）。
+- Day 30~31：模块系统与路径别名（`10` 篇）；namespace 了解即可。
+- Day 32~35：tsconfig 逐项过一遍，把 §3 的工程升级成上面的生产骨架。
+- Day 36~37：声明文件：给一个无类型的 npm 包手写最小 `.d.ts` 并用起来。
+- Day 38~42 项目——**给 API 客户端加"类型基建"**：paths 别名、`Result` 泛型、`Getters` 映射、一个自定义装饰器 `@Measure` 统计耗时。
 
-export function initialize(options?: Options): void;
-export function process(data: string): Promise<string>;
+### 7.4 里程碑自测清单
 
-// 模块声明
-declare module "my-library" {
-  export * from "./index";
-}
-```
+- [ ] 白板实现 `MyPartial`/`MyOmit` 并解释 `-?` 与 `Exclude<keyof T, K>` 的作用。
+- [ ] 解释分发律：`Exclude<"a" | "b", "a">` 为什么逐成员分发（`12` 篇 1.3）。
+- [ ] 说出 TS 5.0 标准装饰器与实验性装饰器签名差异之一（`09` 篇）。
+- [ ] 把项目迁到 `NodeNext` 并修复所有相对导入报错（`.js` 后缀）。
+- [ ] 为无类型库补 `.d.ts` 后，`import` 立刻获得补全与检查。
 
-#### Day 38-42：与框架结合
+## 8. 阶段四：实战（第 5-6 周）
 
-**React + TypeScript：**
-```typescript
-import React, { useState, useEffect } from "react";
+### 8.1 框架衔接要点
 
-// 组件 Props 类型
+```tsx
+// react-user-card.tsx
+import { useEffect, useState } from "react";
+
 interface UserCardProps {
   name: string;
   age: number;
-  onEdit?: (id: number) => void;
+  onEdit?: (id: number) => void;   // 事件回调：参数 + 返回值都标
 }
-
-const UserCard: React.FC<UserCardProps> = ({ name, age, onEdit }) => {
-  const [isEditing, setIsEditing] = useState<boolean>(false);
-
+export function UserCard({ name, age, onEdit }: UserCardProps) {
+  const [editing, setEditing] = useState(false);   // boolean 自动推断
   return (
-    <div>
+    <div onClick={() => onEdit?.(1)}>
       <h2>{name}</h2>
-      <p>{age} years old</p>
+      <p>{age} years old {editing ? "(editing)" : ""}</p>
     </div>
   );
-};
+}
 
-// 自定义 Hook
-type UseFetchResult<T> = {
-  data: T | null;
-  loading: boolean;
-  error: Error | null;
-};
-
-function useFetch<T>(url: string): UseFetchResult<T> {
+// 自定义 Hook：返回值类型显式标注，防止实现变化传染调用方
+function useFetch<T>(url: string): { data: T | null; loading: boolean; error: Error | null } {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-
   useEffect(() => {
     fetch(url)
-      .then(res => res.json())
+      .then((res) => res.json() as Promise<T>)   // json() 返回 unknown，需要收敛
       .then(setData)
-      .catch(setError)
+      .catch((e: Error) => setError(e))
       .finally(() => setLoading(false));
   }, [url]);
-
   return { data, loading, error };
 }
 ```
 
-**Vue 3 + TypeScript：**
-```typescript
+```ts
+// vue3-user.ts —— Vue 3 组合式 API
 import { defineComponent, ref, computed } from "vue";
-
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
+interface User { id: number; name: string; email: string }
 
 export default defineComponent({
   setup() {
     const user = ref<User | null>(null);
     const userName = computed<string>(() => user.value?.name ?? "");
-
     const fetchUser = async (id: number): Promise<void> => {
-      const response = await fetch(`/api/users/${id}`);
-      user.value = await response.json();
+      const res = await fetch(`/api/users/${id}`);
+      user.value = (await res.json()) as User;
     };
-
     return { user, userName, fetchUser };
-  }
+  },
 });
 ```
 
----
+React 细节（props/泛型组件/Hooks/Context）见 `02` 篇 18 节；类型体操进阶：
 
-## 阶段四：实战与最佳实践
-
-### 类型体操挑战
-
-**挑战 1：DeepReadonly**
-```typescript
+```ts
+// gymnastics.ts —— 三道入门挑战（12/14 篇有完整题解）
 type DeepReadonly<T> = {
-  readonly [P in keyof T]: T[P] extends object
-    ? DeepReadonly<T[P]>
-    : T[P];
+  readonly [P in keyof T]: T[P] extends object ? DeepReadonly<T[P]> : T[P];
 };
-```
-
-**挑战 2：Tuple to Union**
-```typescript
-type TupleToUnion<T extends any[]> = T[number];
-
-type Result = TupleToUnion<["a", "b", "c"]>;  // "a" | "b" | "c"
-```
-
-**挑战 3：DeepPick**
-```typescript
+type TupleToUnion<T extends readonly any[]> = T[number];
+type R = TupleToUnion<["a", "b", "c"]>;   // "a" | "b" | "c"
 type DeepPick<T, K extends string> = K extends `${infer F}.${infer R}`
-  ? F extends keyof T
-    ? { [P in F]: DeepPick<T[F], R> }
-    : never
-  : K extends keyof T
-  ? { [P in K]: T[K] }
-  : never;
+  ? F extends keyof T ? { [P in F]: DeepPick<T[F], R> } : never
+  : K extends keyof T ? { [P in K]: T[K] } : never;
 ```
 
----
+### 8.2 项目：类型安全的用户系统（综合实战）
 
-## 📋 学习检查清单
+- [ ] §3 工程升级：paths 别名 + vitest 全覆盖工具函数
+- [ ] DTO 层：接口出参 `PublicUser = Omit<User, "password">`，入参 `Partial` 派生
+- [ ] `Result<T, E>` 包住 fetch，调用方必须收窄后才能拿数据
+- [ ] 类型谓词校验外部 JSON；`noUncheckedIndexedAccess` 全程开启不报错
+- [ ] 全项目 `grep` 无 `any`、无未注释的 `!`
 
-### 阶段一
-- [ ] 理解 TypeScript 与 JavaScript 的区别
-- [ ] 掌握基本类型（string, number, boolean, array, tuple）
-- [ ] 会使用 Interface 定义对象结构
-- [ ] 会使用 Type Alias 创建类型别名
-- [ ] 理解 Enum 枚举类型
+### 8.3 里程碑自测清单
 
-### 阶段二
-- [ ] 掌握函数类型定义
-- [ ] 理解类与面向对象（访问修饰符、继承、抽象类）
-- [ ] 会使用泛型（函数、接口、类）
-- [ ] 理解类型推断与类型断言
-- [ ] 掌握类型守卫（typeof, instanceof, in）
+- [ ] 在 React 或 Vue 项目里完成一个 CRUD 页面，全部事件回调参数有类型（不接受隐式 any）。
+- [ ] 能说清"接口返回的 JSON 为什么必须校验"并给出谓词或 zod 方案。
+- [ ] 独立完成 DeepReadonly；能解释 `TupleToUnion` 里 `T[number]` 的含义。
+- [ ] `pnpm typecheck && pnpm test` 绿灯通过，CI 可复现。
 
-### 阶段三
-- [ ] 理解映射类型（Partial, Required, Pick, Omit）
-- [ ] 掌握条件类型与 infer
-- [ ] 理解装饰器
-- [ ] 会配置 tsconfig.json
-- [ ] 会编写类型声明文件
+## 9. 常见学习误区
 
-### 阶段四
-- [ ] 能在 React/Vue 项目中使用 TypeScript
-- [ ] 理解类型安全的 API 设计
-- [ ] 掌握类型体操基础
+1. **过度学类型体操，忽略工程**：`infer` 玩得飞起但 tsconfig/收窄不熟，面试能过、干活拉胯。路线里体操只占阶段四一小节，先把 `03`/`04` 用成肌肉记忆。
+2. **绕过 strict**：图省事关掉 `strictNullChecks` 或遇错就 `any`，等于学了个"带注释的 JS"。正确姿势：从第一个文件起 `strict: true`，报错是学习素材不是敌人。
+3. **`any`/`as` 兜底成瘾**：类型报错先想"哪里类型定义错了"，再想收窄，最后才考虑 `as`——且 `as` 要留注释。ESLint 开 `no-explicit-any`。
+4. **只学语法不建工程**：全程 Playground 单文件，一旦进真实工程（模块解析、paths、测试）就抓瞎。所以 §3 放在最前面。
+5. **把 TS 类型当运行时防线**：TS 类型编译后擦除，`JSON.parse`、请求响应、环境变量这些边界数据必须运行时校验（谓词/`instanceof`/zod），见 `04` 篇第 7 节。
+6. **非空断言滥用**：`users.find(...)!.name` 是把空指针搬回运行时。规则：能收窄绝不 `!`，每个 `!` 留注释（`03` 篇 10.2）。
+7. **背题不动手**：本篇所有"自测清单"都是"能独立完成什么"，不是"能复述什么"。面试题集中在 `14` 篇，理解后回来补打勾。
 
----
+## 10. 与其他目录的衔接
 
-## 💡 开发技巧
+### Three.js（`/Users/hh/offer/技术文档/Three.js/`）
 
-### 1. 类型推导优于显式声明
-```typescript
-// ❌ 冗余
-const name: string = "Alice";
-const numbers: number[] = [1, 2, 3];
+- **衔接点**：`three` 包自带完整 `.d.ts`，是"第三方库类型声明"的活教材——`THREE.Scene`、`PerspectiveCamera` 等构造参数即对象类型实战。
+- 阶段二之后：用 §3 工程跑 `pnpm add three @types/three`（新版已内置类型），按 `Three.js/01-基础入门.md` 写第一个场景，注意事件回调（`Raycaster` 交互见 `11-交互Controls与Raycaster.md`）的上下文类型推断。
+- 阶段四：`Three.js/21-React-Three-Fiber.md` 的组件 Props 是"泛型组件 + 字面量联合"的进阶练习；`23-3D数学基础.md` 的 Vector3 运算适合练 method chaining（`this` 返回类型）。
 
-// ✅ 让 TypeScript 推断
-const name = "Alice";
-const numbers = [1, 2, 3];
-```
+### Nest（`/Users/hh/offer/技术文档/nest/`）
 
-### 2. 优先使用 Interface
-```typescript
-// 优先使用 interface，需要联合类型时用 type
-interface User {
-  name: string;
-}
+- **衔接点**：Nest 是 TS 装饰器的最大用户。学完 `09-decorators.md` 立即读 `nest/01-fundamentals/`，对照 `@Controller()`/`@Injectable()` 理解装饰器签名与 `emitDecoratorMetadata`。
+- `nest/decorator-summary.md` 自定义装饰器速查可与 `02` 篇 12 节互相印证。
+- DTO + class-validator（`nest/09-recipes/`）回答"interface 运行时不存在"的问题：传输层用 class 才能挂校验装饰器——呼应 §9 误区 5。
+- 泛型分页 `PaginatedResponse<T>`、`Request` 声明合并扩展（`.d.ts`）在 Nest 源码里都有实例，阶段三后精读。
 
-// 需要联合类型时使用 type
-type Status = "active" | "inactive";
-```
+## 11. 推荐资源
 
-### 3. 避免使用 any
-```typescript
-// ❌ 避免
-function process(data: any): any {
-  return data;
-}
+**本系列**：`02` 速查表（随手查）→ `03`~`11` 详解篇 → `12` 类型系统 → `13` 最佳实践 → `14` 面试 → `15` 新特性。
 
-// ✅ 使用 unknown 更安全
-function process(data: unknown): unknown {
-  if (typeof data === "string") {
-    return data.toUpperCase();
-  }
-  return data;
-}
-```
+**官方**：[TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)（主线）、[TSConfig 参考](https://www.typescriptlang.org/tsconfig)、[Playground](https://www.typescriptlang.org/play)（随手验证类型）。
 
-### 4. 使用严格模式
-```json
-{
-  "compilerOptions": {
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true
-  }
-}
-```
+**练习**：[type-challenges](https://github.com/type-challenges/type-challenges)（配合 `12`/`14` 篇）、[utility-types](https://github.com/piotrwitek/utility-types)、[ts-toolbelt](https://github.com/millsp/ts-toolbelt)。
 
-### 5. 善用工具类型
-```typescript
-// 从已有类型派生新类型，减少重复定义
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-}
+**框架速查**：[React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)、[Vue 3 TS 指南](https://vuejs.org/guide/typescript/overview.html)。
 
-// 创建用户表单类型（无 id，password 可选）
-type UserForm = Omit<User, "id"> & { password?: string };
+**工具链**：VS Code（最佳 TS 体验）、ESLint + `@typescript-eslint`、Prettier、tsx/vitest（见 `17-engineering-tsup-vitest.md`）。
 
-// 创建用户更新类型（所有字段可选）
-type UserUpdate = Partial<Omit<User, "id">>;
-```
+**面试高频题**（详见 `14-typescript-interview-questions.md`）：interface vs type、泛型作用、never 与穷尽检查、as const、DeepReadonly 手写、infer 提取、协变逆变（`12` 篇）。
 
-### 6. 使用 satisfies 关键字
-```typescript
-const config = {
-  host: "localhost",
-  port: 3000
-} satisfies Record<string, string | number>;
+## 12. 一句话总结
 
-// 保留具体类型信息，同时检查约束
-config.port.toFixed();  // ✅ 知道 port 是 number
-```
-
-### 7. 使用 branding 模式创建名义类型
-```typescript
-type UserId = string & { __brand: "UserId" };
-type OrderId = string & { __brand: "OrderId" };
-
-function createUserId(id: string): UserId {
-  return id as UserId;
-}
-
-function createOrderId(id: string): OrderId {
-  return id as OrderId;
-}
-
-// 不能混用
-const userId = createUserId("user-1");
-const orderId = createOrderId("order-1");
-// processOrder(userId);  // ❌ 编译错误
-```
-
----
-
-## 📚 推荐资源
-
-### 本仓库文档
-- [typescript-cheatsheet.md](./typescript-cheatsheet.md) - 语法速查
-- [typescript-best-practices.md](./typescript-best-practices.md) - 工程化与最佳实践
-- [typescript-advanced-type-system.md](./typescript-advanced-type-system.md) - 类型系统深入
-- [typescript-interview-questions.md](./typescript-interview-questions.md) - 面试高频题
-- [typescript-new-features.md](./typescript-new-features.md) - 版本新特性
-
-### 官方资源
-- [TypeScript 官方文档](https://www.typescriptlang.org/docs/)（必读）
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
-- [TSConfig 参考](https://www.typescriptlang.org/tsconfig)
-
-### 在线练习
-- [TypeScript Playground](https://www.typescriptlang.org/play)
-- [Type Challenges](https://github.com/type-challenges/type-challenges) - 类型体操练习
-
-### 类型体操资源
-- [utility-types](https://github.com/piotrwitek/utility-types) - 实用工具类型
-- [ts-toolbelt](https://github.com/millsp/ts-toolbelt) - 类型工具库
-
-### 实战教程
-- [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)
-- [Vue 3 TypeScript 指南](https://vuejs.org/guide/typescript/overview.html)
-
-### 工具推荐
-- **VS Code**: 最佳的 TypeScript 开发体验
-- **ESLint + @typescript-eslint**: 代码规范检查
-- **Prettier**: 代码格式化
-
----
-
-## 🎯 面试高频题
-
-### 基础题
-1. **interface 和 type 的区别？**
-   - interface 支持声明合并，type 不支持
-   - interface 用 extends 扩展，type 用 & 交叉类型
-   - type 可以定义联合类型、元组等任何类型
-
-2. **什么是泛型？有什么作用？**
-   - 泛型是参数化的类型，让代码可以处理多种类型
-   - 保持类型安全的同时提高代码复用性
-
-3. **never 类型是什么？**
-   - 表示永不发生的值
-   - 用于穷尽检查、抛出异常的函数等
-
-### 进阶题
-4. **const 断言（as const）的作用？**
-   - 将变量转换为只读字面量类型
-   - 数组变为 readonly 元组
-
-5. **如何实现一个 DeepReadonly？**
-   ```typescript
-   type DeepReadonly<T> = {
-     readonly [P in keyof T]: T[P] extends object
-       ? DeepReadonly<T[P]>
-       : T[P];
-   };
-   ```
-
-6. **infer 关键字的作用？**
-   - 在条件类型中推断类型
-   - 常用于提取函数返回类型、Promise 解析类型等
-
----
-
-**记住：TypeScript 不仅是类型检查工具，更是提升代码质量的利器。** 🚀
+> 路线图只负责调度：先用 §3 的 pnpm + tsx + vitest 工程把"写代码"变成零成本，然后按四阶段推进，每阶段以"里程碑自测清单"过关；知识点一律下钻到对应篇目（03~11 详解、12/14 深入与面试），学习期最常见的死法是绕过 strict、any 兜底和只刷体操不碰工程——三条都写进了 §9，定期回来对照。

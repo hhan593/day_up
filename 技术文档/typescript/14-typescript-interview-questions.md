@@ -1,7 +1,9 @@
-# TypeScript 面试高频题汇总
+# 14. TypeScript 面试高频题汇总
 
+> 来源可信度：**标准实践**（题面源自高频面试真题，答案对照官方文档核验）
+> 关联：`02-typescript-cheatsheet.md`（速查）、`12-typescript-advanced-type-system.md`（高级机制）、`22-type-gymnastics.md`（手写题深化）
 > 适用场景：前端 / 全栈岗位面试。按「基础 → 进阶 → 手写 → 工程化」分层，附带答题要点与代码示例。
-> 建议配合《typescript-cheatsheet.md》和《typescript-advanced-type-system.md》一起复习。
+> 建议配合《02-typescript-cheatsheet.md》和《12-typescript-advanced-type-system.md》一起复习。
 
 ---
 
@@ -701,3 +703,7 @@ type Direction = typeof Direction[keyof typeof Direction]; // "up" | "down"
 - **条件类型爱分配（裸类型参数），infer 只能活在 extends 里**
 - **映射类型遍历 keyof，模板字符串类型拼出新世界**
 - **类型在编译期消失，运行时校验交给 zod**
+
+## 一句话总结
+
+> 面试考 TS 就是考三件事：**类型层思维**（联合/条件/映射/推断）、**运行时边界**（收窄/守卫/校验）、**工程判断**（strict/模块解析/构建链）——把每道题的「为什么」讲清楚，比背结论高一档。
