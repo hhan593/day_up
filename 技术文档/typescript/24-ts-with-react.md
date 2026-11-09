@@ -320,6 +320,358 @@ declare module '@react-three/fiber' {
   4. 环境变量声明：`interface ImportMetaEnv { VITE_API: string }` 写进 `vite-env.d.ts`，`import.meta.env.VITE_API` 即有类型。
 - 类型门禁与构建分工：`tsc --noEmit` 只查类型；Vite/esbuild 只转译不检查——两边都要进 CI（`17-engineering-tsup-vitest.md`）。
 
-## 11. 一句话总结
+## 11. 组件设计模式类型：Compound Components / render props / polymorphic
+
+### 11.1 Compound Components：泛型 Context + 子组件类型
+
+```tsx
+// components/Tabs.tsx —— <Tabs> 定 T，<Tab> 独立声明，靠 Context 串联
+import { createContext, useContext, type ReactNode } from 'react';
+
+interface TabsProps<T extends string> {
+  value: T;
+  onChange: (v: T) => void;
+  children: ReactNode;
+}
+
+interface TabProps { value: string; children: ReactNode }   // 先用 string，hook 处再收窄
+
+interface TabsContextValue {
+  current: string | null;
+  register: (v: string) => void;
+}
+
+const TabsContext = createContext<TabsContextValue | null>(null);
+
+export function Tabs<T extends string>({ value, onChange, children }: TabsProps<T>) {
+  return (
+    <TabsContext.Provider
+      value={{ current: value, register: (v: string) => onChange(v as T) }}   // 唯一断言点
+    >
+      <div role="tablist">{children}</div>
+    </TabsContext.Provider>
+  );
+}
+
+export function Tab({ value, children }: TabProps) {
+  const ctx = useContext(TabsContext);
+  if (!ctx) throw new Error('<Tab> 必须在 <Tabs> 内使用');   // 与第 6 章同款运行时兜底
+  return (
+    <button role="tab" aria-selected={ctx.current === value} onClick={() => ctx.register(value)}>
+      {children}
+    </button>
+  );
+}
+```
+
+```tsx
+// App.tsx —— 使用侧
+const [tab, setTab] = useState<'a' | 'b'>('a');
+<Tabs value={tab} onChange={setTab}>
+  <Tab value="a">A</Tab>
+  <Tab value="b">B</Tab>
+  {/* <Tab value="c">C</Tab>  ← value 是 string，TS 拦不住 'c'！ */}
+</Tabs>
+```
+
+- 核心矛盾：`createContext` 是**模块级单例**，泛型在 define 时就固定；而 `T` 属于**每次渲染的实例**——所以没法直接写 `createContext<TabsContextValue<T>>`。通行解是「Context 值域放宽、Provider 处泛型强约束 props、hook 处断言收窄」（Radix 内部同思路，以其实际实现为准），全链路只留一处显式断言点。
+- 想让 `<Tab value="c">` 编译期报错，只能放弃子组件独立声明，改走 **items 配置式 / render props**（第 2 章 `List<T>` 即此路线）——组合度与类型安全不可兼得，这是设计取舍线，不是类型技巧问题。
+
+### 11.2 render props：children 即函数
+
+```tsx
+// components/MouseTracker.tsx
+import { useState, type ReactNode } from 'react';
+
+interface MouseTrackerProps {
+  render: (pos: { x: number; y: number }) => ReactNode;   // 具名 render prop
+}
+
+export function MouseTracker({ render }: MouseTrackerProps) {
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  return (
+    <div onMouseMove={(e) => setPos({ x: e.clientX, y: e.clientY })}>
+      {render(pos)}
+    </div>
+  );
+}
+// 使用：<MouseTracker render={(p) => <span>{p.x},{p.y}</span>} />
+
+// children 即函数的变体——类型完全一样，只是位置换成 children：
+interface FuncChildrenProps<T> {
+  items: T[];
+  children: (item: T, index: number) => ReactNode;
+}
+```
+
+- 类型要点：render props 的类型安全就是把**回调签名**写进 props——组件作者决定回调查到什么参数，编译器负责向使用侧传导。相比 HOC，它没有包装层类型拼接的噩梦（`ComponentProps<typeof Wrapped>` 层层交叉），是更推荐的抽象方式。
+
+### 11.3 Polymorphic 组件：as 泛型的完整实现
+
+目标：`<Text as="a" href="/x">` 渲染成 `<a>` 且**只接受 a 合法的属性**，`as="button"` 时自动换成 button 的属性集。
+
+```tsx
+// components/Text.tsx
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
+
+type OwnProps = { color?: 'primary' | 'secondary'; children?: ReactNode };
+
+// as 的合法值 = 任何 JSX 元素类型；属性集 = OwnProps + 该元素自己的 props（去掉与 OwnProps 的冲突键）
+type PolymorphicProps<C extends ElementType> =
+  OwnProps & { as?: C } & Omit<ComponentPropsWithoutRef<C>, keyof OwnProps | 'as'>;
+
+// 组件签名：C 从 as 推导，默认 'span'
+type TextComponent = <C extends ElementType = 'span'>(
+  props: PolymorphicProps<C>
+) => ReactNode;
+
+export const Text: TextComponent = ({ as, color = 'primary', children, ...rest }) => {
+  const Tag = (as ?? 'span') as ElementType;   // 唯一断言点：泛型元素 → 可渲染元素
+  return (
+    <Tag className={`text-${color}`} {...(rest as object)}>
+      {children}
+    </Tag>
+  );
+};
+```
+
+```tsx
+<Text as="a" href="/pricing">定价</Text>      // href 合法：来自 ComponentPropsWithoutRef<'a'>
+<Text as="button" type="submit">提交</Text>   // type 合法：button 属性集
+<Text color="secondary">普通</Text>           // 不传 as：默认 span
+// <Text as="div" href="/x" />  ← 编译报错：href 不在 div 的属性集上
+```
+
+- 逐层拆解：`ComponentPropsWithoutRef<C>` 按 C 取出对应原生元素的 props 联合（`'a'` → AnchorHTMLAttributes…）；`Omit<..., keyof OwnProps | 'as'>` 防止原生属性与你自定义的 `color`/`as` 冲突产生双重定义；`TextComponent` 用「函数类型标注 + 箭头函数实现」的组合，绕开 `.tsx` 里 `<C>` 被当标签的解析陷阱（第 2 章）。
+- 定义体里的 `as object` 断言是这个模式的固有代价：TS 无法证明「任意 C 的属性集」可展开到「任意 Tag」，泛型组件的类型价值在**使用侧**（props 全程精确），定义侧留一处肉眼可见的受控断言即可——review 时重点盯这里。
+- React 19 想同时支持 ref：把返回类型改成带 `ref?: ComponentPropsWithRef<C>['ref']` 的 props，函数组件直接收 ref prop（第 5 章）；React 18 需要 forwardRef 版变体（写法以 React 19/18 官方文档为准）。
+
+## 12. 表单类型串联实战：zod schema → z.infer → useForm → onSubmit
+
+```tsx
+// forms/signup.tsx —— 一条 schema 贯穿：校验规则、TS 类型、errors 三者同源
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+
+const signupSchema = z
+  .object({
+    email: z.string().email(),
+    password: z.string().min(8, '至少 8 位'),
+    confirm: z.string(),
+  })
+  .refine((d) => d.password === d.confirm, { path: ['confirm'], message: '两次密码不一致' });
+
+type SignupForm = z.infer<typeof signupSchema>;
+// { email: string; password: string; confirm: string }
+
+export function SignupForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignupForm>({
+    resolver: zodResolver(signupSchema),   // 校验结果的形状与 SignupForm 对齐
+  });
+
+  const onSubmit = handleSubmit((data) => {   // data: SignupForm —— 已通过校验的干净值
+    console.log(data.email);
+  });
+
+  return (
+    <form onSubmit={onSubmit}>
+      <input {...register('email')} />
+      {errors.email && <span>{errors.email.message}</span>}
+      <input {...register('password')} type="password" />
+      {errors.password && <span>{errors.password.message}</span>}
+      <input {...register('confirm')} type="password" />
+      {errors.confirm?.message && <span>{errors.confirm.message}</span>}
+      <button>注册</button>
+      {/* register('emial') ← 编译期报错：字面量键不存在（TS2339/TS2769 家族） */}
+    </form>
+  );
+}
+```
+
+- 推导链：`z.infer` 生成表单类型 → `useForm<T>` 约束 `register` 的键与默认值类型 → `zodResolver` 把 zod parse 的失败信息映射成 `FieldErrors<T>` → `handleSubmit` 回调参数**排除了校验失败的可能**（callback 收到的 data 已通过 schema）——从此没有 `data.email as string` 这类补丁。
+- **永远 `z.infer` 生成，不要手抄字段类型**：schema 里 `z.string().optional()` 推断成 `string | undefined`，手写 `string` 就漂移了；`refine`/`superRefine` 的 path 指向哪个键，错误就挂到 `errors` 的哪个键上，类型同步。
+- 版本敏感点（**以官方文档为准**）：react-hook-form 7.44+ 配 @hookform/resolvers 3.3+ 支持**从 resolver 反推表单类型**——`useForm({ resolver: zodResolver(signupSchema) })` 不写泛型也能得到正确类型（要求 zod 3.21+）；zod v4 需换用对应的 v4 兼容入口（resolver 包的导出路径有过调整）。老项目保险姿势仍是显式 `useForm<z.infer<typeof schema>>`。
+
+## 13. lazy / Suspense / 错误边界的类型
+
+### 13.1 React.lazy 与 Suspense
+
+```tsx
+import { lazy, Suspense } from 'react';
+
+const ChartPanel = lazy(() => import('./ChartPanel'));   // 模块须有 default 导出
+
+<Suspense fallback={<Spin />}>          {/* fallback: ReactNode */}
+  <ChartPanel data={data} />            {/* props 类型与同步 import 完全一致 */}
+</Suspense>
+```
+
+- **lazy 的入参约定是类型化的**：`lazy<T extends ComponentType<any>>(factory: () => Promise<{ default: T }>)`（以 @types/react 为准）——`import()` 返回的 namespace 必须带 `default`，只有具名导出的模块在编译期就被拦（`Property 'default' is missing`）。
+- 返回类型 `LazyExoticComponent<T>` 可以近似当 `T` 用在类型位（图标注册表 `Record<string, LazyExoticComponent<...>>` 等），但它在类型上**不能被直接调用/实例化**——「必须包 Suspense 才能用」这个运行时约定，靠这个独立类型名在代码 review 里可见。
+- Suspense 的类型本身极薄（`{ children?: ReactNode; fallback?: ReactNode }`）；抛 Promise 的「suspend」行为完全在运行时——类型系统看不见，这也是为什么数据框架（React Query 的 `useSuspenseQuery` 等）都自带配套类型。
+
+### 13.2 类组件错误边界（官方仍只支持类写法）
+
+```tsx
+// components/ErrorBoundary.tsx
+import { Component, type ErrorInfo, type ReactNode } from 'react';
+
+interface ErrorBoundaryProps { children: ReactNode; fallback?: ReactNode }
+interface ErrorBoundaryState { error: Error | null }
+
+export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  state: ErrorBoundaryState = { error: null };
+
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {   // 渲染期捕获 → 降级 UI
+    return { error };
+  }
+
+  componentDidCatch(error: Error, info: ErrorInfo) {                    // 副作用上报位
+    console.error(error, info.componentStack);   // React 19 里 componentStack 为 string（18 可空，以 @types/react 为准）
+  }
+
+  render() {
+    return this.state.error ? this.props.fallback ?? <h1>出错了</h1> : this.props.children;
+  }
+}
+```
+
+- 两个生命周期签名是固定的：`getDerivedStateFromError` 的返回值必须匹配 State（写错返回类型直接报错），`componentDidCatch` 的 `info: ErrorInfo` 带 `componentStack`。
+- 第三方 react-error-boundary 的类型（以官方 README 为准）：
+
+```tsx
+import { ErrorBoundary as REB, type FallbackProps } from 'react-error-boundary';
+
+function Fallback({ error, resetErrorBoundary }: FallbackProps) {
+  // FallbackProps ≈ { error: Error; resetErrorBoundary: (...args: any[]) => void }
+  // （error 在旧版本类型为 any，新版本收成 Error——版本敏感）
+  return (
+    <div role="alert">
+      <p>{error.message}</p>
+      <button onClick={resetErrorBoundary}>重试</button>
+    </div>
+  );
+}
+
+<REB FallbackComponent={Fallback} onReset={(details) => console.log(details)}>
+  <App />
+</REB>
+```
+
+- 注意边界能捕获的是**渲染期/生命周期错误**；事件回调与异步任务里的错误不在其覆盖范围，要 try/catch 自己管——类型上 `FallbackProps['error']` 是 `Error` 这个事实，不代表所有路径进到 fallback 的 error 都有 stack。
+
+## 14. 测试类型：user-event 与 jest-dom 断言的 declare 扩展
+
+```ts
+// src/test/setup.ts —— jest-dom 有 vitest 专用入口，一行完成断言扩展
+import '@testing-library/jest-dom/vitest';
+// jest 用户：import '@testing-library/jest-dom';（配 jest.config 的 setupFilesAfterEnv）
+```
+
+```tsx
+// __tests__/login.test.tsx —— 类型已就位：getBy* 返回 HTMLElement，matchers 全有提示
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+test('登录', async () => {
+  render(<LoginForm />);
+  const user = userEvent.setup();     // 返回 UserEvent 对象；可传 { advanceTimers: vi.advanceTimersByTime }
+  await user.type(screen.getByLabelText('邮箱'), 'a@b.com');
+  await user.click(screen.getByRole('button', { name: '登录' }));
+  expect(screen.getByRole('alert')).toHaveTextContent('成功');   // jest-dom 扩展断言
+  expect(screen.getByRole('button')).toBeDisabled();
+});
+```
+
+- user-event 类型要点：所有交互方法返回 Promise，**必须 await**——不 await 类型不报错（返回值被丢弃），靠 `@typescript-eslint/no-floating-promises` 兜底。这是「类型系统不覆盖、lint 来补」的典型案例（与第 15 章呼应）。
+- **自定义 matcher 的 declare 扩展**（jest 与 vitest 的命名空间不同，别混用）：
+
+```ts
+// types/test-matchers.d.ts —— jest 版：扩展全局 jest.Matchers
+declare global {
+  namespace jest {
+    interface Matchers<R> {
+      toBeWithinRange(floor: number, ceiling: number): R;
+    }
+  }
+}
+export {};
+
+// vitest 版：模块扩展 vitest 的 Assertion / AsymmetricMatchersContaining
+import type { Assertion, AsymmetricMatchersContaining } from 'vitest';
+declare module 'vitest' {
+  interface Assertion<T = any> {
+    toBeWithinRange(floor: number, ceiling: number): Assertion<T>;
+  }
+  interface AsymmetricMatchersContaining {
+    toBeWithinRange(floor: number, ceiling: number): unknown;
+  }
+}
+```
+
+```ts
+// 与声明配套的运行时注册——漏了就是「编译全绿、运行时报函数不存在」：
+expect.extend({
+  toBeWithinRange(received, floor, ceiling) {
+    const pass = received >= floor && received <= ceiling;
+    return { pass, message: () => `${received} not in [${floor}, ${ceiling}]` };
+  },
+});
+```
+
+- 声明原理即 `21-declaration-files.md` 第 7 章的 module augmentation：jest-dom 装包后「自动有类型」，正是因为它自带对 `jest.Matchers`（或 vitest `Assertion`）的扩展声明——自定义 matcher 照抄同款接口即可（接口成员名以两家官方文档为准）。
+- 又见「信任鸿沟」（23 篇第 12 章）：**类型声明不保证运行时存在**——d.ts 写了 matcher、`expect.extend` 没注册，编译期全绿、跑起来 `toBeWithinRange is not a function`。
+
+## 15. memo / useMemo 的 props 稳定性：类型上的三个盲区
+
+```tsx
+import { memo, useCallback, useMemo } from 'react';
+
+interface UserListProps {
+  items: { id: string; name: string }[];
+  onSelect: (id: string) => void;
+  header: React.ReactNode;
+}
+
+const UserList = memo(function UserList({ items, onSelect, header }: UserListProps) {
+  return null;   // memo 默认浅比较：Object.is 逐 prop 比对
+});
+
+function Parent({ users }: { users: User[] }) {
+  return (
+    <UserList
+      items={users.filter((u) => u.active)}    // 盲区一：新数组 → 引用变 → memo 失效
+      onSelect={(id) => console.log(id)}       // 盲区一：内联函数 → 新引用 → memo 失效
+      header={<h2>标题</h2>}                   // 盲区一：内联 JSX → 新 ReactNode → memo 失效
+    />
+  );
+}
+```
+
+- **盲区一：类型不检查引用稳定性**。props「类型兼容」与「引用稳定」是两个维度——三行内联写法类型全绿，memo 形同虚设。修复靠 `useCallback`/`useMemo`、把常量提到模块级、或下放状态，不靠类型系统。
+- **盲区二：自定义比较函数没有完备性检查**：
+
+```tsx
+const Optimized = memo(UserList, (prev, next) => prev.items === next.items);
+// 两参类型自动推导为 UserListProps——漏比 onSelect/header 没有任何提示；
+// 后果是「props 变了却不重渲」的幽灵 bug：UI 用了 header、闭包里的 onSelect 过期。
+```
+
+- **盲区三：依赖数组是 `readonly any[]`，内容不受类型检查**：
+
+```tsx
+const active = useMemo(() => users.filter((u) => u.active), [users, 'oops']);  // 混入字符串常量：不报错
+useEffect(() => { log(users); }, []);                                          // 漏依赖：不报错（stale 闭包）
+```
+
+- 依赖数组正确性由 `eslint-plugin-react-hooks` 的 `exhaustive-deps` 静态分析保证——这也回答面试题「有 TS 了为什么还要 ESLint」：**TS 管类型形状，lint 管引用与依赖的正确性**，互补不重叠。
+- 实操约定：传给 memo 组件的函数 props 一律 `useCallback`、对象/数组 props 一律 `useMemo` 或提为模块常量；`React.ReactNode` 类型的 props（如 header）最容易「内联即新引用」，重点盯。泛型组件被 memo 包裹时泛型推导会丢（同第 5 章 forwardRef 的问题），需要 memo 时先拆子组件再包。
+
+## 16. 一句话总结
 
 > React + TS 的主线是「类型顺着数据流走」：props 用 interface 定形状（children 选 ReactNode 超集，ReactElement 留给要加工元素的少数场景），泛型组件让 `items: T[]` 一路推导到 `onSelect: (item: T) => void`；hooks 各有要点——useState 显式联合管 null、useReducer 用判别联合 + never 穷尽、useRef 分清「可变容器」与「DOM 只读」双签名（19 统一为可写 RefObject）、useEffect 清理函数在类型层被禁 return 其他值；React.FC 的隐式 children 历史包袱 18 已卸下，但泛型组件依旧绕开它；ref 转发在 19 退化为普通 prop，泛型组件配 ref 是经典推导陷阱；Context 用 `createContext<T | null>(null)` + 自定义 hook throw 收窄；Zustand 的 `create<Store>()(...)` currying 是为绕开「部分类型参数推断不支持」，React Query 的 data 类型由 queryFn 与 select 两段接力；R3F 的 `<mesh>` 标签靠 module augmentation 注册进 JSX.IntrinsicElements（v9 后是 React.JSX + ThreeElements）——和 Vite 的 vite-env.d.ts 一样，都是 21 篇声明文件机制的实战落地。
