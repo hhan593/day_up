@@ -380,7 +380,259 @@ type A = MyAwaited<Promise<Promise<number>>>;   // number
 - `MyParameters`/`MyReturnType` 正是 05 篇"函数反射"的类型层出口（写装饰器、mock 工具时高频出现）。
 - `Awaited` 是 `await` 表达式类型的来源：`Promise<Promise<T>>` 被 await 后的类型就是 `Awaited<Promise<Promise<T>>>`。
 
-## 9. 要点速查
+## 9. 分配律实验五连：亲手验证分发规则
+
+第 4.2 节讲了规则，这里给 5 个可直接粘进 tsc 的实验——用恒等断言把结论"钉死"（断言不等时编译报错，比悬停更可靠）：
+
+```ts
+// 实验工具：Equal/Expect —— 利用"两个泛型函数签名完全一致才互相兼容"的规则做类型恒等比较
+type Equal<X, Y> =
+  (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? true : false;
+type Expect<T extends true> = T;
+// 用法：type _ = Expect<Equal<被测类型, 期望类型>>;  不相等则在 Expect 处报错
+```
+
+**实验 1：裸类型参数分发**
+
+```ts
+type Box<T> = T extends any ? { value: T } : never;
+type E1 = Box<"a" | "b">;
+// 结论：{ value: "a" } | { value: "b" } —— 裸 T 遇联合，逐成员分别进入分支
+type _1 = Expect<Equal<E1, { value: "a" } | { value: "b" }>>; // ✅
+```
+
+**实验 2：[] 抑制分发**
+
+```ts
+type BoxND<T> = [T] extends [any] ? { value: T } : never;
+type E2 = BoxND<"a" | "b">;
+// 结论：{ value: "a" | "b" } —— T 被元组包住，整个联合只判断一次
+type _2 = Expect<Equal<E2, { value: "a" | "b" }>>; // ✅
+```
+
+**实验 3：never 消失与显形**
+
+```ts
+type E3a = Box<never>;    // never —— never 是"空联合"，没有成员可分发，条件根本没执行
+type E3b = BoxND<never>;  // { value: never } —— 抑制后分支真的跑了一次，T = never
+type _3a = Expect<Equal<E3a, never>>;            // ✅
+type _3b = Expect<Equal<E3b, { value: never }>>; // ✅
+```
+
+**实验 4：boolean 展开**
+
+```ts
+type IsString<T> = T extends string ? true : false;
+type E4 = IsString<boolean>;
+// boolean 本质是 true | false 的联合 → 分发成 IsString<true> | IsString<false> = true | false
+// 合并后又变回 boolean —— "看起来没分发"，实则分发了一圈
+type _4 = Expect<Equal<E4, boolean>>; // ✅ 注意：绝不可能得到 true 或 false
+// 想判断"恰为 boolean"必须抑制分发：
+type IsBoolean<T> = [T] extends [boolean] ? true : false;
+type _4b = Expect<Equal<IsBoolean<boolean>, true>>; // ✅
+```
+
+**实验 5：每个成员独立求值，分支内多个裸 T 一起替换**
+
+```ts
+type PairUp<T> = T extends string ? [T, T] : never;
+type E5 = PairUp<"a" | "b">;
+// 结论：["a", "a"] | ["b", "b"] —— 不是 ["a", "b"]！
+// 分发 = 把"一个成员"代入分支里所有裸 T 后求值；成员之间互相不可见
+type _5 = Expect<Equal<E5, ["a", "a"] | ["b", "b"]>>; // ✅
+```
+
+一句话归纳：**分支执行次数 = 联合成员数（never 是 0 次）；分支内的裸 T = 当前成员；要"整体验一次"就套 `[]`**。分配律的底层检测规则（裸类型参数判定、逆变相关性）见 12 篇第一章。
+
+## 10. infer 六种位置全景
+
+第 5 节讲过 infer 的基本法与同名多位置规则，这里按"infer 写在模式的哪个位置"过一遍全景——位置决定协变/逆变，协变/逆变决定推断结果的合并方向。
+
+**① 函数参数位（逆变）**——infer 结果由"函数能接受什么"决定：
+
+```ts
+type ArgOf<T> = T extends (a: infer A, ...args: any[]) => any ? A : never;
+type A1 = ArgOf<(a: string | number) => void>; // string | number —— 参数位越宽，infer 越宽
+// 同一 infer 名出现在多个参数位时取并集（第 5 节 Bar 例）——逆变位置的合并方向
+```
+
+**② 返回值位（协变）**——infer 结果由"函数产出什么"决定：
+
+```ts
+type RetOf<T> = T extends (...args: never[]) => infer R ? R : never;
+type R1 = RetOf<() => "ok" | "err">;        // "ok" | "err"
+type R2 = RetOf<(() => 1) | (() => "x")>;   // 1 | "x" —— 联合来源在协变位取并
+```
+
+**③ 数组/元组元素位**——数组取元素，元组还能按形状拆：
+
+```ts
+type Elems<T> = T extends readonly (infer E)[] ? E : never;
+type E1 = Elems<string[]>; // string
+
+type Head<T extends readonly unknown[]> = T extends readonly [infer H, ...unknown[]] ? H : never;
+type Tail<T extends readonly unknown[]> = T extends readonly [unknown, ...infer R] ? R : never;
+type Last<T extends readonly unknown[]> = T extends readonly [...unknown[], infer L] ? L : never;
+type H1 = Head<["a", "b", "c"]>; // "a"
+type T1 = Tail<["a", "b", "c"]>; // ["b", "c"]
+type L1 = Last<["a", "b", "c"]>; // "c"
+```
+
+**④ 模板字面量片段**——切分位置有讲究：
+
+```ts
+// ${infer A}.${infer B} 在"第一个点"切（A 尽量短）
+type SplitFirst<S extends string> = S extends `${infer A}.${infer B}` ? [A, B] : never;
+type X1 = SplitFirst<"app.test.ts">; // ["app", "test.ts"]
+// 前置 ${string} 是贪婪的：infer 拿到"最后一个点"之后的部分（取扩展名的惯用法）
+type Ext<S extends string> = S extends `${string}.${infer E}` ? E : never;
+type X2 = Ext<"app.test.ts">; // "ts"
+```
+
+**⑤ Promise/Thenable 展开处**——不只认 Promise，任何"带 then 的形状"都能解：
+
+```ts
+type ThenValue<T> = T extends { then(onFulfilled: (value: infer V) => unknown): unknown } ? V : T;
+type V1 = ThenValue<{ then: (cb: (v: string) => void) => void }>; // string —— 自制 thenable
+type V2 = ThenValue<Promise<number>>;  // number —— Promise 结构命中同一模式
+// lib 的 Awaited（8.4 节）= 该模式 + 递归解包 + 非 thenable 兜底
+```
+
+**⑥ this 位置与多态 this**——两种形态：
+
+```ts
+// a) infer 写在 this 参数位（lib 的 ThisParameterType 同款）
+type MyThis<T> = T extends (this: infer U, ...args: any[]) => any ? U : unknown;
+function log(this: Console, msg: string) {}
+type T1 = MyThis<typeof log>; // Console
+
+// b) 多态 this：返回 this 的方法相当于"接收者处自动 infer"——链式调用不丢子类
+class Query<T> {
+  constructor(private rows: T[] = []) {}
+  where(pred: (r: T) => boolean): this { return this; }  // 返回 this 而非 Query<T>
+}
+class UserQuery extends Query<{ name: string }> {
+  byName(n: string): this { return this; }
+}
+const q = new UserQuery().where(() => true).byName(); // q: UserQuery
+// 若 where 返回 Query<T>，这条链到 .byName() 就断（Query 上没有 byName）
+```
+
+规律：**产出方向（协变：返回值/属性/元素）的推断随来源取并**；同一 infer 名出现在多个位置时——协变位取交集、逆变位取并集（第 5 节）。读第三方工具类型源码时先认位置再推结果。
+
+## 11. 类型级取值器 DeepGet：模板字面量拆路径 + 递归索引访问
+
+目标：`DeepGet<T, 'a' | 'b.c'>` 按点分路径取深层属性类型；坏路径返回 never 而不是 any。
+
+```ts
+// deep-get.ts
+type DeepGet<T, P extends string> =
+  P extends `${infer Head}.${infer Rest}`
+    ? DeepGet<DeepGet<T, Head>, Rest>            // 逐段下钻：先解析当前段，余下路径递归
+    : P extends keyof T
+      ? T[P]                                     // 普通键：索引访问（第 3 节）
+      : T extends readonly (infer U)[]           // 数组分支：数字下标段（"0"、"1"…）
+        ? P extends `${number}` ? U : never
+        : never;                                 // 兜底：路径不存在 → never
+```
+
+工作机制四步：
+
+1. **拆段**：`` `${infer Head}.${infer Rest}` `` 在第一个 `.` 切开（第 10 节位置 ④）；
+2. **递归下钻**：`DeepGet<T, Head>` 先取一段，把"取到的类型"当作新对象继续拆余下路径——索引访问 + 递归条件类型的组合；
+3. **数组分支**：`` P extends `${number}` `` 拦下字符串数字下标，返回元素类型 U（元组同样适用，得到元素联合）；
+4. **never 兜底是刻意的**：配合"never 在联合里自动消失"（第 9 节实验 3），坏路径会从联合结果中隐去，而不会污染成 any。
+
+```ts
+type Config = {
+  server: { host: string; ports: number[] };
+  debug: boolean;
+};
+
+type H  = DeepGet<Config, "server.host">;    // string
+type P1 = DeepGet<Config, "server.ports.1">; // number
+type D  = DeepGet<Config, "debug">;          // boolean
+// P 是裸类型参数 → 联合路径自动分发（第 9 节），多路径取值得到值联合：
+type Both = DeepGet<Config, "debug" | "server.host">; // boolean | string
+type Bad  = DeepGet<Config, "server.hostx">;          // never —— 拼错的路径编译期现形
+```
+
+配套运行时版（返回类型与 DeepGet 对齐）：
+
+```ts
+function deepGet<T, P extends string>(obj: T, path: P): DeepGet<T, P> | undefined {
+  let cur: unknown = obj;
+  for (const seg of path.split(".")) {
+    if (cur == null) return undefined;
+    cur = (cur as Record<string, unknown>)[seg];
+  }
+  return cur as DeepGet<T, P>;  // 边界断言：段合法性由 DeepGet 在编译期保证
+}
+
+const cfg: Config = { server: { host: "localhost", ports: [3000, 3001] }, debug: true };
+console.log(deepGet(cfg, "server.host"));    // "localhost"（类型 string）
+console.log(deepGet(cfg, "server.ports.1")); // 3001（类型 number）
+const bad = deepGet(cfg, "server.hostx");    // undefined
+// 妙处：bad 的类型是 DeepGet<Config, "server.hostx"> | undefined = never | undefined = undefined
+// —— "不可能有值"的路径被类型系统自动压成 undefined
+```
+
+## 12. 类型级函数组合 Pipe：尾递归折叠推导参数与返回
+
+目标：`Pipe<[f1, f2, f3]>` 得到"整条链组合后的函数类型"——参数取 f1 的参数、返回值取 f3 的返回，且**逐个检查接缝**（上一个的返回必须能喂给下一个的参数）。
+
+```ts
+// pipe.ts —— 约束：一元函数链
+type AnyFn = (arg: any) => any;
+
+type Pipe<FS extends AnyFn[]> = FS extends []
+  ? never
+  : FS extends [(arg: infer P) => infer R]      // 只剩一个 → 组合完成
+    ? (arg: P) => R
+    : FS extends [
+        (arg: infer P) => infer R,
+        (arg: infer P2) => infer R2,
+        ...infer Rest extends AnyFn[],          // TS 4.7+：解构 + 约束一步完成
+      ]
+      ? R extends P2                            // 接缝检查
+        ? Pipe<[(arg: P) => R2, ...Rest]>       // 折叠前两个，尾递归继续
+        : never                                 // 接不上 → 整条链 never
+      : never;
+```
+
+推导过程回放（配合运行时 pipe）：
+
+```ts
+declare function pipe<FS extends AnyFn[]>(...fs: FS): Pipe<FS>;
+
+const trim = (s: string) => s.trim();
+const toNum = (s: string) => Number(s);
+const isFin = (n: number) => Number.isFinite(n);
+
+const ok = pipe(trim, toNum, isFin);   // 类型是 (arg: string) => boolean
+// 折叠回放：
+// [(s:string)=>string, (s:string)=>number, (n:number)=>boolean]
+//   → string extends string ✅ → [(s:string)=>number, (n:number)=>boolean]
+//   → number extends number ✅ → [(s:string)=>boolean]
+//   → 只剩一个 → (arg: string) => boolean
+ok("  42  "); // ✅
+
+const bad = pipe(
+  (s: string) => s.length,   // 返回 number
+  (b: boolean) => b,         // 参数要 boolean
+); // 接缝 number extends boolean ❌ → Pipe 结果 never
+// bad("x"); // ❌ TS2349: This expression is not callable.（never 没有调用签名）
+```
+
+三个实现要点：
+
+1. **为什么是"折叠"而不是"分别取头尾"**：折叠在递归中顺带完成接缝检查；只取 `Parameters<FS[0]>[0]` 与末元素返回值的"轻量版"不查兼容，链断裂时静默给出错误类型。
+2. **尾递归才撑得住长链**：`Pipe<[(arg: P) => R2, ...Rest]>` 是分支的"最外层"结果，命中 TS 对条件类型的尾递归优化——元组长度每轮 -1，几十个函数也不触发 TS2589；若把递归包进别的类型构造器（如 `Pipe<Rest>[]`），约 50 层就会报 TS2589（以官方文档为准）。
+3. **`infer Rest extends AnyFn[]`**（infer extends，TS 4.7+）省掉一层 `Rest extends AnyFn[] ? ... : never` 的守门。
+
+对照第 8.4 节：`MyParameters` 抓参数元组、`MyReturnType` 抓返回值都是"单步 infer"；Pipe 是把它们放进**尾递归**的典型实战——类型级循环 + 模式匹配的组合拳。
+
+## 13. 要点速查
 
 | 机制 | 语法 | 一句话用途 |
 |---|---|---|
@@ -397,7 +649,7 @@ type A = MyAwaited<Promise<Promise<number>>>;   // number
 
 > 跨语言对比：C++ 的模板特化、Scala 的 implicit、Rust 的 trait 关联类型都做"编译期计算"，但 TS 的条件类型 + `infer` 是**纯模式匹配**风格，最接近 Haskell 的类型族（type family）；映射类型类似 Rust 的 derive 宏——都是"按形状批量生成成员"。TS 的独特优势是这套机制全部**结构化**，无需宏展开顺序的心理负担。
 
-## 10. 常见坑汇总
+## 14. 常见坑汇总
 
 1. `keyof (A | B)` 是共同键交集不是全部键——要全部键用 `T extends any ? keyof T : never`（第 1 节）。
 2. `typeof` 拿到的是声明类型，不是运行时收窄结果；只接受标识符，不能 `typeof f()`（第 2 节）。
@@ -411,7 +663,7 @@ type A = MyAwaited<Promise<Promise<number>>>;   // number
 10. 映射类型 `as` 里直接用非字符串键会炸：先 `string & Property` 过滤（第 6.2 节）。
 11. 模板字面量插槽联合做叉积，成员数指数膨胀，大联合别套两个插槽（第 7.1 节）。
 
-## 11. 衔接
+## 15. 衔接
 
 - 本文是"构造手法"，底层规则（兼容性/协变逆变/分配律原理）见 `12-typescript-advanced-type-system.md`，两篇配合食用。
 - `K extends keyof T` 在函数签名里的用法与上下文推断见 `05-more-on-functions.md`。
@@ -420,6 +672,6 @@ type A = MyAwaited<Promise<Promise<number>>>;   // number
 - `InstanceType<T>`（类的反射）见 `06-classes.md` 第 13.2 节；装饰器元数据与映射类型的配合见 `09-decorators.md`。
 - Nest 中 `Reflector.get`、拦截器 `CallHandler` 泛型、`PickType`（GraphQL/OpenAPI 挑字段）都是本文机制的应用，见 `/Users/hh/offer/技术文档/nest/decorator-summary.md` 与 `06-graphql`。
 
-## 12. 一句话总结
+## 16. 一句话总结
 
 > 从类型造类型的工具箱只有五件：`keyof` 拿键、`T[K]` 取值、条件类型做分支、映射类型做批量变换、模板字面量造字符串键——`infer` 贯穿其中充当"模式变量"；所有内置工具类型（Partial 到 Awaited）都能用这五件手写还原，而踩坑集中在三处：裸类型参数的分发（`[]` 抑制）、never 在分发中的消失、`Omit` 对联合的塌缩——记住"要整体比较就包一层数组，要分发就保持裸写"。

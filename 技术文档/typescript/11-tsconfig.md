@@ -291,7 +291,321 @@ tsc --noEmit --extendedDiagnostics   # 更细：instantiations（泛型实例化
 
 与 **nest-cli.json** 的关系：`nest build` 读取 nest-cli.json（`"compilerOptions": { "tsConfigPath": "tsconfig.build.json" }`、`deleteOutDir` 等），真正的编译细节仍在 tsconfig(.build).json——`tsconfig.build.json` 与开发用 tsconfig 的区别通常只是 `exclude` 多了测试文件（CLI 细节见 `/Users/hh/offer/技术文档/nest/08-cli`）。
 
-## 12. 要点速查
+## 12. tsconfig 调试三板斧：--showConfig / --explainFiles / --traceResolution
+
+配置问题的三类病因各有专属探针：**合并错了**用 --showConfig，**文件进多了**用 --explainFiles，**模块解析断了**用 --traceResolution。
+
+**① `--showConfig`：看"最终生效"的配置**
+
+```bash
+tsc -p apps/web --showConfig
+```
+
+```jsonc
+// 输出 extends 合并后的结果（键序/是否带默认值以当版输出为准）
+{
+  "compilerOptions": {
+    "strict": true,                  // ← 从 base.shared.json 继承而来
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "outDir": "./dist"               // ← 本层覆盖项
+  },
+  "include": ["src"]
+}
+```
+
+- 验证 extends 树："这个 app 到底有没有开 noUncheckedIndexedAccess？"一条命令看真相，别靠脑内合并；
+- 排查覆盖不生效：第 3 节的"整项替换不深合并"（paths 写了就整体覆盖父级）在合并结果里一目了然；
+- 相对路径错位（第 3 节的 outDir/rootDir 基准问题）也在输出里现形。
+
+**② `--explainFiles`：每个文件"为什么被编译进来"**
+
+```bash
+tsc --noEmit --explainFiles > files.txt
+```
+
+```txt
+// 每个文件一段，缩进行是引入原因（措辞随版本略有差异，以实际输出为准）
+src/orders.ts
+  Imported via '../packages/domain' from file 'src/app.ts' ...
+node_modules/@types/node/index.d.ts
+  ...（@types 的引入原因：types 选项 / 被某文件 import）
+```
+
+- 典型场景："为什么这个测试文件被类型检查了""dist 里怎么多出一个文件""编译为什么突然变慢"——顺着 Imported via 链找源头，通常是 barrel、exclude 失效或某个 import 拖进整棵依赖树；
+- 大项目输出巨大，先 grep 再看单段。
+
+**③ `--traceResolution`：模块解析全程日志**（逐段解读的完整版见 `10-modules.md` 第 12 节）
+
+```bash
+tsc --noEmit --traceResolution 2> resolution.log
+grep -n "was not resolved" resolution.log    # 先抓所有解析失败点
+```
+
+三个高频结论直接定位病因：
+
+| 输出特征 | 病因 |
+|---|---|
+| `Module resolution mode is 'node10'` | 你以为配了 bundler/nodenext，实际没生效 |
+| 条件列表里没有 `types` | 包 exports 没给类型入口 → TS7016 |
+| 找到 .mjs 但没找到 .d.mts | 双格式包缺声明文件 |
+
+```txt
+======== Module name 'my-pkg' was not resolved. ========
+```
+
+## 13. monorepo 分层 tsconfig 树
+
+四层 extends 树：**shared（语言无关严格性）→ node / web（运行环境）→ react（框架）→ app（只写差异）**。
+
+```txt
+repo/
+├── tsconfig/
+│   ├── base.shared.json   # 0 号底座
+│   ├── base.node.json
+│   ├── base.web.json
+│   └── base.react.json
+├── apps/api/tsconfig.json
+├── apps/web/tsconfig.json
+└── packages/ui/tsconfig.json
+```
+
+```jsonc
+// tsconfig/base.shared.json —— ⚠️ 只放"放之四海皆准"的项；禁止 outDir/rootDir/include 等相对路径项
+//（第 3 节：相对路径按"声明它的文件"解析，写在基座里必然错位）
+{
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true
+  }
+}
+```
+
+```jsonc
+// tsconfig/base.node.json —— Node 运行环境
+{
+  "extends": "./base.shared.json",
+  "compilerOptions": {
+    "module": "nodenext",           // moduleResolution 自动跟随（第 5 节配对表）
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "types": ["node"],
+    "verbatimModuleSyntax": true    // 依赖 emitDecoratorMetadata 的框架（Nest）按需去掉
+  }
+}
+```
+
+```jsonc
+// tsconfig/base.web.json —— 打包器环境
+{
+  "extends": "./base.shared.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "allowImportingTsExtensions": true,  // 需配 noEmit（TS 5.0+）
+    "noEmit": true
+  }
+}
+```
+
+```jsonc
+// tsconfig/base.react.json —— React 框架层
+{
+  "extends": "./base.web.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "useDefineForClassFields": true
+  }
+}
+```
+
+应用层只写差异：
+
+```jsonc
+// apps/web/tsconfig.json —— 继承 react 链
+{
+  "extends": "../../tsconfig/base.react.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@/*": ["src/*"] }   // 运行时需 vite resolve.alias 配合（第 7 节）
+  },
+  "include": ["src"]
+}
+```
+
+```jsonc
+// apps/api/tsconfig.json —— 继承 node 链 + Nest 差异项
+{
+  "extends": "../../tsconfig/base.node.json",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "verbatimModuleSyntax": false,          // 与装饰器元数据共存时先关（第 8 节）
+    "strictPropertyInitialization": false,  // 实体类妥协
+    "exactOptionalPropertyTypes": false,    // 老库 DTO 类型不兼容时降级（第 14 节）
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src"]
+}
+```
+
+纪律三条：**每层只写差异**（避免"这项从哪继承的"谜题）；**相对路径项只出现在叶子**；怀疑合并结果时 `tsc -p apps/web --showConfig` 验证（第 12 节）。库包在叶子再叠 composite/declaration 进 references 体系（第 10 节）。
+
+## 14. strict 四项开关前后对比：关闭时合法但危险的代码
+
+每项给一段"关闭时编译通过、运行时出错"的代码，与开启后的报错 + 修复。
+
+**① noImplicitAny —— 隐式 any 洗白一切**
+
+```ts
+// 关闭：合法，运行时炸
+function pick(obj, key) {          // 两个隐式 any
+  return obj[key];
+}
+pick(user, "nmae");                // 键拼错 → undefined，下游 toUpperCase() 才炸
+```
+
+```txt
+// 开启后：
+TS7006: Parameter 'obj' implicitly has an 'any' type.
+TS7006: Parameter 'key' implicitly has an 'any' type.
+```
+
+```ts
+// 修复：泛型化——键拼错直接编译报错
+function pick<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key]; // pick(user, "nmae") ❌ TS2345：'"nmae"' 不能赋给 keyof typeof user
+}
+```
+
+**② strictNullChecks —— undefined 混进一切类型**
+
+```ts
+// 关闭：undefined/null 可赋给任何类型，"查无此人"静默通过
+const user = users.find((u) => u.id === id);
+console.log(user.profile.name);    // 运行时 TypeError: Cannot read properties of undefined
+```
+
+```txt
+// 开启后：
+TS18047: 'user' is possibly 'undefined'.
+```
+
+```ts
+// 修复：显式处理空分支
+const user = users.find((u) => u.id === id);
+if (!user) throw new Error(`用户不存在: ${id}`);
+console.log(user.profile.name);    // 收窄后安全
+```
+
+**③ strictFunctionTypes —— 函数参数双变，错误签名互相赋值**
+
+```ts
+// 关闭：参数检查是双变的，下面赋值通过
+type Handler<E extends Event> = (e: E) => void;
+const onKey: Handler<KeyboardEvent> = (e) => console.log(e.key);
+const onClick: Handler<MouseEvent> = onKey;      // ✅ 关闭时编译通过
+onClick(new MouseEvent("click"));                // 运行时 e.key === undefined
+```
+
+```txt
+// 开启后：
+TS2345: Type 'Handler<KeyboardEvent>' is not assignable to type 'Handler<MouseEvent>'.
+```
+
+修复：各自声明正确类型，或用泛型映射表 `dispatch<K extends keyof Events>(k: K, h: Handler<Events[K]>)`。备注：方法简写语法（`method(e: E): void`）仍保持双变——该开关只管独立的函数类型（逆变详见 12 篇）。
+
+**④ exactOptionalPropertyTypes —— "没传"与"传了 undefined"混淆**
+
+```ts
+interface UpdateUserDto { nickname?: string }
+// 关闭：? 隐含 string | undefined，两者无法区分
+function apply(id: number, dto: UpdateUserDto) {
+  if ("nickname" in dto) db.update(id, { nickname: dto.nickname }); // 意图：只在传了时更新
+}
+apply(1, { nickname: undefined });  // ✅ 编译过 → 走进 if → 昵称被清空（线上事故）
+```
+
+```txt
+// 开启后（报错形如）：
+TS2375: Type '{ nickname: undefined; }' is not assignable to type 'UpdateUserDto'
+        with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' ...
+```
+
+```ts
+// 修复（按意图二选一）：
+apply(1, {});   // 真"不更新"：不传键
+// 或确实允许显式清除 → interface UpdateUserDto { nickname?: string | undefined }
+```
+
+四项的共同点：关闭时"看起来能跑"，错误全部延迟到运行时；开启的瞬间，bug 从生产环境前移到编辑器红线——这也是 strict 各项"引入成本一次性、收益持续"的原因（全表见第 4 节）。
+
+## 15. CI 类型检查编排：typecheck / build 分离与增量缓存
+
+**任务分离**——每个包两个独立 npm script，tsc 在 CI 里只做检查不产码：
+
+```jsonc
+// packages/ui/package.json
+{
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "tsc -p tsconfig.build.json"    // 另一份配置：exclude 测试文件、真正 emit
+  }
+}
+```
+
+分离的理由：① fail-fast——PR 上只跑 typecheck（秒级），build 留到合并后；② 产物干净——检查失败不留半成品 dist；③ 缓存键不同——typecheck 输入是源码+tsconfig，build 还含产物配置，分开才能各自命中。
+
+**增量缓存进 CI**——`incremental` 的 .tsbuildinfo 必须放进 turbo 的 outputs 才会进缓存（tsBuildInfoFile 见第 9 节）：
+
+```jsonc
+// packages/ui/tsconfig.json
+{ "compilerOptions": { "incremental": true, "tsBuildInfoFile": ".turbo/tsconfig.tsbuildinfo" } }
+```
+
+```jsonc
+// 根 turbo.json（v2 语法，字段以官方文档为准）
+{
+  "tasks": {
+    "typecheck": { "dependsOn": ["^build"], "outputs": [".turbo/tsconfig.tsbuildinfo"] },
+    "build":     { "dependsOn": ["^build"], "outputs": ["dist/**"] }
+  }
+}
+```
+
+**PR 只查受影响包**——turbo 按 filter 选"变更包 + 它们的下游"：
+
+```bash
+pnpm turbo run typecheck --filter=...[origin/main]
+# ...[ref]：自 ref 以来变更的包 + 依赖它们的包；未变更的包命中缓存直接跳过
+```
+
+不用 turbo 的替代：项目引用 `tsc -b`（第 10 节）自带拓扑序与增量，再把 tsbuildinfo 交给 CI cache：
+
+```yaml
+# .github/workflows/typecheck.yml（骨架）
+- uses: actions/cache@v4
+  with:
+    path: "**/*.tsbuildinfo"
+    key: tsb-${{ github.sha }}                 # key 必须随源码变化（见下方坑）
+    restore-keys: tsb-
+- run: pnpm turbo run typecheck --filter=...[origin/main]
+```
+
+**坑：tsbuildinfo 是"结论缓存"**——它记录"这批文件哈希无错"，如果缓存 key 不随源码变化，会把旧结论套在新代码上放行错误。turbo 按 inputs 哈希天然正确；手写 cache 必须用含源码 hash 的 key（如 `${{ github.sha }}` 或 `hashFiles('**/*.ts')`）。
+
+## 16. 要点速查
 
 | 需求 | 配置 |
 |---|---|
@@ -308,7 +622,7 @@ tsc --noEmit --extendedDiagnostics   # 更细：instantiations（泛型实例化
 
 > 跨语言对比：Java 的 `pom.xml`/Gradle、Rust 的 `Cargo.toml` 都是"构建+依赖"一体；TS 的 tsconfig 只管**编译行为**（依赖在 package.json），职责更接近 C# 的 `.csproj` 的 `<PropertyGroup>`。概念上最像的是 Rust 的 feature flags：同一份代码，一组开关决定检查严格度与产出形态。
 
-## 13. 常见坑汇总
+## 17. 常见坑汇总
 
 1. `tsc file.ts` 忽略 tsconfig——"我配了 strict 怎么没报错"的第一原因（第 1 节）。
 2. `exclude` 不是不编译：被 include 文件 import 的文件照样参与检查（第 2 节）。
@@ -321,7 +635,7 @@ tsc --noEmit --extendedDiagnostics   # 更细：instantiations（泛型实例化
 9. `composite` 子项目忘了 `declaration`/`rootDir`，`tsc -b` 报配置错误（第 10 节）。
 10. 大仓库不开 `skipLibCheck`/`incremental`，全量检查以分钟计（第 9 节）。
 
-## 14. 衔接
+## 18. 衔接
 
 - `module`/`moduleResolution`/`verbatimModuleSyntax` 的运行时含义见 `10-modules.md`；`import type` 与 isolatedModules 见 `02-typescript-cheatsheet.md`。
 - `strictPropertyInitialization`/`useDefineForClassFields`/`noImplicitOverride` 的类语义见 `06-classes.md`。
@@ -330,6 +644,6 @@ tsc --noEmit --extendedDiagnostics   # 更细：instantiations（泛型实例化
 - tsup/vitest 工程里的 tsconfig 组合（`emitDeclarationOnly`/`noEmit`）见 `17-engineering-tsup-vitest.md`。
 - Nest 的 tsconfig/nest-cli.json 与 monorepo（references + tsc -b）见 `/Users/hh/offer/技术文档/nest/08-cli` 与 `00-用Nest官方Monorepo搭建全栈骨架`。
 
-## 15. 一句话总结
+## 19. 一句话总结
 
 > tsconfig 是 TS 项目的"编译契约"：`strict: true` 一键买齐八项安全网，`module`/`moduleResolution` 的配对决定代码能不能被正确解析与运行，`isolatedModules` 是 Babel/esbuild 时代的事实前提，`paths` 只骗类型不骗运行时，性能靠 `skipLibCheck + incremental + 项目引用`三板斧——记住每个开关背后是"检查、解析、产出"三件事之一，排查配置问题先问自己：这条选项属于哪件事。

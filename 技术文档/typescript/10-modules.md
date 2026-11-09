@@ -350,7 +350,276 @@ declare module 'untyped-pkg' {
 
 放置位置：项目里任意 `.d.ts`（或被 include 的 .ts），**该文件自身必须是模块或脚本均可**——脚本形式（无 import/export）声明的 ambient module 对全局可见。与 `moduleDetection`、`types` 目录、`/// <reference types>` 的关系，以及 wildcard 声明（`declare module '*.svg'`）等完整展开见 `21-declaration-files.md`。
 
-## 12. 常见坑速查
+## 12. moduleResolution 迁移实战：node10 → bundler / nodenext
+
+node10 不认 `exports` 字段，而新一代包（以及大量 monorepo 内部包）只导出 `exports`——迁移的头号动机就是让解析器看见现代包的真实入口。两条终点线：**Web/打包器 → bundler，Node 直跑 → nodenext**。
+
+**第 1 步：改 module/moduleResolution 配对**（配对表见 `11-tsconfig.md` 第 5 节）：
+
+```json
+{ "module": "esnext", "moduleResolution": "bundler" }   // Web
+{ "module": "nodenext" }                                // Node（moduleResolution 自动跟随）
+```
+
+**第 2 步：修相对导入**。ESM 文件（package.json 带 `"type": "module"` 或 .mts）下，nodenext 要求相对导入写"编译产物"的扩展名；CJS 文件（无 type: module 的 .ts）不强制——这是迁移报错分布不均的原因：
+
+```ts
+import { formatDate } from './format-date';
+// ❌ TS2835（报错形如）：Relative import paths need explicit file extensions in
+//    ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'.
+//    Did you mean './format-date.js'?
+import { formatDate } from './format-date.js'; // ✅ 写产物名（源文件是 .ts，扩展名却是 .js）
+```
+
+```txt
+// 另一个迁移才现形的错：node10 不建模模块格式，nodenext 建模——
+TS1479: The current file is a CommonJS module whose imports will produce 'require' calls;
+however, the referenced file is an ECMAScript module and cannot be imported with 'require'.
+// CJS 代码 import 了 ESM-only 包：本文件转 ESM（.mts / type: module）或改 await import()
+```
+
+**第 3 步：修自家包的 exports**——少 `types` 条件，下游直接 TS7016：
+
+```json
+// ❌ 只给运行时入口：TS 解析到了 .mjs 却找不到声明
+{ "exports": { ".": "./dist/index.mjs" } }
+// 下游报错：TS7016: Could not find a declaration file for module 'my-pkg'. ...
+// ✅ types 条件放最前（双格式再加 require / .d.cts）
+{ "exports": { ".": { "types": "./dist/index.d.mts", "import": "./dist/index.mjs" } } }
+```
+
+**第 4 步：typesVersions 排查**（老库按 TS 版本选类型目录）：
+
+```json
+{ "typesVersions": { "<5.0": { "*": ["ts4.9/*"] }, "*": { "*": ["dist/*"] } } }
+```
+
+症状：库的新 API "类型上不存在"——多半是本项目 TS 版本偏低，走了旧版本目录。在 traceResolution 输出里能看到按版本命中的映射结果（输出措辞随版本略有差异，以官方文档为准）。
+
+**第 5 步：`tsc --traceResolution` 逐段解读**（骨架如下，措辞以当版 tsc 为准）：
+
+```txt
+======== Resolving module 'my-pkg' from 'src/index.ts'. ========
+Module resolution mode is 'nodenext' ...            ← ① 用了哪代策略（配错就在这行现形）
+Resolving in ESM mode with conditions 'import', 'types', 'node'.
+                                                    ← ② 消费端格式 + 条件集合（CJS 文件是 'require'）
+Entering conditional exports.                       ← ③ 开始走 exports 条件
+Matching './dist/index.mjs' ...                     ←   逐条件比对；types 命中哪个 .d.ts
+File '.../dist/index.d.mts' ... found.              ← ④ 声明文件查找结果
+======== Module name 'my-pkg' was successfully resolved to '.../dist/index.mjs' ========
+                                                    ← ⑤ 结论行；失败则是 "was not resolved"
+```
+
+```bash
+tsc --noEmit --traceResolution 2> resolution.log
+grep -n "was not resolved" resolution.log   # 先抓所有失败点，再看该段 ②③④ 哪步断了
+```
+
+迁移速查表：
+
+| 现象 | 根因 | 修法 |
+|---|---|---|
+| TS2835 缺扩展名 | nodenext 的 ESM 文件相对导入 | 补 .js（产物名）；TS 5.7+ 可配 `rewriteRelativeImportExtensions` 自动改写 .ts 扩展名 |
+| TS1479 CJS 引 ESM | 格式建模变严 | 本文件转 ESM 或动态 import |
+| TS7016 隐式 any | 包 exports 缺 types 条件 | 修包 exports（或先 shorthand `declare module` 过渡） |
+| TS2307 子路径找不到 | exports 未列该子路径 | 补子路径映射 |
+| 想 import './x.ts' | bundler 只省了 .js | `allowImportingTsExtensions`（需 noEmit） |
+
+## 13. 循环依赖：检测、TDZ 炸点与断环三式
+
+**检测**——tsc 对循环基本沉默（类型能算完就不吭声），必须靠专门工具并放进 CI：
+
+```bash
+npx madge --circular --extensions ts src      # 列出所有环
+npx dpdm --exit-code circular:1 src/main.ts   # 额外分析动态 import 与副作用顺序
+```
+
+**运行时炸点**——ESM 下环里最危险的是"顶层求值时读到未初始化的绑定"（TDZ）：
+
+```ts
+// a.ts
+import { b } from './b.js';
+export const a = 1;
+export function getB() { return b; }   // ✅ 函数体延迟到调用时，b 早已初始化
+
+// b.ts
+import { a } from './a.js';
+export const b = a + 1;                // ❌ 顶层求值：此刻 a 还没初始化
+```
+
+```txt
+$ node dist/main.js
+ReferenceError: Cannot access 'a' before initialization
+```
+
+执行顺序回放：main → 加载 a → a 开头 import b → 加载 b → b 的顶层执行 `a + 1` → a 的 `const a` 尚未初始化 → TDZ。规则：**function 声明在模块实例化阶段就可用（环里安全）；const/let/class 在顶层求值前都在 TDZ（环里顶层引用必炸）**。
+
+**断环三式**（按优先级）：
+
+1. **抽公共模块**——治本。把环双方都需要的部分下沉到第三层，恢复单向依赖：
+
+```ts
+// shared.ts：a、b 都只 import 它，环消失
+export const VERSION = 1;
+```
+
+2. **延迟 import**——运行时断环。把"模块加载时需要对方"改成"调用时才要"：
+
+```ts
+// b.ts
+export async function compute() {
+  const { a } = await import('./a.js');  // 调用时环早已闭合，不再 TDZ
+  return a + 1;
+}
+```
+
+3. **类型-only import**——最常见也最廉价：环只在"类型"里时，一行 import type 就断了运行时边：
+
+```ts
+import type { BConfig } from './b.js';  // 编译后整行消失，运行时无环
+```
+
+`verbatimModuleSyntax` 开着时必须显式写 `type`——等于逼你分清"类型环"与"值环"，这正是它值钱的地方。另外，环检测的输出里最常指向 barrel（第 5 节）：很多环只是"绕 index.ts 的类型引用"，先试 import type，再考虑拆 barrel。
+
+## 14. 模块副作用与初始化顺序
+
+**import 提升与执行顺序**：import 声明被提升到模块体之前，被依赖模块先执行（与 import 写在哪一行无关）：
+
+```ts
+// a.ts
+import './b.js';
+console.log('a: body');
+// b.ts
+console.log('b: body');
+```
+
+```txt
+$ node dist/a.js
+b: body      ← 依赖先执行（深度优先、后序）；同层多个 import 按声明顺序
+a: body
+```
+
+循环时"后序"被打破：环中先启动的一方在半初始化状态下执行（第 13 节的 TDZ）。
+
+**模块级单例与测试隔离**——模块作用域状态"每份模块实例一份"，同一进程里天然单例：
+
+```ts
+// counter.ts
+let count = 0;
+export function inc(): number { return ++count; }
+```
+
+```ts
+// counter.test.ts（vitest）—— 单例状态跨测试用例泄漏
+import { inc } from './counter.js';
+test('a', () => { inc(); inc(); });   // count = 2
+test('b', () => { inc(); });          // 沿用同一实例 → 3，不是 1！
+```
+
+```ts
+// 修复：每个测试换新模块注册表（reset 后要重新动态 import 拿"新实例"）
+beforeEach(() => { vi.resetModules(); });
+test('b', async () => {
+  const { inc: freshInc } = await import('./counter.js');
+  expect(freshInc()).toBe(1);
+});
+```
+
+另一层"双实例"坑：同一包同时被 ESM 与 CJS 引用（第 9 节双格式问题）→ 模块实例两份，模块级单例也两份——`instanceof` 失效、计数器莫名清零这类怪象多半是它。
+
+**barrel 让副作用模块被意外加载**：
+
+```ts
+// utils/index.ts（barrel）
+export { formatDate } from './format-date.js';
+export { initSentry } from './sentry.js';   // sentry.ts 顶层就初始化 SDK
+
+// main.ts —— 只想要 formatDate
+import { formatDate } from './utils/index.js';
+// → sentry.ts 也被执行了：Node 运行时没有 tree-shaking，barrel 全量执行
+```
+
+三层修法（从治本到治标）：
+
+1. **副作用收进显式函数**：模块顶层只留"定义"，初始化导出为 `initSentry()` 由入口显式调用——任何 I/O / 全局注册都应延迟；
+2. **绕开 barrel**：直接 import 具体文件，立竿见影；
+3. **`"sideEffects": false`（或精确列举）**：只影响打包器 tree-shaking（web 产物），Node 直跑无效——别把它当"不会执行"的保证。
+
+## 15. monorepo 内部包模式：三种形态
+
+pnpm workspace 把子包 symlink 进 node_modules，包之间用 **workspace 协议**互相依赖：
+
+```yaml
+# pnpm-workspace.yaml
+packages:
+  - "apps/*"
+  - "packages/*"
+```
+
+```json
+// apps/web/package.json —— workspace:*：永远链本仓源码，不发 npm、不装网
+{ "dependencies": { "@repo/ui": "workspace:*" } }
+```
+
+内部包有三种形态（Turbo 团队的总结，细节以官方文档为准）：
+
+**形态一：编译产物（Compiled）**——最传统，边界最硬：
+
+```json
+// packages/ui/package.json
+{
+  "name": "@repo/ui",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "require": "./dist/index.cjs" }
+  }
+}
+```
+
+先 `tsc -b`/tsup 构建再被消费；turbo.json 里 `dependsOn: ["^build"]` 保证拓扑顺序（构建编排见 `11-tsconfig.md` 第 15 节）。可包级缓存、消费方零成本；代价：改一行也要先 build（watch / turbo 缓存缓解）。
+
+**形态二：直接源码引用（TypeScript source）**——零构建：
+
+```json
+// packages/ui/package.json
+{
+  "name": "@repo/ui",
+  "exports": { ".": "./src/index.ts" }
+}
+```
+
+TS 侧用 `moduleResolution: bundler` + `allowImportingTsExtensions`（配 noEmit）即可解析；运行时要求消费方"能吃 TS 源码"——Vite/Rspack 一般可直接处理（以各自官方文档为准），Next 需要 `transpilePackages: ["@repo/ui"]`。改码即生效，开发体验最好；代价：没有包级缓存边界，消费方承担全部转译与类型检查成本。
+
+**形态三：Just-in-Time 包（JIT）**——源码直出 + 类型即时生成，折中：
+
+```json
+// packages/ui/package.json
+{
+  "name": "@repo/ui",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",   // tsc --emitDeclarationOnly 只出类型（可被 turbo 缓存）
+      "import": "./src/index.ts"      // 运行时直接给打包器吃源码
+    }
+  }
+}
+```
+
+类型有独立产物（跳转/检查走 .d.ts，比形态二快），运行时仍免构建。
+
+| 形态 | 构建成本 | 类型来源 | 消费方要求 | 缓存边界 |
+|---|---|---|---|---|
+| 编译产物 | 每次先 build | dist/.d.ts | 任何 | 包级（最清晰） |
+| 源码引用 | 零 | 源码即类型 | 打包器吃 TS | 无（全靠消费方） |
+| JIT | 只出 .d.ts | dist/.d.ts | 打包器吃 TS | 类型可缓存 |
+
+**实现要点**：
+
+1. 包名用可发布的 scoped 名（`@repo/ui`）——今天内部引用，明天可直接 `pnpm publish`；
+2. exports 的 `types` 条件恒在第一位，否则下游 TS7016（第 12 节）；
+3. source/JIT 形态下，消费方 tsconfig 必须 bundler（或 nodenext + 对应开关），解析规则见第 8 节；
+4. 常见混合策略：基础设施/协议包用编译产物（稳定、被广泛依赖），UI 组件/工具用 source 或 JIT（高频迭代）。
+
+## 16. 常见坑速查
 
 | 现象 | 原因 | 解法 |
 |------|------|------|
@@ -364,6 +633,6 @@ declare module 'untyped-pkg' {
 | CJS 包默认导入拿到 `{ default: fn }` 双层包裹 | interop 未开或格式不匹配 | 开 `esModuleInterop`；确认消费端格式与包产物一致 |
 | `export default` 的类/函数重构改不动导入名 | 默认导出与名字解耦 | 团队规范倾向命名导出 |
 
-## 13. 一句话总结
+## 17. 一句话总结
 
 > 顶层有 import/export 就是模块（否则是泄漏全局的脚本，`export {}` 或 `moduleDetection: force` 兜底）；ESM 语法之外记住三组"TS 特产"——`import type` 内联 type 修饰符（单文件转译器时代的生存技能）、`export =`/`import = require`（历史包袱，看懂即可）、CommonJS 互操作靠 `esModuleInterop` 的 `__importStar/__importDefault`；解析策略按运行环境选：tsc 直出用 nodenext（相对路径带扩展名）、打包器用 bundler、老项目 node10，包的入口由 package.json `exports` 的 `types` 条件决定；barrel 好用但大仓要节制（编译面、代码分割、tree-shaking、循环依赖四宗罪），namespace 与 ambient module（`declare module 'pkg'`）各退守到脚本场景与 .d.ts 声明——后者在 `21-declaration-files.md` 全集展开。

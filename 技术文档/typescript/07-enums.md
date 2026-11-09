@@ -292,7 +292,263 @@ status: OrderStatus;
 
 模式要点：**枚举管"合法值集合"，`Record<E, T>` 映射表管"每值行为"，parse 函数管"边界校验"**——三件套互相锁死，新增枚举成员时编译器逼你补齐 LABEL 与所有 switch。
 
-## 11. 要点速查
+## 11. API 边界双向映射实战：DB ↔ API ↔ UI 三层值映射
+
+真实系统里三层各说各的"方言"——DB 沿用遗留系统的大写值、API 对外契约用小写、UI 要中文文案。**防腐层（anti-corruption layer）** 的纪律：方言只允许出现在映射表里，领域代码只见统一的 enum。
+
+```ts
+// order-status-domain.ts —— 领域中枢：内部统一用这个 enum（值即 API 契约值）
+export enum OrderStatus {
+  Pending = "pending",
+  Paid = "paid",
+  Shipped = "shipped",
+  Cancelled = "cancelled",
+}
+// DB 方言（遗留大写蛇形值），独立成类型，禁止在映射层之外出现
+export type DbOrderStatus = "PENDING" | "PAID_DONE" | "SHIPPED_OUT" | "ORDER_CANCELLED";
+```
+
+```ts
+// db-mapping.ts —— DB 防腐层：整个代码库只有这两个表认识 DB 方言
+import { OrderStatus, type DbOrderStatus } from "./order-status-domain.js";
+
+export const DB_TO_STATUS: Record<DbOrderStatus, OrderStatus> = {
+  PENDING: OrderStatus.Pending,
+  PAID_DONE: OrderStatus.Paid,
+  SHIPPED_OUT: OrderStatus.Shipped,
+  ORDER_CANCELLED: OrderStatus.Cancelled,
+};
+export const STATUS_TO_DB: Record<OrderStatus, DbOrderStatus> = {
+  [OrderStatus.Pending]: "PENDING",
+  [OrderStatus.Paid]: "PAID_DONE",
+  [OrderStatus.Shipped]: "SHIPPED_OUT",
+  [OrderStatus.Cancelled]: "ORDER_CANCELLED",
+};
+
+// DB → 领域：非法值拒绝进入领域层（Object.hasOwn 需 ES2022 lib）
+export function statusFromDb(raw: string): OrderStatus | undefined {
+  return Object.hasOwn(DB_TO_STATUS, raw)
+    ? DB_TO_STATUS[raw as DbOrderStatus]
+    : undefined;
+}
+// 领域 → DB：写库前转回方言
+export function statusToDb(s: OrderStatus): DbOrderStatus {
+  return STATUS_TO_DB[s];
+}
+```
+
+三层链路总览：
+
+| 层 | 值的样子 | 转换点 |
+|---|---|---|
+| DB | `PAID_DONE` | 仓储层调 `statusFromDb` / `statusToDb`（唯一认识 DB 方言的地方） |
+| 领域 / API | `OrderStatus.Paid`（`"paid"`） | JSON 序列化天然得到契约值；入口用 `parseOrderStatus`（第 10 节） |
+| UI | `已支付` | `ORDER_STATUS_LABEL`（第 10 节的 `Record<OrderStatus, string>`） |
+
+防漂移的两把编译期锁：
+
+1. 两张表都被 `Record<键联合, X>` 全量约束：DB 加新值 → `DbOrderStatus` 变 → `DB_TO_STATUS` 立即 TS2739；enum 加新成员 → `STATUS_TO_DB` 与 LABEL 同步报错（机制详见第 13 节）。
+2. API 契约值若与 enum 值也不一致（如对外暴露 `ORDER_PAID`），照抄一对 `API_TO_STATUS` / `STATUS_TO_API`——**同一模式复制三层，每层一对 Record**。
+
+不想手写两张镜像表时，用 `satisfies` 把反向表锁死：
+
+```ts
+const STATUS_TO_DB = {
+  [OrderStatus.Pending]: "PENDING",
+  [OrderStatus.Paid]: "PAID_DONE",
+  [OrderStatus.Shipped]: "SHIPPED_OUT",
+  [OrderStatus.Cancelled]: "ORDER_CANCELLED",
+} as const satisfies Record<OrderStatus, DbOrderStatus>;
+// 漏任一成员 / 值拼错（不是合法 DB 方言）都在 satisfies 处报错
+```
+
+落点纪律：转换函数只允许出现在**仓储与 DTO 映射器**里，服务层永远只见 `OrderStatus`——方言泄漏到第二个文件，防腐层就名存实亡。
+
+## 12. 数字枚举位标志（bit flags）：权限系统实战
+
+数字枚举成员用 **2 的幂**做值，就能在一个整数里塞多个布尔位——权限系统经典打法（DB 存一个整数列，省掉多行关联表）：
+
+```ts
+// permission.ts
+export enum Permission {
+  Read  = 1 << 0, // 0b001 = 1
+  Write = 1 << 1, // 0b010 = 2
+  Exec  = 1 << 2, // 0b100 = 4
+}
+export const ALL_PERMISSIONS = Permission.Read | Permission.Write | Permission.Exec; // 7
+
+// 组合：按位或（位运算结果类型是 number，不再是枚举成员联合）
+const READ_WRITE = Permission.Read | Permission.Write; // 0b011 = 3
+
+// 检测：按位与；多位组合 flag 必须用 === flag 全等
+export function hasFlag(flags: number, flag: Permission): boolean {
+  return (flags & flag) === flag;
+}
+console.log(hasFlag(READ_WRITE, Permission.Read)); // true
+console.log(hasFlag(READ_WRITE, Permission.Exec)); // false
+// ⚠️ 经典错误：组合位用 !== 0 检测
+// hasFlag(Read|Write, Read|Exec)：3 & 5 = 1 ≠ 0 → "误判拥有 Exec"
+```
+
+边界守卫：外部/DB 里的裸 number 必须先"收编"（顺带拦下未知位），内部逻辑只消费收编后的值：
+
+```ts
+// 收编：未知位直接拒绝（~ALL 取反后正好掩出"多出来的位"）
+export function toPermissionSet(raw: number): number {
+  if ((raw & ~ALL_PERMISSIONS) !== 0) throw new Error(`未知权限位: ${raw}`);
+  return raw;
+}
+// 撤销一位用"按位与非"：flags & ~Permission.Write —— 去掉 Write，其余保留
+```
+
+与字符串数组的互转（前端 checkbox / JSON 存取）：
+
+```ts
+// 位标志 → 数组。⚠️ 数字枚举对象里混着反向映射的字符串值，必须 typeof 过滤
+export function toList(flags: number): Permission[] {
+  return Object.values(Permission).filter(
+    (v): v is Permission => typeof v === "number" && hasFlag(flags, v),
+  );
+}
+console.log(toList(3)); // [1, 2]（即 Read、Write）
+
+// 数组 → 位标志
+export function fromList(list: Permission[]): number {
+  return list.reduce((acc, p) => acc | p, 0);
+}
+console.log(fromList([Permission.Read, Permission.Exec])); // 5
+```
+
+三个边界须知：
+
+1. **JS 位运算是 32 位有符号**——最多安全使用 31 个标志位（第 32 位是符号位），权限更多就换数组或 bigint。
+2. **复合成员会捣乱**：`enum FilePerm { Read = 1, Write = 2, ReadWrite = Read | Write }` 合法，但 `ReadWrite` 不是 2 的幂，`toList` 会把它和 Read、Write 一起吐出来（同一权限出现三份）——参与遍历的枚举里别混复合成员。
+3. **选型**：权限纯"有/无"且 ≤31 个 → 位标志（一个整数列、O(1) 判定）；需要带参数的授权（"仅本人文章可编辑"）→ 字符串数组 + 策略库（如 CASL）。
+
+## 13. Record<Enum, X> 完备性检查：把新增成员变成编译期待办清单
+
+`Record<E, X>` 展开是"以每个枚举成员为键的映射类型"——对象字面量**少一个键报 TS2739，多一个键被 excess property check 拦下**，双向锁死：
+
+```ts
+enum OrderStatus { Pending = "pending", Paid = "paid" }
+
+const LABEL: Record<OrderStatus, string> = {
+  [OrderStatus.Pending]: "待支付",
+  // ❌ TS2739: ... is missing the following properties from type 'Record<OrderStatus, string>'
+  //    （报错直接点名缺的成员）
+  // Extra: "",           // ❌ 多写的键同样报错（excess property check）
+};
+```
+
+于是"加一个枚举成员"从祈祷变成流程——编译器自动生成待办清单：
+
+```ts
+// 产品说：加 "Refunded"。只改枚举声明一行：
+enum OrderStatus2 { Pending = "pending", Paid = "paid", Refunded = "refunded" }
+// tsc 一跑，所有依赖点集体报错：
+// ① Record<OrderStatus, string> 标签表缺 Refunded → TS2739
+// ② switch 漏新 case → 见下方 assertNever 的 TS2345
+// ③ Record<OrderStatus, Handler> 策略表缺项 → TS2739
+```
+
+switch 的穷尽性用 `never` 兜底（与 Record 同一思想的函数版）：
+
+```ts
+function assertNever(x: never): never {
+  throw new Error(`漏处理: ${JSON.stringify(x)}`);
+}
+function next(s: OrderStatus): OrderStatus {
+  switch (s) {
+    case OrderStatus.Pending: return OrderStatus.Paid;
+    case OrderStatus.Paid: return OrderStatus.Pending;
+    default:
+      return assertNever(s);
+      // 全覆盖时 s 被收窄成 never ✅
+      // 新增 Refunded 后：s 是 OrderStatus.Refunded ≠ never → TS2345 报错，逼你补 case
+  }
+}
+```
+
+三个"放弃完备性"的反模式（review 时见到就要问一句）：
+
+| 写法 | 后果 |
+|---|---|
+| `Partial<Record<E, X>>` | 漏成员静默通过，运行时 undefined |
+| `Record<E, X \| undefined>` | 同上，且类型层看不出谁漏了 |
+| `Map<E, X>` | Map 的键是运行时数据，编译器完全失明 |
+
+两点延伸：
+
+1. 模式与 enum 无关，本质是"用键的联合类型锁死映射表"：`Record<"a" \| "b", X>`、`Record<keyof typeof Conf, X>`（as const 对象）同样生效。
+2. 要"除某成员外全覆盖"：`Record<Exclude<OrderStatus, OrderStatus.Legacy>, string>`——淘汰成员退出检查范围，其余仍被锁死。
+
+## 14. 从 enum 迁移到 union 的重构步骤（6 步清单）
+
+| 步骤 | 动作 | 关键检查点 |
+|---|---|---|
+| ① 找出所有用点 | IDE Find Usages + grep | 分类：类型位 / 值位 / 遍历 / 反向映射 |
+| ② 替换声明 | enum → as const 对象 + 同名 type | 类型与值同名并存 |
+| ③ 消费点适配 | 遍历、装饰器、严格性回归 | values 收窄、装饰器要值数组 |
+| ④ 处理反向映射 | 自建反查表 | 仅数字枚举迁移需要 |
+| ⑤ 删除残留 | 编译选项 / lint / 旧 .d.ts | preserveConstEnums 等 |
+| ⑥ 类型测试验证 | Equal 断言 + 运行时值快照 | 迁移前后类型形状一致 |
+
+**① 分类用点**——四种用法的迁移去向不同：
+
+```ts
+function f(s: OrderStatus) {}   // 类型位置 → union 直接顶上
+const s = OrderStatus.Paid;     // 值位置 → O.Paid（as const 对象，用法不变）
+Object.values(OrderStatus);     // 遍历 → as const 对象天然可遍历
+OrderStatus[0];                 // 反向映射（数字枚举特有）→ 自建反查表（见 ④）
+```
+
+**② 同名声明**——迁移成本最低的关键技巧：const 与 type 共用一个名字，值位/类型位用法原样保留：
+
+```ts
+// before: enum OrderStatus { Pending = "pending", Paid = "paid", Shipped = "shipped" }
+// after：
+const OrderStatus = {
+  Pending: "pending",
+  Paid: "paid",
+  Shipped: "shipped",
+} as const;
+type OrderStatus = (typeof OrderStatus)[keyof typeof OrderStatus]; // "pending" | "paid" | "shipped"
+export { OrderStatus }; // 值与类型一起导出；`OrderStatus.Paid` 与 `x: OrderStatus` 全部照旧
+```
+
+**③ 消费点适配**——三处常见改动：
+
+```ts
+// a) 需要成员数组时（as const 对象的 Object.values 类型已是成员联合数组）：
+export const ORDER_STATUS_VALUES = Object.values(OrderStatus); // ("pending"|"paid"|"shipped")[]
+// b) 框架装饰器要"值数组"：@ApiProperty({ enum: ORDER_STATUS_VALUES })
+// c) 严格性回归：字符串 enum 拒绝裸字符串，union 接受—— f("paid") 从报错变合法。
+//    边界处用 parse 函数（第 10 节）把"外部字符串 → 合法成员"的关卡补回来。
+```
+
+**④ 反向映射**（数字枚举迁移特有）：
+
+```ts
+const SEVERITY = { Low: 0, Medium: 1, High: 2 } as const;
+type Severity = (typeof SEVERITY)[keyof typeof SEVERITY]; // 0 | 1 | 2
+const SEVERITY_NAME: Record<Severity, keyof typeof SEVERITY> = {
+  0: "Low", 1: "Medium", 2: "High",
+}; // Record 锁死全覆盖（第 13 节），值拼错立即报错
+console.log(SEVERITY_NAME[1]); // "Medium"
+```
+
+⚠️ **值的兼容性是迁移最大的雷**：数字枚举 → 字符串联合会改变序列化值，DB/缓存/已发客户端里的 `0/1/2` 不会自动变 `"low"`——要么数据迁移，要么保留数字值（as const 对象继续用数字）。
+
+**⑤ 删除残留**：tsconfig 里的 `preserveConstEnums` 删除；ESLint 若曾禁 const enum 则调整规则；重导出链上的旧声明（`export { OrderStatus } from './old.js'`）清理；库迁移后重新生成 .d.ts，防止消费者拿到旧 enum 声明。
+
+**⑥ 类型测试验证**——恒等断言锁住迁移结果（Equal/Expect 写法见 08 篇第 9 节）：
+
+```ts
+type _1 = Expect<Equal<OrderStatus, "pending" | "paid" | "shipped">>;
+// 以后有人把声明改回 enum 或偷偷加成员，这里立刻变红
+```
+
+## 15. 要点速查
 
 | 形态 | 写法 | 反向映射 | 主要坑 |
 |---|---|---|---|
@@ -305,7 +561,7 @@ status: OrderStatus;
 
 > 跨语言对比：Java 的 enum 是完整类（可带方法/字段/实现接口）、C# 的 enum 是值类型、Rust 的 enum 是代数数据类型（`Option/Result` 即它，配 match 穷尽检查）——TS 的 enum 形似 C# 而本质是**普通 JS 对象**，且官方正引导生态走向字面量联合；Rust 风格的"带数据枚举"在 TS 里对应的是**判别联合**（见 04 篇）。
 
-## 12. 常见坑汇总
+## 16. 常见坑汇总
 
 1. 数字枚举反向映射误导："枚举值"当字符串用会拿到名字而不是值（第 2 节）。
 2. 计算成员之后的成员忘写初始化器：`TS1061`（第 1 节）。
@@ -318,13 +574,13 @@ status: OrderStatus;
 9. 用字面量联合对接需要"值对象"的装饰器（OpenAPI/TypeORM）拿不到元数据——换 enum 或 as const 对象（第 9 节）。
 10. `Record<OrderStatus, string>` 映射表漏成员：编译期即报错，别用 `Partial` 放过它（第 10 节）。
 
-## 13. 衔接
+## 17. 衔接
 
 - 字面量联合与 `null`/`undefined` 的基础见 `03-everyday-types.md`；判别联合（枚举标签的主要去向）见 `04-narrowing.md`。
 - `as const`/`typeof`/`keyof` 的类型提取机制完整展开见 `08-creating-types-from-types.md`；`satisfies` 见 `15-typescript-new-features.md`。
 - 类内使用枚举常量（如权限位）见 `06-classes.md`；`isolatedModules`/`preserveConstEnums` 等编译开关见 `11-tsconfig.md` 与 `10-modules.md`。
 - Nest 角色权限枚举见 `/Users/hh/offer/技术文档/nest/03-security`，`@ApiProperty({ enum })` 与 DTO 校验见 `09-recipes/openapi.md` 与 `09-recipes/validation.md`。
 
-## 14. 一句话总结
+## 18. 一句话总结
 
 > 枚举是 TS 里"既有类型又有运行时对象"的少数语法：数字枚举靠 IIFE 建立双向映射、字符串枚举值可读但单向、const enum 用内联换体积却埋下 isolatedModules/单文件转译/跨包版本三重雷——所以现代 TS 的默认答案是**字面量联合或 `as const satisfies` 对象**，只有当框架装饰器（Nest/TypeORM/OpenAPI）需要真实值对象、或需要反向映射时，才回到普通（非 const）enum。
