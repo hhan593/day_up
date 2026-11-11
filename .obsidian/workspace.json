@@ -198,8 +198,9 @@
   },
   "active": "091b3897febc8b7a",
   "lastOpenFiles": [
-    "技术文档/java/02-java-middle/02-Java语言基础.md",
     "技术文档/java/02-java-middle/01-Java基础语法与学习路线.md",
+    "技术文档/java/02-java-middle/02-Java语言基础.md",
+    "技术文档/java/02-java-middle/03-面向对象类与对象.md",
     "技术文档/typescript/15-typescript-new-features.md",
     "技术文档/typescript/16-README.md",
     "技术文档/typescript/18-decorators-deep.md",
@@ -228,7 +229,6 @@
     "技术文档/spring",
     "技术文档/Three.js/28-数据标注平台架构详解.md",
     "技术文档/Three.js/25-图形状态机：深度、混合、剔除与MSAA.md",
-    "技术文档/Three.js/24-WebGL渲染管线与原生API.md",
     "技术文档/java/18-thread",
     "技术文档/java/nginx",
     "技术文档/java/linux",
